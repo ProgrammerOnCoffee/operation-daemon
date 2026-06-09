@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://b18kjmajkm7k2"]
+
+[resource]
+default_font_size = 24
+GridContainer/constants/h_separation = 8
+GridContainer/constants/v_separation = 8
+LLabel/base_type = &"Label"
+LLabel/font_sizes/font_size = 42
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 24
+MarginContainer/constants/margin_right = 24
+MarginContainer/constants/margin_top = 8
+SButton/base_type = &"Button"
+SButton/font_sizes/font_size = 18
+SLabel/base_type = &"Label"
+SLabel/font_sizes/font_size = 22
+TooltipLabel/font_sizes/font_size = 16

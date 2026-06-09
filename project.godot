@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GWJ 94"
+run/main_scene="uid://d05e7ogdphaur"
+run/print_header=false
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://cru8imuvgs17w"
+config/icon="res://icon.svg"
+boot_splash/image.editor_hint=""
+
+[audio]
+
+buses/default_bus_layout="uid://bgscwxyla6euj"
+
+[autoload]
+
+ButtonFeedback="*uid://b6mqwnmlg422n"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unassigned_variable_op_assign=0
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/button_feedback/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://b18kjmajkm7k2"
