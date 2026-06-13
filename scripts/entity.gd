@@ -1,5 +1,5 @@
 class_name Entity
-extends Node2D
+extends CharacterBody2D
 ## Base class for all entities within a fight.
 ##
 ## Base class for the player and all enemies within a fight.

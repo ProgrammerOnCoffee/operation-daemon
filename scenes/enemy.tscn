@@ -7,5 +7,5 @@
 script = ExtResource("2_4ra3w")
 base_damage = 7
 
-[node name="ColorRect" parent="." index="0" unique_id=1287979670]
+[node name="ColorRect" parent="." index="1" unique_id=1287979670]
 color = Color(0.86, 0.1032, 0.22933358, 1)

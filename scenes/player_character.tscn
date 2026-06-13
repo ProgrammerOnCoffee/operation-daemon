@@ -602,30 +602,30 @@ visible = false
 
 [node name="Belly" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="0" unique_id=654590038]
 position = Vector2(217, 40)
-rotation = -0.06499577
-scale = Vector2(0.9998617, 0.9998617)
+rotation = -0.122665316
+scale = Vector2(0.99986166, 0.99986166)
 
 [node name="Upper Tors" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
 position = Vector2(3.9998553, -69.00225)
 rotation = 0.018526005
-scale = Vector2(0.9998263, 0.9998263)
+scale = Vector2(0.99982613, 0.99982613)
 
 [node name="Neck" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors" index="0" unique_id=2131347548]
 position = Vector2(3.9996598, -64.00181)
-rotation = 0.0050685755
-scale = Vector2(0.9998225, 0.9998225)
+rotation = 0.10290763
+scale = Vector2(0.999823, 0.999823)
 
 [node name="Head" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" index="0" unique_id=1733505491]
 rotation = 0.11992657
-scale = Vector2(0.9999508, 0.9999508)
+scale = Vector2(0.9999507, 0.9999507)
 
 [node name="Face" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" index="0" unique_id=1196459148]
 scale = Vector2(0.99982995, 0.99982995)
 
 [node name="Left ARm" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(1331271054, 1413055582) index="0" unique_id=408215454]
 position = Vector2(19.191107, -1.6761872)
-rotation = 1.1551479
-scale = Vector2(0.99993324, 0.99993324)
+rotation = 0.8777836
+scale = Vector2(0.9999329, 0.9999329)
 
 [node name="Left ARm2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
 position = Vector2(82.16497, 0.0788771)
@@ -634,17 +634,18 @@ scale = Vector2(0.9999829, 0.9999829)
 
 [node name="Right arm" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(1331271054, 55123572) index="0" unique_id=328132070]
 position = Vector2(-0.9996267, -3.3796638e-05)
-rotation = 0.18042727
-scale = Vector2(0.9999134, 0.9999134)
+rotation = 0.30065805
+scale = Vector2(0.99991304, 0.99991304)
 
 [node name="Right arm2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
 position = Vector2(-45.905697, 45.119423)
-rotation = 0.00038445002
+rotation = 0.00038445008
 scale = Vector2(0.9999965, 0.9999965)
 
 [node name="Back LEg" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(1331271054, 511964988) index="0" unique_id=879307515]
 position = Vector2(-13.000454, -3.9998634)
 rotation = 0.7109434
+scale = Vector2(0.9999881, 0.9999881)
 
 [node name="Bacl Leg Lowe" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg" index="0" unique_id=640676124]
 position = Vector2(41.766037, 88.66619)
@@ -664,27 +665,9 @@ rotation = -1.1032269
 [node name="Front Leg Lower2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" index="0" unique_id=1092532283]
 scale = Vector2(0.99982816, 0.99982816)
 
-[node name="Front Arm IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="1" unique_id=1935075252]
-position = Vector2(421.9576, -20.360374)
-rotation = -0.43553242
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Body_Ik" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="2" unique_id=773662502]
-position = Vector2(211.08316, -352.35345)
-
-[node name="Head Look At" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="3" unique_id=695799298]
-position = Vector2(526.7929, -97.49568)
-
 [node name="Back Arm IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="4" unique_id=2077262562]
-position = Vector2(0.92233276, -39.250244)
-rotation = -2.410725
-
-[node name="Back Foot IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="5" unique_id=962082352]
-position = Vector2(105.021675, 364.3338)
-rotation = -0.2523013
-
-[node name="Front Foot IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="6" unique_id=665679059]
-position = Vector2(312.37866, 268.08398)
+position = Vector2(-8, -68.00001)
+rotation = -2.2376947
 
 [node name="IK" parent="PlayerBonesetup" index="2" unique_id=1118968336]
 visible = false
