@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqtmxptrfthr1"]
 
-[ext_resource type="PackedScene" uid="uid://ca33qndo4tfav" path="res://scenes/entity.tscn" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://ca33qndo4tfav" path="res://scenes/entities/entity.tscn" id="1_md0e3"]
 [ext_resource type="Script" uid="uid://cohkguwu66afc" path="res://scripts/enemy.gd" id="2_4ra3w"]
 
 [node name="Enemy" unique_id=1022515043 instance=ExtResource("1_md0e3")]

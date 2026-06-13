@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://th1saykuttvk"]
 
 [ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_viauy"]
-[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/enemy.tscn" id="3_soymf"]
-[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/player.tscn" id="4_a5t83"]
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="3_soymf"]
+[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="4_a5t83"]
 
 [node name="Fight" type="Node2D" unique_id=1096581988 node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_viauy")

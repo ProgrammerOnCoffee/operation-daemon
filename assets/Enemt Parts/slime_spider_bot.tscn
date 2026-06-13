@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://bfj5s1idl7ra2"]
 
-[ext_resource type="Script" uid="uid://5um7qwk6twtb" path="res://scripts/entity.gd" id="1_8bjsc"]
 [ext_resource type="PackedScene" uid="uid://d2217s18nrge7" path="res://assets/Enemt Parts/Slime_Spider.tscn" id="1_8qs0g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bjsc"]
-size = Vector2(649.5, 788.5)
 
 [sub_resource type="Animation" id="Animation_lgpu2"]
 resource_name = "Idle"
@@ -308,33 +304,30 @@ _data = {
 &"RESET": SubResource("Animation_c7ekk")
 }
 
-[node name="Slime Spider Bot" type="CharacterBody2D" unique_id=1915969548]
-script = ExtResource("1_8bjsc")
+[node name="Slime Spider Bot" type="Node2D" unique_id=1640616147]
 
 [node name="Enemy Bones" parent="." unique_id=986798588 instance=ExtResource("1_8qs0g")]
 position = Vector2(16, 24)
 scale = Vector2(0.185, 0.185)
+
+[node name="Bones" parent="Enemy Bones" index="1" unique_id=448116703]
+visible = false
 
 [node name="Body" parent="Enemy Bones/Bones/Skeleton2D" parent_id_path=PackedInt32Array(986798588, 636062987) index="0" unique_id=910904063]
 rotation = -0.0054943264
 scale = Vector2(0.9998419, 0.9998419)
 
 [node name="Slime2" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1" parent_id_path=PackedInt32Array(986798588, 779886826) index="0" unique_id=835977597]
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.9999988, 0.9999988)
 
 [node name="Slime3" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1/Slime2" index="0" unique_id=556742822]
-scale = Vector2(0.99999887, 0.99999887)
+scale = Vector2(0.9999987, 0.9999987)
 
 [node name="Leg back Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="1" unique_id=1479726037]
-scale = Vector2(0.9999993, 0.9999993)
+scale = Vector2(0.9999991, 0.9999991)
 
 [node name="LegRead  back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body" index="4" unique_id=1176429833]
 scale = Vector2(0.9999975, 0.9999975)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=446625211]
-visible = false
-position = Vector2(534.75, 390.25)
-shape = SubResource("RectangleShape2D_8bjsc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1637503145]
 libraries/ = SubResource("AnimationLibrary_ftlb6")
