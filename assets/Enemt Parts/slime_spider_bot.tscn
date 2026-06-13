@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bfj5s1idl7ra2"]
 
+[ext_resource type="Script" uid="uid://5um7qwk6twtb" path="res://scripts/entity.gd" id="1_8bjsc"]
 [ext_resource type="PackedScene" uid="uid://d2217s18nrge7" path="res://assets/Enemt Parts/Slime_Spider.tscn" id="1_8qs0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bjsc"]
@@ -308,24 +309,27 @@ _data = {
 }
 
 [node name="Slime Spider Bot" type="CharacterBody2D" unique_id=1915969548]
+script = ExtResource("1_8bjsc")
 
 [node name="Enemy Bones" parent="." unique_id=986798588 instance=ExtResource("1_8qs0g")]
+position = Vector2(16, 24)
+scale = Vector2(0.185, 0.185)
 
 [node name="Body" parent="Enemy Bones/Bones/Skeleton2D" parent_id_path=PackedInt32Array(986798588, 636062987) index="0" unique_id=910904063]
 rotation = -0.0054943264
 scale = Vector2(0.9998419, 0.9998419)
 
 [node name="Slime2" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1" parent_id_path=PackedInt32Array(986798588, 779886826) index="0" unique_id=835977597]
-scale = Vector2(0.99999905, 0.99999905)
+scale = Vector2(0.999999, 0.999999)
 
 [node name="Slime3" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1/Slime2" index="0" unique_id=556742822]
-scale = Vector2(0.9999989, 0.9999989)
+scale = Vector2(0.99999887, 0.99999887)
 
 [node name="Leg back Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="1" unique_id=1479726037]
-scale = Vector2(0.99999934, 0.99999934)
+scale = Vector2(0.9999993, 0.9999993)
 
 [node name="LegRead  back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body" index="4" unique_id=1176429833]
-scale = Vector2(0.99999756, 0.99999756)
+scale = Vector2(0.9999975, 0.9999975)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=446625211]
 visible = false

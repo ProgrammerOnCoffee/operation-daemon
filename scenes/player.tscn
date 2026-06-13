@@ -11,11 +11,42 @@ script = ExtResource("2_u2pge")
 position = Vector2(-12, -129)
 scale = Vector2(0.4, 0.4)
 
+[node name="Head" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" parent_id_path=PackedInt32Array(748111500, 1331271054, 2131347548) index="0" unique_id=1733505491]
+scale = Vector2(0.99995065, 0.99995065)
+
+[node name="Back LEg" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(748111500, 1331271054, 511964988) index="0" unique_id=879307515]
+scale = Vector2(0.999988, 0.999988)
+
+[node name="Front Arm IK" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="1" unique_id=1935075252]
+position = Vector2(413.99997, -39)
+rotation = -0.22706728
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Body_Ik" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="2" unique_id=773662502]
+position = Vector2(199.99997, -371.99997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Head Look At" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="3" unique_id=695799298]
+position = Vector2(502.99994, -97)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Back Arm IK" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="4" unique_id=2077262562]
+position = Vector2(-8, -68)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Back Foot IK" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="5" unique_id=962082352]
+position = Vector2(94, 292.99997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Front Foot IK" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(748111500, 1331271054, 272863499) index="6" unique_id=665679059]
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="CollisionShape2D" parent="." index="1" unique_id=1326445450]
 visible = false
 
 [node name="ColorRect" parent="." index="2" unique_id=1287979670]
 visible = false
+anchors_preset = 0
 
 [node name="Controls" type="VBoxContainer" parent="UI" parent_id_path=PackedInt32Array(2004872059) index="2" unique_id=1051088113]
 visible = false
@@ -31,3 +62,6 @@ layout_mode = 2
 text = "Attack"
 
 [connection signal="pressed" from="UI/Controls/Attack" to="." method="attack"]
+
+[editable path="Player Character"]
+[editable path="Player Character/PlayerBonesetup"]
