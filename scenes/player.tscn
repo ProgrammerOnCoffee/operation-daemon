@@ -1,23 +1,17 @@
 [gd_scene format=3 uid="uid://bvgllgo3272t8"]
 
-[ext_resource type="PackedScene" uid="uid://ca33qndo4tfav" path="res://scenes/entity.tscn" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://cehwbo462pvh" path="res://scripts/player.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://bcth8lmygxvkj" path="res://scenes/player_character.tscn" id="1_p0vlq"]
 
-[node name="Player" unique_id=1022515043 instance=ExtResource("1_3vyb7")]
-script = ExtResource("2_g2els")
-damage_variation = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0vlq"]
+size = Vector2(233, 552)
 
-[node name="Controls" type="VBoxContainer" parent="UI" parent_id_path=PackedInt32Array(2004872059) index="1" unique_id=844417704]
+[node name="Player" type="CharacterBody2D" unique_id=209739316]
+
+[node name="Player Character" parent="." unique_id=748111500 instance=ExtResource("1_p0vlq")]
+position = Vector2(98, 97)
+scale = Vector2(0.29, 0.29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=178310595]
 visible = false
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 1
-anchors_preset = -1
-offset_left = 128.0
-offset_bottom = -192.0
-grow_vertical = 2
-
-[node name="Attack" type="Button" parent="UI/Controls" index="0" unique_id=887696049]
-layout_mode = 2
-text = "Attack"
-
-[connection signal="pressed" from="UI/Controls/Attack" to="." method="attack"]
+position = Vector2(207, 287)
+shape = SubResource("RectangleShape2D_p0vlq")
