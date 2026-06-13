@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cddp1m7n7bcc8"]
+
+[ext_resource type="Texture2D" uid="uid://yg8thhqe5hj1" path="res://assets/UI/map_line.svg" id="1_empdp"]
+
+[node name="MapLine" type="Line2D" unique_id=1923340240]
+texture_repeat = 2
+points = PackedVector2Array(73, 100)
+width = 7.045
+texture = ExtResource("1_empdp")
+texture_mode = 1

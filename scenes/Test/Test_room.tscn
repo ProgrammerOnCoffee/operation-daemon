@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwoivmv6qt0ax"]
 
-[ext_resource type="Script" uid="uid://conon11okuvcy" path="res://scripts/entity_3d.gd" id="1_tyyuc"]
+[ext_resource type="Script" path="res://scripts/entity_3d.gd" id="1_tyyuc"]
 [ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/player.tscn" id="2_wh42t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
@@ -44,7 +44,7 @@ albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
 material = SubResource("StandardMaterial3D_wh42t")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tyyuc"]
-viewport_path = NodePath("/root/@EditorNode@18069/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9322/@VSplitContainer@9105/@HSplitContainer@9107/@HSplitContainer@9109/@Control@9110/@SubViewportContainer@9111/@SubViewport@9112/Node3D/Entity3D/SubViewport")
+viewport_path = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Node3D/Entity3D/SubViewport")
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_tyyuc"]
 target_nodepath = NodePath("Body_Ik")
@@ -148,7 +148,7 @@ modifications/5 = SubResource("SkeletonModification2DLookAt_vx33u")
 modifications/6 = SubResource("SkeletonModification2DLookAt_g0i52")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjxyj"]
-viewport_path = NodePath("/root/@EditorNode@18069/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9322/@VSplitContainer@9105/@HSplitContainer@9107/@HSplitContainer@9109/@Control@9110/@SubViewportContainer@9111/@SubViewport@9112/Node3D/Entity3D2/SubViewport")
+viewport_path = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Node3D/Entity3D2/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1252099717]
 
@@ -223,7 +223,6 @@ texture = SubResource("ViewportTexture_tyyuc")
 script = ExtResource("1_tyyuc")
 entity = NodePath("SubViewport/Player")
 vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
 
 [node name="SubViewport" type="SubViewport" parent="Entity3D" unique_id=972520790]
 disable_3d = true
@@ -238,8 +237,8 @@ position = Vector2(128, 256)
 modification_stack = SubResource("SkeletonModificationStack2D_0efr3")
 
 [node name="Belly" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="0" unique_id=654590038]
-rotation = -0.07472135
-scale = Vector2(1.0056514, 1.0056514)
+rotation = -0.074721344
+scale = Vector2(1.0056515, 1.0056515)
 
 [node name="Upper Tors" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
 scale = Vector2(0.9998261, 0.9998261)
@@ -266,11 +265,11 @@ scale = Vector2(0.99998623, 0.99998623)
 
 [node name="Right arm" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 55123572) index="0" unique_id=328132070]
 rotation = 0.22503708
-scale = Vector2(0.99997145, 0.99997145)
+scale = Vector2(0.9999714, 0.9999714)
 
 [node name="Right arm2" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
 position = Vector2(-45.90571, 45.119415)
-rotation = 0.1749432
+rotation = 0.17494318
 scale = Vector2(0.9999817, 0.9999817)
 
 [node name="Back LEg" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 511964988) index="0" unique_id=879307515]
@@ -333,7 +332,6 @@ texture = SubResource("ViewportTexture_wjxyj")
 script = ExtResource("1_tyyuc")
 entity = NodePath("SubViewport/Player")
 vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
 
 [node name="SubViewport" type="SubViewport" parent="Entity3D2" unique_id=248405499]
 transparent_bg = true
@@ -355,8 +353,8 @@ rotation = 0.6234117
 scale = Vector2(0.9998342, 0.9998342)
 
 [node name="Head" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" index="0" unique_id=1733505491]
-rotation = -0.32152277
-scale = Vector2(0.9999505, 0.9999505)
+rotation = -0.32152274
+scale = Vector2(0.9999506, 0.9999506)
 
 [node name="Face" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" index="0" unique_id=1196459148]
 scale = Vector2(0.99983156, 0.99983156)
@@ -372,12 +370,12 @@ scale = Vector2(0.99998546, 0.99998546)
 
 [node name="Right arm" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 55123572) index="0" unique_id=328132070]
 rotation = 0.34480858
-scale = Vector2(0.9999459, 0.9999459)
+scale = Vector2(0.9999458, 0.9999458)
 
 [node name="Right arm2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
 position = Vector2(-45.90583, 45.119442)
-rotation = 0.19137146
-scale = Vector2(0.99998605, 0.99998605)
+rotation = 0.19137147
+scale = Vector2(0.999986, 0.999986)
 
 [node name="Back LEg" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 511964988) index="0" unique_id=879307515]
 position = Vector2(-13.000381, -3.9998515)
@@ -386,7 +384,7 @@ scale = Vector2(0.9999876, 0.9999876)
 
 [node name="Bacl Leg Lowe" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg" index="0" unique_id=640676124]
 position = Vector2(41.766052, 88.666275)
-rotation = -0.27049974
+rotation = -0.27049977
 scale = Vector2(0.9999948, 0.9999948)
 
 [node name="Bacl Leg Lowe2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" index="0" unique_id=1718926545]

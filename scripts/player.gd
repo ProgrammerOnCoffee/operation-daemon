@@ -8,7 +8,6 @@ extends Entity
 ## Emitted after the player has taken an action (attack, defend, etc.).
 signal action_taken(action: String)
 
-
 func _ready() -> void:
 	super()
 
@@ -17,7 +16,6 @@ func _take_turn() -> void:
 	$UI/Controls.show()
 	await action_taken
 	turn_ended.emit()
-
 
 ## Attacks an [Enemy].
 func attack() -> void:
