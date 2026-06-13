@@ -5,6 +5,55 @@
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="3_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://cru8imuvgs17w" path="res://assets/images/splash.png" id="4_mhnvy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhnvy"]
+bg_color = Color(0.27450982, 0.27450982, 0.34901962, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytvr"]
+bg_color = Color(0.43529412, 0.43529412, 0.5294118, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3eks"]
+content_margin_left = 50.0
+content_margin_right = 0.0
+bg_color = Color(0.43529412, 0.43529412, 0.5294118, 1)
+border_width_left = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86rl"]
+bg_color = Color(0.43529412, 0.43529412, 0.5294118, 1)
+border_width_right = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13sgg"]
+content_margin_left = 50.0
+bg_color = Color(0.4, 0.4, 0.49019608, 1)
+border_width_left = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 25
+corner_radius_bottom_right = 25
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_i6lef"]
+Button/styles/focus = SubResource("StyleBoxFlat_4ytvr")
+Button/styles/hover = SubResource("StyleBoxFlat_g3eks")
+Button/styles/normal = SubResource("StyleBoxFlat_v86rl")
+Button/styles/pressed = SubResource("StyleBoxFlat_13sgg")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_70i5f"]
+thickness = 5
+
 [node name="Menu" type="Control" unique_id=1725332221]
 layout_mode = 3
 anchors_preset = 15
@@ -15,44 +64,90 @@ grow_vertical = 2
 theme = ExtResource("1_mhnvy")
 script = ExtResource("2_mhnvy")
 
-[node name="Menu" type="VBoxContainer" parent="." unique_id=213395372]
-custom_minimum_size = Vector2(384, 0)
+[node name="Backdrop" type="Panel" parent="." unique_id=115103482]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhnvy")
 
-[node name="Label" type="Label" parent="Menu" unique_id=1888918648]
+[node name="Menu" type="PanelContainer" parent="." unique_id=1239096019]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhnvy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu" unique_id=1849012751]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer" unique_id=182982634]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_i6lef")
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer" unique_id=1888918648]
 layout_mode = 2
 theme_type_variation = &"LLabel"
+theme_override_font_sizes/font_size = 65
 text = "Untitled"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Menu" unique_id=935991105]
+[node name="HSeparator" type="HSeparator" parent="Menu/MarginContainer/VBoxContainer" unique_id=935991105]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_70i5f")
+
+[node name="Control" type="Control" parent="Menu/MarginContainer/VBoxContainer" unique_id=568533346]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="Menu" unique_id=1786318275]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer" unique_id=205296996]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer" unique_id=302914828]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer" unique_id=115660709]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="Play" type="Button" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1786318275]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Play"
 
-[node name="HowToPlay" type="Button" parent="Menu" unique_id=372650519]
+[node name="HowToPlay" type="Button" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=372650519]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "How To Play"
 
-[node name="Settings" type="Button" parent="Menu" unique_id=1842304303]
+[node name="Settings" type="Button" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1842304303]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Credits" type="Button" parent="Menu" unique_id=1492955975]
+[node name="Credits" type="Button" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1492955975]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Credits"
 
 [node name="HowToPlay" type="VBoxContainer" parent="." unique_id=1364474862]
@@ -373,10 +468,10 @@ texture = ExtResource("4_mhnvy")
 expand_mode = 1
 stretch_mode = 6
 
-[connection signal="pressed" from="Menu/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/HowToPlay" to="." method="transition" binds= [NodePath("Menu"), NodePath("HowToPlay")]]
-[connection signal="pressed" from="Menu/Settings" to="." method="transition" binds= [NodePath("Menu"), NodePath("Settings")]]
-[connection signal="pressed" from="Menu/Credits" to="." method="transition" binds= [NodePath("Menu"), NodePath("Credits")]]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HowToPlay" to="." method="transition" binds= [NodePath("Menu"), NodePath("HowToPlay")]]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="transition" binds= [NodePath("Menu"), NodePath("Settings")]]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Credits" to="." method="transition" binds= [NodePath("Menu"), NodePath("Credits")]]
 [connection signal="pressed" from="HowToPlay/Back" to="." method="transition" binds= [NodePath("HowToPlay"), NodePath("Menu")]]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/GridContainer/Music" to="." method="tween_volume" binds= [1]]
 [connection signal="value_changed" from="Settings/ScrollContainer/MarginContainer/GridContainer/SFX" to="." method="tween_volume" binds= [2]]
