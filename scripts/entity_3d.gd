@@ -10,6 +10,7 @@ extends Sprite3D
 @export var entity: Entity:
 	set(value):
 		entity = value
+		entity.entity_3d = self
 		if vp:
 			vp.size = entity.rect.size
 			if entity.is_inside_tree():

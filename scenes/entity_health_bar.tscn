@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://besy0etfbntb0"]
+
+[ext_resource type="Script" uid="uid://x02lbqukklxf" path="res://scripts/entity_health_bar.gd" id="1_3vlfk"]
+[ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="1_bu3di"]
+
+[node name="EntityHealthBar" type="Control" unique_id=1840347635]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+theme = ExtResource("1_bu3di")
+script = ExtResource("1_3vlfk")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1717384646]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HealthBar"
+step = 1.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthBar" unique_id=1227546710]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HealthLabel"
+text = "0/0"

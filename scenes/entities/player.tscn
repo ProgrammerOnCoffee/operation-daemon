@@ -6,6 +6,7 @@
 
 [node name="Player" unique_id=1022515043 instance=ExtResource("1_wm45n")]
 script = ExtResource("2_u2pge")
+rect = Rect2i(-136, -256, 272, 296)
 
 [node name="Player Character" parent="." index="0" unique_id=748111500 instance=ExtResource("3_u2pge")]
 position = Vector2(-12, -129)
@@ -26,8 +27,8 @@ scale = Vector2(0.99982375, 0.99982375)
 rotation = -0.25980636
 
 [node name="Left ARm" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(748111500, 1331271054, 1413055582) index="0" unique_id=408215454]
-rotation = -0.030172631
-scale = Vector2(0.99993354, 0.99993354)
+rotation = -0.0301726
+scale = Vector2(0.99993455, 0.99993455)
 
 [node name="Left ARm2" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
 position = Vector2(82.16498, 0.078827605)
@@ -35,8 +36,8 @@ rotation = 1.3246516
 scale = Vector2(0.9999825, 0.9999825)
 
 [node name="Right arm" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(748111500, 1331271054, 55123572) index="0" unique_id=328132070]
-rotation = 0.129653
-scale = Vector2(0.9999133, 0.9999133)
+rotation = 0.12965325
+scale = Vector2(0.99991244, 0.99991244)
 
 [node name="Right arm2" parent="Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
 position = Vector2(-45.90567, 45.119385)
@@ -87,31 +88,11 @@ scale = Vector2(0.99999994, 0.99999994)
 position = Vector2(336, 257.99997)
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=1326445450]
+[node name="CommandWheelPoint" type="Marker2D" parent="." index="1" unique_id=1223905428]
+position = Vector2(96, -140)
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1326445450]
 visible = false
-
-[node name="ColorRect" parent="." index="2" unique_id=1287979670]
-visible = false
-anchors_preset = 0
-offset_right = 128.0
-offset_bottom = 192.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Controls" type="VBoxContainer" parent="UI" parent_id_path=PackedInt32Array(2004872059) index="2" unique_id=1051088113]
-visible = false
-custom_minimum_size = Vector2(192, 0)
-layout_mode = 1
-anchors_preset = -1
-offset_left = 192.0
-offset_bottom = -256.0
-grow_vertical = 2
-
-[node name="Attack" type="Button" parent="UI/Controls" index="0" unique_id=1926650446]
-layout_mode = 2
-text = "Attack"
-
-[connection signal="pressed" from="UI/Controls/Attack" to="." method="attack"]
 
 [editable path="Player Character"]
 [editable path="Player Character/PlayerBonesetup"]

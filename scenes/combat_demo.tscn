@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="3_soymf"]
 [ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="4_a5t83"]
 
-[node name="Fight" type="Node2D" unique_id=1096581988 node_paths=PackedStringArray("player", "enemies")]
+[node name="Fight" type="Node" unique_id=723345196 node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_viauy")
 player = NodePath("Player")
 enemies = [NodePath("Enemy")]
