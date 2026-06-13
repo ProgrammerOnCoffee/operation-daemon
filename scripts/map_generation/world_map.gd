@@ -10,6 +10,7 @@ class_name WorldMap extends Control
 @onready var scroll_node := $MapGenerator/ScrollContainer/MarginContainer
 
 var event_buttons:Dictionary[Event, EventButton]
+var lines:Array[Line2D]
 
 var current_row = 0
 
@@ -47,7 +48,10 @@ func update_visual() -> void:
 		map_generator.SPACING.y * (map_generator.config.floor_count)
 		)
 	
-	# Reassign the buttons to their new events.
+	var unused_lines:Array[Line2D] = lines.duplicate()
+	lines.clear()
+	
+	# Reassign the buttons to their new events, and make lines.
 	for i in events.size():
 		var this_button := buttons[i]
 		var this_event  := events[i]
@@ -64,9 +68,30 @@ func update_visual() -> void:
 		
 		event_buttons[this_event] = this_button
 		
+		# Make lines from this event_button to the ones it goes to.
+		var find_line := func() -> Line2D:
+			if unused_lines.size() > 0: return unused_lines.pop_front()
+			
+			var new_line := preload("res://scenes/map_line.tscn").instantiate()
+			
+			button_space.add_child(new_line)
+			
+			new_line.position = Vector2.ZERO
+			
+			return new_line
+		
+		for next_event in this_event.next_options:
+			var line := find_line.call() as Line2D
+			
+			line.points = [this_button.position, next_event.position + offset]
+			
+			lines.append(line)
+		
 		# Unlock the first row.
 		if this_event.row == 0: this_button.available = true
-		
+	
+	# Discard any unused lines.
+	for line in unused_lines: line.queue_free()
 	
 	scroll_node.custom_minimum_size.y = offset.y + (map_generator.SPACING.y * 2)
 	

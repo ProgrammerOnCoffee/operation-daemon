@@ -30,7 +30,6 @@ func _ready() -> void:
 		)
 
 func _mouse_enter() -> void: 
-	print("!")
 	if available:
 		if tween and tween.is_running(): tween.kill()
 		
@@ -51,8 +50,6 @@ func default_tween() -> void:
 		
 		tween.tween_property(button, "scale", Vector2.ONE * 0.95, 0.8)
 		tween.tween_property(button, "scale", Vector2.ONE * 1.1, 0.8)
-		
-		print("!")
 	
 	# Not available. Tween to normal size. 
 	else:

@@ -42,7 +42,6 @@ func _generate_initial_grid() -> Array[Array]:
 		for j in config.map_width:
 			var new_event := Event.new()
 			var offset := (Vector2(randf(), randf()) - Vector2(.5,.5)) * VARIATION * 2
-			print(offset)
 			
 			new_event.position = Vector2(j * SPACING.x, i * -SPACING.y) + offset
 			new_event.row    = i
@@ -75,7 +74,6 @@ func _get_random_starting_points() -> Array[int]:
 	for i in config.paths - 2:
 		points.append(randi_range(0, config.map_width - 1))
 	
-	print(points)
 	return points
 
 ## Connect a room to one above it.
@@ -109,7 +107,7 @@ func _would_cross_existing_path(i:int, j:int, event:Event) -> bool:
 			if next_event.column < event.column: return true
 	
 	# IF there's a neighbor to the left and the attempted connection is that way, there can be a X
-	if left_neighbor and event.column > j:
+	if left_neighbor and event.column < j:
 		# Check for crosses in the existing connections.
 		for next_event:Event in left_neighbor.next_options:
 			if next_event.column > event.column: return true
@@ -154,6 +152,8 @@ func _setup_event_types() -> void:
 	while to_be_assigned:
 		var this_event := to_be_assigned.pop_front() as Event
 		
+		if this_event.type != Event.TYPE.NONE: continue
+		
 		this_event.type = type_bag.pick_random()
 		
 		# Add the connections from this room up to the queue.
@@ -164,7 +164,7 @@ func _setup_event_types() -> void:
 	
 	# Apply all the type overrides.
 	for override in config.event_overrides:
-		var row := wrapi(override, 0, config.floor_count + 1)
+		var row := wrapi(override, 0, config.floor_count)
 		var type := config.event_overrides[override] as Event.TYPE
 		
 		for column in config.map_width:

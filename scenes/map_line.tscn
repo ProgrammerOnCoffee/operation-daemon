@@ -5,6 +5,6 @@
 [node name="MapLine" type="Line2D" unique_id=1923340240]
 texture_repeat = 2
 points = PackedVector2Array(73, 100)
-width = 7.045
+width = 6.0
 texture = ExtResource("1_empdp")
 texture_mode = 1
