@@ -1,3 +1,4 @@
+@tool
 class_name Enemy
 extends Entity
 ## An enemy entity in a fight stage.

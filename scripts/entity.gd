@@ -1,3 +1,4 @@
+@tool
 class_name Entity
 extends CharacterBody2D
 ## Base class for all entities within a fight.
@@ -7,6 +8,14 @@ extends CharacterBody2D
 ## Emitted when the [Entity]'s turn has ended.
 signal turn_ended()
 
+## This [Entity]'s 2D rect. Used to create a [SubViewport] in 3D scenes and to
+## position the [Entity] inside it. In the editor, this is displayed as a red rectangle.
+## [br][br]
+## [b]Note:[/b] Ensure that extra padding is included to account for this entity's animations.
+@export var rect: Rect2i:
+	set(value):
+		rect = value
+		queue_redraw()
 ## The base damage this [Entity] deals before effects.
 @export var base_damage: int = 10
 ## The variation applied [member base_damage]. Base damage dealt is equal to
@@ -35,7 +44,15 @@ var health := max_health:
 @onready var combat_handler := get_parent() as CombatHandler
 
 
+func _draw() -> void:
+	if Engine.is_editor_hint():
+		draw_rect(rect, Color.RED, false)
+
+
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	$UI/HealthBar.max_value = max_health
 	# Run setter to update health bar and label
 	health = health
