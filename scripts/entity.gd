@@ -1,11 +1,10 @@
-@abstract class_name Entity
+class_name Entity
 extends Node2D
 ## Base class for all entities within a fight.
 ##
 ## Base class for the player and all enemies within a fight.
 
 ## Emitted when the [Entity]'s turn has ended.
-@warning_ignore("unused_signal")
 signal turn_ended()
 
 ## The base damage this [Entity] deals before effects.
@@ -46,7 +45,8 @@ func _ready() -> void:
 ##[br]
 ## If this is a [Player], prompts the player to take an action (attack, defend, etc.).
 ## If this is an [Enemy], attacks the player.
-@abstract func _take_turn() -> void
+func _take_turn() -> void:
+	turn_ended.emit.call_deferred()
 
 
 ## Returns the amount of damage the [Entity] should deal.
