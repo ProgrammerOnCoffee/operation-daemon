@@ -1,0 +1,28 @@
+[gd_resource type="Theme" format=3 uid="uid://bftgnmhry3n7y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbwa"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 1
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntlge"]
+bg_color = Color(0.9, 0.09000002, 0.09000002, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 1
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 1
+
+[resource]
+default_font_size = 24
+DamageLabel/base_type = &"Label"
+DamageLabel/constants/outline_size = 8
+DamageLabel/font_sizes/font_size = 64
+HealthBar/base_type = &"ProgressBar"
+HealthBar/styles/background = SubResource("StyleBoxFlat_ocbwa")
+HealthBar/styles/fill = SubResource("StyleBoxFlat_ntlge")
+HealthLabel/base_type = &"Label"
+HealthLabel/colors/font_outline_color = Color(0.75, 0.07500002, 0.07500002, 1)
+HealthLabel/constants/outline_size = 4
+HealthLabel/font_sizes/font_size = 24

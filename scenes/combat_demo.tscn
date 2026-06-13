@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://th1saykuttvk"]
+
+[ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_viauy"]
+[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/player.tscn" id="2_soymf"]
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/enemy.tscn" id="3_soymf"]
+
+[node name="Fight" type="Node2D" unique_id=1096581988 node_paths=PackedStringArray("player", "enemies")]
+script = ExtResource("1_viauy")
+player = NodePath("Player")
+enemies = [NodePath("Enemy")]
+metadata/_custom_type_script = "uid://rnsxwyparcb0"
+
+[node name="Player" parent="." unique_id=1022515043 instance=ExtResource("2_soymf")]
+position = Vector2(288, 500)
+max_health = 50
+
+[node name="Enemy" parent="." unique_id=863613008 instance=ExtResource("3_soymf")]
+position = Vector2(864, 500)
+max_health = 50
