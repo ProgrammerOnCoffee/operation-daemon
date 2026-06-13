@@ -1,7 +1,36 @@
 [gd_resource type="Theme" format=3 uid="uid://b18kjmajkm7k2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaja"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.26666668, 0.26666668, 0.34117648, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nojw"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.43529412, 0.43529412, 0.5294118, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ols5k"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.4, 0.4, 0.49019608, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+corner_detail = 1
+
 [resource]
 default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxFlat_biaja")
+Button/styles/hover = SubResource("StyleBoxFlat_2nojw")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_ols5k")
+Button/styles/normal = SubResource("StyleBoxFlat_2nojw")
+Button/styles/pressed = SubResource("StyleBoxFlat_ols5k")
 GridContainer/constants/h_separation = 8
 GridContainer/constants/v_separation = 8
 LLabel/base_type = &"Label"
