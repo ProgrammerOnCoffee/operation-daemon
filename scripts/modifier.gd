@@ -13,3 +13,8 @@ var modification_type :String: get = _get_modification_type
 ## The percentage change to apply to the effect's base, as a float. 0.9 = -10%.
 var percent :float: get = _get_percent
 @abstract func _get_percent() -> float
+
+## Whether this modifier is applied to the attacker or attackee. 
+## Basically, whether it's positive or negative to have applied to yourself.
+var target_type :Module.TARGET: get = _get_target_type
+@abstract func _get_target_type() -> Module.TARGET

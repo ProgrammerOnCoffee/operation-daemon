@@ -17,12 +17,16 @@ var description :String: get = _get_description
 var modification_type :String: get = _get_modification_type
 @abstract func _get_modification_type() -> String
 
-enum TARGET {
-	ATTACKER, ## Apply the effect to the attacker upon their attack.
-	ATTACKEE ## Apply the effect to the attackee upon an attack.
-}
 ## Whether this effect is applied to the attacker or attackee
-var target_type :TARGET: get = _get_target_type
-@abstract func _get_target_type() -> TARGET
+var target_type :Module.TARGET: get = _get_target_type
+@abstract func _get_target_type() -> Module.TARGET
 
+## The base value of the effect. Can be changed via Modifiers.
+var base :float: get = _get_base
+@abstract func _get_base() -> float 
+
+## The final value after all the modifiers are applied. Use this for apply_effect.
+var value:float
+
+## Apply this effect to a target. Ran by that target.
 @abstract func apply_effect(target:Node) -> bool
