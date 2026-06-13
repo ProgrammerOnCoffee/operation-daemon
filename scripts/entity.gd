@@ -41,6 +41,10 @@ var health := max_health:
 		if health == 0:
 			# Kill entity
 			pass
+## This [Entity]'s [Module]s.
+var modules: Array[Module]
+## This [Entity]'s [Daemon]s.
+var daemons: Array[Daemon]
 
 ## The [CombatHandler] node handling this [Entity]'s actions.
 var combat_handler: CombatHandler
@@ -75,6 +79,22 @@ func _ready() -> void:
 ## If this is an [Enemy], attacks the player.
 func _take_turn() -> void:
 	turn_ended.emit.call_deferred()
+
+
+## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
+func get_effects() -> Array[Effect]:
+	## The array of [Effect]s to apply.
+	var effects: Array[Effect]
+	for module in modules:
+		for effect in module.effects:
+			effects.append(effect.duplicate())
+	for daemon in daemons:
+		for modifier in daemon.modifiers:
+			for effect in effects:
+				if (modifier.modification_type == effect.modification_type
+						and modifier.target_type == effect.target_type):
+					effect.base *= modifier.percent
+	return effects
 
 
 ## Returns the amount of damage the [Entity] should deal.
