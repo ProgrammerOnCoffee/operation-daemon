@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwoivmv6qt0ax"]
 
-[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/Player.tscn" id="1_domrg"]
+[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/player.tscn" id="2_wh42t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -125,70 +125,95 @@ texture = SubResource("ViewportTexture_y836a")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1162896589]
 transparent_bg = true
-size = Vector2i(215, 194)
+gui_snap_controls_to_pixels = false
+size = Vector2i(288, 320)
 
-[node name="Player" parent="SubViewport" unique_id=209739316 instance=ExtResource("1_domrg")]
+[node name="Player" parent="SubViewport" unique_id=209739316 instance=ExtResource("2_wh42t")]
+position = Vector2(144, 256)
 
 [node name="Belly" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="0" unique_id=654590038]
-rotation = -0.10378165
-scale = Vector2(1.0056531, 1.0056531)
+rotation = 0.10850774
+scale = Vector2(1.0056516, 1.0056516)
 
 [node name="Upper Tors" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
-scale = Vector2(0.99982584, 0.99982584)
+scale = Vector2(0.9998256, 0.9998256)
 
 [node name="Neck" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors" index="0" unique_id=2131347548]
-rotation = 0.014416178
-scale = Vector2(0.9998356, 0.9998356)
+rotation = 0.32906574
+scale = Vector2(0.9998349, 0.9998349)
 
 [node name="Head" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" index="0" unique_id=1733505491]
-scale = Vector2(0.99995077, 0.99995077)
+rotation = -0.8082096
 
 [node name="Face" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" index="0" unique_id=1196459148]
 scale = Vector2(0.99983156, 0.99983156)
 
 [node name="Left ARm" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 1413055582) index="0" unique_id=408215454]
-rotation = 1.171709
-scale = Vector2(0.9999025, 0.9999025)
+rotation = 0.022877935
+scale = Vector2(0.9999475, 0.9999475)
+
+[node name="Left ARm2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
+position = Vector2(82.16495, 0.078860275)
+rotation = 1.074706
+scale = Vector2(0.9999786, 0.9999786)
 
 [node name="Right arm" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 55123572) index="0" unique_id=328132070]
-rotation = -0.029011905
-scale = Vector2(0.99989825, 0.99989825)
+rotation = 0.15117119
+scale = Vector2(0.9999288, 0.9999288)
+
+[node name="Right arm2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
+position = Vector2(-45.90571, 45.11939)
+rotation = 0.143951
+scale = Vector2(0.999979, 0.999979)
 
 [node name="Back LEg" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 511964988) index="0" unique_id=879307515]
-scale = Vector2(0.99998814, 0.99998814)
+position = Vector2(-13.000444, -3.9998627)
+rotation = 0.14182884
+scale = Vector2(0.9999879, 0.9999879)
 
-[node name="Bacl Leg Lowe2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 640676124) index="0" unique_id=1718926545]
+[node name="Bacl Leg Lowe" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg" index="0" unique_id=640676124]
+position = Vector2(41.76605, 88.66619)
+rotation = -0.6729184
+scale = Vector2(0.9999952, 0.9999952)
+
+[node name="Bacl Leg Lowe2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" index="0" unique_id=1718926545]
 scale = Vector2(0.99982715, 0.99982715)
 
-[node name="Front Leg Lower2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 525732602) index="0" unique_id=1092532283]
+[node name="Front Leg" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 1141531121) index="0" unique_id=1426848200]
+position = Vector2(29.003145, 1.9993908)
+rotation = 2.4063654
+scale = Vector2(0.9999994, 0.9999994)
+
+[node name="Front Leg Lower" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg" index="0" unique_id=525732602]
+position = Vector2(31.086, -90.64078)
+rotation = -1.1052622
+scale = Vector2(1.0000083, 1.0000083)
+
+[node name="Front Leg Lower2" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" index="0" unique_id=1092532283]
 scale = Vector2(0.99982953, 0.99982953)
 
 [node name="Front Arm IK" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="1" unique_id=1935075252]
-position = Vector2(426.92462, -34.289795)
-rotation = -0.6406077
-scale = Vector2(1, 1)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Body_Ik" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="2" unique_id=773662502]
-position = Vector2(201.4397, -371.3874)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(199.99997, -372)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Head Look At" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="3" unique_id=695799298]
-position = Vector2(520.0974, -97.3562)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(551.99994, -186)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Back Arm IK" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="4" unique_id=2077262562]
-position = Vector2(-1.5884933, -47.34073)
-rotation = -2.3620327
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(-8, -68.00003)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Back Foot IK" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="5" unique_id=962082352]
-position = Vector2(128.30002, 399.8221)
-rotation = -0.18130127
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(73.99999, 284.99997)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Front Foot IK" parent="SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="6" unique_id=665679059]
-position = Vector2(306.95148, 276.68167)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(336, 257.99997)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="AnimationPlayer" parent="SubViewport/Player/Player Character" parent_id_path=PackedInt32Array(209739316, 748111500) index="1" unique_id=1263288981]
 autoplay = &"Idle"

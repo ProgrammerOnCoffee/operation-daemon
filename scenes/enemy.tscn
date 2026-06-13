@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dqtmxptrfthr1"]
+
+[ext_resource type="PackedScene" uid="uid://ca33qndo4tfav" path="res://scenes/entity.tscn" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cohkguwu66afc" path="res://scripts/enemy.gd" id="2_4ra3w"]
+
+[node name="Enemy" unique_id=1022515043 instance=ExtResource("1_md0e3")]
+script = ExtResource("2_4ra3w")
+base_damage = 7
+
+[node name="ColorRect" parent="." index="1" unique_id=1287979670]
+color = Color(0.86, 0.1032, 0.22933358, 1)
