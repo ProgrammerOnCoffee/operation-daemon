@@ -1,0 +1,29 @@
+[gd_resource type="SkeletonModification2DCCDIK" format=3 uid="uid://p471mg40g4d8"]
+
+[resource]
+target_nodepath = NodePath("Back Leg IK")
+tip_nodepath = NodePath("Body/Leg back Base/Leg back Base2/Leg back Base3/Leg back Base4")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 5
+joint_data/0/bone2d_node = NodePath("Body/Leg back Base")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 68.57299
+joint_data/0/constraint_angle_max = -171.42798
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 6
+joint_data/1/bone2d_node = NodePath("Body/Leg back Base/Leg back Base2")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 0.0
+joint_data/1/constraint_angle_max = -74.284996
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 7
+joint_data/2/bone2d_node = NodePath("Body/Leg back Base/Leg back Base2/Leg back Base3")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = false
+joint_data/2/editor_draw_gizmo = false
