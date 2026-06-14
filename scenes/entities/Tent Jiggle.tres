@@ -1,0 +1,31 @@
+[gd_resource type="SkeletonModification2DJiggle" format=3 uid="uid://ba6b3jcbq0vi7"]
+
+[resource]
+target_nodepath = NodePath("L_Tent IK")
+jiggle_data_chain_length = 7
+stiffness = 1.5
+mass = 10.0
+damping = 1.0
+use_gravity = true
+gravity = Vector2(0, 20)
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Base/Tent2")
+joint_data/0/override_defaults = false
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Base/Tent2/Tent2")
+joint_data/1/override_defaults = false
+joint_data/2/bone_index = 3
+joint_data/2/bone2d_node = NodePath("Base/Tent2/Tent2/Tent3")
+joint_data/2/override_defaults = false
+joint_data/3/bone_index = 4
+joint_data/3/bone2d_node = NodePath("Base/Tent2/Tent2/Tent3/Tent4")
+joint_data/3/override_defaults = false
+joint_data/4/bone_index = 5
+joint_data/4/bone2d_node = NodePath("Base/Tent2/Tent2/Tent3/Tent4/Tent5")
+joint_data/4/override_defaults = false
+joint_data/5/bone_index = 6
+joint_data/5/bone2d_node = NodePath("Base/Tent2/Tent2/Tent3/Tent4/Tent5/Tent6")
+joint_data/5/override_defaults = false
+joint_data/6/bone_index = 7
+joint_data/6/bone2d_node = NodePath("Base/Tent2/Tent2/Tent3/Tent4/Tent5/Tent6/Tent7")
+joint_data/6/override_defaults = false
