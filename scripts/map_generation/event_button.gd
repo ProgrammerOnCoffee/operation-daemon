@@ -5,11 +5,11 @@ signal pressed
 
 const ICONS:Dictionary[Event.TYPE, Texture2D] = {
 	Event.TYPE.NONE:     null,
-	Event.TYPE.COMBAT:   preload("res://assets/Enemt Parts/Base_Slime.png"),
-	Event.TYPE.REST:     preload("res://assets/Player/Player_Part images/Head.png"),
-	Event.TYPE.ANALYSIS: preload("res://assets/Enemt Parts/Machnie_Body_A.png"),
-	Event.TYPE.DISEASE:  preload("res://assets/Enemt Parts/Spider_Leg_1_A.png"),
-	Event.TYPE.BOSS:     preload("res://assets/Enemt Parts/Spider Leg_2_A.png"),
+	Event.TYPE.COMBAT:   preload("res://assets/UI Elements/Enemy Icon.png"),
+	Event.TYPE.REST:     preload("res://assets/UI Elements/Rest Icon.png"),
+	Event.TYPE.ANALYSIS: preload("res://assets/UI Elements/Event Icon.png"),
+	Event.TYPE.DISEASE:  preload("res://assets/UI Elements/Event Icon.png"),
+	Event.TYPE.BOSS:     preload("res://assets/UI Elements/Boss Icon.png"),
 }
 
 @onready var overlay := $Overlay
@@ -73,5 +73,3 @@ func set_event(to:Event) -> void:
 	button.texture_normal = ICONS[event.type]
 	#button.size = Vector2.ZERO
 	#button.pivot_offset = size / 2
-	
-	$Label.text = str(event.row)

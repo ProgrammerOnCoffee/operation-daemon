@@ -6,8 +6,8 @@
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w7xte"]
 gradient = SubResource("Gradient_r4okl")
-width = 32
-height = 32
+width = 79
+height = 82
 
 [sub_resource type="Gradient" id="Gradient_w7xte"]
 colors = PackedColorArray(0.839779, 0.839779, 0.839779, 1, 0.69, 0.69, 0.69, 1)
@@ -40,24 +40,8 @@ grow_vertical = 2
 pivot_offset = Vector2(16, 16)
 texture_normal = SubResource("GradientTexture2D_w7xte")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 5
 metadata/feedback_exempt = false
-
-[node name="Label" type="Label" parent="." unique_id=534231200]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -17.0
-offset_right = 20.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "1"
-horizontal_alignment = 1
 
 [node name="Overlay" type="Line2D" parent="." unique_id=1710628565]
 modulate = Color(1, 1, 1, 0)

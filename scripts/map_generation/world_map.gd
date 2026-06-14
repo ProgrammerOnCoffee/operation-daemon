@@ -45,7 +45,7 @@ func update_visual() -> void:
 	# Offset to near the bottom of the screen, and so that the middle column is in the middle.
 	var offset := Vector2(
 		(button_space.custom_minimum_size.x / 2.) - map_generator.SPACING.x * floori(map_generator.config.map_width / 2.),
-		map_generator.SPACING.y * (map_generator.config.floor_count)
+		map_generator.SPACING.y * (map_generator.config.floor_count + 1)
 		)
 	
 	var unused_lines:Array[Line2D] = lines.duplicate()
@@ -83,7 +83,10 @@ func update_visual() -> void:
 		for next_event in this_event.next_options:
 			var line := find_line.call() as Line2D
 			
-			line.points = [this_button.position, next_event.position + offset]
+			# Get the line's direction, for offsetting to stop icon overlap.
+			var offset_vector := this_button.position.direction_to(next_event.position + offset) * 24
+			
+			line.points = [this_button.position + offset_vector, next_event.position + offset - offset_vector]
 			
 			lines.append(line)
 		

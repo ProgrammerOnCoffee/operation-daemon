@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6icgq2a31bmp"
-path="res://.godot/imported/Rest Icon.png-bf352e019f5c940a1912fdd53f2b0944.ctex"
+uid="uid://r0kygqk30uih"
+path="res://.godot/imported/Layer 26.png-85bba6c96cedf438e33066eb7256af8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ui Elements/Rest Icon.png"
-dest_files=["res://.godot/imported/Rest Icon.png-bf352e019f5c940a1912fdd53f2b0944.ctex"]
+source_file="res://assets/UI Elements/Layer 26.png"
+dest_files=["res://.godot/imported/Layer 26.png-85bba6c96cedf438e33066eb7256af8b.ctex"]
 
 [params]
 
