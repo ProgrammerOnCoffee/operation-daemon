@@ -847,6 +847,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.7
+step = 0.01
 value = 1.0
 script = ExtResource("3_sugp2")
 
@@ -865,6 +866,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.7
+step = 0.01
 value = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1510335834]
@@ -882,6 +884,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1.7
+step = 0.01
 value = 1.0
 
 [node name="Control" type="HSeparator" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1942979544]
