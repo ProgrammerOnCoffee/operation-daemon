@@ -331,5 +331,6 @@ scale = Vector2(0.9999975, 0.9999975)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1637503145]
 libraries/ = SubResource("AnimationLibrary_ftlb6")
+autoplay = &"Idle"
 
 [editable path="Enemy Bones"]

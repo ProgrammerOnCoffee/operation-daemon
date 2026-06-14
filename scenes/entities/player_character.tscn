@@ -688,5 +688,6 @@ rotation = -2.2376947
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1263288981]
 libraries/ = SubResource("AnimationLibrary_kww55")
+autoplay = &"Idle"
 
 [editable path="PlayerBonesetup"]
