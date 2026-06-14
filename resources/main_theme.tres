@@ -16,8 +16,27 @@ corner_radius_top_left = 10
 corner_radius_bottom_right = 10
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnc4k"]
+bg_color = Color(0.4509804, 0.4509804, 0.54901963, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaja"]
+bg_color = Color(0.3526, 0.3526, 0.43, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [resource]
 default_font_size = 24
+Button/colors/font_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_focus_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_hover_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_hover_pressed_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_pressed_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
 Button/styles/disabled = null
 Button/styles/hover = SubResource("StyleBoxFlat_2nojw")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_ols5k")
@@ -31,6 +50,11 @@ MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 24
 MarginContainer/constants/margin_right = 24
 MarginContainer/constants/margin_top = 8
+PopupMenu/colors/font_color = Color(0.07058824, 0.07450981, 0.09019608, 1)
+PopupMenu/colors/font_hover_color = Color(0.07058824, 0.07450981, 0.09019608, 1)
+PopupMenu/font_sizes/font_size = 18
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_vnc4k")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_biaja")
 SButton/base_type = &"Button"
 SButton/font_sizes/font_size = 18
 SLabel/base_type = &"Label"
