@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://bftgnmhry3n7y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbwa"]
-bg_color = Color(0.1, 0.1, 0.1, 1)
+bg_color = Color(0.26666668, 0.26666668, 0.34117648, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 1
 corner_radius_bottom_right = 6
@@ -23,6 +23,6 @@ HealthBar/base_type = &"ProgressBar"
 HealthBar/styles/background = SubResource("StyleBoxFlat_ocbwa")
 HealthBar/styles/fill = SubResource("StyleBoxFlat_ntlge")
 HealthLabel/base_type = &"Label"
-HealthLabel/colors/font_outline_color = Color(0.75, 0.07500002, 0.07500002, 1)
-HealthLabel/constants/outline_size = 4
+HealthLabel/colors/font_outline_color = Color(0.26666668, 0.26666668, 0.34117648, 1)
+HealthLabel/constants/outline_size = 8
 HealthLabel/font_sizes/font_size = 24

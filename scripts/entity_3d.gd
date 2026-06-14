@@ -10,6 +10,7 @@ extends Sprite3D
 @export var entity: Entity:
 	set(value):
 		entity = value
+		entity.entity_3d = self
 		if vp:
 			vp.size = entity.rect.size
 			if entity.is_inside_tree():
@@ -42,3 +43,50 @@ func _ready() -> void:
 	if entity:
 		# Run setter
 		entity = entity
+
+
+## Returns the 3D point in world space that maps to the 2D coordinate [param p]
+## in the [SubViewport] rect.
+func project_point(p: Vector2) -> Vector3:
+	## The size of the viewport, in meters.
+	var size := vp.size * pixel_size
+	## The global y rotation of this sprite.
+	var rot := global_rotation.y
+	if billboard:
+		# Subtract angle from sprite to camera to rotation to account for billboard
+		var camera := (
+				EditorInterface.get_editor_viewport_3d() if Engine.is_editor_hint()
+				else get_viewport()).get_camera_3d()
+		rot -= Vector2(global_position.x, global_position.z).angle_to_point(
+				Vector2(camera.global_position.x, camera.global_position.z)) - PI / 2
+	## Half of [member size], rotated by [member rot].
+	var hs_rot := Vector3(size.x / 2, size.y / 2, 0).rotated(Vector3.UP, rot)
+	return global_position + Vector3(
+		# Add rotated size based on percentage across vp.size [param p] is
+		lerpf(-hs_rot.x, +hs_rot.x, p.x / vp.size.x),
+		lerpf(+hs_rot.y, -hs_rot.y, p.y / vp.size.y),
+		lerpf(-hs_rot.z, +hs_rot.z, p.x / vp.size.x),
+	)
+
+
+## Returns the 2D coordinate in the [SubViewport] rect that maps to the 3D point
+## [param p] in world space.
+func unproject_point(p: Vector3) -> Vector2:
+	## The size of the viewport, in meters.
+	var size := vp.size * pixel_size
+	## The global y rotation of this sprite.
+	var rot := global_rotation.y
+	if billboard:
+		# Subtract angle from sprite to camera to rotation to account for billboard
+		var camera := (
+				EditorInterface.get_editor_viewport_3d() if Engine.is_editor_hint()
+				else get_viewport()).get_camera_3d()
+		rot -= Vector2(global_position.x, global_position.z).angle_to_point(
+				Vector2(camera.global_position.x, camera.global_position.z)) - PI / 2
+	## Half of [member size], rotated by [member rot].
+	var hs_rot := Vector3(size.x / 2, size.y / 2, 0).rotated(Vector3.UP, rot)
+	return Vector2(
+		# Get percentage across vp.size [param p] is
+		inverse_lerp(-hs_rot.x, +hs_rot.x, p.x - global_position.x),
+		inverse_lerp(+hs_rot.y, -hs_rot.y, p.y - global_position.y),
+	) * Vector2(vp.size)

@@ -29,19 +29,33 @@ var health := max_health:
 	set(value):
 		value = clampi(value, 0, max_health)
 		
-		# Update health bar and label
-		create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
-			$UI/HealthBar.value = h
-			$UI/HealthBar/HealthLabel.text = "%d/%d" % [h, max_health]
-		, $UI/HealthBar.value, value, 0.3)
-		# TODO add flashing/scaling tween to label when health is <=~10%
+		if health_bar:
+			# Update health bar and label
+			create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
+				health_bar.get_node(^"HealthBar").value = h
+				health_bar.get_node(^"HealthBar/HealthLabel").text = "%d/%d" % [h, max_health]
+			, health_bar.get_node(^"HealthBar").value, value, 0.3)
+			# TODO add flashing/scaling tween to label when health is <=~10%
 		
 		health = value
 		if health == 0:
 			# Kill entity
 			pass
+## This [Entity]'s [Module]s.
+var modules: Array[Module]
+## This [Entity]'s [Daemon]s.
+var daemons: Array[Daemon]
 
-@onready var combat_handler := get_parent() as CombatHandler
+## The [CombatHandler] node handling this [Entity]'s actions.
+var combat_handler: CombatHandler
+## The [Entity3D] displaying this [Entity].
+var entity_3d: Entity3D
+## This [Entity]'s health bar.
+var health_bar: Control:
+	set(value):
+		health_bar = value
+		health_bar.get_node(^"HealthBar").max_value = max_health
+		health = health
 
 
 func _draw() -> void:
@@ -53,8 +67,9 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	$UI/HealthBar.max_value = max_health
 	# Run setter to update health bar and label
+	if health_bar:
+		health_bar = health_bar
 	health = health
 
 
@@ -66,6 +81,22 @@ func _take_turn() -> void:
 	turn_ended.emit.call_deferred()
 
 
+## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
+func get_effects() -> Array[Effect]:
+	## The array of [Effect]s to apply.
+	var effects: Array[Effect]
+	for module in modules:
+		for effect in module.effects:
+			effects.append(effect.duplicate())
+	for daemon in daemons:
+		for modifier in daemon.modifiers:
+			for effect in effects:
+				if (modifier.modification_type == effect.modification_type
+						and modifier.target_type == effect.target_type):
+					effect.base *= modifier.percent
+	return effects
+
+
 ## Returns the amount of damage the [Entity] should deal.
 func get_damage() -> int:
 	return base_damage + randi_range(-damage_variation, damage_variation)
@@ -74,11 +105,13 @@ func get_damage() -> int:
 ## Makes this [Entity] take [param amount] damage.
 func take_damage(amount: int) -> void:
 	health -= amount
-	var label := $UI/DamageLabel.duplicate() as Label
+	var label := combat_handler.get_node(^"DamageLabel").duplicate() as Label
+	label.global_position = combat_handler.cam.unproject_position(
+			entity_3d.project_point(Vector2(rect.size) * Vector2(0.5, 0.25)))
 	label.text = String.num_int64(amount)
 	label.velocity = Vector2.UP.rotated(
 			randf_range(deg_to_rad(5), deg_to_rad(20))
 			* (+1 if randi_range(0, 1) else -1)
 	) * 256
 	label.show()
-	$UI.add_child(label, false, INTERNAL_MODE_BACK)
+	combat_handler.add_child(label, false, INTERNAL_MODE_FRONT)

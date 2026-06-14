@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://cwoivmv6qt0ax"]
 
-[ext_resource type="Script" path="res://scripts/entity_3d.gd" id="1_tyyuc"]
-[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/player.tscn" id="2_wh42t"]
+[ext_resource type="Script" uid="uid://conon11okuvcy" path="res://scripts/entity_3d.gd" id="1_tyyuc"]
+[ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_wh42t"]
+[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="2_wh42t"]
+[ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_7qh11"]
+[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/damage_label.gd" id="3_t5lw4"]
+[ext_resource type="PackedScene" uid="uid://chww5uygi35ie" path="res://scenes/entities/slime_spider_bot.tscn" id="4_y836a"]
+[ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="5_wjxyj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -44,111 +49,16 @@ albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
 material = SubResource("StandardMaterial3D_wh42t")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tyyuc"]
-viewport_path = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Node3D/Entity3D/SubViewport")
+viewport_path = NodePath("Player/SubViewport")
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_tyyuc"]
-target_nodepath = NodePath("Body_Ik")
-tip_nodepath = NodePath("Belly/Upper Tors/Neck/Head/Head_Tip")
-ccdik_data_chain_length = 3
-joint_data/0/bone_index = 0
-joint_data/0/bone2d_node = NodePath("Belly")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 63.126984
-joint_data/0/constraint_angle_max = 283.716
-joint_data/0/constraint_angle_invert = true
-joint_data/0/constraint_in_localspace = true
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 1
-joint_data/1/bone2d_node = NodePath("Belly/Upper Tors")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-joint_data/2/bone_index = 2
-joint_data/2/bone2d_node = NodePath("Belly/Upper Tors/Neck")
-joint_data/2/rotate_from_joint = false
-joint_data/2/enable_constraint = false
-joint_data/2/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_y836a"]
-target_nodepath = NodePath("Front Foot IK")
-tip_nodepath = NodePath("Belly/L_Leg/Front Leg/Front Leg Lower/Front Leg Lower2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 17
-joint_data/0/bone2d_node = NodePath("Belly/L_Leg/Front Leg")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 18
-joint_data/1/bone2d_node = NodePath("Belly/L_Leg/Front Leg/Front Leg Lower")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_wjxyj"]
-target_nodepath = NodePath("Back Foot IK")
-tip_nodepath = NodePath("Belly/R_Leg/Back LEg/Bacl Leg Lowe/Bacl Leg Lowe2")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 13
-joint_data/0/bone2d_node = NodePath("Belly/R_Leg/Back LEg")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = false
-joint_data/0/editor_draw_gizmo = false
-joint_data/1/bone_index = 14
-joint_data/1/bone2d_node = NodePath("Belly/R_Leg/Back LEg/Bacl Leg Lowe")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = false
-joint_data/1/editor_draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_t5lw4"]
-target_nodepath = NodePath("Front Arm IK")
-fabrik_data_chain_length = 2
-joint_data/0/bone_index = 7
-joint_data/0/bone2d_node = NodePath("Belly/Upper Tors/Left/Left ARm")
-joint_data/1/bone_index = 8
-joint_data/1/bone2d_node = NodePath("Belly/Upper Tors/Left/Left ARm/Left ARm2")
-joint_data/1/magnet_position = Vector2(0, 0)
-joint_data/1/use_target_rotation = true
-
-[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_7qh11"]
-target_nodepath = NodePath("Back Arm IK")
-fabrik_data_chain_length = 2
-joint_data/0/bone_index = 10
-joint_data/0/bone2d_node = NodePath("Belly/Upper Tors/Right/Right arm")
-joint_data/1/bone_index = 11
-joint_data/1/bone2d_node = NodePath("Belly/Upper Tors/Right/Right arm/Right arm2")
-joint_data/1/magnet_position = Vector2(0, 0)
-joint_data/1/use_target_rotation = true
-
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_vx33u"]
-bone_index = 3
-bone2d_node = NodePath("Belly/Upper Tors/Neck/Head")
-target_nodepath = NodePath("Head Look At")
-enable_constraint = true
-constraint_angle_min = 19.861992
-constraint_angle_max = 301.70483
-constraint_angle_invert = true
-constraint_in_localspace = true
-editor/draw_gizmo = false
-
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_g0i52"]
-bone_index = 4
-editor/draw_gizmo = false
-
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_0efr3"]
-enabled = true
-strength = 0.855
-modification_count = 7
-modifications/0 = SubResource("SkeletonModification2DCCDIK_tyyuc")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_y836a")
-modifications/2 = SubResource("SkeletonModification2DCCDIK_wjxyj")
-modifications/3 = SubResource("SkeletonModification2DFABRIK_t5lw4")
-modifications/4 = SubResource("SkeletonModification2DFABRIK_7qh11")
-modifications/5 = SubResource("SkeletonModification2DLookAt_vx33u")
-modifications/6 = SubResource("SkeletonModification2DLookAt_g0i52")
+[sub_resource type="ViewportTexture" id="ViewportTexture_y836a"]
+viewport_path = NodePath("Spider/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjxyj"]
-viewport_path = NodePath("/root/@EditorNode@18065/@Panel@14/@VBoxContainer@15/DockHSplitMain/@VBoxContainer@28/DockVSplitCenter/@VSplitContainer@70/@VBoxContainer@71/@EditorMainScreen@125/MainScreen/@CanvasItemEditor@9318/@VSplitContainer@9101/@HSplitContainer@9103/@HSplitContainer@9105/@Control@9106/@SubViewportContainer@9107/@SubViewport@9108/Node3D/Entity3D2/SubViewport")
+viewport_path = NodePath("Spider2/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t5lw4"]
+viewport_path = NodePath("Spider3/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1252099717]
 
@@ -163,278 +73,179 @@ shadow_enabled = true
 environment = SubResource("Environment_tyyuc")
 camera_attributes = SubResource("CameraAttributesPractical_y836a")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=715276575]
+[node name="Map Stuff" type="Node3D" parent="." unique_id=2116059866]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map Stuff" unique_id=715276575]
 transform = Transform3D(90.3751, 0, 0, 0, 0.62152684, 0, 0, 0, 13.749819, 0, 0, 0)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=285298943]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Map Stuff" unique_id=285298943]
 transform = Transform3D(4.0513425, 0, 0, 0, 6.5317206, 0, 0, 0, 5.5588636, -5.5040636, 2.7756238, -8.863878)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="." unique_id=382344382]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Map Stuff" unique_id=382344382]
 transform = Transform3D(4.0513425, 0, 0, 0, 6.5317206, 0, 0, 0, 2.324056, -5.5040636, -2.5765834, 6.2610097)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="." unique_id=373641316]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Map Stuff" unique_id=373641316]
 transform = Transform3D(4.0513425, 0, 0, 0, 6.5317206, 0, 0, 0, 5.5588636, -5.5040636, 2.7756238, -12.472153)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=690464101]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Map Stuff" unique_id=690464101]
 transform = Transform3D(4.0513425, 0, 0, 0, 30.235125, 0, 0, 0, 5.5588636, 9.47368, 2.7756238, -20.196362)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=2018880489]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Map Stuff" unique_id=2018880489]
 transform = Transform3D(4.0513425, 0, 0, 0, 30.235125, 0, 0, 0, 5.5588636, 31.493694, 2.7756238, -8.228268)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=2070040009]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Map Stuff" unique_id=2070040009]
 transform = Transform3D(4.0513425, 0, 0, 0, 30.235125, 0, 0, 0, 5.5588636, -16.119488, 2.7756238, -8.228268)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1954754360]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Map Stuff" unique_id=1954754360]
 transform = Transform3D(4.0513425, 0, 0, 0, 30.235125, 0, 0, 0, 5.5588636, 21.291325, 2.7756238, -14.933519)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=1595711315]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Map Stuff" unique_id=1595711315]
 transform = Transform3D(4.0513425, 0, 0, 0, 3.8398528, 0, 0, 0, 5.5588636, 21.291325, 2.7756238, -32.06398)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=1581919220]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Map Stuff" unique_id=1581919220]
 transform = Transform3D(4.0513425, 0, 0, 0, 3.8398528, 0, 0, 0, 5.5588636, -1.6761379, 6.992777, -32.06398)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="." unique_id=375662713]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Map Stuff" unique_id=375662713]
 transform = Transform3D(16.77058, 0, 0, 0, 1.2377343, 0, 0, 0, 5.5588636, -4.271907, -1.7041903, -65.92284)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="." unique_id=277458433]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Map Stuff" unique_id=277458433]
 transform = Transform3D(16.77058, 0, 0, 0, 0.73825824, 0, 0, 0, 5.5588636, -3.7904596, -4.0212274, -54.79012)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="." unique_id=1109746292]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Map Stuff" unique_id=1109746292]
 transform = Transform3D(26.795294, 0, 0, 0, 0.73825824, 0, 0, 0, 5.5588636, -27.742786, 13.202923, -28.309715)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="Entity3D" type="Sprite3D" parent="." unique_id=882970403 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.375, 0.875)
+[node name="CombatHandler" type="Node" parent="." unique_id=1550985276 node_paths=PackedStringArray("player", "enemies")]
+script = ExtResource("1_wh42t")
+player = NodePath("../Player/SubViewport/Player")
+enemies = [NodePath("../Spider/SubViewport/SlimeSpiderBot"), NodePath("../Spider2/SubViewport/SlimeSpiderBot"), NodePath("../Spider3/SubViewport/SlimeSpiderBot")]
+metadata/_custom_type_script = "uid://rnsxwyparcb0"
+
+[node name="CommandWheel" type="Control" parent="CombatHandler" unique_id=430142838 node_paths=PackedStringArray("player_3d")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("5_wjxyj")
+script = ExtResource("3_7qh11")
+player_3d = NodePath("../../Player")
+
+[node name="Attack" type="Button" parent="CombatHandler/CommandWheel" unique_id=1946571118]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+text = "Attack"
+
+[node name="Special" type="Button" parent="CombatHandler/CommandWheel" unique_id=1500932356]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 40.0
+text = "Special"
+
+[node name="Defend" type="Button" parent="CombatHandler/CommandWheel" unique_id=78613426]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 39.999985
+text = "Defend"
+
+[node name="DamageLabel" type="Label" parent="CombatHandler" unique_id=797703075]
+visible = false
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("5_wjxyj")
+theme_type_variation = &"DamageLabel"
+text = "0"
+script = ExtResource("3_t5lw4")
+
+[node name="Player" type="Sprite3D" parent="." unique_id=882970403 node_paths=PackedStringArray("entity", "vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.425, 0.875)
 billboard = 2
 alpha_cut = 2
 texture = SubResource("ViewportTexture_tyyuc")
 script = ExtResource("1_tyyuc")
 entity = NodePath("SubViewport/Player")
 vp = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://conon11okuvcy"
 
-[node name="SubViewport" type="SubViewport" parent="Entity3D" unique_id=972520790]
+[node name="SubViewport" type="SubViewport" parent="Player" unique_id=972520790]
 disable_3d = true
 transparent_bg = true
 gui_snap_controls_to_pixels = false
-size = Vector2i(256, 288)
+size = Vector2i(272, 296)
 
-[node name="Player" parent="Entity3D/SubViewport" unique_id=1022515043 instance=ExtResource("2_wh42t")]
-position = Vector2(128, 256)
+[node name="Player" parent="Player/SubViewport" unique_id=1022515043 instance=ExtResource("2_wh42t")]
+position = Vector2(136, 256)
 
-[node name="Player_Skeleton" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 2134600667) index="0" unique_id=272863499]
-modification_stack = SubResource("SkeletonModificationStack2D_0efr3")
+[node name="Spider" type="Sprite3D" parent="." unique_id=956576972 node_paths=PackedStringArray("entity", "vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.089, 1.05, 0.278)
+billboard = 2
+alpha_cut = 2
+texture = SubResource("ViewportTexture_y836a")
+script = ExtResource("1_tyyuc")
+entity = NodePath("SubViewport/SlimeSpiderBot")
+vp = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://conon11okuvcy"
 
-[node name="Belly" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="0" unique_id=654590038]
-rotation = -0.074721344
-scale = Vector2(1.0056515, 1.0056515)
+[node name="SubViewport" type="SubViewport" parent="Spider" unique_id=377793298]
+transparent_bg = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(192, 208)
 
-[node name="Upper Tors" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
-scale = Vector2(0.9998261, 0.9998261)
+[node name="SlimeSpiderBot" parent="Spider/SubViewport" unique_id=198898790 instance=ExtResource("4_y836a")]
+position = Vector2(96, 176)
 
-[node name="Neck" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors" index="0" unique_id=2131347548]
-rotation = 1.0563982
-scale = Vector2(0.99983394, 0.99983394)
-
-[node name="Head" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" index="0" unique_id=1733505491]
-rotation = -0.9815947
-scale = Vector2(0.9999503, 0.9999503)
-
-[node name="Face" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" index="0" unique_id=1196459148]
-scale = Vector2(0.99983156, 0.99983156)
-
-[node name="Left ARm" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 1413055582) index="0" unique_id=408215454]
-rotation = 0.14671013
-scale = Vector2(0.99999684, 0.99999684)
-
-[node name="Left ARm2" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
-position = Vector2(82.16495, 0.078835435)
-rotation = 1.2759515
-scale = Vector2(0.99998623, 0.99998623)
-
-[node name="Right arm" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 55123572) index="0" unique_id=328132070]
-rotation = 0.22503708
-scale = Vector2(0.9999714, 0.9999714)
-
-[node name="Right arm2" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
-position = Vector2(-45.90571, 45.119415)
-rotation = 0.17494318
-scale = Vector2(0.9999817, 0.9999817)
-
-[node name="Back LEg" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 511964988) index="0" unique_id=879307515]
-position = Vector2(-13.000383, -3.9999936)
-rotation = 0.57642925
-scale = Vector2(0.99998707, 0.99998707)
-
-[node name="Bacl Leg Lowe" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg" index="0" unique_id=640676124]
-position = Vector2(41.766052, 88.66629)
-rotation = 0.53030074
-scale = Vector2(0.9999949, 0.9999949)
-
-[node name="Bacl Leg Lowe2" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" index="0" unique_id=1718926545]
-scale = Vector2(0.99982715, 0.99982715)
-
-[node name="Front Leg" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg" parent_id_path=PackedInt32Array(1022515043, 748111500, 1331271054, 1141531121) index="0" unique_id=1426848200]
-position = Vector2(29.003351, 1.9993324)
-rotation = 2.369005
-scale = Vector2(0.9999994, 0.9999994)
-
-[node name="Front Leg Lower" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg" index="0" unique_id=525732602]
-position = Vector2(31.085962, -90.640686)
-rotation = -1.104815
-scale = Vector2(1.000008, 1.000008)
-
-[node name="Front Leg Lower2" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" index="0" unique_id=1092532283]
-scale = Vector2(0.99982953, 0.99982953)
-
-[node name="Front Arm IK" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="1" unique_id=1935075252]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Body_Ik" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="2" unique_id=773662502]
-position = Vector2(199.99997, -372)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Head Look At" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="3" unique_id=695799298]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Back Arm IK" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="4" unique_id=2077262562]
-position = Vector2(-8, -68.00003)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Back Foot IK" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="5" unique_id=962082352]
-position = Vector2(73.999985, 284.99997)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Front Foot IK" parent="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" index="6" unique_id=665679059]
-position = Vector2(336, 257.99997)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AnimationPlayer" parent="Entity3D/SubViewport/Player/Player Character" parent_id_path=PackedInt32Array(1022515043, 748111500) index="1" unique_id=1263288981]
-autoplay = &"Idle"
-
-[node name="Entity3D2" type="Sprite3D" parent="." unique_id=956576972 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.375, 0.875)
-flip_h = true
+[node name="Spider2" type="Sprite3D" parent="." unique_id=103047974 node_paths=PackedStringArray("entity", "vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.401557, 1.05, 1.6105945)
 billboard = 2
 alpha_cut = 2
 texture = SubResource("ViewportTexture_wjxyj")
 script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/Player")
+entity = NodePath("SubViewport/SlimeSpiderBot")
 vp = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://conon11okuvcy"
 
-[node name="SubViewport" type="SubViewport" parent="Entity3D2" unique_id=248405499]
+[node name="SubViewport" type="SubViewport" parent="Spider2" unique_id=1829644665]
 transparent_bg = true
 gui_snap_controls_to_pixels = false
-size = Vector2i(256, 288)
+size = Vector2i(192, 208)
 
-[node name="Player" parent="Entity3D2/SubViewport" unique_id=209739316 instance=ExtResource("2_wh42t")]
-position = Vector2(128, 256)
+[node name="SlimeSpiderBot" parent="Spider2/SubViewport" unique_id=893354821 instance=ExtResource("4_y836a")]
+position = Vector2(96, 176)
 
-[node name="Belly" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="0" unique_id=654590038]
-rotation = -0.20525235
-scale = Vector2(1.0056515, 1.0056515)
+[node name="Spider3" type="Sprite3D" parent="." unique_id=1170152533 node_paths=PackedStringArray("entity", "vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.05, 3.1581638)
+billboard = 2
+alpha_cut = 2
+texture = SubResource("ViewportTexture_t5lw4")
+script = ExtResource("1_tyyuc")
+entity = NodePath("SubViewport/SlimeSpiderBot")
+vp = NodePath("SubViewport")
+metadata/_custom_type_script = "uid://conon11okuvcy"
 
-[node name="Upper Tors" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
-scale = Vector2(0.9998257, 0.9998257)
+[node name="SubViewport" type="SubViewport" parent="Spider3" unique_id=745752037]
+transparent_bg = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(192, 208)
 
-[node name="Neck" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors" index="0" unique_id=2131347548]
-rotation = 0.6234117
-scale = Vector2(0.9998342, 0.9998342)
-
-[node name="Head" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck" index="0" unique_id=1733505491]
-rotation = -0.32152274
-scale = Vector2(0.9999506, 0.9999506)
-
-[node name="Face" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" index="0" unique_id=1196459148]
-scale = Vector2(0.99983156, 0.99983156)
-
-[node name="Left ARm" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 1413055582) index="0" unique_id=408215454]
-rotation = 0.3098147
-scale = Vector2(0.99997276, 0.99997276)
-
-[node name="Left ARm2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
-position = Vector2(82.164955, 0.07889877)
-rotation = 1.2490466
-scale = Vector2(0.99998546, 0.99998546)
-
-[node name="Right arm" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 55123572) index="0" unique_id=328132070]
-rotation = 0.34480858
-scale = Vector2(0.9999458, 0.9999458)
-
-[node name="Right arm2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
-position = Vector2(-45.90583, 45.119442)
-rotation = 0.19137147
-scale = Vector2(0.999986, 0.999986)
-
-[node name="Back LEg" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 511964988) index="0" unique_id=879307515]
-position = Vector2(-13.000381, -3.9998515)
-rotation = 1.0701686
-scale = Vector2(0.9999876, 0.9999876)
-
-[node name="Bacl Leg Lowe" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg" index="0" unique_id=640676124]
-position = Vector2(41.766052, 88.666275)
-rotation = -0.27049977
-scale = Vector2(0.9999948, 0.9999948)
-
-[node name="Bacl Leg Lowe2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" index="0" unique_id=1718926545]
-scale = Vector2(0.99982715, 0.99982715)
-
-[node name="Front Leg" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 1141531121) index="0" unique_id=1426848200]
-position = Vector2(29.003338, 1.9993287)
-rotation = 2.556024
-scale = Vector2(0.99999976, 0.99999976)
-
-[node name="Front Leg Lower" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg" index="0" unique_id=525732602]
-position = Vector2(31.086115, -90.640686)
-rotation = -1.2826449
-scale = Vector2(1.0000079, 1.0000079)
-
-[node name="Front Leg Lower2" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" index="0" unique_id=1092532283]
-scale = Vector2(0.99982953, 0.99982953)
-
-[node name="Front Arm IK" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="1" unique_id=1935075252]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Body_Ik" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="2" unique_id=773662502]
-position = Vector2(199.99997, -372)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Head Look At" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="3" unique_id=695799298]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Back Arm IK" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="4" unique_id=2077262562]
-position = Vector2(-8, -68.00003)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Back Foot IK" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="5" unique_id=962082352]
-position = Vector2(73.999985, 284.99997)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="Front Foot IK" parent="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(209739316, 748111500, 1331271054, 272863499) index="6" unique_id=665679059]
-position = Vector2(336, 257.99997)
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="AnimationPlayer" parent="Entity3D2/SubViewport/Player/Player Character" parent_id_path=PackedInt32Array(209739316, 748111500) index="1" unique_id=1263288981]
-autoplay = &"Idle"
+[node name="SlimeSpiderBot" parent="Spider3/SubViewport" unique_id=2096279511 instance=ExtResource("4_y836a")]
+position = Vector2(96, 176)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43603635, 2.1506557, 5.6311235)
+transform = Transform3D(0.9576166, 0, -0.28804585, 0, 1, 0, 0.28804585, 0, 0.9576166, -1.1830637, 1.5862598, 5.6311235)
 fov = 72.9
-
-[editable path="Entity3D/SubViewport/Player"]
-[editable path="Entity3D/SubViewport/Player/Player Character"]
-[editable path="Entity3D/SubViewport/Player/Player Character/PlayerBonesetup"]
-[editable path="Entity3D2/SubViewport/Player"]
-[editable path="Entity3D2/SubViewport/Player/Player Character"]
-[editable path="Entity3D2/SubViewport/Player/Player Character/PlayerBonesetup"]
