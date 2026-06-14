@@ -104,6 +104,9 @@ func get_damage() -> int:
 
 ## Makes this [Entity] take [param amount] damage.
 func take_damage(amount: int) -> void:
+	if amount <= 0:
+		return
+	
 	health -= amount
 	combat_handler.create_floaty_label(
 			combat_handler.cam.unproject_position(
