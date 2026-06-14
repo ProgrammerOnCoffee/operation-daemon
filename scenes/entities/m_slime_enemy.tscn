@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dn8dsdc4s6fpi"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_dcdea"]
+[ext_resource type="PackedScene" uid="uid://mgu1ko53enkq" path="res://scenes/entities/med_s_lime_ent.tscn" id="2_e3nyf"]
+
+[node name="MSlime" unique_id=1022515043 instance=ExtResource("1_dcdea")]
+rect = Rect2i(-352, -520, 640, 536)
+damage_variation = 2
+
+[node name="Med SLime ENT" parent="." index="0" unique_id=263273724 instance=ExtResource("2_e3nyf")]
+position = Vector2(-24, -178)

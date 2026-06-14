@@ -125,3 +125,17 @@ func focus_entity(entity: Entity) -> void:
 		tween.tween_property(cam, ^":global_transform", _cam_initial_transform, D)
 	_focused_entity = entity
 	await tween.finished
+
+
+## Creates a "floaty" label that gradually spins and falls.
+func create_floaty_label(pos: Vector2, text: String) -> Label:
+	var label := get_node(^"FloatyLabel").duplicate() as Label
+	label.text = text
+	label.global_position = pos - label.size / 2
+	label.velocity = Vector2.UP.rotated(
+			deg_to_rad(randf_range(5, 20))
+			* (+1 if randi_range(0, 1) else -1)
+	) * 256
+	label.show()
+	add_child(label, false, INTERNAL_MODE_FRONT)
+	return label

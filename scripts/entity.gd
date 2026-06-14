@@ -1,6 +1,6 @@
 @tool
 class_name Entity
-extends CharacterBody2D
+extends Node2D
 ## Base class for all entities within a fight.
 ##
 ## Base class for the player and all enemies within a fight.
@@ -104,14 +104,13 @@ func get_damage() -> int:
 
 ## Makes this [Entity] take [param amount] damage.
 func take_damage(amount: int) -> void:
+	if amount <= 0:
+		return
+	
 	health -= amount
-	var label := combat_handler.get_node(^"DamageLabel").duplicate() as Label
-	label.global_position = combat_handler.cam.unproject_position(
-			entity_3d.project_point(Vector2(rect.size) * Vector2(0.5, 0.25)))
-	label.text = String.num_int64(amount)
-	label.velocity = Vector2.UP.rotated(
-			randf_range(deg_to_rad(5), deg_to_rad(20))
-			* (+1 if randi_range(0, 1) else -1)
-	) * 256
-	label.show()
-	combat_handler.add_child(label, false, INTERNAL_MODE_FRONT)
+	combat_handler.create_floaty_label(
+			combat_handler.cam.unproject_position(
+					entity_3d.project_point(Vector2(rect.size) * Vector2(0.5, 0.25))
+			),
+			String.num_int64(amount)
+	)
