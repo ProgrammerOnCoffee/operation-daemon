@@ -60,8 +60,8 @@ viewport_path = NodePath("Spider/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_wjxyj"]
 viewport_path = NodePath("Spider2/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t5lw4"]
-viewport_path = NodePath("Spider4/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_6nu88"]
+viewport_path = NodePath("Spider3/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1252099717]
 
@@ -260,36 +260,18 @@ position = Vector2(96, 168)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.05, 3.1581638)
 billboard = 2
 alpha_cut = 2
-texture = SubResource("ViewportTexture_t5lw4")
+texture = SubResource("ViewportTexture_6nu88")
 script = ExtResource("1_tyyuc")
 entity = NodePath("SubViewport/SlimeSpiderBot")
 vp = NodePath("SubViewport")
 metadata/_custom_type_script = "uid://conon11okuvcy"
 
-[node name="SubViewport" type="SubViewport" parent="Spider3" unique_id=745752037]
+[node name="SubViewport" type="SubViewport" parent="Spider3" unique_id=1382011300]
 transparent_bg = true
 gui_snap_controls_to_pixels = false
 size = Vector2i(192, 184)
 
 [node name="SlimeSpiderBot" parent="Spider3/SubViewport" unique_id=2096279511 instance=ExtResource("4_y836a")]
-position = Vector2(96, 168)
-
-[node name="Spider4" type="Sprite3D" parent="." unique_id=1106879176 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.05, 3.1581638)
-billboard = 2
-alpha_cut = 2
-texture = SubResource("ViewportTexture_t5lw4")
-script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/SlimeSpiderBot")
-vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
-
-[node name="SubViewport" type="SubViewport" parent="Spider4" unique_id=1896971168]
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(192, 184)
-
-[node name="SlimeSpiderBot" parent="Spider4/SubViewport" unique_id=594984622 instance=ExtResource("4_y836a")]
 position = Vector2(96, 168)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
