@@ -2,9 +2,9 @@ class_name MapGenerator extends Control
 ## Manages the generation of a map.
 
 ## The spacing between nodes on the map.
-const SPACING := Vector2(120, 210)
+const SPACING := Vector2(80, 80)
 ## The range-randomness applied to the nodes' position on the map.
-const VARIATION := Vector2(30, 45)
+const VARIATION := Vector2(0,0)
 
 @export var config:MapConfig
 
@@ -51,7 +51,7 @@ func _generate_initial_grid() -> Array[Array]:
 			
 			## Extra spacing and no randomness for BIG BOSS room height.
 			if i == config.floor_count - 1:
-				new_event.position.y = (i + 0.5) * -SPACING.y
+				new_event.position.y = (i + 1) * -SPACING.y
 			
 			# Push out the events into an array for the floor
 			floor_events.append(new_event)
