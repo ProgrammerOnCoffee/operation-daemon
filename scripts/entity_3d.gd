@@ -39,7 +39,9 @@ func _ready() -> void:
 	
 	if not texture:
 		texture = ViewportTexture.new()
-	texture.viewport_path = vp.get_path()
+	texture.viewport_path = (
+			get_viewport().get_child(0).get_path_to(vp)
+			if Engine.is_editor_hint() else vp.get_path())
 	if entity:
 		# Run setter
 		entity = entity
