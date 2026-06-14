@@ -1,13 +1,13 @@
 extends Label
-## A [Label] that displays the damage dealt to an [Entity].
+## A "floaty" [Label] that gradually spins and falls.
 ##
-## A [Label] that displays the damage dealt to an [Entity]. Gradually rotates and
-## moves according to its [member rot_velocity] and [member velocity].
+## A "floaty" [Label] that gradually spins and falls
+## according to its [member rot_velocity] and [member velocity].
 
 ## The label's velocity.
 var velocity: Vector2
 ## The label's rotational velocity, in radians.
-var rot_velocity: float = randf_range(deg_to_rad(10), deg_to_rad(25)) * (+1 if randi_range(0, 1) else -1)
+var rot_velocity: float = deg_to_rad(randf_range(10, 25)) * (+1 if randi_range(0, 1) else -1)
 
 
 func _ready() -> void:

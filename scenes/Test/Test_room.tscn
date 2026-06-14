@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_wh42t"]
 [ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="2_wh42t"]
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_7qh11"]
-[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/damage_label.gd" id="3_t5lw4"]
+[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="3_t5lw4"]
 [ext_resource type="PackedScene" uid="uid://chww5uygi35ie" path="res://scenes/entities/slime_spider_bot.tscn" id="4_y836a"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="5_wjxyj"]
 
@@ -162,7 +162,7 @@ offset_right = 192.0
 offset_bottom = 39.999985
 text = "Defend"
 
-[node name="DamageLabel" type="Label" parent="CombatHandler" unique_id=797703075]
+[node name="FloatyLabel" type="Label" parent="CombatHandler" unique_id=797703075]
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
