@@ -1,6 +1,6 @@
 @tool
 class_name Entity
-extends CharacterBody2D
+extends Node2D
 ## Base class for all entities within a fight.
 ##
 ## Base class for the player and all enemies within a fight.

@@ -6,7 +6,7 @@
 
 [node name="Player" unique_id=1022515043 instance=ExtResource("1_wm45n")]
 script = ExtResource("2_u2pge")
-rect = Rect2i(-136, -256, 272, 296)
+rect = Rect2i(-136, -256, 272, 280)
 
 [node name="Player Character" parent="." index="0" unique_id=748111500 instance=ExtResource("3_u2pge")]
 position = Vector2(-12, -129)
