@@ -24,6 +24,10 @@ func _draw() -> void:
 	draw_circle(points[-1], 3, COLOR, true, -1.0, true)
 
 
+func _process(_delta: float) -> void:
+	update()
+
+
 ## Updates the position of the health bar, moving it above [member entity_3d].
 func update() -> void:
 	if cam and entity_3d:
