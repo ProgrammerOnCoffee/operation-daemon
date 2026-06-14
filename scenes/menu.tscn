@@ -74,6 +74,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhnvy")
 
 [node name="Menu" type="PanelContainer" parent="." unique_id=1239096019]
+visible = false
 custom_minimum_size = Vector2(384, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -267,12 +268,14 @@ value = 0.85
 tick_count = 5
 
 [node name="Label4" type="Label" parent="Settings/ScrollContainer/MarginContainer/GridContainer" unique_id=52894330]
+visible = false
 layout_mode = 2
 tooltip_text = "Controls the scale of the UI."
 mouse_filter = 0
 text = "UI Scale"
 
 [node name="UIScale" type="HSlider" parent="Settings/ScrollContainer/MarginContainer/GridContainer" unique_id=1955426037]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -301,7 +304,6 @@ layout_mode = 2
 text = "Back"
 
 [node name="Credits" type="VBoxContainer" parent="." unique_id=691186870]
-visible = false
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 1
 anchors_preset = 8

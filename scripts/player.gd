@@ -35,8 +35,22 @@ func attack() -> bool:
 		effect.apply_effect(
 				self if effect.target_type == Module.TARGET.ATTACKER
 				else selected_enemy)
-	selected_enemy.take_damage(get_damage())
+	
+	await entity_3d.move_to_entity(selected_enemy.entity_3d)
+	
+	for i in 2:
+		await get_tree().create_timer(0.2).timeout
+		var qte := combat_handler.get_node(^"QTERing").duplicate() as Control
+		qte.anchor_left = randf_range(0.4, 0.6)
+		qte.anchor_top = randf_range(0.2, 0.8)
+		qte.position -= qte.size / 2
+		qte.rotation_degrees = randi_range(-1, 1) * 45
+		combat_handler.add_child(qte, false, INTERNAL_MODE_FRONT)
+		qte.fade_in()
+		selected_enemy.take_damage(int(get_damage() * await qte.pressed))
+	
 	await get_tree().create_timer(0.7).timeout
+	await entity_3d.return_to_initial_transform()
 	return true
 
 
