@@ -36,6 +36,8 @@ func attack() -> bool:
 				self if effect.target_type == Module.TARGET.ATTACKER
 				else selected_enemy)
 	
+	await entity_3d.move_to_entity(selected_enemy.entity_3d)
+	
 	for i in 2:
 		await get_tree().create_timer(0.2).timeout
 		var qte := combat_handler.get_node(^"QTERing").duplicate() as Control
@@ -48,6 +50,7 @@ func attack() -> bool:
 		selected_enemy.take_damage(int(get_damage() * await qte.pressed))
 	
 	await get_tree().create_timer(0.7).timeout
+	await entity_3d.return_to_initial_transform()
 	return true
 
 

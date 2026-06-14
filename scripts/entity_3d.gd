@@ -28,6 +28,9 @@ extends Sprite3D
 		resolution_scale = value
 		update_resolution()
 
+## The initial transform of this [Entity3D] when the fight was loaded.
+@onready var initial_transform := global_transform
+
 
 func _init() -> void:
 	billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
@@ -60,6 +63,31 @@ func update_resolution() -> void:
 		entity.position = -entity.rect.position * resolution_scale
 		vp.size = entity.rect.size * resolution_scale
 	pixel_size = 0.01 / resolution_scale
+
+
+## Moves this [Entity3D] beside [param to] to prepare for an attack.
+func move_to_entity(to: Entity3D) -> void:
+	var dir := global_position.direction_to(to.global_position)
+	# Get camera angle in order to move player directly to the left of the enemy relative to the camera
+	#var offset := Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y)
+	dir = dir.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y)
+	dir = Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y) * signf(to.global_position.x - global_position.x)
+	await create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).tween_property(self, ^":global_position",
+			to.global_position * Vector3(1, 0, 1)
+			# Keep player y position
+			+ global_position * Vector3(0, 1, 0)
+			# Move beside other entity
+			+ dir * (
+					# Entity viewport size + self viewport size
+					to.vp.size.x * to.pixel_size
+					+ vp.size.x * pixel_size
+			) / 2, 0.8).finished
+
+
+## Returns this [Entity3D] to its initial [member global_transform].
+func return_to_initial_transform() -> void:
+	await create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).tween_property(
+			self, ^":global_transform", initial_transform, 0.8).finished
 
 
 ## Returns the 3D point in world space that maps to the 2D coordinate [param p]
