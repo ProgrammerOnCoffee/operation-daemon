@@ -12,15 +12,21 @@ extends Sprite3D
 		entity = value
 		entity.entity_3d = self
 		if vp:
-			vp.size = entity.rect.size
 			if entity.is_inside_tree():
 				if entity.get_parent() != vp:
 					entity.reparent(vp)
 			else:
 				vp.add_child(entity)
-		entity.position = -entity.rect.position
+			update_resolution()
 ## The [SubViewport] that contains the [Entity].
-@export var vp: SubViewport
+@export var vp: SubViewport:
+	set(value):
+		vp = value
+		update_resolution()
+@export_range(0.5, 4.0, 0.125) var resolution_scale: float = 1.0:
+	set(value):
+		resolution_scale = value
+		update_resolution()
 
 
 func _init() -> void:
@@ -47,9 +53,19 @@ func _ready() -> void:
 		entity = entity
 
 
+## Updates [member pixel_size] and [member vp]'s size according to [member resolution_scale].
+func update_resolution() -> void:
+	if vp and entity:
+		entity.scale = Vector2.ONE * resolution_scale
+		entity.position = -entity.rect.position * resolution_scale
+		vp.size = entity.rect.size * resolution_scale
+	pixel_size = 0.01 / resolution_scale
+
+
 ## Returns the 3D point in world space that maps to the 2D coordinate [param p]
 ## in the [SubViewport] rect.
 func project_point(p: Vector2) -> Vector3:
+	p *= resolution_scale
 	## The size of the viewport, in meters.
 	var size := vp.size * pixel_size
 	## The global y rotation of this sprite.
@@ -91,4 +107,4 @@ func unproject_point(p: Vector3) -> Vector2:
 		# Get percentage across vp.size [param p] is
 		inverse_lerp(-hs_rot.x, +hs_rot.x, p.x - global_position.x),
 		inverse_lerp(+hs_rot.y, -hs_rot.y, p.y - global_position.y),
-	) * Vector2(vp.size)
+	) * Vector2(vp.size) / resolution_scale
