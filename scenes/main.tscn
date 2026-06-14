@@ -1,0 +1,1174 @@
+[gd_scene format=3 uid="uid://dh035oqbuwd5q"]
+
+[ext_resource type="Script" uid="uid://d1a18w7sklhef" path="res://scripts/menu2.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://cbxo13vg2mn42" path="res://scripts/menu_button.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
+
+[sub_resource type="GDScript" id="GDScript_o5qli"]
+script/source = "@tool 
+class_name RegularPolygon extends Polygon2D
+## Provides tools for making a regular polygon, with several available modifications
+
+@export_tool_button(\"Regenerate\") var regen_button := generate
+
+@export_group(\"Outer\", \"outer_\")
+## The number of points on this polygon.
+@export_range(3,500,1.0) var outer_vertices := 3:
+	set(to):
+		outer_vertices = to
+		generate()
+
+@export var outer_radius := 0.0: ## The outer radius of this polygon.
+	set(to):
+		outer_radius = to
+		generate()
+@export var outer_radius_modifiers:Dictionary[int, float]: ## Any modifiers to the radius. Formatted as [every n points], [radius modification]
+	set(to):
+		outer_radius_modifiers = to
+		generate()
+
+@export_group(\"Inner\", \"inner_\")
+## The number of points on this polygon.
+@export_range(3,500,1.0) var inner_vertices := 3:
+	set(to):
+		inner_vertices = to
+		generate()
+
+@export var inner_radius := 0.0: ## The inner radius of this polygon. If <=0, is not hollow.
+	set(to):
+		inner_radius = to
+		generate()
+@export var inner_radius_modifiers:Dictionary[int, float]: ## Any modifiers to the radius. Formatted as [every n points], [radius modification]
+	set(to):
+		inner_radius_modifiers = to
+		generate()
+
+func generate():
+	
+	# The inner radius has to be (0 <= inner radius < outer_radius)
+	if inner_radius < 0 or inner_radius >= outer_radius: return
+	
+	var new_points:Array[Vector2]
+	
+	if inner_radius <= 0: 
+		# No inner polygon, just make the new points the outer points.
+		new_points = make_points_for(outer_radius, outer_vertices, outer_radius_modifiers)
+	else:
+		var outer_points:Array[Vector2] = make_points_for(outer_radius, outer_vertices, outer_radius_modifiers)
+		var inner_points:Array[Vector2] = make_points_for(inner_radius, inner_vertices, inner_radius_modifiers)
+		
+		# Put each array's first array at the end as well. [0,1,2] -> [0,1,2,0]
+		outer_points.append(outer_points.front())
+		inner_points.append(inner_points.front())
+		
+		inner_points.reverse()
+		
+		# The new polygon is just the two arrays added together
+		new_points = outer_points + inner_points
+	
+	# Update the polygon.
+	set(\"polygon\", new_points)
+
+func make_points_for(radius:float, vertices:int, modifiers:Dictionary[int, float]) -> Array[Vector2]:
+	var points:Array[Vector2]
+	
+	# For each vertice.
+	for i in vertices:
+			# Get the angle of this point
+			var angle := deg_to_rad((360.0 / vertices) * i)
+			
+			# Stored in a seperate variable so the modifiers don't affect the radius.
+			var distance := radius
+			
+			# Apply Modulo Modifiers.
+			for modifier in modifiers:              # Check for each modifier,
+				if i % modifier == 0:               # If the remainder is 0,
+					distance += modifiers[modifier] # Apply the modifier.
+			
+			# Create the point and add it to the new array.
+			var new_point := Vector2.from_angle(angle) * distance
+			points.append(new_point)
+	
+	return points
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.3254902, 0.36078432, 0.4509804, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgp6g"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.1036, 0.1127, 0.14, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.29520002, 0.32964, 0.41, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.21568628, 0.25882354, 0.36078432, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
+color = Color(0.071100004, 0.074880004, 0.09, 1)
+thickness = 4
+
+[sub_resource type="Theme" id="Theme_jyhfs"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 18
+Button/styles/hover = SubResource("StyleBoxFlat_o5qli")
+Button/styles/normal = SubResource("StyleBoxFlat_sgp6g")
+Button/styles/pressed = SubResource("StyleBoxFlat_0wfyh")
+HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
+
+[sub_resource type="Theme" id="Theme_0wfyh"]
+Button/font_sizes/font_size = 14
+Button/styles/hover = SubResource("StyleBoxFlat_o5qli")
+Button/styles/normal = SubResource("StyleBoxFlat_sgp6g")
+Button/styles/pressed = SubResource("StyleBoxFlat_0wfyh")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jyhfs"]
+color = Color(0.071100004, 0.074880004, 0.09, 1)
+thickness = 3
+
+[sub_resource type="GDScript" id="GDScript_tbgi4"]
+script/source = "extends Button
+## VSync button.
+
+func _ready() -> void:
+	button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
+
+func _toggled(toggled_on: bool) -> void:
+	text = \"Enabled\" if toggled_on else \"Disabled\"
+	
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
+"
+
+[sub_resource type="GDScript" id="GDScript_sugp2"]
+script/source = "extends OptionButton
+## Allows the user to change the window mode.
+
+const OPTIONS:Dictionary[String, DisplayServer.WindowMode] = {
+	\"Fullscreen\": DisplayServer.WINDOW_MODE_FULLSCREEN,
+	\"Maximized\":  DisplayServer.WINDOW_MODE_MAXIMIZED,
+	\"Minimized\":  DisplayServer.WINDOW_MODE_MINIMIZED,
+	\"Windowed\":   DisplayServer.WINDOW_MODE_WINDOWED,	
+}
+
+func _ready() -> void:
+	
+	# Create all the options
+	clear()
+	for option in OPTIONS: add_item(option)
+	
+	# Select the current mode.
+	selected = OPTIONS.values().find(DisplayServer.window_get_mode())
+	
+	# Connect selecting an item to updating the mode.
+	item_selected.connect(_selected)
+
+func _selected(new:int): 
+	# Find the item in the dictionary, set the mode to its mode.
+	DisplayServer.window_set_mode(OPTIONS[get_item_text(new)])
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_tbgi4"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
+Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
+Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
+HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+resource_name = "Licenses<>Credits"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Credits:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Licenses:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-648, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Licenses:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.399, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Credits:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "MainMenu<>Credits"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Credits:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-648, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.399, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Credits:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "MainMenu<>Settings"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Settings:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-648, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.399, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Settings:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Settings:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(903, 324)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Settings:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Credits:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Licenses:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
+_data = {
+&"Licenses<>Credits": SubResource("Animation_jyhfs"),
+&"MainMenu<>Credits": SubResource("Animation_o6xl0"),
+&"MainMenu<>Settings": SubResource("Animation_tbgi4"),
+&"RESET": SubResource("Animation_tefeu")
+}
+
+[sub_resource type="GDScript" id="GDScript_sgp6g"]
+script/source = "class_name AnalysisTerminal extends VBoxContainer
+## A terminal that allows for analyzing 
+
+@export var focused := true
+var current_label:RichTextLabel
+var current_real_text := \"\"
+
+@export var blink_speed := 1.0
+var timer := 0.0
+
+var scroll:ScrollContainer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	push_text(\"TYPE HELP - PRESS ENTER\")
+	
+	on_enter()
+	
+	var parent = get_parent()
+	if parent is ScrollContainer:
+		scroll = parent
+		
+
+func _process(delta: float) -> void:
+	current_label.text = current_real_text
+	
+	if timer > 0.5: current_label.text += \"_\"
+	else: current_label.text += \" \"
+	
+	timer = move_toward(timer, 0.0, delta * blink_speed)
+	if timer == 0:
+		timer = 1.0
+	
+	if scroll:
+		scroll.scroll_vertical += 100
+
+func _on_key_pressed(key_name:String, _echo:bool, power:bool): if focused:
+	
+	timer = 1.0
+	
+	if power:
+		match key_name:
+			\"Space\":
+				current_real_text += \" \"
+			\"Enter\":
+				on_enter()
+			\"Backspace\":
+				current_real_text = current_real_text.left(len(current_real_text) - 1)
+	else:
+		current_real_text += key_name
+
+func on_enter() -> void:
+	
+	if current_label:
+		current_label.text = current_real_text.replace(\" \", \"[color=#00000000]|[/color]\")
+		
+		if len(current_real_text) == 0:
+			current_label.queue_free()
+		else:
+			parse_command(current_real_text)
+	
+	current_label = RichTextLabel.new()
+	current_label.bbcode_enabled = true
+	current_label.fit_content = true
+	
+	current_label.custom_minimum_size.y = 17
+	
+	current_real_text = \"\"
+	
+	add_child(current_label)
+
+func parse_command(command:String):
+	
+	if command.contains(\";\"):
+		for subcommand in command.split(\";\"):
+			print(subcommand)
+			parse_command(subcommand)
+		return
+	
+	match command:
+		\"\": return
+		\"CLEAR\":
+			for child in get_children(): child.queue_free()
+		\"QUIT\":
+			get_tree().quit()
+		\"HELP\":
+			push_text(\"--\")
+			push_text(\"COMMANDS\")
+			push_text(\"\")
+			push_text(\"HELP - SHOW THIS LIST\")
+			push_text(\"\")
+			push_text(\"CLEAR - CLEAR THE TERMINAL\")
+			push_text(\"\")
+			push_text(\"START - START A RUN\")
+			push_text(\"\")
+			push_text(\"OPTIONS - VIEW OPTIONS\")
+			push_text(\"\")
+			push_text(\"QUIT - QUIT THE GAME\")
+			push_text(\"\")
+		_: ## Command not found.
+			push_text(\"[color=%s]THAT COMMAND DOESN'T EXIST. TRY \\\"HELP\\\"\" % [Color(1.0, 0.263, 0.166, 1.0).to_html()])
+
+func push_text(string:String):
+	var new = RichTextLabel.new()
+	
+	new.bbcode_enabled = true
+	new.fit_content = true
+	
+	new.custom_minimum_size.y = 17
+	
+	new.text = string
+	new.text = new.text.replace(\" \", \"[color=#00000000]|[/color]\")
+	
+	add_child(new)
+
+## -- Key Input -- ## 
+
+## Keys to be parsed seperately from the other keys.
+var power_keys := [
+	&\"Escape\",
+	&\"QuoteLeft\",
+	&\"Tab\",
+	&\"Shift\",
+	&\"CapsLock\",
+	&\"Ctrl\",
+	&\"Option\",
+	&\"Command\",
+	&\"Backspace\",
+	&\"Enter\",
+	&\"Shift\",
+	&\"Space\"
+]
+
+## Keys whose name aren't just their response from the function.
+var special_keys := {
+	\"BackSlash\": \"\\\\\",
+	\"Equal\": \"=\",
+	\"Minus\": \"-\",
+	\"BracketLeft\": \"[\",
+	\"BracketRight\": \"]\",
+	\"Semicolon\": \";\",
+	\"Apostrophe\": \"'\",
+	\"Slash\": \"/\",
+	\"Period\": \".\",
+	\"Comma\": \",\"
+}
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed(): # Bus all key presses into key_pressed
+		var key = OS.get_keycode_string(event.keycode)
+		
+		if special_keys.has(key): key = special_keys[key]
+		
+		_on_key_pressed(key, event.echo, power_keys.has(key))
+"
+
+[node name="Main" type="Node" unique_id=2097801009]
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1598535760]
+
+[node name="UI" type="Control" parent="UILayer" unique_id=1312368928]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wfyh")
+
+[node name="MenuBackdrop" type="ColorRect" parent="UILayer/UI" unique_id=1985840723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MenuBackdrop" unique_id=745645119]
+color = Color(0.13430001, 0.143225, 0.17, 0.7254902)
+polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
+
+[node name="Circle" type="Polygon2D" parent="UILayer/UI/MenuBackdrop" unique_id=295099895]
+texture_repeat = 2
+position = Vector2(903, 324)
+color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+polygon = PackedVector2Array(180, 0, 178.58064, 22.559982, 174.34497, 44.764183, 167.35977, 66.26242, 157.7352, 86.71567, 145.62306, 105.801346, 131.21436, 123.21848, 114.73632, 138.69238, 96.448814, 151.97903, 76.640274, 162.86887, 55.623055, 171.19017, 33.72864, 176.8117, 11.30229, 179.6448, -11.302284, 179.6448, -33.728638, 176.8117, -55.623066, 171.19017, -76.64029, 162.86887, -96.448814, 151.97903, -114.73632, 138.69238, -131.21436, 123.218475, -145.62308, 105.80133, -157.7352, 86.715675, -167.35977, 66.26243, -174.34497, 44.764183, -178.58064, 22.559977, -180, -1.57361e-05, -178.58064, -22.559963, -174.34497, -44.76417, -167.35977, -66.26242, -157.7352, -86.71567, -145.62305, -105.80137, -131.21436, -123.218475, -114.73629, -138.6924, -96.44886, -151.979, -76.6403, -162.86887, -55.623077, -171.19017, -33.728645, -176.8117, -11.302297, -179.6448, 11.3023, -179.6448, 33.728653, -176.8117, 55.62308, -171.19017, 76.640305, -162.86887, 96.44879, -151.97905, 114.7363, -138.6924, 131.21434, -123.21849, 145.62305, -105.80135, 157.7352, -86.71567, 167.35977, -66.26242, 174.34497, -44.764168, 178.58064, -22.559961)
+script = SubResource("GDScript_o5qli")
+outer_vertices = 50
+outer_radius = 180.0
+
+[node name="MainMenu" type="MarginContainer" parent="UILayer/UI" unique_id=1157474728]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+theme = SubResource("Theme_jyhfs")
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu" unique_id=1286829115]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Title" type="Label" parent="UILayer/UI/MainMenu/VBoxContainer" unique_id=1053968331]
+layout_mode = 2
+theme_override_font_sizes/font_size = 79
+text = "[GAME NAME]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/VBoxContainer" unique_id=391984751]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 23
+
+[node name="Start" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=1047255247]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+theme = SubResource("Theme_0wfyh")
+theme_override_font_sizes/font_size = 33
+text = "START"
+script = ExtResource("1_o5qli")
+
+[node name="Settings" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=1464845893]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "SETTINGS"
+script = ExtResource("1_o5qli")
+
+[node name="Credits" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=174548514]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "CREDITS"
+script = ExtResource("1_o5qli")
+
+[node name="Settings" type="HBoxContainer" parent="UILayer/UI" unique_id=436066926]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UILayer/UI/Settings" unique_id=1781843264]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Settings" unique_id=2085169770]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Settings/MarginContainer" unique_id=664928527]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=859705681]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_sugp2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=809515202]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer" unique_id=567072646]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=384736879]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1357506537]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1449022835]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+script = ExtResource("3_sugp2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=74957179]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1798174764]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=520901535]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1510335834]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1375289710]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1624463146]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+
+[node name="Control" type="HSeparator" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1942979544]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_jyhfs")
+
+[node name="Label2" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1833306572]
+layout_mode = 2
+text = "Video"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=284015501]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=17625826]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VSync"
+
+[node name="Button" type="Button" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=678935027]
+custom_minimum_size = Vector2(175, 35)
+layout_mode = 2
+toggle_mode = true
+text = "Enabled"
+script = SubResource("GDScript_tbgi4")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1092917508]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1605973238]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Window Mode"
+
+[node name="Button" type="OptionButton" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=307813271]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+alignment = 1
+script = SubResource("GDScript_sugp2")
+
+[node name="Button" type="Button" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=1719356002]
+custom_minimum_size = Vector2(300, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_jyhfs")
+theme_override_font_sizes/font_size = 28
+text = "RETURN"
+
+[node name="Credits" type="HBoxContainer" parent="UILayer/UI" unique_id=526495698]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_jyhfs")
+
+[node name="Control" type="Control" parent="UILayer/UI/Credits" unique_id=1082398860]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Credits" unique_id=782163251]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBox" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer" unique_id=1967300980]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1711591947]
+layout_mode = 2
+theme_type_variation = &"LLabel"
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=459484964]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=829324199]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1189485513]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Art" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1393050274]
+layout_mode = 2
+text = "Art:"
+horizontal_alignment = 1
+
+[node name="Kyveri" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1928292784]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "https://kyveri.carrd.co/"
+text = "Kyveri"
+uri = "https://kyveri.carrd.co/"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1309470934]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Music" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=1188704147]
+layout_mode = 2
+text = "Music:"
+horizontal_alignment = 1
+
+[node name="Myokami" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=393963773]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "https://www.myokami.it/"
+text = "Myokami"
+uri = "https://www.myokami.it/"
+
+[node name="Control2" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1110079167]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1909346346]
+layout_mode = 2
+text = "Sound Effects:"
+horizontal_alignment = 1
+
+[node name="Jewelz" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1697953674]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "https://jewelzaudioworks.carrd.co/"
+text = "Jewelz AudioWorks"
+uri = "https://jewelzaudioworks.carrd.co/"
+
+[node name="Control3" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=548467017]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Programming" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1039555680]
+layout_mode = 2
+text = "Programming:"
+horizontal_alignment = 1
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1818714840]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+alignment = 1
+
+[node name="Baton" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=1504559054]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "https://baton-0.itch.io/"
+text = "Baton"
+uri = "https://baton-0.itch.io/"
+
+[node name="Label" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=756247622]
+layout_mode = 2
+text = " and "
+
+[node name="Coffee" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=666543186]
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "https://programmeroncoffee.github.io/"
+text = "ProgrammerOnCoffee"
+uri = "https://programmeroncoffee.github.io/"
+
+[node name="Control4" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=2101443557]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=996919676]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Licenses" type="Button" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1992042749]
+layout_mode = 2
+theme_type_variation = &"SButton"
+theme_override_font_sizes/font_size = 24
+text = "View Third-party Licenses"
+flat = true
+
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=17597204]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1172803282]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Licenses" type="HBoxContainer" parent="UILayer/UI" unique_id=1025083917]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -648.0
+offset_right = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_tbgi4")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Licenses" unique_id=1460534805]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="QuickLicenses" parent="UILayer/UI/Licenses/MarginContainer" unique_id=215431176 instance=ExtResource("4_jyhfs")]
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+components_preload = true
+components_unload_when_hidden = false
+
+[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="1" unique_id=129493548]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="3" unique_id=85258963]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="Back" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="4" unique_id=1268849338]
+custom_minimum_size = Vector2(384, 0)
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+
+[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="1" unique_id=917736182]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="3" unique_id=897310886]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="Button" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="4" unique_id=1338276449]
+custom_minimum_size = Vector2(384, 0)
+size_flags_horizontal = 4
+
+[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="1" unique_id=111732520]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="3" unique_id=158108275]
+custom_minimum_size = Vector2(0, 25)
+
+[node name="Button" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="4" unique_id=409761984]
+custom_minimum_size = Vector2(384, 0)
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="UILayer/UI/Licenses" unique_id=1780471704]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="UILayer/UI" unique_id=321150588]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_o6xl0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI" unique_id=1304139559]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UILayer" unique_id=1462881622]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/ScrollContainer" unique_id=1968686828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource("GDScript_sgp6g")
+
+[connection signal="pressed" from="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]
+[connection signal="pressed" from="UILayer/UI/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Settings"), NodePath("MainMenu")]]
+[connection signal="pressed" from="UILayer/UI/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("Licenses")]]
+[connection signal="pressed" from="UILayer/UI/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("MainMenu")]]
+[connection signal="close_requested" from="UILayer/UI/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("Licenses"), NodePath("Credits")]]
+
+[editable path="UILayer/UI/Licenses/MarginContainer/QuickLicenses"]

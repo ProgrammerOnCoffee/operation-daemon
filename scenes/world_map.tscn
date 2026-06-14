@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://2lu6bt560oec"]
+
+[ext_resource type="Script" uid="uid://dq2vsl1va7m58" path="res://scripts/map_generation/map_generator.gd" id="1_oru6e"]
+[ext_resource type="Script" uid="uid://cet8h24wxofts" path="res://scripts/map_generation/world_map.gd" id="1_u82pb"]
+[ext_resource type="Script" uid="uid://bh8vaosl5kcit" path="res://scripts/map_generation/map_config.gd" id="2_qqero"]
+[ext_resource type="PackedScene" uid="uid://blunwr4jnbk5u" path="res://scenes/event_button.tscn" id="3_u82pb"]
+
+[sub_resource type="Resource" id="Resource_u82pb"]
+script = ExtResource("2_qqero")
+metadata/_custom_type_script = "uid://bh8vaosl5kcit"
+
+[node name="WorldMap" type="Control" unique_id=1068333612]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u82pb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2132662501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0.21960784, 0.32941177, 1)
+
+[node name="MapGenerator" type="Control" parent="." unique_id=544309554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oru6e")
+config = SubResource("Resource_u82pb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MapGenerator" unique_id=1974676007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="HBoxContainer" parent="MapGenerator/ScrollContainer" unique_id=380925254]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PanelContainer" type="Panel" parent="MapGenerator/ScrollContainer/MarginContainer" unique_id=2056174076]
+custom_minimum_size = Vector2(952, 0)
+layout_mode = 2
+
+[node name="EventButton" parent="MapGenerator/ScrollContainer/MarginContainer/PanelContainer" unique_id=1789719710 instance=ExtResource("3_u82pb")]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(16, 16)

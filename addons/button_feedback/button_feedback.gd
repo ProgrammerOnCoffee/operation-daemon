@@ -90,7 +90,7 @@ func setup_recursive(ancestor: Node) -> void:
 		var new_queue: Array[Node] = []
 		for node in queue:
 			var button := node as BaseButton
-			if button:
+			if button and not button.has_meta("feedback_exempt"):
 				setup_button(button)
 			new_queue.append_array(node.get_children())
 		queue = new_queue
