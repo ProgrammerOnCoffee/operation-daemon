@@ -245,13 +245,41 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1422690027]
 layout_mode = 2
 
+[node name="Stats" type="GridContainer" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=883649842]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=204700277]
+layout_mode = 2
+text = "Damage Dealt:"
+
+[node name="Dealt" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=370481916]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label2" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=181933235]
+layout_mode = 2
+text = "Damage Taken:"
+
+[node name="Taken" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=784177902]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label3" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=1914289026]
+layout_mode = 2
+text = "Time Fought:"
+
+[node name="Time" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/Stats" unique_id=1639072064]
+layout_mode = 2
+size_flags_horizontal = 10
+
 [node name="Label" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1347924159]
 layout_mode = 2
-text = "Stats/Rewards:"
+text = "Rewards:"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=826744279]
-custom_minimum_size = Vector2(0, 256)
+custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/ScrollContainer" unique_id=9172168]

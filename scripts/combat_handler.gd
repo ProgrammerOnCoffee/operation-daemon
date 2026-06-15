@@ -12,6 +12,13 @@ signal entity_selected(entity: Entity)
 ## The [Array] of this fight's enemies.
 @export var enemies: Array[Enemy]
 
+## The time that this fight started.
+var start_time := Time.get_ticks_msec()
+## The damage the player has dealt during this fight.
+var damage_dealt: int
+## The damage the player has taken during this fight.
+var damage_taken: int
+
 @onready var cam := get_viewport().get_camera_3d()
 ## The initial transform of the camera when the fight was loaded.
 @onready var _cam_initial_transform := cam.global_transform
@@ -93,7 +100,9 @@ func end_fight() -> void:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
 	else:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
-	# TODO show stats etc.
+		$EndScreen/MarginContainer/VBoxContainer/Label.hide()
+		$EndScreen/MarginContainer/VBoxContainer/ScrollContainer.hide()
+		$EndScreen.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	
 	# Blur background
 	$BackBufferCopy.show()
@@ -102,6 +111,20 @@ func end_fight() -> void:
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(blur: float) -> void:
 			$Blur.material.set_shader_parameter(&"blur", blur), 0.0, 2.0, 0.8)
 	TransitionManager.fade($EndScreen, true)
+	
+	var stats_tween := create_tween()
+	stats_tween.tween_interval(TransitionManager.duration)
+	for l: Label in $EndScreen/MarginContainer/VBoxContainer/Stats.get_children():
+		if l.text:
+			stats_tween.tween_property(l, ^":text", l.text, 0.3)
+			l.text = ""
+		else:
+			@warning_ignore("integer_division")
+			stats_tween.tween_method(_set_stat_text.bind(l), 0,
+					damage_dealt if l.name == "Dealt"
+					else damage_taken if l.name == "Taken"
+					else (Time.get_ticks_msec() - start_time) / 1000, 0.4)
+		stats_tween.tween_interval(0.2)
 
 
 ## Prompts the player to select an [Enemy] to attack.
@@ -152,3 +175,11 @@ func create_floaty_label(pos: Vector2, text: String) -> Label:
 	label.show()
 	add_child(label, false, INTERNAL_MODE_FRONT)
 	return label
+
+
+## Sets the text of a label in the stats list to [param x], formatting it according to the type of stat.
+func _set_stat_text(x: int, l: Label) -> void:
+	@warning_ignore("integer_division")
+	l.text = (
+			(("%dm " % (x / 60)) if x >= 60 else "") + ("%ds" % (x % 60))
+	) if l.name == "Time" else String.num_int64(x)
