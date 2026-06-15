@@ -17,7 +17,6 @@ var current_row = 0
 func _ready() -> void:
 	map_generator.generate_map()
 	
-	
 	update_visual()
 
 func update_visual() -> void:

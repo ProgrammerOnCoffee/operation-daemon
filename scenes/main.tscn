@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -251,13 +252,65 @@ Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
 HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
 
+[sub_resource type="Animation" id="Animation_tipki"]
+resource_name = "Laboratory<>WorldMap"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Laboratory/HBoxContainer/ScrollContainer:scroll_vertical")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 648]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/WorldMap:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/WorldMap:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 648), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/WorldMap/MapGenerator/ScrollContainer:scroll_vertical")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 600]
+}
+
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Credits:position")
+tracks/0/path = NodePath("UI/MainMenu/Credits:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -269,7 +322,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Licenses:position")
+tracks/1/path = NodePath("UI/MainMenu/Licenses:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -281,7 +334,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -293,7 +346,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("UI/Licenses:visible")
+tracks/3/path = NodePath("UI/MainMenu/Licenses:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -305,7 +358,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Credits:visible")
+tracks/4/path = NodePath("UI/MainMenu/Credits:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -321,7 +374,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Credits:position")
+tracks/0/path = NodePath("UI/MainMenu/Credits:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -333,7 +386,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -345,7 +398,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -357,7 +410,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -369,7 +422,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Credits:visible")
+tracks/4/path = NodePath("UI/MainMenu/Credits:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -385,7 +438,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Settings:position")
+tracks/0/path = NodePath("UI/MainMenu/Settings:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -397,7 +450,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -409,7 +462,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -421,7 +474,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -433,7 +486,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Settings:visible")
+tracks/4/path = NodePath("UI/MainMenu/Settings:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -448,7 +501,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Settings:position")
+tracks/0/path = NodePath("UI/MainMenu/Settings:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -460,7 +513,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu:position")
+tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -472,7 +525,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MenuBackdrop/Circle:position")
+tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -484,7 +537,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu:visible")
+tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -496,7 +549,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("UI/Settings:visible")
+tracks/4/path = NodePath("UI/MainMenu/Settings:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -508,7 +561,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("UI/Credits:visible")
+tracks/5/path = NodePath("UI/MainMenu/Credits:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -520,7 +573,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("UI/Licenses:visible")
+tracks/6/path = NodePath("UI/MainMenu/Licenses:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -529,9 +582,58 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Laboratory/HBoxContainer/ScrollContainer:scroll_vertical")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/WorldMap:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UI/WorldMap:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 648)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UI/WorldMap/MapGenerator/ScrollContainer:scroll_vertical")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
 _data = {
+&"Laboratory<>WorldMap": SubResource("Animation_tipki"),
 &"Licenses<>Credits": SubResource("Animation_jyhfs"),
 &"MainMenu<>Credits": SubResource("Animation_o6xl0"),
 &"MainMenu<>Settings": SubResource("Animation_tbgi4"),
@@ -708,7 +810,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wfyh")
 
-[node name="MenuBackdrop" type="ColorRect" parent="UILayer/UI" unique_id=1985840723]
+[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 instance=ExtResource("5_tefeu")]
+layout_mode = 1
+
+[node name="MainMenu" type="Control" parent="UILayer/UI" unique_id=755086545]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackdrop" type="ColorRect" parent="UILayer/UI/MainMenu" unique_id=1985840723]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -717,12 +831,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 
-[node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MenuBackdrop" unique_id=745645119]
+[node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=745645119]
+use_parent_material = true
 color = Color(0.13430001, 0.143225, 0.17, 0.7254902)
 polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
 
-[node name="Circle" type="Polygon2D" parent="UILayer/UI/MenuBackdrop" unique_id=295099895]
+[node name="Circle" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=295099895]
 texture_repeat = 2
+use_parent_material = true
 position = Vector2(903, 324)
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 polygon = PackedVector2Array(180, 0, 178.58064, 22.559982, 174.34497, 44.764183, 167.35977, 66.26242, 157.7352, 86.71567, 145.62306, 105.801346, 131.21436, 123.21848, 114.73632, 138.69238, 96.448814, 151.97903, 76.640274, 162.86887, 55.623055, 171.19017, 33.72864, 176.8117, 11.30229, 179.6448, -11.302284, 179.6448, -33.728638, 176.8117, -55.623066, 171.19017, -76.64029, 162.86887, -96.448814, 151.97903, -114.73632, 138.69238, -131.21436, 123.218475, -145.62308, 105.80133, -157.7352, 86.715675, -167.35977, 66.26243, -174.34497, 44.764183, -178.58064, 22.559977, -180, -1.57361e-05, -178.58064, -22.559963, -174.34497, -44.76417, -167.35977, -66.26242, -157.7352, -86.71567, -145.62305, -105.80137, -131.21436, -123.218475, -114.73629, -138.6924, -96.44886, -151.979, -76.6403, -162.86887, -55.623077, -171.19017, -33.728645, -176.8117, -11.302297, -179.6448, 11.3023, -179.6448, 33.728653, -176.8117, 55.62308, -171.19017, 76.640305, -162.86887, 96.44879, -151.97905, 114.7363, -138.6924, 131.21434, -123.21849, 145.62305, -105.80135, 157.7352, -86.71567, 167.35977, -66.26242, 174.34497, -44.764168, 178.58064, -22.559961)
@@ -730,7 +846,8 @@ script = SubResource("GDScript_o5qli")
 outer_vertices = 50
 outer_radius = 180.0
 
-[node name="MainMenu" type="MarginContainer" parent="UILayer/UI" unique_id=1157474728]
+[node name="MainMenu" type="MarginContainer" parent="UILayer/UI/MainMenu" unique_id=1157474728]
+use_parent_material = true
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -741,23 +858,27 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu" unique_id=1286829115]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/MainMenu" unique_id=1286829115]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 70
 alignment = 1
 
-[node name="Title" type="Label" parent="UILayer/UI/MainMenu/VBoxContainer" unique_id=1053968331]
+[node name="Title" type="Label" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1053968331]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 79
 text = "[GAME NAME]"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/VBoxContainer" unique_id=391984751]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=391984751]
+use_parent_material = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 23
 
-[node name="Start" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=1047255247]
+[node name="Start" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=1047255247]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme = SubResource("Theme_0wfyh")
@@ -765,36 +886,39 @@ theme_override_font_sizes/font_size = 33
 text = "START"
 script = ExtResource("1_o5qli")
 
-[node name="Settings" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=1464845893]
+[node name="Settings" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=1464845893]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "SETTINGS"
 script = ExtResource("1_o5qli")
 
-[node name="Credits" type="Button" parent="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer" unique_id=174548514]
+[node name="Credits" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=174548514]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "CREDITS"
 script = ExtResource("1_o5qli")
 
-[node name="Settings" type="HBoxContainer" parent="UILayer/UI" unique_id=436066926]
+[node name="Settings" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=436066926]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
-offset_right = 576.0
+offset_right = 1020.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="UILayer/UI/Settings" unique_id=1781843264]
+[node name="Control" type="Control" parent="UILayer/UI/MainMenu/Settings" unique_id=1781843264]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Settings" unique_id=2085169770]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Settings" unique_id=2085169770]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
@@ -802,48 +926,48 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Settings/MarginContainer" unique_id=664928527]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer" unique_id=664928527]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=859705681]
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=859705681]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_sugp2")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=809515202]
+[node name="ScrollContainer" type="ScrollContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=809515202]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer" unique_id=567072646]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer" unique_id=567072646]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=384736879]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=384736879]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1357506537]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1357506537]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Master"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1449022835]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1449022835]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -852,17 +976,17 @@ step = 0.01
 value = 1.0
 script = ExtResource("3_sugp2")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=74957179]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=74957179]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1798174764]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1798174764]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=520901535]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=520901535]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -870,17 +994,17 @@ max_value = 1.7
 step = 0.01
 value = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1510335834]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1510335834]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1375289710]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1375289710]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1624463146]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1624463146]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -888,47 +1012,47 @@ max_value = 1.7
 step = 0.01
 value = 1.0
 
-[node name="Control" type="HSeparator" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1942979544]
+[node name="Control" type="HSeparator" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1942979544]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_jyhfs")
 
-[node name="Label2" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1833306572]
+[node name="Label2" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1833306572]
 layout_mode = 2
 text = "Video"
 horizontal_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=284015501]
+[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=284015501]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=17625826]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=17625826]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "VSync"
 
-[node name="Button" type="Button" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=678935027]
+[node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=678935027]
 custom_minimum_size = Vector2(175, 35)
 layout_mode = 2
 toggle_mode = true
 text = "Enabled"
 script = SubResource("GDScript_tbgi4")
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1092917508]
+[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1092917508]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1605973238]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1605973238]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Window Mode"
 
-[node name="Button" type="OptionButton" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=307813271]
+[node name="Button" type="OptionButton" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=307813271]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 alignment = 1
 script = SubResource("GDScript_sugp2")
 
-[node name="Button" type="Button" parent="UILayer/UI/Settings/MarginContainer/VBoxContainer" unique_id=1719356002]
+[node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=1719356002]
 custom_minimum_size = Vector2(300, 65)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -936,23 +1060,24 @@ theme = SubResource("Theme_jyhfs")
 theme_override_font_sizes/font_size = 28
 text = "RETURN"
 
-[node name="Credits" type="HBoxContainer" parent="UILayer/UI" unique_id=526495698]
+[node name="Credits" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=526495698]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
-offset_right = 576.0
+offset_right = 1132.0
+offset_bottom = 572.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
 
-[node name="Control" type="Control" parent="UILayer/UI/Credits" unique_id=1082398860]
+[node name="Control" type="Control" parent="UILayer/UI/MainMenu/Credits" unique_id=1082398860]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Credits" unique_id=782163251]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Credits" unique_id=782163251]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
@@ -960,140 +1085,142 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBox" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer" unique_id=1967300980]
+[node name="VBox" type="VBoxContainer" parent="UILayer/UI/MainMenu/Credits/MarginContainer" unique_id=1967300980]
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1711591947]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1711591947]
 layout_mode = 2
 theme_type_variation = &"LLabel"
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=459484964]
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=459484964]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=829324199]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=829324199]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1189485513]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1189485513]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Art" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1393050274]
+[node name="Art" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1393050274]
 layout_mode = 2
 text = "Art:"
 horizontal_alignment = 1
 
-[node name="Kyveri" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1928292784]
+[node name="Kyveri" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1928292784]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://kyveri.carrd.co/"
 text = "Kyveri"
 uri = "https://kyveri.carrd.co/"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1309470934]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer" unique_id=1309470934]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Music" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=1188704147]
+[node name="Music" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=1188704147]
 layout_mode = 2
 text = "Music:"
 horizontal_alignment = 1
 
-[node name="Myokami" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=393963773]
+[node name="Myokami" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=393963773]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://www.myokami.it/"
 text = "Myokami"
 uri = "https://www.myokami.it/"
 
-[node name="Control2" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1110079167]
+[node name="Control2" type="Control" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1110079167]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="SFX" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1909346346]
+[node name="SFX" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1909346346]
 layout_mode = 2
 text = "Sound Effects:"
 horizontal_alignment = 1
 
-[node name="Jewelz" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1697953674]
+[node name="Jewelz" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1697953674]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://jewelzaudioworks.carrd.co/"
 text = "Jewelz AudioWorks"
 uri = "https://jewelzaudioworks.carrd.co/"
 
-[node name="Control3" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=548467017]
+[node name="Control3" type="Control" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=548467017]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Programming" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1039555680]
+[node name="Programming" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1039555680]
 layout_mode = 2
 text = "Programming:"
 horizontal_alignment = 1
 
-[node name="HFlowContainer" type="HFlowContainer" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1818714840]
+[node name="HFlowContainer" type="HFlowContainer" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1818714840]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 alignment = 1
 
-[node name="Baton" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=1504559054]
+[node name="Baton" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=1504559054]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://baton-0.itch.io/"
 text = "Baton"
 uri = "https://baton-0.itch.io/"
 
-[node name="Label" type="Label" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=756247622]
+[node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=756247622]
 layout_mode = 2
 text = " and "
 
-[node name="Coffee" type="LinkButton" parent="UILayer/UI/Credits/MarginContainer/VBox/HFlowContainer" unique_id=666543186]
+[node name="Coffee" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=666543186]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://programmeroncoffee.github.io/"
 text = "ProgrammerOnCoffee"
 uri = "https://programmeroncoffee.github.io/"
 
-[node name="Control4" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=2101443557]
+[node name="Control4" type="Control" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=2101443557]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=996919676]
+[node name="Control" type="Control" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=996919676]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Licenses" type="Button" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1992042749]
+[node name="Licenses" type="Button" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1992042749]
 layout_mode = 2
 theme_type_variation = &"SButton"
 theme_override_font_sizes/font_size = 24
 text = "View Third-party Licenses"
 flat = true
 
-[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=17597204]
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=17597204]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Back" type="Button" parent="UILayer/UI/Credits/MarginContainer/VBox" unique_id=1172803282]
+[node name="Back" type="Button" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1172803282]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[node name="Licenses" type="HBoxContainer" parent="UILayer/UI" unique_id=1025083917]
+[node name="Licenses" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=1025083917]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 620.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tbgi4")
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/Licenses" unique_id=1460534805]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Licenses" unique_id=1460534805]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
@@ -1101,55 +1228,55 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="QuickLicenses" parent="UILayer/UI/Licenses/MarginContainer" unique_id=215431176 instance=ExtResource("4_jyhfs")]
+[node name="QuickLicenses" parent="UILayer/UI/MainMenu/Licenses/MarginContainer" unique_id=215431176 instance=ExtResource("4_jyhfs")]
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 components_preload = true
 components_unload_when_hidden = false
 
-[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="1" unique_id=129493548]
+[node name="HSeparator" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="1" unique_id=129493548]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="3" unique_id=85258963]
+[node name="HSeparator2" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="3" unique_id=85258963]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="Back" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="4" unique_id=1268849338]
+[node name="Back" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="4" unique_id=1268849338]
 custom_minimum_size = Vector2(384, 0)
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 28
 
-[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="1" unique_id=917736182]
+[node name="HSeparator" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="1" unique_id=917736182]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="3" unique_id=897310886]
+[node name="HSeparator2" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="3" unique_id=897310886]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="Button" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="4" unique_id=1338276449]
+[node name="Button" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/Component" parent_id_path=PackedInt32Array(215431176, 882997596) index="4" unique_id=1338276449]
 custom_minimum_size = Vector2(384, 0)
 size_flags_horizontal = 4
 
-[node name="HSeparator" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="1" unique_id=111732520]
+[node name="HSeparator" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="1" unique_id=111732520]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="HSeparator2" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="3" unique_id=158108275]
+[node name="HSeparator2" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="3" unique_id=158108275]
 custom_minimum_size = Vector2(0, 25)
 
-[node name="Button" parent="UILayer/UI/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="4" unique_id=409761984]
+[node name="Button" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/License" parent_id_path=PackedInt32Array(215431176, 1189425797) index="4" unique_id=409761984]
 custom_minimum_size = Vector2(384, 0)
 size_flags_horizontal = 4
 
-[node name="Control" type="Control" parent="UILayer/UI/Licenses" unique_id=1780471704]
+[node name="Control" type="Control" parent="UILayer/UI/MainMenu/Licenses" unique_id=1780471704]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 instance=ExtResource("5_tbgi4")]
+layout_mode = 1
+offset_top = 324.0
+offset_bottom = 972.001
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="UILayer/UI" unique_id=321150588]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
-
-[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 instance=ExtResource("5_tbgi4")]
-layout_mode = 1
-offset_top = -324.0
-offset_bottom = 324.0
 
 [node name="TerminalTest" type="ScrollContainer" parent="UILayer" unique_id=1462881622]
 visible = false
@@ -1165,11 +1292,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("GDScript_sgp6g")
 
-[connection signal="pressed" from="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]
-[connection signal="pressed" from="UILayer/UI/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Settings"), NodePath("MainMenu")]]
-[connection signal="pressed" from="UILayer/UI/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("Licenses")]]
-[connection signal="pressed" from="UILayer/UI/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("MainMenu")]]
-[connection signal="close_requested" from="UILayer/UI/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("Licenses"), NodePath("Credits")]]
+[connection signal="pressed" from="UILayer/UI/Laboratory/HBoxContainer/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("WorldMap")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Settings"), NodePath("MainMenu")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("Licenses")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("MainMenu")]]
+[connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("Licenses"), NodePath("Credits")]]
 
-[editable path="UILayer/UI/Licenses/MarginContainer/QuickLicenses"]
+[editable path="UILayer/UI/Laboratory"]
+[editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
+[editable path="UILayer/UI/WorldMap"]
