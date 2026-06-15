@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vq5talckmiv3"
-path="res://.godot/imported/Event Icon.png-d41406f6494dbd719eee30f402447a94.ctex"
+uid="uid://yg8thhqe5hj1"
+path="res://.godot/imported/map_line.svg-d64524fbc2f6ed36b8db52c7b2a4189f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Ui Elements/Event Icon.png"
-dest_files=["res://.godot/imported/Event Icon.png-d41406f6494dbd719eee30f402447a94.ctex"]
+source_file="res://assets/UI Elements/map_line.svg"
+dest_files=["res://.godot/imported/map_line.svg-d64524fbc2f6ed36b8db52c7b2a4189f.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

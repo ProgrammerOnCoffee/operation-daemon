@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://crxiha2603h48"]
+
+[ext_resource type="Script" uid="uid://dyfp1ubplpbjc" path="res://scripts/daemon_overview.gd" id="1_qrd0n"]
+
+[sub_resource type="Theme" id="Theme_qrd0n"]
+Label/font_sizes/font_size = 20
+
+[node name="DaemonOverview" type="VBoxContainer" unique_id=1406311835]
+offset_right = 361.0
+offset_bottom = 225.0
+size_flags_vertical = 3
+script = ExtResource("1_qrd0n")
+
+[node name="Title" type="Label" parent="." unique_id=714180459]
+layout_mode = 2
+text = "D0001"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1355533124]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=960036552]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=576292972]
+layout_mode = 2
+tooltip_text = "Upon a Attack with this Daemon, the following modifiers will be applied to Modules that affect the target."
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+text = "Target Effect Modifiers [?]"
+
+[node name="Target" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1284945135]
+layout_mode = 2
+theme = SubResource("Theme_qrd0n")
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1893055961]
+layout_mode = 2
+tooltip_text = "Upon a Attack with this Daemon, the following modifiers will be applied to Modules that affect the user."
+mouse_filter = 1
+theme_override_font_sizes/font_size = 20
+text = "Self Effect Modifiers [?]"
+
+[node name="Self" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=122750076]
+layout_mode = 2
+theme = SubResource("Theme_qrd0n")

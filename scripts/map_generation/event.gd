@@ -1,9 +1,21 @@
 class_name Event extends Resource
 ## A data-representation of the nodes on the world map.
 
-enum TYPE {NONE, COMBAT, REST, ANALYSIS, DISEASE, BOSS}
+enum TYPE {NONE, COMBAT, REST, ANALYSIS, DAEMON, BOSS}
 # The type of event this is.
 var type := TYPE.NONE
+
+# The scenes for each type of room.
+func get_new_scene() -> Node: 
+	if SCENES.has(type): if SCENES[type] is PackedScene:
+		return SCENES[type].instantiate()
+	return null
+const SCENES:Dictionary[TYPE, PackedScene] = {
+	TYPE.COMBAT: null,
+	TYPE.REST: preload("res://scenes/event_scenes/rest_event.tscn"),
+	TYPE.ANALYSIS: preload("res://scenes/event_scenes/analysis_scene.tscn"),
+	TYPE.DAEMON: preload("res://scenes/event_scenes/daemon_scene.tscn")
+}
 
 # The position of the event both on the map and on the grid.
 var position:Vector2

@@ -6,15 +6,20 @@
 # let you get the single-value ones like normal variables,
 # but none can be set.
 
-## The identifier for the effect. Used to apply effects.
-var modification_type :String: get = _get_modification_type
-@abstract func _get_modification_type() -> String
+var effect_type :Effect: get = _get_effect_type
+## The type of the effect. Used to apply effects.
+@abstract func _get_effect_type() -> Effect
+func compare_effect(to:Effect):
+	return effect_type.effect_name == to.effect_name and effect_type.description == to.description
 
+var percent:float
 ## The percentage change to apply to the effect's base, as a float. 0.9 = -10%.
-var percent :float: get = _get_percent
-@abstract func _get_percent() -> float
+@abstract func _get_new_percent() -> float
 
 ## Whether this modifier is applied to the attacker or attackee. 
 ## Basically, whether it's positive or negative to have applied to yourself.
 var target_type :Module.TARGET: get = _get_target_type
 @abstract func _get_target_type() -> Module.TARGET
+
+func _init() -> void:
+	percent = _get_new_percent()

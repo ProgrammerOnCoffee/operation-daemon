@@ -107,6 +107,12 @@ func take_damage(amount: int) -> void:
 	if amount <= 0:
 		return
 	
+	# Add amount to damage dealt/taken stats
+	if self is Player:
+		combat_handler.damage_taken += mini(amount, health)
+	else:
+		combat_handler.damage_dealt += mini(amount, health)
+	
 	health -= amount
 	combat_handler.create_floaty_label(
 			combat_handler.cam.unproject_position(

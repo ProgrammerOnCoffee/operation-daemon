@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d1mkyadqj4304"]
+
+[sub_resource type="GDScript" id="GDScript_lugfg"]
+script/source = "extends Control
+
+
+
+func _ready() -> void:
+	await get_tree().create_timer(1.0).timeout
+	
+	while true:
+		await TransitionManager.transition_screen($From, $To)
+		await get_tree().create_timer(2.0).timeout
+		await TransitionManager.transition_screen($To, $From)
+		await get_tree().create_timer(2.0).timeout
+"
+
+[node name="Control" type="Control" unique_id=984946319]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_lugfg")
+
+[node name="To" type="ColorRect" parent="." unique_id=1602318327]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1375, 0.53625, 0.55, 1)
+
+[node name="Label" type="Label" parent="To" unique_id=2137918207]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -426.5
+offset_top = -91.0
+offset_right = 426.5
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 133
+text = "Second
+Scene"
+horizontal_alignment = 1
+
+[node name="From" type="ColorRect" parent="." unique_id=2102070279]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31860003, 0.097200006, 0.54, 1)
+
+[node name="Label" type="Label" parent="From" unique_id=815098468]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 133
+text = "First
+Scene"
+horizontal_alignment = 1

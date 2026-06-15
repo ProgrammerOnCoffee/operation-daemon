@@ -7,16 +7,12 @@
 # but none can be set.
 
 var effect_name :String: get = _get_effect_name
-## The name of the effect.
+## The name of the effect. 
 @abstract func _get_effect_name() -> String
 
 var description :String: get = _get_description
 ## The description of the effect.
 @abstract func _get_description() -> String
-
-var modification_type :String: get = _get_modification_type
-## The identifier for the effect. Used to apply effects.
-@abstract func _get_modification_type() -> String
 
 var target_type :Module.TARGET: get = _get_target_type
 ## Whether this effect is applied to the attacker or attackee

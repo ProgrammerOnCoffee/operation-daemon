@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://mse7o10dee5k"]
+
+[ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_8lcef"]
+[ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="1_m4yx5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lcef"]
+bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp2fe"]
+bg_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+corner_detail = 1
+
+[sub_resource type="GDScript" id="GDScript_8lcef"]
+script/source = "extends Button
+
+@export var event_scene:EventScene
+
+func _pressed() -> void:
+	PlayerData.health += 30
+	print(\"!!?\")
+	event_scene.event_finished.emit()
+"
+
+[node name="RestEvent" type="PanelContainer" unique_id=2057279057]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8lcef")
+script = ExtResource("1_8lcef")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=480262955]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qp2fe")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1029574618]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1684950788]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1024201917]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "You Reached A Charging Station"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1025782522]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1950961265 node_paths=PackedStringArray("event_scene")]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_m4yx5")
+theme_override_font_sizes/font_size = 33
+text = "Rest (+30hp)"
+script = SubResource("GDScript_8lcef")
+event_scene = NodePath("../../../..")
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1026875785]
+layout_mode = 2
+size_flags_vertical = 3

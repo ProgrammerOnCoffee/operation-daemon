@@ -1,9 +1,21 @@
 extends Node
 ## Manages some global things, like the Daemon research.
 
+## -- PROGRESSION -- ##
+
+signal act_changed
+
+var act := 1:
+	set(to):
+		act = to
+		act_changed.emit()
+
 ## -- DAEMON RESEARCH -- ##
 
 signal daemon_discovered(daemon:Daemon)
+
+# The number of daemons that have ever existed, for their IDs.
+var daemon_count:int = 0
 
 ## All the daemons discovered and available for perm-buffs.
 var daemons_discovered:Array[Daemon]
@@ -45,3 +57,35 @@ func attempt_discovery() -> void:
 			
 			# Push out some kind of toast via this??
 			daemon_discovered.emit(daemon)
+
+## Returns a random newly-made daemon. Good for if we ever want modifiers to be weighted.
+func get_random_daemon(modifier_count := 4) -> Daemon:
+	
+	var modifiers:Array[Modifier]
+	
+	for i in modifier_count:
+		modifiers.append(modifier_sources.pick_random().new())
+	
+	return Daemon.new(modifiers)
+
+## Create an array of all the modifiers in existence
+@onready var modifier_sources:Array[Resource] = _get_modifier_sources()
+func _get_modifier_sources() -> Array[Resource]:
+	
+	var results:Array[Resource]
+	
+	var path := "res://scripts/modifiers/"
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir():
+				if file_name.right(3) == ".gd":
+					results.append(load(path + file_name))
+				
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	
+	return results

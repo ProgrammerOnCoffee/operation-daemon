@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yg8thhqe5hj1"
-path="res://.godot/imported/map_line.svg-c60420ab4f67307a864ec5af40b87007.ctex"
+uid="uid://clklvqfyxcrpk"
+path="res://.godot/imported/Layer 27.png-983f14d11a927b2ef74a536fc6676b9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/map_line.svg"
-dest_files=["res://.godot/imported/map_line.svg-c60420ab4f67307a864ec5af40b87007.ctex"]
+source_file="res://assets/UI Elements/Layer 27.png"
+dest_files=["res://.godot/imported/Layer 27.png-983f14d11a927b2ef74a536fc6676b9b.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
