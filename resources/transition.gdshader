@@ -8,13 +8,12 @@ uniform int bar_count: hint_range(1, MAX_BAR_COUNT) = 24;
 uniform float ratio = 1.0;
 /** The rotation of the transition effect. */
 uniform float angle;
+/** If [code]true[/code], the shader will transtition from hidden to visible. */
+uniform bool inverted;
 /** Each bar's direction of travel. */
 uniform bool[MAX_BAR_COUNT] directions;
 /** Each bar's UV cutoff where pixels will be transparent. */
 uniform float[MAX_BAR_COUNT] cutoffs;
-
-/** If [code]true[/code], the shader will transtition from hidden to visible. */
-instance uniform bool inverted;
 
 /** Rotates point [param p] by angle [param a]. */
 vec2 rotate(vec2 p, float a) {

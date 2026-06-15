@@ -76,28 +76,35 @@ func _init() -> void:
 ## Returns the transition's [signal Tween.finished] signal.
 func transition(from: Control, to: Control) -> Signal:
 	var mat := _create_material()
+	var to_mat := (mat.duplicate() as ShaderMaterial) if from else mat
 	
 	## The cutoff for each transition bar.
 	var cutoffs := mat.get_shader_parameter(&"cutoffs") as PackedFloat32Array
 	## Sets cutoff [param index] in [member cutoffs] to [param value].
 	var set_cutoff := func(value: float, index: int) -> void:
 		cutoffs[index] = value
-		mat.set_shader_parameter(&"cutoffs", cutoffs)
+		if mat != to_mat:
+			mat.set_shader_parameter(&"cutoffs", cutoffs)
+		if to_mat:
+			to_mat.set_shader_parameter(&"cutoffs", cutoffs)
 	
 	var tween := create_tween().set_ease(tween_ease).set_trans(tween_trans).set_parallel()
 	
 	if from:
 		from.material = mat
-		from.set_instance_shader_parameter(&"inverted", false)
+		set_descendants_use_parent_material(from)
 		from.show()
 		tween.finished.connect(from.hide)
 		tween.finished.connect(from.set.bind(&"material", null))
+		tween.finished.connect(set_descendants_use_parent_material.bind(from, false), CONNECT_REFERENCE_COUNTED)
 	
 	if to:
-		to.material = mat
-		to.set_instance_shader_parameter(&"inverted", true)
+		to.material = to_mat
+		to_mat.set_shader_parameter(&"inverted", true)
+		set_descendants_use_parent_material(to)
 		to.show()
 		tween.finished.connect(to.set.bind(&"material", null))
+		tween.finished.connect(set_descendants_use_parent_material.bind(to, false), CONNECT_REFERENCE_COUNTED)
 	
 	for i in bar_count:
 		tween.tween_method(set_cutoff.bind(i), -CUTOFF_EXTEND, 1.0 + CUTOFF_EXTEND, duration).set_delay(randf() * spread)
@@ -123,6 +130,8 @@ func transition_screen(from: Control, to: Control) -> Signal:
 		_last_angle = 0.0
 	_screen.color = screen_color
 	_screen.reparent((from if from else to).get_parent())
+	if from:
+		from.move_to_front()
 	_screen.move_to_front()
 	
 	var last_signal: Signal
@@ -140,6 +149,24 @@ func transition_screen(from: Control, to: Control) -> Signal:
 		to.show()
 		last_signal = fade(_screen)
 	return last_signal
+
+
+## Sets [member CanvasItem.use_parent_material] for all descendants of [param node].
+## If [param value] is [code]false[/code], reverts to the node's initial value.
+func set_descendants_use_parent_material(node: CanvasItem, value: bool = true) -> void:
+	var queue := node.get_children(true)
+	while queue:
+		var new_queue: Array[Node]
+		for n in queue:
+			if n is CanvasItem:
+				if value:
+					n.set_meta(&"_transition_initial_use_parent_material", n.use_parent_material)
+					n.use_parent_material = value
+				else:
+					n.use_parent_material = n.get_meta(&"_transition_initial_use_parent_material", n.use_parent_material)
+					n.remove_meta(&"_transition_initial_use_parent_material")
+			new_queue.append_array(n.get_children(true))
+		queue = new_queue
 
 
 ## Creates a new [ShaderMaterial] based on [member base_material].

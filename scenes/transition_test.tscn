@@ -35,7 +35,6 @@ grow_vertical = 2
 color = Color(0.1375, 0.53625, 0.55, 1)
 
 [node name="Label" type="Label" parent="To" unique_id=2137918207]
-use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,7 +62,6 @@ grow_vertical = 2
 color = Color(0.31860003, 0.097200006, 0.54, 1)
 
 [node name="Label" type="Label" parent="From" unique_id=815098468]
-use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
