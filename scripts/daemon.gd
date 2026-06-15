@@ -7,5 +7,10 @@ var name:String
 
 var modifiers:Array[Modifier]
 
-func _init(set_modifiers:Array[Modifier]) -> void:
+var id:int
+
+func _init(set_modifiers:Array[Modifier] = []) -> void:
 	modifiers = set_modifiers
+	
+	Global.daemon_count += 1
+	id = Global.daemon_count

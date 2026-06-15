@@ -6,17 +6,13 @@
 # let you get the single-value ones like normal variables,
 # but none can be set.
 
-var effect_name :String: get = _get_effect_name
-## The name of the effect.
-@abstract func _get_effect_name() -> String
+var effect_type :EffectType: get = _get_effect_type
+## The type of the effect. Also used to apply effects.
+@abstract func _get_effect_type() -> EffectType
 
 var description :String: get = _get_description
 ## The description of the effect.
 @abstract func _get_description() -> String
-
-var modification_type :String: get = _get_modification_type
-## The identifier for the effect. Used to apply effects.
-@abstract func _get_modification_type() -> String
 
 var target_type :Module.TARGET: get = _get_target_type
 ## Whether this effect is applied to the attacker or attackee

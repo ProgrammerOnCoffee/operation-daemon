@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EffectType" format=3 uid="uid://dvg28phw86fnm"]
+
+[ext_resource type="Script" uid="uid://dohar2v1ml18f" path="res://scripts/effect_type.gd" id="1_qg2bl"]
+
+[resource]
+script = ExtResource("1_qg2bl")
+name = "Physical"
+description = "Instantaneous damage applied to the target. The simplest effect."
+metadata/_custom_type_script = "uid://dohar2v1ml18f"

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://oyxkbik65rda"]
 
+[ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="1_fknr6"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fie5y"]
 bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 border_width_top = 10
@@ -53,15 +55,82 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 30
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2vy4"]
+bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhqq6"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+content_margin_left = 20.0
+content_margin_top = 0.0
+content_margin_right = 20.0
+content_margin_bottom = 0.0
+bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
+color = Color(0.071100004, 0.074880004, 0.09, 1)
+thickness = 4
+
+[sub_resource type="Theme" id="Theme_yq778"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
+Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
+Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
+HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
+
 [node name="Laboratory" type="ColorRect" unique_id=18152502]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.13725491, 0.13333334, 0.16078432, 1)
+color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1929080602]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,3 +481,168 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Begin Expedition"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1738358358]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer" unique_id=643341345]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer" unique_id=1414712747]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1420970559]
+custom_minimum_size = Vector2(0, 648)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h2vy4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2" unique_id=195350066]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="TabBar" type="TabBar" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=939204018]
+layout_mode = 2
+current_tab = 0
+tab_count = 4
+tab_0/title = "Starting Daemons"
+tab_1/title = "Refinery"
+tab_2/title = "Logbook"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=947424891]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=2095880999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="StartingDaemons" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=443104550]
+custom_minimum_size = Vector2(496, 496)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons" unique_id=661812056]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer" unique_id=1679585211]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/MarginContainer" unique_id=1976850565]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Pick up to 5 Refined Daemons to take with you. These will apply to your attacks permanently for the expedition."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer" unique_id=1918078411]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RefinedDaemonList" type="ItemList" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer" unique_id=1887338086]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 7
+item_0/text = "D0001"
+item_1/text = "D0002"
+item_2/text = "D0003"
+item_3/text = "a"
+item_4/text = "a"
+item_5/text = "A"
+item_6/text = "asd"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer" unique_id=9066572]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1069478068]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1737115791]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="DaemonOverview" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("1_fknr6")]
+layout_mode = 2
+
+[node name="Button" type="CheckBox" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2104998475]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Equip (0/5)"
+alignment = 1
+
+[node name="Refinery" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2063151107]
+modulate = Color(1, 1, 1, 0.68235296)
+custom_minimum_size = Vector2(496, 496)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Logbook" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=414082755]
+custom_minimum_size = Vector2(496, 496)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1266788533]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=858409591]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=91775828]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "WELCOME, CLONE 01"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=400642682]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mhqq6")
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1089969643]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = SubResource("Theme_yq778")
+theme_override_font_sizes/font_size = 29
+text = "BEGIN EXPEDITION"

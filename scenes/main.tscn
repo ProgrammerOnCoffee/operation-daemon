@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cbxo13vg2mn42" path="res://scripts/menu_button.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -941,6 +942,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
@@ -1086,8 +1089,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -648.0
-offset_right = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tbgi4")
@@ -1145,12 +1146,12 @@ size_flags_horizontal = 3
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI" unique_id=1304139559]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 instance=ExtResource("5_tbgi4")]
+layout_mode = 1
+offset_top = -324.0
+offset_bottom = 324.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UILayer" unique_id=1462881622]
+[node name="TerminalTest" type="ScrollContainer" parent="UILayer" unique_id=1462881622]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1158,7 +1159,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/ScrollContainer" unique_id=1968686828]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/TerminalTest" unique_id=1968686828]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

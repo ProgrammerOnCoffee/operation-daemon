@@ -5,9 +5,9 @@ class_name WorldMap extends Control
 @onready var map_generator:MapGenerator = $MapGenerator
 
 ## The parent of all buttons.
-@onready var button_space := $MapGenerator/ScrollContainer/MarginContainer/PanelContainer
+@onready var button_space := $MapGenerator/ScrollContainer/PanelContainer
 ## The node under the scroll container; the one that needs a new minimum size.
-@onready var scroll_node := $MapGenerator/ScrollContainer/MarginContainer
+@onready var scroll_node := $MapGenerator/ScrollContainer/PanelContainer
 
 var event_buttons:Dictionary[Event, EventButton]
 var lines:Array[Line2D]
