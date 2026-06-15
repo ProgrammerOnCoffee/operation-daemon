@@ -10,7 +10,7 @@ extends Control
 
 
 func _ready() -> void:
-	update()
+	RenderingServer.frame_pre_draw.connect(update)
 
 
 func _draw() -> void:
@@ -22,10 +22,6 @@ func _draw() -> void:
 	draw_circle(points[0] + Vector2(0, 4), 4, COLOR, false, 2.0, true)
 	draw_polyline(points, COLOR, 2.0, true)
 	draw_circle(points[-1], 3, COLOR, true, -1.0, true)
-
-
-func _process(_delta: float) -> void:
-	update()
 
 
 ## Updates the position of the health bar, moving it above [member entity_3d].
