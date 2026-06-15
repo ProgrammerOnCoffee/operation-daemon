@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh035oqbuwd5q"]
 
-[ext_resource type="Script" uid="uid://d1a18w7sklhef" path="res://scripts/menu2.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://d1a18w7sklhef" path="res://scripts/menu.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cbxo13vg2mn42" path="res://scripts/menu_button.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
@@ -1292,7 +1292,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("GDScript_sgp6g")
 
-[connection signal="pressed" from="UILayer/UI/Laboratory/HBoxContainer/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("WorldMap")]]
+[connection signal="request_back" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("WorldMap"), NodePath("Laboratory")]]
+[connection signal="request_begin" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("WorldMap")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]
@@ -1301,6 +1302,5 @@ script = SubResource("GDScript_sgp6g")
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("MainMenu")]]
 [connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("Licenses"), NodePath("Credits")]]
 
-[editable path="UILayer/UI/Laboratory"]
 [editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
 [editable path="UILayer/UI/WorldMap"]
