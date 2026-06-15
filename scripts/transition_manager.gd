@@ -95,16 +95,14 @@ func transition(from: Control, to: Control) -> Signal:
 		set_descendants_use_parent_material(from)
 		from.show()
 		tween.finished.connect(from.hide)
-		tween.finished.connect(from.set.bind(&"material", null))
-		tween.finished.connect(set_descendants_use_parent_material.bind(from, false), CONNECT_REFERENCE_COUNTED)
+		tween.finished.connect(_clear_material.bind(from, mat))
 	
 	if to:
 		to.material = to_mat
 		to_mat.set_shader_parameter(&"inverted", true)
 		set_descendants_use_parent_material(to)
 		to.show()
-		tween.finished.connect(to.set.bind(&"material", null))
-		tween.finished.connect(set_descendants_use_parent_material.bind(to, false), CONNECT_REFERENCE_COUNTED)
+		tween.finished.connect(_clear_material.bind(to, to_mat))
 	
 	for i in bar_count:
 		tween.tween_method(set_cutoff.bind(i), -CUTOFF_EXTEND, 1.0 + CUTOFF_EXTEND, duration).set_delay(randf() * spread)
@@ -198,3 +196,11 @@ func _create_material() -> ShaderMaterial:
 			directions[i] = randi_range(0, 1)
 	mat.set_shader_parameter(&"directions", directions)
 	return mat
+
+
+## Sets [param control]'s [member CanvasItem.material] to [code]null[/code]
+## if it is still set to [param material].
+func _clear_material(control: Control, material: ShaderMaterial) -> void:
+	if control.material == material:
+		control.material = null
+		set_descendants_use_parent_material(control, false)
