@@ -81,14 +81,20 @@ func turn() -> void:
 			is_enemy_alive = true
 			await enemy._take_turn()
 	
-	if not player.health:
-		# TODO Lose
-		pass
-	elif is_enemy_alive:
+	if player.health and is_enemy_alive:
 		turn()
 	else:
-		# TODO Win, return to map, etc.
-		pass
+		end_fight()
+
+
+## Ends the current fight and displays a win/lose screen.
+func end_fight() -> void:
+	if player.health:
+		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
+	else:
+		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
+	# TODO show stats etc.
+	TransitionManager.fade($EndScreen, true)
 
 
 ## Prompts the player to select an [Enemy] to attack.

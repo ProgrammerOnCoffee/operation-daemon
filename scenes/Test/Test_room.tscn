@@ -198,6 +198,55 @@ texture = ExtResource("6_g0i52")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="EndScreen" type="PanelContainer" parent="CombatHandler" unique_id=1461059365]
+visible = false
+custom_minimum_size = Vector2(384, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatHandler/EndScreen" unique_id=1355869467]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatHandler/EndScreen/MarginContainer" unique_id=1798735438]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1940527366]
+layout_mode = 2
+theme_type_variation = &"LLabel"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1422690027]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1347924159]
+layout_mode = 2
+text = "Stats/Rewards:"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=826744279]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer/ScrollContainer" unique_id=9172168]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=777816846]
+layout_mode = 2
+
+[node name="Laboratory" type="Button" parent="CombatHandler/EndScreen/MarginContainer/VBoxContainer" unique_id=1180880968]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return To Laboratory"
+
 [node name="Player" type="Sprite3D" parent="." unique_id=882970403 node_paths=PackedStringArray("entity", "vp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.425, 0.875)
 pixel_size = 0.005
