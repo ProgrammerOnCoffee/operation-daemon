@@ -6,8 +6,11 @@ signal command_pressed(command: String)
 
 const RADIUS = 64
 
-## The player [Entity3D] to display this health bar above.
-@export var player_3d: Entity3D
+## The player [Entity3D] to display this command wheel next to.
+@export var player_3d: Entity3D:
+	set(value):
+		player_3d = value
+		update()
 
 @onready var cam := get_viewport().get_camera_3d()
 

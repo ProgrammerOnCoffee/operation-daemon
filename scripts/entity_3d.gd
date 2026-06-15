@@ -45,12 +45,8 @@ func _ready() -> void:
 		vp.gui_snap_controls_to_pixels = false
 		add_child(vp)
 		vp.owner = owner
-	
 	if not texture:
-		texture = ViewportTexture.new()
-	texture.viewport_path = (
-			get_viewport().get_child(0).get_path_to(vp)
-			if Engine.is_editor_hint() else vp.get_path())
+		texture = vp.get_texture()
 	if entity:
 		# Run setter
 		entity = entity

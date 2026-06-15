@@ -1,9 +1,6 @@
-[gd_scene format=3 uid="uid://cwoivmv6qt0ax"]
+[gd_scene format=3 uid="uid://clpnhtoy8srf1"]
 
-[ext_resource type="Script" uid="uid://conon11okuvcy" path="res://scripts/entity_3d.gd" id="1_tyyuc"]
-[ext_resource type="PackedScene" uid="uid://7bkv8oacgvy0" path="res://scenes/combat_handler.tscn" id="1_y836a"]
-[ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="2_wh42t"]
-[ext_resource type="PackedScene" uid="uid://chww5uygi35ie" path="res://scenes/entities/slime_spider_bot.tscn" id="4_y836a"]
+[ext_resource type="Script" uid="uid://crugm0jheujxl" path="res://scripts/map.gd" id="1_yt5n2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -35,9 +32,7 @@ adjustment_contrast = 1.055
 adjustment_saturation = 0.6
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y836a"]
-dof_blur_far_enabled = true
 dof_blur_far_distance = 7.64
-dof_blur_near_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh42t"]
 albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
@@ -45,19 +40,8 @@ albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_tyyuc"]
 material = SubResource("StandardMaterial3D_wh42t")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tyyuc"]
-viewport_path = NodePath("Player/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_y836a"]
-viewport_path = NodePath("Spider/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_wjxyj"]
-viewport_path = NodePath("Spider2/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6nu88"]
-viewport_path = NodePath("Spider3/SubViewport")
-
-[node name="Node3D" type="Node3D" unique_id=1252099717]
+[node name="MapTest" type="Node3D" unique_id=1252099717]
+script = ExtResource("1_yt5n2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=70931323]
 transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.470159, -0.5350896, 0.7018758, -0.17014875, 0.725382, 0.66698605, 0, 0, 0)
@@ -124,85 +108,19 @@ mesh = SubResource("BoxMesh_tyyuc")
 transform = Transform3D(26.795294, 0, 0, 0, 0.73825824, 0, 0, 0, 5.5588636, -27.742786, 13.202923, -28.309715)
 mesh = SubResource("BoxMesh_tyyuc")
 
-[node name="CombatHandler" parent="." unique_id=583709940 node_paths=PackedStringArray("player", "enemies") instance=ExtResource("1_y836a")]
-player = NodePath("../Player/SubViewport/Player")
-enemies = [NodePath("../Spider/SubViewport/SlimeSpiderBot"), NodePath("../Spider2/SubViewport/SlimeSpiderBot"), NodePath("../Spider3/SubViewport/SlimeSpiderBot")]
+[node name="Markers" type="Node3D" parent="." unique_id=269796031]
 
-[node name="Player" type="Sprite3D" parent="." unique_id=882970403 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.425, 0.875)
-pixel_size = 0.005
-billboard = 2
-alpha_cut = 2
-texture = SubResource("ViewportTexture_tyyuc")
-script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/Player")
-vp = NodePath("SubViewport")
-resolution_scale = 2.0
-metadata/_custom_type_script = "uid://conon11okuvcy"
+[node name="PlayerMarker" type="Marker3D" parent="Markers" unique_id=2029680143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.31, 0.875)
 
-[node name="SubViewport" type="SubViewport" parent="Player" unique_id=972520790]
-disable_3d = true
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(544, 560)
+[node name="EnemyMarker0" type="Marker3D" parent="Markers" unique_id=1247884168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.31, 3.158)
 
-[node name="Player" parent="Player/SubViewport" unique_id=1022515043 instance=ExtResource("2_wh42t")]
-position = Vector2(272, 512)
-scale = Vector2(2, 2)
+[node name="EnemyMarker1" type="Marker3D" parent="Markers" unique_id=808572337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.402, 0.31, 1.611)
 
-[node name="Spider" type="Sprite3D" parent="." unique_id=956576972 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.089, 1.05, 0.278)
-billboard = 2
-alpha_cut = 2
-texture = SubResource("ViewportTexture_y836a")
-script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/SlimeSpiderBot")
-vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
-
-[node name="SubViewport" type="SubViewport" parent="Spider" unique_id=377793298]
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(192, 184)
-
-[node name="SlimeSpiderBot" parent="Spider/SubViewport" unique_id=198898790 instance=ExtResource("4_y836a")]
-position = Vector2(96, 168)
-
-[node name="Spider2" type="Sprite3D" parent="." unique_id=103047974 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.401557, 1.05, 1.6105945)
-billboard = 2
-alpha_cut = 2
-texture = SubResource("ViewportTexture_wjxyj")
-script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/SlimeSpiderBot")
-vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
-
-[node name="SubViewport" type="SubViewport" parent="Spider2" unique_id=1829644665]
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(192, 184)
-
-[node name="SlimeSpiderBot" parent="Spider2/SubViewport" unique_id=893354821 instance=ExtResource("4_y836a")]
-position = Vector2(96, 168)
-
-[node name="Spider3" type="Sprite3D" parent="." unique_id=1170152533 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.05, 3.1581638)
-billboard = 2
-alpha_cut = 2
-texture = SubResource("ViewportTexture_6nu88")
-script = ExtResource("1_tyyuc")
-entity = NodePath("SubViewport/SlimeSpiderBot")
-vp = NodePath("SubViewport")
-metadata/_custom_type_script = "uid://conon11okuvcy"
-
-[node name="SubViewport" type="SubViewport" parent="Spider3" unique_id=1382011300]
-transparent_bg = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(192, 184)
-
-[node name="SlimeSpiderBot" parent="Spider3/SubViewport" unique_id=2096279511 instance=ExtResource("4_y836a")]
-position = Vector2(96, 168)
+[node name="EnemyMarker2" type="Marker3D" parent="Markers" unique_id=1656487524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.089, 0.31, 0.278)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
 transform = Transform3D(0.9576166, 0, -0.28804585, 0, 1, 0, 0.28804585, 0, 0.9576166, -1.1830637, 1.5862598, 5.6311235)
