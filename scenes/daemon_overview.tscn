@@ -13,7 +13,7 @@ script = ExtResource("1_qrd0n")
 
 [node name="Title" type="Label" parent="." unique_id=714180459]
 layout_mode = 2
-text = "D0001"
+text = "None"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1355533124]
