@@ -77,7 +77,7 @@ func turn() -> void:
 	
 	var is_enemy_alive := false
 	for enemy in enemies:
-		if enemy.health:
+		if enemy.health and player.health:
 			is_enemy_alive = true
 			await enemy._take_turn()
 	
