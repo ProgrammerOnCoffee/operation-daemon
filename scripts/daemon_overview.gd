@@ -16,8 +16,8 @@ var daemon :Daemon: set = _set_daemon
 func _ready() -> void:
 	var test_daemon := Daemon.new()
 	
-	for i in 4:
-		test_daemon.modifiers.append(TestModifier.new())
+	for i in 1000:
+		test_daemon.modifiers += [TestModifier.new()]
 	
 	daemon = test_daemon
 

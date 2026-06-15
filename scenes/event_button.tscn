@@ -19,7 +19,6 @@ noise = SubResource("FastNoiseLite_nbv63")
 color_ramp = SubResource("Gradient_w7xte")
 
 [node name="EventButton" type="Control" unique_id=884130240]
-z_index = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_r4okl")

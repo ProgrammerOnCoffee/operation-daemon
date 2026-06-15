@@ -671,7 +671,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 29
-toggle_mode = true
 text = "BEGIN EXPEDITION"
 
-[connection signal="toggled" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_start_button_toggled"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_start_pressed"]

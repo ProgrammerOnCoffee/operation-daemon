@@ -10,4 +10,4 @@ func _get_new_percent() -> float: return randf_range(0.8, 1.2)
 
 func _get_target_type() -> Module.TARGET:
 	
-	return Module.TARGET.ATTACKER if randf() > 0.5 else Module.TARGET.ATTACKEE
+	return Module.TARGET.ATTACKER #if randf() > 0.5 else Module.TARGET.ATTACKEE

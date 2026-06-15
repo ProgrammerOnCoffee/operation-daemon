@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MapConfig" format=3 uid="uid://bvau7x636rvus"]
+
+[ext_resource type="Script" uid="uid://bh8vaosl5kcit" path="res://scripts/map_generation/map_config.gd" id="1_70hqd"]
+
+[resource]
+script = ExtResource("1_70hqd")
+floor_count = 11
+metadata/_custom_type_script = "uid://bh8vaosl5kcit"

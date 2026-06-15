@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MapConfig" format=3 uid="uid://bgvw3e1ohr687"]
+
+[ext_resource type="Script" uid="uid://bh8vaosl5kcit" path="res://scripts/map_generation/map_config.gd" id="1_pbolo"]
+
+[resource]
+script = ExtResource("1_pbolo")
+floor_count = 9
+event_overrides = Dictionary[int, int]({
+-2: 2,
+0: 1,
+4: 4
+})
+event_weights = Dictionary[int, int]({
+1: 16,
+2: 6,
+3: 2,
+4: 3
+})
+metadata/_custom_type_script = "uid://bh8vaosl5kcit"
