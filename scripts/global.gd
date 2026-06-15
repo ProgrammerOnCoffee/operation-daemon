@@ -5,6 +5,9 @@ extends Node
 
 signal daemon_discovered(daemon:Daemon)
 
+# The number of daemons that have ever existed, for their IDs.
+var daemon_count:int = 0
+
 ## All the daemons discovered and available for perm-buffs.
 var daemons_discovered:Array[Daemon]
 ## All the daemons being researched. Cleared on death.

@@ -9,11 +9,12 @@ script = ExtResource("2_qqero")
 metadata/_custom_type_script = "uid://bh8vaosl5kcit"
 
 [node name="WorldMap" type="Control" unique_id=1068333612]
+custom_minimum_size = Vector2(576, 648)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 576.0
 grow_vertical = 2
 script = ExtResource("1_u82pb")
 
@@ -44,17 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="HBoxContainer" parent="MapGenerator/ScrollContainer" unique_id=1887240676]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Control" type="Control" parent="MapGenerator/ScrollContainer/MarginContainer" unique_id=1707642144]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="Panel" parent="MapGenerator/ScrollContainer/MarginContainer" unique_id=2056174076]
+[node name="PanelContainer" type="Panel" parent="MapGenerator/ScrollContainer" unique_id=2056174076]
 custom_minimum_size = Vector2(574, 0)
 layout_mode = 2
 size_flags_horizontal = 3
