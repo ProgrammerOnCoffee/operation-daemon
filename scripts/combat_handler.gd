@@ -25,6 +25,8 @@ var damage_taken: int
 ## The initial fov of the camera when the fight was loaded.
 @onready var _cam_initial_fov := cam.fov
 
+## [member enemies] sorted by each enemy's z position in the [member cam]'s local coordinates.
+var _sorted_enemies: Array[Enemy]
 ## The currently focused [Entity], if any.
 var _focused_entity: Entity
 
@@ -41,6 +43,10 @@ func _ready() -> void:
 		bar.entity_3d.entity.health_bar = bar
 		bar.custom_minimum_size.x = bar.entity_3d.entity.rect.size.x * 0.7
 		add_child(bar, false, INTERNAL_MODE_FRONT)
+	
+	_sorted_enemies = enemies.duplicate()
+	_sorted_enemies.sort_custom(func(a: Enemy, b: Enemy) -> bool:
+			return cam.to_local(a.entity_3d.global_position).z <= cam.to_local(b.entity_3d.global_position).z)
 	turn()
 
 
@@ -48,19 +54,19 @@ func _input(event: InputEvent) -> void:
 	if _focused_entity:
 		if event.is_action_pressed(&"select_right"):
 			# Focus next entity
-			var index := enemies.find(_focused_entity)
+			var index := _sorted_enemies.find(_focused_entity)
 			while true:
-				index = wrapi(index + 1, 0, enemies.size())
-				if enemies[index].health:
-					focus_entity(enemies[index])
+				index = wrapi(index + 1, 0, _sorted_enemies.size())
+				if _sorted_enemies[index].health:
+					focus_entity(_sorted_enemies[index])
 					break
 		elif event.is_action_pressed(&"select_left"):
 			# Focus previous entity
-			var index := enemies.find(_focused_entity)
+			var index := _sorted_enemies.find(_focused_entity)
 			while true:
-				index = wrapi(index - 1, 0, enemies.size())
-				if enemies[index].health:
-					focus_entity(enemies[index])
+				index = wrapi(index - 1, 0, _sorted_enemies.size())
+				if _sorted_enemies[index].health:
+					focus_entity(_sorted_enemies[index])
 					break
 		elif event.is_action_pressed(&"select_confirm"):
 			entity_selected.emit(_focused_entity)
