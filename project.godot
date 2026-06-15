@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://bgscwxyla6euj"
 [autoload]
 
 ButtonFeedback="*uid://b6mqwnmlg422n"
+TransitionManager="*uid://b1vm6i1tk4lfw"
 Global="*uid://cpdj4oqddkkjl"
 
 [debug]
