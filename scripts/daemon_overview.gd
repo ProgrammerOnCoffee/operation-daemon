@@ -5,21 +5,13 @@ class_name DaemonOverview extends VBoxContainer
 const POSITIVE_COLOR := Color(0.32, 1.0, 0.411, 1.0)
 const NEGATIVE_COLOR := Color(1.0, 0.32, 0.32, 1.0)
 
-var daemon :Daemon: set = _set_daemon
+var daemon :Daemon = null: set = _set_daemon
 
 @onready var vboxes:Dictionary[Module.TARGET, VBoxContainer] = {
 	Module.TARGET.ATTACKER: $ScrollContainer/VBoxContainer/Self,
 	Module.TARGET.ATTACKEE: $ScrollContainer/VBoxContainer/Target
 }
 @onready var title := $Title
-
-func _ready() -> void:
-	var test_daemon := Daemon.new()
-	
-	for i in 1000:
-		test_daemon.modifiers += [TestModifier.new()]
-	
-	daemon = test_daemon
 
 # Update the overview when the daemon changes.
 func _set_daemon(to:Daemon):
@@ -30,7 +22,7 @@ func _set_daemon(to:Daemon):
 		
 		# Update the title.
 		
-		title.text = "D%s" % lead(daemon.id, 4)
+		title.text = "D%s" % Global.lead(daemon.id, 4)
 		
 		# Clear the VBoxes of any previous information.
 		for vbox in vboxes.values(): for child in vbox.get_children(): child.queue_free()
@@ -43,6 +35,8 @@ func _set_daemon(to:Daemon):
 		
 		# Clear the VBoxes of any previous information.
 		for vbox in vboxes.values(): for child in vbox.get_children(): child.queue_free()
+		
+		
 
 func push_text(modifier:Modifier) -> Label:
 	
@@ -60,18 +54,6 @@ func push_text(modifier:Modifier) -> Label:
 	new.tooltip_text = modifier.effect_type.effect_name + "\n--\n" + modifier.effect_type.description
 	
 	return new
-
-# Add leading zeros to an int. 13 with 4 zeros becomes "0013"
-func lead(value:int, zeros:int) -> String:
-	
-	var response := ""
-	var string = str(value)
-	
-	for i in zeros - len(string):
-		response += "0"
-	response += string
-	
-	return response
 
 func percent_as_string(percent:float) -> String:
 	var response:String

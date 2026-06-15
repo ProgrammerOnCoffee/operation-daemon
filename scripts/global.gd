@@ -4,6 +4,8 @@ extends Node
 ## -- PROGRESSION -- ##
 
 signal act_changed
+signal act_completed
+signal run_ended
 
 var act := 1:
 	set(to):
@@ -17,6 +19,8 @@ signal daemon_discovered(daemon:Daemon)
 # The number of daemons that have ever existed, for their IDs.
 var daemon_count:int = 0
 
+## All the daemons refined into permanent buffs.
+var daemons_refined:Array[Daemon]
 ## All the daemons discovered and available for perm-buffs.
 var daemons_discovered:Array[Daemon]
 ## All the daemons being researched. Cleared on death.
@@ -89,3 +93,17 @@ func _get_modifier_sources() -> Array[Resource]:
 		print("An error occurred when trying to access the path.")
 	
 	return results
+
+## General Functions
+
+# Add leading zeros to an int. 13 with 4 zeros becomes "0013"
+func lead(value:int, zeros:int) -> String:
+	
+	var response := ""
+	var string = str(value)
+	
+	for i in zeros - len(string):
+		response += "0"
+	response += string
+	
+	return response
