@@ -9,6 +9,8 @@
 var effect_type :Effect: get = _get_effect_type
 ## The type of the effect. Used to apply effects.
 @abstract func _get_effect_type() -> Effect
+func compare_effect(to:Effect):
+	return effect_type.effect_name == to.effect_name and effect_type.description == to.description
 
 var percent:float
 ## The percentage change to apply to the effect's base, as a float. 0.9 = -10%.

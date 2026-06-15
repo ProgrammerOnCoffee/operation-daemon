@@ -1,12 +1,10 @@
 extends ColorRect
 
-signal request_begin
-signal request_back
+@export var map:Control
 
-@onready var start_button := $HBoxContainer/MarginContainer/VBoxContainer/Button
-
-
-func _on_start_button_toggled(toggled_on: bool) -> void:
-	start_button.text = "RETURN TO LAB" if toggled_on else "BEGIN EXPEDITION"
+func _start_pressed() -> void: 
+	# Reset the current act.
+	Global.act = 0
 	
-	(request_begin if toggled_on else request_back).emit()
+	TransitionManager.transition_screen(self, map)
+	

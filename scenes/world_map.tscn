@@ -2,19 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dq2vsl1va7m58" path="res://scripts/map_generation/map_generator.gd" id="1_oru6e"]
 [ext_resource type="Script" uid="uid://cet8h24wxofts" path="res://scripts/map_generation/world_map.gd" id="1_u82pb"]
-[ext_resource type="Script" uid="uid://bh8vaosl5kcit" path="res://scripts/map_generation/map_config.gd" id="2_qqero"]
+[ext_resource type="Resource" uid="uid://bsnwltb0xrc88" path="res://resources/map_configs/Act1.tres" id="3_u82pb"]
 
-[sub_resource type="Resource" id="Resource_u82pb"]
-script = ExtResource("2_qqero")
-metadata/_custom_type_script = "uid://bh8vaosl5kcit"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u82pb"]
+draw_center = false
 
 [node name="WorldMap" type="Control" unique_id=1068333612]
 custom_minimum_size = Vector2(576, 648)
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_right = 576.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u82pb")
 
@@ -25,17 +24,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1882353, 0.21960784, 0.32941177, 1)
+color = Color(0.14509805, 0.15294118, 0.18431373, 1)
 
 [node name="MapGenerator" type="Control" parent="." unique_id=544309554]
+custom_minimum_size = Vector2(576, 648)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oru6e")
+config = ExtResource("3_u82pb")
+
+[node name="ColorRect2" type="ColorRect" parent="MapGenerator" unique_id=33842773]
+custom_minimum_size = Vector2(576, 648)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_oru6e")
-config = SubResource("Resource_u82pb")
+color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MapGenerator" unique_id=1974676007]
 layout_mode = 1
@@ -49,3 +61,4 @@ grow_vertical = 2
 custom_minimum_size = Vector2(574, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_u82pb")

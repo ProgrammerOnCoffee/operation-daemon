@@ -8,7 +8,7 @@ const ICONS:Dictionary[Event.TYPE, Texture2D] = {
 	Event.TYPE.COMBAT:   preload("res://assets/UI Elements/Enemy Icon.png"),
 	Event.TYPE.REST:     preload("res://assets/UI Elements/Rest Icon.png"),
 	Event.TYPE.ANALYSIS: preload("res://assets/UI Elements/Event Icon.png"),
-	Event.TYPE.DISEASE:  preload("res://assets/UI Elements/Event Icon.png"),
+	Event.TYPE.DAEMON:  preload("res://assets/UI Elements/Event Icon.png"),
 	Event.TYPE.BOSS:     preload("res://assets/UI Elements/Boss Icon.png"),
 }
 
@@ -16,17 +16,18 @@ const ICONS:Dictionary[Event.TYPE, Texture2D] = {
 @onready var button := $TextureButton
 
 var event :Event: set = set_event
-var available := true :set = set_available 
+var available := false :set = set_available 
 
 @onready var tween
 
 func _ready() -> void:
 	button.pressed.connect(func():
-		# Pass the signal.
-		pressed.emit()
-		
-		# Fade in the X overlay
-		create_tween().tween_property(overlay, "modulate:a", 1.0, 0.1)
+		if available:
+			# Pass the signal.
+			pressed.emit()
+			
+			# Fade in the X overlay
+			create_tween().tween_property(overlay, "modulate:a", 1.0, 0.1)
 		)
 
 func _mouse_enter() -> void: 

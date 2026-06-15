@@ -20,5 +20,5 @@ class_name MapConfig extends Resource
 	Event.TYPE.COMBAT: 8,
 	Event.TYPE.REST: 3,
 	Event.TYPE.ANALYSIS: 1,
-	Event.TYPE.DISEASE: 1
+	Event.TYPE.DAEMON: 1
 }

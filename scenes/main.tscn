@@ -255,54 +255,6 @@ HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
 [sub_resource type="Animation" id="Animation_tipki"]
 resource_name = "Laboratory<>WorldMap"
 length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Laboratory/HBoxContainer/ScrollContainer:scroll_vertical")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 648]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/WorldMap:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.001, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/WorldMap:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 648), Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/WorldMap/MapGenerator/ScrollContainer:scroll_vertical")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 600]
-}
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
@@ -582,54 +534,6 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("UI/Laboratory/HBoxContainer/ScrollContainer:scroll_vertical")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("UI/WorldMap:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("UI/WorldMap:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 648)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("UI/WorldMap/MapGenerator/ScrollContainer:scroll_vertical")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
 _data = {
@@ -639,163 +543,6 @@ _data = {
 &"MainMenu<>Settings": SubResource("Animation_tbgi4"),
 &"RESET": SubResource("Animation_tefeu")
 }
-
-[sub_resource type="GDScript" id="GDScript_sgp6g"]
-script/source = "class_name AnalysisTerminal extends VBoxContainer
-## A terminal that allows for analyzing 
-
-@export var focused := true
-var current_label:RichTextLabel
-var current_real_text := \"\"
-
-@export var blink_speed := 1.0
-var timer := 0.0
-
-var scroll:ScrollContainer
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	push_text(\"TYPE HELP - PRESS ENTER\")
-	
-	on_enter()
-	
-	var parent = get_parent()
-	if parent is ScrollContainer:
-		scroll = parent
-		
-
-func _process(delta: float) -> void:
-	current_label.text = current_real_text
-	
-	if timer > 0.5: current_label.text += \"_\"
-	else: current_label.text += \" \"
-	
-	timer = move_toward(timer, 0.0, delta * blink_speed)
-	if timer == 0:
-		timer = 1.0
-	
-	if scroll:
-		scroll.scroll_vertical += 100
-
-func _on_key_pressed(key_name:String, _echo:bool, power:bool): if focused:
-	
-	timer = 1.0
-	
-	if power:
-		match key_name:
-			\"Space\":
-				current_real_text += \" \"
-			\"Enter\":
-				on_enter()
-			\"Backspace\":
-				current_real_text = current_real_text.left(len(current_real_text) - 1)
-	else:
-		current_real_text += key_name
-
-func on_enter() -> void:
-	
-	if current_label:
-		current_label.text = current_real_text.replace(\" \", \"[color=#00000000]|[/color]\")
-		
-		if len(current_real_text) == 0:
-			current_label.queue_free()
-		else:
-			parse_command(current_real_text)
-	
-	current_label = RichTextLabel.new()
-	current_label.bbcode_enabled = true
-	current_label.fit_content = true
-	
-	current_label.custom_minimum_size.y = 17
-	
-	current_real_text = \"\"
-	
-	add_child(current_label)
-
-func parse_command(command:String):
-	
-	if command.contains(\";\"):
-		for subcommand in command.split(\";\"):
-			print(subcommand)
-			parse_command(subcommand)
-		return
-	
-	match command:
-		\"\": return
-		\"CLEAR\":
-			for child in get_children(): child.queue_free()
-		\"QUIT\":
-			get_tree().quit()
-		\"HELP\":
-			push_text(\"--\")
-			push_text(\"COMMANDS\")
-			push_text(\"\")
-			push_text(\"HELP - SHOW THIS LIST\")
-			push_text(\"\")
-			push_text(\"CLEAR - CLEAR THE TERMINAL\")
-			push_text(\"\")
-			push_text(\"START - START A RUN\")
-			push_text(\"\")
-			push_text(\"OPTIONS - VIEW OPTIONS\")
-			push_text(\"\")
-			push_text(\"QUIT - QUIT THE GAME\")
-			push_text(\"\")
-		_: ## Command not found.
-			push_text(\"[color=%s]THAT COMMAND DOESN'T EXIST. TRY \\\"HELP\\\"\" % [Color(1.0, 0.263, 0.166, 1.0).to_html()])
-
-func push_text(string:String):
-	var new = RichTextLabel.new()
-	
-	new.bbcode_enabled = true
-	new.fit_content = true
-	
-	new.custom_minimum_size.y = 17
-	
-	new.text = string
-	new.text = new.text.replace(\" \", \"[color=#00000000]|[/color]\")
-	
-	add_child(new)
-
-## -- Key Input -- ## 
-
-## Keys to be parsed seperately from the other keys.
-var power_keys := [
-	&\"Escape\",
-	&\"QuoteLeft\",
-	&\"Tab\",
-	&\"Shift\",
-	&\"CapsLock\",
-	&\"Ctrl\",
-	&\"Option\",
-	&\"Command\",
-	&\"Backspace\",
-	&\"Enter\",
-	&\"Shift\",
-	&\"Space\"
-]
-
-## Keys whose name aren't just their response from the function.
-var special_keys := {
-	\"BackSlash\": \"\\\\\",
-	\"Equal\": \"=\",
-	\"Minus\": \"-\",
-	\"BracketLeft\": \"[\",
-	\"BracketRight\": \"]\",
-	\"Semicolon\": \";\",
-	\"Apostrophe\": \"'\",
-	\"Slash\": \"/\",
-	\"Period\": \".\",
-	\"Comma\": \",\"
-}
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed(): # Bus all key presses into key_pressed
-		var key = OS.get_keycode_string(event.keycode)
-		
-		if special_keys.has(key): key = special_keys[key]
-		
-		_on_key_pressed(key, event.echo, power_keys.has(key))
-"
 
 [node name="Main" type="Node" unique_id=2097801009]
 
@@ -810,8 +557,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wfyh")
 
-[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 instance=ExtResource("5_tefeu")]
+[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 node_paths=PackedStringArray("map") instance=ExtResource("5_tefeu")]
+visible = false
 layout_mode = 1
+map = NodePath("../WorldMap")
 
 [node name="MainMenu" type="Control" parent="UILayer/UI" unique_id=755086545]
 layout_mode = 1
@@ -1269,31 +1018,21 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 instance=ExtResource("5_tbgi4")]
+[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 node_paths=PackedStringArray("scene_parents") instance=ExtResource("5_tbgi4")]
+visible = false
 layout_mode = 1
-offset_top = 324.0
-offset_bottom = 972.001
+scene_parents = {
+1: NodePath("../../.."),
+2: NodePath("../.."),
+3: NodePath("../.."),
+4: NodePath("../.."),
+5: NodePath("../../..")
+}
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="UILayer/UI" unique_id=321150588]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
 
-[node name="TerminalTest" type="ScrollContainer" parent="UILayer" unique_id=1462881622]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/TerminalTest" unique_id=1968686828]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = SubResource("GDScript_sgp6g")
-
-[connection signal="request_back" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("WorldMap"), NodePath("Laboratory")]]
-[connection signal="request_begin" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("WorldMap")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]

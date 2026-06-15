@@ -1,6 +1,12 @@
 class_name MapGenerator extends Control
 ## Manages the generation of a map.
 
+const CONFIGS:Array[MapConfig] = [
+	preload("res://resources/map_configs/Act1.tres"),
+	preload("res://resources/map_configs/Act2.tres"),
+	preload("res://resources/map_configs/Act3.tres"),
+	]
+
 ## The spacing between nodes on the map.
 const SPACING := Vector2(80, 80)
 ## The range-randomness applied to the nodes' position on the map.
@@ -13,6 +19,8 @@ var map_data:Array[Array]
 
 ## Generate a map.
 func generate_map() -> Array[Array]:
+	
+	config = CONFIGS[Global.act]
 	
 	if not config:
 		push_warning("Tried to generate a map with no config. No.")
