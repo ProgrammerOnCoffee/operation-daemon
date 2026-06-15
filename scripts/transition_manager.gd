@@ -130,6 +130,8 @@ func transition_screen(from: Control, to: Control) -> Signal:
 		_last_angle = 0.0
 	_screen.color = screen_color
 	_screen.reparent((from if from else to).get_parent())
+	if from:
+		from.move_to_front()
 	_screen.move_to_front()
 	
 	var last_signal: Signal
