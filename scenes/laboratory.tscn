@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://oyxkbik65rda"]
 
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="1_fknr6"]
+[ext_resource type="Script" uid="uid://c4o4qebrk7g3i" path="res://scripts/laboratory.gd" id="1_stu8i"]
+[ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fie5y"]
 bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
@@ -70,57 +72,6 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-content_margin_left = 20.0
-content_margin_top = 0.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
-content_margin_left = 20.0
-content_margin_top = 0.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
-content_margin_left = 20.0
-content_margin_top = 0.0
-content_margin_right = 20.0
-content_margin_bottom = 0.0
-bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 1
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
-color = Color(0.071100004, 0.074880004, 0.09, 1)
-thickness = 4
-
-[sub_resource type="Theme" id="Theme_yq778"]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
-Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
-Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
-HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
-
 [node name="Laboratory" type="ColorRect" unique_id=18152502]
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,6 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+script = ExtResource("1_stu8i")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1929080602]
 visible = false
@@ -714,8 +666,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mhqq6")
 
 [node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1089969643]
 use_parent_material = true
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(350, 60)
 layout_mode = 2
-theme = SubResource("Theme_yq778")
+size_flags_horizontal = 4
+theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 29
+toggle_mode = true
 text = "BEGIN EXPEDITION"
+
+[connection signal="toggled" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_start_button_toggled"]
