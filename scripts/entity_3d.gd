@@ -67,11 +67,8 @@ func update_resolution() -> void:
 
 ## Moves this [Entity3D] beside [param to] to prepare for an attack.
 func move_to_entity(to: Entity3D) -> void:
-	var dir := global_position.direction_to(to.global_position)
-	# Get camera angle in order to move player directly to the left of the enemy relative to the camera
-	#var offset := Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y)
-	dir = dir.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y)
-	dir = Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y) * signf(to.global_position.x - global_position.x)
+	## The direction away from [param to] that this entity will be moved.
+	var dir := Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y) * signf(to.global_position.x - global_position.x)
 	await create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).tween_property(self, ^":global_position",
 			to.global_position * Vector3(1, 0, 1)
 			# Keep player y position
