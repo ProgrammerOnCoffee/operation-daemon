@@ -131,6 +131,7 @@ color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1929080602]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,56 +145,68 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1330619899]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=537702149]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1441489177]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=413581982]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_fie5y")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=1681946498]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=635829537]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer2" unique_id=1449396499]
+use_parent_material = true
 layout_mode = 2
 text = "Expedition Buffs"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer2" unique_id=483004186]
+use_parent_material = true
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qmye")
 text = "?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer" unique_id=617184423]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer" unique_id=1279893209]
+use_parent_material = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fknr6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=302225900]
+use_parent_material = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/PanelContainer2/ScrollContainer" unique_id=1452934340]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -207,6 +220,7 @@ item_5/text = "A"
 item_6/text = "asd"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer" unique_id=485521282]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -215,6 +229,7 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1331647285]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_7eomm")
@@ -275,11 +290,13 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1969578146]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_crtsx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=886796481]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
@@ -287,74 +304,89 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1877549979]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 
 [node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=230806326]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq778")
 
 [node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1583874070]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq778")
 
 [node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=44553590]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq778")
 
 [node name="Panel4" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=189249891]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq778")
 
 [node name="Panel5" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=598308601]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq778")
 
 [node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1485594924]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ehj20")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3" unique_id=1911520640]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer" unique_id=137956535]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer2" unique_id=1621162896]
+use_parent_material = true
 layout_mode = 2
 text = "DAEMON REFINERY"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer2" unique_id=1513592157]
+use_parent_material = true
 custom_minimum_size = Vector2(34, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qmye")
 text = "?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer" unique_id=340896709]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer" unique_id=557208267]
+use_parent_material = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fknr6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/PanelContainer" unique_id=237852191]
+use_parent_material = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/PanelContainer/ScrollContainer" unique_id=972290620]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -368,6 +400,7 @@ item_5/text = "A"
 item_6/text = "asd"
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer" unique_id=737197612]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 12
@@ -376,19 +409,23 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1213836251]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7eomm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer" unique_id=1186917844]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 7
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer" unique_id=1422330087]
+use_parent_material = true
 layout_mode = 2
 text = "D0001"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer" unique_id=759815422]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -431,10 +468,12 @@ theme_override_font_sizes/font_size = 20
 text = "+5% Timebomb"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer" unique_id=728364168]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1977763517]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 21
@@ -442,6 +481,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xvyni")
 text = "Refine Positives"
 
 [node name="Button2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer3/VBoxContainer/HBoxContainer/MarginContainer2/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1108908026]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 21
@@ -449,16 +489,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xvyni")
 text = "Refine Negatives"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=238674818]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1694234686]
+use_parent_material = true
 layout_mode = 2
 text = "WELCOME, CLONE 01"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1716880566]
+use_parent_material = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -466,16 +509,19 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=898586733]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_stu8i")
 
 [node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=672907197]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6mkvh")
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1208180655]
+use_parent_material = true
 custom_minimum_size = Vector2(350, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -483,6 +529,7 @@ theme_override_font_sizes/font_size = 30
 text = "Begin Expedition"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1738358358]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -492,6 +539,7 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer" unique_id=643341345]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -499,20 +547,24 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer" unique_id=1414712747]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="MarginContainer2" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1420970559]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 648)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h2vy4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2" unique_id=195350066]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 30
 
 [node name="TabBar" type="TabBar" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=939204018]
+use_parent_material = true
 layout_mode = 2
 current_tab = 0
 tab_count = 4
@@ -521,6 +573,7 @@ tab_1/title = "Refinery"
 tab_2/title = "Logbook"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=947424891]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
@@ -528,21 +581,25 @@ horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=2095880999]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="StartingDaemons" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=443104550]
+use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons" unique_id=661812056]
+use_parent_material = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer" unique_id=1679585211]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 20
@@ -550,6 +607,7 @@ theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
 
 [node name="Label" type="Label" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/MarginContainer" unique_id=1976850565]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Pick up to 5 Refined Daemons to take with you. These will apply to your attacks permanently for the expedition."
@@ -558,10 +616,12 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer" unique_id=1918078411]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="RefinedDaemonList" type="ItemList" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer" unique_id=1887338086]
+use_parent_material = true
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -575,10 +635,12 @@ item_5/text = "A"
 item_6/text = "asd"
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer" unique_id=9066572]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer" unique_id=1069478068]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
@@ -586,13 +648,16 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1737115791]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="DaemonOverview" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("1_fknr6")]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Button" type="CheckBox" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2104998475]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Equip (0/5)"
@@ -600,22 +665,26 @@ alignment = 1
 
 [node name="Refinery" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2063151107]
 modulate = Color(1, 1, 1, 0.68235296)
+use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Logbook" type="PanelContainer" parent="HBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=414082755]
+use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1266788533]
+use_parent_material = true
 custom_minimum_size = Vector2(576, 648)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -624,16 +693,19 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=858409591]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=91775828]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "WELCOME, CLONE 01"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=400642682]
+use_parent_material = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -641,6 +713,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhqq6")
 
 [node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1089969643]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = SubResource("Theme_yq778")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GWJ 94"
-run/main_scene="uid://d05e7ogdphaur"
+run/main_scene="uid://dh035oqbuwd5q"
 run/print_header=false
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://cru8imuvgs17w"
