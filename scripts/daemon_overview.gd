@@ -16,7 +16,7 @@ var daemon :Daemon: set = _set_daemon
 func _ready() -> void:
 	var test_daemon := Daemon.new()
 	
-	for i in 10:
+	for i in 4:
 		test_daemon.modifiers.append(TestModifier.new())
 	
 	daemon = test_daemon
@@ -36,10 +36,7 @@ func _set_daemon(to:Daemon):
 		for vbox in vboxes.values(): for child in vbox.get_children(): child.queue_free()
 		
 		# Add each modifier to its respective list.
-		for modifier in daemon.modifiers:
-			var text := "%s %s" % [percent_as_string(modifier.percent), modifier.effect_type.name]
-			var label = push_text(modifier)
-			
+		for modifier in daemon.modifiers: push_text(modifier)
 		
 	else:
 		title.text = "None"
@@ -49,7 +46,7 @@ func _set_daemon(to:Daemon):
 
 func push_text(modifier:Modifier) -> Label:
 	
-	var text = "%s %s" % [percent_as_string(modifier.percent), modifier.effect_type.name]
+	var text = "%s %s" % [percent_as_string(modifier.percent), modifier.effect_type.effect_name]
 	
 	var new := Label.new()
 	
@@ -60,7 +57,7 @@ func push_text(modifier:Modifier) -> Label:
 	vboxes[modifier.target_type].add_child(new)
 	
 	new.mouse_filter = Control.MOUSE_FILTER_PASS
-	new.tooltip_text = modifier.effect_type.name + "\n--\n" + modifier.effect_type.description
+	new.tooltip_text = modifier.effect_type.effect_name + "\n--\n" + modifier.effect_type.description
 	
 	return new
 
