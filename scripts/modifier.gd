@@ -6,9 +6,9 @@
 # let you get the single-value ones like normal variables,
 # but none can be set.
 
-var effect_type :EffectType: get = _get_effect_type
-## The type of the effect. Also used to apply effects.
-@abstract func _get_effect_type() -> EffectType
+var effect_type :Effect: get = _get_effect_type
+## The type of the effect. Used to apply effects.
+@abstract func _get_effect_type() -> Effect
 
 var percent:float
 ## The percentage change to apply to the effect's base, as a float. 0.9 = -10%.

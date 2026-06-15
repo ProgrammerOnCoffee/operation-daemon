@@ -6,9 +6,9 @@
 # let you get the single-value ones like normal variables,
 # but none can be set.
 
-var effect_type :EffectType: get = _get_effect_type
-## The type of the effect. Also used to apply effects.
-@abstract func _get_effect_type() -> EffectType
+var effect_name :String: get = _get_effect_name
+## The name of the effect. 
+@abstract func _get_effect_name() -> String
 
 var description :String: get = _get_description
 ## The description of the effect.
