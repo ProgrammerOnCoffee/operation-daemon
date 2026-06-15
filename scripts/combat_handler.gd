@@ -94,6 +94,13 @@ func end_fight() -> void:
 	else:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
 	# TODO show stats etc.
+	
+	# Blur background
+	$BackBufferCopy.show()
+	$Blur.show()
+	$Blur.material.set_shader_parameter(&"blur", 0.0)
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(blur: float) -> void:
+			$Blur.material.set_shader_parameter(&"blur", blur), 0.0, 2.0, 0.8)
 	TransitionManager.fade($EndScreen, true)
 
 

@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="5_wjxyj"]
 [ext_resource type="Script" uid="uid://dei4c46847yat" path="res://scripts/qte.gd" id="6_0efr3"]
 [ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="6_g0i52"]
+[ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_6nu88"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -50,6 +51,10 @@ albedo_color = Color(0.36282945, 0.36282945, 0.36282945, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tyyuc"]
 material = SubResource("StandardMaterial3D_wh42t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
+shader = ExtResource("8_6nu88")
+shader_parameter/blur = 2.000000095
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tyyuc"]
 viewport_path = NodePath("Player/SubViewport")
@@ -198,6 +203,19 @@ texture = ExtResource("6_g0i52")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CombatHandler" unique_id=1752319486]
+visible = false
+copy_mode = 2
+
+[node name="Blur" type="ColorRect" parent="CombatHandler" unique_id=15124949]
+visible = false
+material = SubResource("ShaderMaterial_kogqg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="EndScreen" type="PanelContainer" parent="CombatHandler" unique_id=1461059365]
 visible = false
 custom_minimum_size = Vector2(384, 0)
@@ -206,10 +224,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -192.0
+offset_top = -213.0
+offset_right = 192.0
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 
