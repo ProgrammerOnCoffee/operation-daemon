@@ -1,7 +1,7 @@
 extends Node
-## Handles transitions between [Control]s.
+## Handles transitions between [CanvasItem]s.
 ##
-## Handles transitions between [Control]s.
+## Handles transitions between [CanvasItem]s.
 
 ## The amount by which bars' cutoffs will extend beyond the edge of the screen to
 ## account for when the rotated SCREEN_UV is outside of the [code]0-1[/code] range.
@@ -74,7 +74,7 @@ func _init() -> void:
 ## to transition between multiple transparent screens, such as in the main menu.
 ## [br][br]
 ## Returns the transition's [signal Tween.finished] signal.
-func transition(from: Control, to: Control) -> Signal:
+func transition(from: CanvasItem, to: CanvasItem) -> Signal:
 	var mat := _create_material()
 	var to_mat := (mat.duplicate() as ShaderMaterial) if from else mat
 	
@@ -109,11 +109,11 @@ func transition(from: Control, to: Control) -> Signal:
 	return tween.finished
 
 
-## Transitions [param control] in or out of view, depending on [param fade_in].
+## Transitions [param node] in or out of view, depending on [param fade_in].
 ## [br][br]
 ## Returns the transition's [signal Tween.finished] signal.
-func fade(control: Control, fade_in: bool = false) -> Signal:
-	return transition(null if fade_in else control, control if fade_in else null)
+func fade(node: CanvasItem, fade_in: bool = false) -> Signal:
+	return transition(null if fade_in else node, node if fade_in else null)
 
 
 ## Transitions between [param from] and [param to], showing a monochrome screen
@@ -123,7 +123,7 @@ func fade(control: Control, fade_in: bool = false) -> Signal:
 ## [br][br]
 ## [b]Note:[/b] Using this method to transitioning between nodes that do not
 ## share the same parent may result in unpredictable behavior.
-func transition_screen(from: Control, to: Control) -> Signal:
+func transition_screen(from: CanvasItem, to: CanvasItem) -> Signal:
 	if screen_keep_angle:
 		_last_angle = 0.0
 	_screen.color = screen_color
@@ -198,9 +198,9 @@ func _create_material() -> ShaderMaterial:
 	return mat
 
 
-## Sets [param control]'s [member CanvasItem.material] to [code]null[/code]
+## Sets [param node]'s [member CanvasItem.material] to [code]null[/code]
 ## if it is still set to [param material].
-func _clear_material(control: Control, material: ShaderMaterial) -> void:
-	if control.material == material:
-		control.material = null
-		set_descendants_use_parent_material(control, false)
+func _clear_material(node: CanvasItem, material: ShaderMaterial) -> void:
+	if node.material == material:
+		node.material = null
+		set_descendants_use_parent_material(node, false)
