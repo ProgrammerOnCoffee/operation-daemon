@@ -26,6 +26,14 @@ func attack() -> bool:
 				return false
 		else:
 			selected_enemy = alive_enemies[0]
+		
+		# Fade health bar for all enemies other than selected enemy
+		var fade_bar_out_tween: Tween
+		for enemy in combat_handler.enemies:
+			if enemy != selected_enemy:
+				if not fade_bar_out_tween:
+					fade_bar_out_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
+				fade_bar_out_tween.tween_property(enemy.health_bar, ^":modulate:a", 0.0, 0.3)
 	else:
 		selected_enemy = combat_handler.enemies[0]
 	last_selected_enemy = selected_enemy
@@ -48,6 +56,16 @@ func attack() -> bool:
 		combat_handler.add_child(qte, false, INTERNAL_MODE_FRONT)
 		qte.fade_in()
 		selected_enemy.take_damage(int(get_damage() * await qte.pressed))
+	
+	# Fade health bar back in for all enemies other than selected enemy
+	var fade_bar_in_tween: Tween
+	for enemy in combat_handler.enemies:
+		if enemy != selected_enemy:
+			if not fade_bar_in_tween:
+				fade_bar_in_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
+				fade_bar_in_tween.tween_interval(1.0)
+				fade_bar_in_tween.chain()
+			fade_bar_in_tween.tween_property(enemy.health_bar, ^":modulate:a", 1.0, 0.3)
 	
 	await get_tree().create_timer(0.7).timeout
 	await entity_3d.return_to_initial_transform()
