@@ -23,9 +23,7 @@ signal daemon_discovered(daemon:Daemon)
 # The number of daemons that have ever existed, for their IDs.
 var daemon_count:int = 0
 
-## All the daemons refined into permanent buffs.
-var daemons_refined:Array[Daemon]
-## All the daemons discovered and available for perm-buffs.
+## All the daemons discovered and available for use as permanent buffs in a run.
 var daemons_discovered:Array[Daemon]
 ## All the daemons being researched. Cleared on death.
 var daemon_research:Dictionary[Daemon, float]
