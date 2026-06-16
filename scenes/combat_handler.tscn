@@ -4,10 +4,16 @@
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="2_a8me0"]
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_tb0t7"]
 [ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="4_fnwho"]
+[ext_resource type="Texture2D" uid="uid://ula2soydh481" path="res://assets/UI Elements/Attack.png" id="4_tb0t7"]
 [ext_resource type="Texture2D" uid="uid://cun2fk1qycq6l" path="res://assets/images/svg/qte_ring.svg" id="5_61ait"]
+[ext_resource type="BitMap" uid="uid://bpq7q1y58ck7u" path="res://assets/UI Elements/Attack_Bitmap.png" id="5_fnwho"]
+[ext_resource type="Texture2D" uid="uid://jhrf03t3rqsh" path="res://assets/UI Elements/Special.png" id="6_3uv2x"]
 [ext_resource type="Script" uid="uid://dei4c46847yat" path="res://scripts/qte.gd" id="6_lstl7"]
 [ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="7_3uv2x"]
+[ext_resource type="BitMap" uid="uid://dpgjvnnixeibq" path="res://assets/UI Elements/Special_Bitmap.png" id="7_oebxs"]
+[ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
 [ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
+[ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
@@ -21,29 +27,46 @@ metadata/_custom_type_script = "uid://rnsxwyparcb0"
 visible = false
 layout_mode = 3
 anchors_preset = 0
+offset_right = 6.0
 theme = ExtResource("2_a8me0")
 script = ExtResource("3_tb0t7")
 
-[node name="Attack" type="Button" parent="CommandWheel" unique_id=1028546941]
-custom_minimum_size = Vector2(192, 0)
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 40.0
-text = "Attack"
+[node name="Attack" type="TextureButton" parent="CommandWheel" unique_id=505370842]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_bottom = -38.0
+grow_vertical = 0
+texture_normal = ExtResource("4_tb0t7")
+texture_click_mask = ExtResource("5_fnwho")
+stretch_mode = 4
+metadata/feedback_type = &"slide"
 
-[node name="Special" type="Button" parent="CommandWheel" unique_id=366550612]
-custom_minimum_size = Vector2(192, 0)
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 40.0
-text = "Special"
+[node name="Special" type="TextureButton" parent="CommandWheel" unique_id=1346574553]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_vertical = 2
+texture_normal = ExtResource("6_3uv2x")
+texture_click_mask = ExtResource("7_oebxs")
+stretch_mode = 4
+metadata/feedback_type = &"slide"
 
-[node name="Defend" type="Button" parent="CommandWheel" unique_id=1066935241]
-custom_minimum_size = Vector2(192, 0)
-layout_mode = 0
-offset_right = 192.0
-offset_bottom = 39.999985
-text = "Defend"
+[node name="Defend" type="TextureButton" parent="CommandWheel" unique_id=1916891759]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 26.0
+offset_top = 20.0
+texture_normal = ExtResource("8_gq7i8")
+texture_click_mask = ExtResource("9_orqql")
+stretch_mode = 4
+metadata/feedback_type = &"slide"
 
 [node name="FloatyLabel" type="Label" parent="." unique_id=984610296]
 visible = false

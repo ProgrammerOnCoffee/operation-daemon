@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dpgjvnnixeibq"
+path="res://.godot/imported/Special_Bitmap.png-43112e36d3cd33ca28218def823260cb.res"
+
+[deps]
+
+source_file="res://assets/UI Elements/Special_Bitmap.png"
+dest_files=["res://.godot/imported/Special_Bitmap.png-43112e36d3cd33ca28218def823260cb.res"]
+
+[params]
+
+create_from=1
+threshold=0.25
