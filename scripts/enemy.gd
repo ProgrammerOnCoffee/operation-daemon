@@ -7,6 +7,7 @@ extends Entity
 
 
 func _take_turn() -> void:
+	health_bar.z_index += 1
 	for effect in get_effects():
 		@warning_ignore("incompatible_ternary")
 		effect.apply_effect(self if effect.target_type == Module.TARGET.ATTACKER
@@ -28,4 +29,5 @@ func _take_turn() -> void:
 	
 	await get_tree().create_timer(0.7).timeout
 	await entity_3d.return_to_initial_transform()
+	health_bar.z_index -= 1
 	turn_ended.emit()
