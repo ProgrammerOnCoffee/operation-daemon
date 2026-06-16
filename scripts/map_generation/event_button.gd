@@ -72,6 +72,5 @@ func set_event(to:Event) -> void:
 	overlay.rotation = randf_range(-PI/14, PI/14)
 	
 	button.texture_normal = ICONS[event.type]
-	$Label.text = str(to)
 	#button.size = Vector2.ZERO
 	#button.pivot_offset = size / 2

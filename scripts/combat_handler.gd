@@ -4,6 +4,8 @@ extends Node
 ##
 ## Handles the logic for each fight.
 
+signal requested_end
+
 ## Emitted when the player has selected an [Entity] to attack, if any.
 signal entity_selected(entity: Entity)
 
@@ -48,6 +50,8 @@ func _ready() -> void:
 	_sorted_enemies.sort_custom(func(a: Enemy, b: Enemy) -> bool:
 			return cam.to_local(a.entity_3d.global_position).z <= cam.to_local(b.entity_3d.global_position).z)
 	turn()
+	
+	$EndScreen/MarginContainer/VBoxContainer/Laboratory.pressed.connect(requested_end.emit)
 
 
 func _input(event: InputEvent) -> void:

@@ -11,10 +11,10 @@ func get_new_scene() -> Node:
 		return SCENES[type].instantiate()
 	return null
 const SCENES:Dictionary[TYPE, PackedScene] = {
-	TYPE.COMBAT: null,
-	TYPE.REST: preload("res://scenes/event_scenes/rest_event.tscn"),
+	TYPE.COMBAT:   preload("res://scenes/event_scenes/combat_scene.tscn"),
+	TYPE.REST:     preload("res://scenes/event_scenes/rest_event.tscn"),
 	TYPE.ANALYSIS: preload("res://scenes/event_scenes/analysis_scene.tscn"),
-	TYPE.DAEMON: preload("res://scenes/event_scenes/daemon_scene.tscn")
+	TYPE.DAEMON:   preload("res://scenes/event_scenes/daemon_scene.tscn")
 }
 
 # The position of the event both on the map and on the grid.

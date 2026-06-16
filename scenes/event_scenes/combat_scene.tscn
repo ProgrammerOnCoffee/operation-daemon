@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clpnhtoy8srf1"]
 
 [ext_resource type="Script" uid="uid://crugm0jheujxl" path="res://scripts/map.gd" id="1_yt5n2"]
+[ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="2_ouwt5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -125,3 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.089, 0.31, 0.278)
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
 transform = Transform3D(0.9576166, 0, -0.28804585, 0, 1, 0, 0.28804585, 0, 0.9576166, -1.1830637, 1.5862598, 5.6311235)
 fov = 72.9
+
+[node name="EventScene" type="Node" parent="." unique_id=1336018014]
+script = ExtResource("2_ouwt5")
+metadata/_custom_type_script = "uid://c1fylo3xb5bvf"

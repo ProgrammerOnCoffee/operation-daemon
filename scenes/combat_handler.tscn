@@ -3,15 +3,66 @@
 [ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_2p8v4"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="2_a8me0"]
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_tb0t7"]
-[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="4_fnwho"]
+[ext_resource type="Script" path="res://scripts/floaty_label.gd" id="4_fnwho"]
 [ext_resource type="Texture2D" uid="uid://cun2fk1qycq6l" path="res://assets/images/svg/qte_ring.svg" id="5_61ait"]
 [ext_resource type="Script" uid="uid://dei4c46847yat" path="res://scripts/qte.gd" id="6_lstl7"]
 [ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="7_3uv2x"]
-[ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
+[ext_resource type="Shader" path="res://resources/blur.gdshader" id="8_oebxs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
 shader_parameter/blur = 2.000000095
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mkvh"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.2901961, 0.2901961, 0.30980393, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehj20"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.7058824, 0.7058824, 0.7607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fie5y"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.62352943, 0.62352943, 0.67058825, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qmye"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.40784314, 0.40784314, 0.4392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_2p8v4"]
+Button/colors/font_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_disabled_color = Color(0.039215688, 0.043137256, 0.050980393, 0.75686276)
+Button/colors/font_focus_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_hover_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/colors/font_pressed_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_6mkvh")
+Button/styles/hover = SubResource("StyleBoxFlat_ehj20")
+Button/styles/normal = SubResource("StyleBoxFlat_fie5y")
+Button/styles/pressed = SubResource("StyleBoxFlat_0qmye")
 
 [node name="CombatHandler" type="Node" unique_id=583709940]
 script = ExtResource("1_2p8v4")
@@ -166,4 +217,5 @@ layout_mode = 2
 [node name="Laboratory" type="Button" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=963526792]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_2p8v4")
 text = "Return To Laboratory"
