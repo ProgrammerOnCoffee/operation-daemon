@@ -2,24 +2,25 @@ extends ColorRect
 
 @export var map:Control
 
-@onready var tab_bar := $HBoxContainer/MarginContainer2/VBoxContainer/TabBar
+@onready var tab_bar          := $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
 @onready var scroll_container := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer
 var goal_scroll_position:float
 
 ## Refinery
-@onready var refinery_item_list := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Refinery/VBoxContainer/HBoxContainer/DiscoveredDaemonList
-@onready var refinery_overview := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Refinery/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DaemonOverview
+@onready var refinery_item_list := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Refinery/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList
+@onready var refinery_overview  := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Refinery/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/DaemonOverview
 var refinery_dictionary:Dictionary[String, Daemon] # Turn an ID back into a Daemon.
 var refinery_selection:Daemon
 
 ## Injector
-@onready var injector_item_list := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/RefinedDaemonList
-@onready var injector_overview := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DaemonOverview
-@onready var injector_equip_button := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/StartingDaemons/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Button
+@onready var injector_item_list    := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList
+@onready var injector_overview     := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/DaemonOverview
+@onready var injector_equip_button := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button
 var injector_dictionary:Dictionary[String, Daemon] # Turn an ID back into a Daemon.
 var injector_selection:Daemon
 
 func _ready() -> void:
+	
 	tab_bar.tab_selected.connect(func(index:int): goal_scroll_position = index * 496)
 	
 	for i in 10:
@@ -120,7 +121,6 @@ func _toggle_equip(toggled_on: bool) -> void:
 	injector_equip_button.text = "Equip %s/5" % PlayerData.permanent_daemons.size()
 	
 	
-	
 	for i in injector_item_list.item_count:
 		var daemon := injector_dictionary[injector_item_list.get_item_text(i).replace(">","")]
 		
@@ -128,3 +128,9 @@ func _toggle_equip(toggled_on: bool) -> void:
 		injector_item_list.set_item_text(i, (">" if PlayerData.permanent_daemons.has(daemon) else "") + injector_item_list.get_item_text(i).replace(">", ""))
 		
 		injector_item_list.set_item_disabled(i, PlayerData.permanent_daemons.size() >= 5 and not PlayerData.permanent_daemons.has(daemon))
+
+## Hijack ButtonFeedback for sound effects. Heh heh heh.
+func _on_input_hover  (..._args:Array) -> void: ButtonFeedback.button_hover_player  .play()
+func _on_input_down   (..._args:Array) -> void: ButtonFeedback.button_down_player   .play()
+func _on_input_pressed(..._args:Array) -> void: ButtonFeedback.button_pressed_player.play()
+	
