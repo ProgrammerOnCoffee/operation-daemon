@@ -14,6 +14,10 @@ var description :String: get = _get_description
 ## The description of the effect.
 @abstract func _get_description() -> String
 
+var effect_color :Color: get = _get_effect_color
+## The color of the effect - applied as a modulate to enemies. 
+@abstract func _get_effect_color() -> Color
+
 var target_type :Module.TARGET: get = _get_target_type
 ## Whether this effect is applied to the attacker or attackee
 @abstract func _get_target_type() -> Module.TARGET

@@ -6,6 +6,8 @@ class_name ExampleEffect extends Effect
 func _get_effect_name() -> String: return "Healing"
 func _get_description() -> String: return "Heals the attacker by %s" % base 
 
+func _get_effect_color() -> Color: return Color.BLUE
+
 ## Heals 10.0 w/o any modifiers
 func _get_base() -> float: return 10.0
 

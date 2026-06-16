@@ -25,4 +25,4 @@ var column:int
 # The next options for events after this one.
 var next_options:Array[Event]
 
-func _to_string() -> String: return str(next_options.size()) #"CRADB"[type]
+func _to_string() -> String: return "(%s/%s/%s)" % [row, column, type] #"CRADB"[type]
