@@ -7,7 +7,7 @@ func _get_effect_color() -> Color: return Color.WHITE
 
 func _get_base() -> float: return 0.4
 
-func _get_modification_type() -> String: return "Heal"
+func _get_effect_type() -> String: return "Heal"
 
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
 
