@@ -92,8 +92,5 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="CommandWheelPoint" type="Marker2D" parent="." index="1" unique_id=1223905428]
 position = Vector2(96, -140)
 
-[node name="CollisionShape2D" parent="." index="2" unique_id=1326445450]
-visible = false
-
 [editable path="Player Character"]
 [editable path="Player Character/PlayerBonesetup"]
