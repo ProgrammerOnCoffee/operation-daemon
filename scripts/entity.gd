@@ -47,6 +47,10 @@ var health := max_health:
 var modules: Array[Module]
 ## This [Entity]'s [Daemon]s.
 var daemons: Array[Daemon]
+## The amount of damage this entity is about to deal. Used and modified by some effects.
+var damage_dealing: int
+## The amount of damage this entity is about to receive. Used and modified by some effects.
+var damage_receiving: int
 
 ## The [CombatHandler] node handling this [Entity]'s actions.
 var combat_handler: CombatHandler
@@ -109,21 +113,31 @@ func get_effects() -> Array[Effect]:
 	return effects
 
 
+## Applied the effects returned by [method get_effects] if they match [param apply_type].
+func apply_effects(apply_type: Effect.ApplyType, attacker: Entity, attackee: Entity) -> void:
+	for effect in get_effects():
+		if effect.apply_type == apply_type:
+			effect.apply_effect(attacker if effect.target_type == Module.TARGET.ATTACKER else attackee)
+
+
 ## Returns the amount of damage the [Entity] should deal.
 func get_damage() -> int:
 	return base_damage + randi_range(-damage_variation, damage_variation)
 
 
 ## Makes this [Entity] take [param amount] damage.
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, attacker: Entity) -> void:
 	if amount <= 0:
 		return
 	
+	damage_receiving = amount
+	apply_effects(Effect.ApplyType.BEFORE_DAMAGE, attacker, self)
+	damage_receiving = mini(damage_receiving, health)
 	# Add amount to damage dealt/taken stats
 	if self is Player:
-		combat_handler.damage_taken += mini(amount, health)
+		combat_handler.damage_taken += damage_receiving
 	else:
-		combat_handler.damage_dealt += mini(amount, health)
+		combat_handler.damage_dealt += damage_receiving
 	
 	health -= amount
 	combat_handler.create_floaty_label(
@@ -132,6 +146,7 @@ func take_damage(amount: int) -> void:
 			),
 			String.num_int64(amount)
 	)
+	apply_effects(Effect.ApplyType.AFTER_DAMAGE, attacker, self)
 
 
 ## Visually removes this entity from the fight.

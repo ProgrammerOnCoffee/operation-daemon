@@ -3,6 +3,14 @@ class_name Effect
 extends Resource
 ## An effect that's applied to a target every turn cycle.
 
+## When this [Effect] should be applied.
+enum ApplyType {
+	BEFORE_ATTACK, ## Apply this effect before attacking.
+	AFTER_ATTACK, ## Apply this effect after attacking.
+	BEFORE_DAMAGE, ## Apply this effect before taking damage.
+	AFTER_DAMAGE, ## Apply this effect after taking damage.
+}
+
 ## The final [member base] of this [Effect] after all [Modifier]s have been
 ## applied. Use this value in [method apply_effect].
 ## [br]
@@ -26,9 +34,13 @@ var description: String: get = _get_description
 var effect_color: Color: get = _get_effect_color
 @abstract func _get_effect_color() -> Color
 
-## Whether this effect is applied to the attacker or attackee
+## Whether this effect should be applied to the attacker or attackee
 var target_type: Module.TARGET: get = _get_target_type
 @abstract func _get_target_type() -> Module.TARGET
+
+## When this effect should be applied.
+var apply_type: ApplyType: get = _get_apply_type
+@abstract func _get_apply_type() -> ApplyType
 
 ## The base value of the effect. Can be changed via Modifiers.
 var base: float: get = _get_base

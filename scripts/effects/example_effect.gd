@@ -16,6 +16,9 @@ func _get_modification_type() -> String: return "Heal"
 ## Targets the attacker
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
 
+## Apply this effect after attacking.
+func _get_apply_type() -> ApplyType: return ApplyType.AFTER_ATTACK
+
 ## Actually do that healing.
 func apply_effect(target: Entity) -> bool:
 	target.health += int(modified_base) # Or something like this
