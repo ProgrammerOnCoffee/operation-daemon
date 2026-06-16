@@ -20,10 +20,6 @@ var is_running := false
 var type: Type
 
 
-func _ready() -> void:
-	pressed.connect(prints.bind("Pressed"))
-
-
 func _process(delta: float) -> void:
 	if visible and is_running:
 		$Tick.rotation += TAU * delta / (0.8 if type == Type.ATTACK else 0.6)
