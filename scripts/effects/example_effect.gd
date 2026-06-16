@@ -10,9 +10,6 @@ func _get_effect_color() -> Color: return Color.BLUE
 ## Heals 10.0 w/o any modifiers
 func _get_base() -> float: return 10.0
 
-## Will be effected by modifiers with the modification type "Heal"
-func _get_effect_type() -> String: return "Heal"
-
 ## Targets the attacker
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
 

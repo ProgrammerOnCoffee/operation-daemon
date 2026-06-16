@@ -21,7 +21,7 @@ static func compound_modifiers(input: Array[Modifier]) -> Array[Modifier]:
 		var found := false
 		
 		for check_modifier in compounded_modifiers:
-			if modifier.effect_type == check_modifier.effect_type and check_modifier.target_type == modifier.target_type:
+			if modifier.compare_effect(check_modifier.effect_type) and check_modifier.target_type == modifier.target_type:
 				check_modifier.percent *= modifier.percent
 				found = true
 				break

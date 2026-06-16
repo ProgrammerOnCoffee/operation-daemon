@@ -107,8 +107,7 @@ func get_effects() -> Array[Effect]:
 	for daemon in daemons:
 		for modifier in daemon.modifiers:
 			for effect in effects:
-				if (modifier.effect_type == effect.effect_type
-						and modifier.target_type == effect.target_type):
+				if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
 					effect.modified_base *= modifier.percent
 	return effects
 

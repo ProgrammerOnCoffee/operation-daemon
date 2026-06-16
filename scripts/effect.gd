@@ -53,10 +53,6 @@ var description: String: get = _get_description
 var effect_color: Color: get = _get_effect_color
 @abstract func _get_effect_color() -> Color
 
-## The type of effect. Effects are affected by modifiers with the same effect type.
-var effect_type: String: get = _get_effect_type
-@abstract func _get_effect_type() -> String
-
 ## Whether this effect should be applied to the attacker or attackee
 var target_type: Module.TARGET: get = _get_target_type
 @abstract func _get_target_type() -> Module.TARGET
