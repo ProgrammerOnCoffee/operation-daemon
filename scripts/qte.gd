@@ -4,8 +4,20 @@ extends TextureRect
 ## [param value] is how perfectly the event was pressed.
 signal pressed(value: float)
 
+## The type of QTE prompt.
+enum Type {
+	## QTE prompt shown when attacking an enemy.
+	ATTACK,
+	## QTE prompt shown when parrying an enemy's attack.
+	PARRY,
+	## QTE prompt shown when countering an enemy's attack.
+	COUNTER,
+}
+
 ## If [code]true[/code], this QTE is currently running and waiting for player input.
 var is_running := false
+## The type of QTE.
+var type: Type
 
 
 func _ready() -> void:
@@ -14,7 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if visible and is_running:
-		$Tick.rotation += TAU * delta / 0.8
+		$Tick.rotation += TAU * delta / (0.8 if type == Type.ATTACK else 0.6)
 		if $Tick.rotation_degrees >= 360:
 			pressed.emit(0.0)
 			fade_out()
@@ -57,8 +69,9 @@ func fade_out() -> void:
 	tween.finished.connect(queue_free)
 	
 	var value := get_value()
-	if value >= 0.9 or is_zero_approx(value):
+	if value >= 0.9 or (type == Type.ATTACK and is_zero_approx(value)):
 		(get_parent() as CombatHandler).create_floaty_label(
 				global_position + size / 2,
-				"Missed!" if is_zero_approx(value) else "Perfect!"
+				("Missed!" if is_zero_approx(value) else "Perfect!") if type == Type.ATTACK
+				else "Parried!" if type == Type.PARRY else "Countered!"# if type == Type.COUNTER
 		).scale *= 0.5

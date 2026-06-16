@@ -76,6 +76,7 @@ func _input(event: InputEvent) -> void:
 
 ## Sequentially prompts all entities to take a turn.
 func turn() -> void:
+	player.is_defending = false
 	while true: # Repeat until player takes action
 		$CommandWheel.show_wheel()
 		match await $CommandWheel.command_pressed as String:
@@ -85,8 +86,14 @@ func turn() -> void:
 					break
 				$CommandWheel.show_wheel()
 			"Special":
+				$CommandWheel.hide_wheel()
+				if await player.special():
+					break
+				$CommandWheel.show_wheel()
 				break
 			"Defend":
+				$CommandWheel.hide_wheel()
+				player.defend()
 				break
 	
 	var is_enemy_alive := false
@@ -102,6 +109,18 @@ func turn() -> void:
 		turn()
 	else:
 		end_fight()
+
+
+## Creates a new quick time event prompt.
+func create_qte() -> Control:
+	var qte := $QTERing.duplicate() as Control
+	qte.anchor_left = randf_range(0.4, 0.6)
+	qte.anchor_top = randf_range(0.2, 0.8)
+	qte.position -= qte.size / 2
+	qte.rotation_degrees = randi_range(-1, 1) * 45
+	add_child(qte, false, INTERNAL_MODE_FRONT)
+	qte.fade_in()
+	return qte
 
 
 ## Ends the current fight and displays a win/lose screen.

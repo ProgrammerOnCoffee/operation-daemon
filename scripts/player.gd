@@ -7,6 +7,8 @@ extends Entity
 
 ## The last [Enemy] the player selected to attack.
 var last_selected_enemy: Enemy
+## If [code]true[/code], the player is currently in a defensive state and can counter attacks.
+var is_defending: bool
 
 
 ## Attacks an [Enemy]. Returns whether or not the attack was completed.
@@ -46,15 +48,9 @@ func attack() -> bool:
 	
 	await entity_3d.move_to_entity(selected_enemy.entity_3d)
 	
-	for i in 2:
+	for i in attack_count:
 		await get_tree().create_timer(0.2).timeout
-		var qte := combat_handler.get_node(^"QTERing").duplicate() as Control
-		qte.anchor_left = randf_range(0.4, 0.6)
-		qte.anchor_top = randf_range(0.2, 0.8)
-		qte.position -= qte.size / 2
-		qte.rotation_degrees = randi_range(-1, 1) * 45
-		combat_handler.add_child(qte, false, INTERNAL_MODE_FRONT)
-		qte.fade_in()
+		var qte := combat_handler.create_qte()
 		selected_enemy.take_damage(int(get_damage() * await qte.pressed))
 	
 	# Fade health bar back in for all enemies other than selected enemy
@@ -74,7 +70,13 @@ func attack() -> bool:
 	return true
 
 
-## Defends from the next attack.
-func defend() -> void:
+## Attacks an [Enemy] with the player's special attack.
+## Returns whether or not the special was completed.
+func special() -> bool:
 	# TODO
-	pass
+	return await attack()
+
+
+## Gives the player a chance to counter enemies' attacks.
+func defend() -> void:
+	is_defending = true

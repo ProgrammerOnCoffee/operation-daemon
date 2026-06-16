@@ -19,6 +19,8 @@ static var entity_transition_manager := TransitionManager.duplicate() as Transit
 	set(value):
 		rect = value
 		queue_redraw()
+## The number of times this entity will attack in a single turn.
+@export var attack_count: int = 1
 ## The base damage this [Entity] deals before effects.
 @export var base_damage: int = 10
 ## The variation applied [member base_damage]. Base damage dealt is equal to
