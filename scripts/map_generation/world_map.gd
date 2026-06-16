@@ -98,8 +98,8 @@ func update_visual() -> void:
 			
 			lines.append(line)
 		
-		# Unlock the first row.
-		if this_event.row == 0: this_button.available = true
+		# Unlock only the first row.
+		this_button.available = this_event.row == 0
 	
 	# Discard any unused lines.
 	for line in unused_lines: line.queue_free()

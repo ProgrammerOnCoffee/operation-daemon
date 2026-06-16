@@ -1,6 +1,10 @@
 extends Node
 ## Manages some global things, like the Daemon research.
 
+## -- MUSIC -- ##
+@warning_ignore("unused_signal")
+signal request_track_transition(to:String)
+
 ## -- PROGRESSION -- ##
 
 signal act_changed

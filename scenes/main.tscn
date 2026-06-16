@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -544,6 +545,8 @@ _data = {
 &"RESET": SubResource("Animation_tefeu")
 }
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_tipki"]
+
 [node name="Main" type="Node" unique_id=2097801009]
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1598535760]
@@ -1026,6 +1029,11 @@ scene_parents = {
 [node name="TransitionPlayer" type="AnimationPlayer" parent="UILayer/UI" unique_id=321150588]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
+stream = SubResource("AudioStreamSynchronized_tipki")
+autoplay = true
+script = ExtResource("7_o6xl0")
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
