@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://7bkv8oacgvy0" path="res://scenes/combat_handler.tscn" id="1_y836a"]
 [ext_resource type="PackedScene" uid="uid://bvgllgo3272t8" path="res://scenes/entities/player.tscn" id="2_wh42t"]
 [ext_resource type="PackedScene" uid="uid://chww5uygi35ie" path="res://scenes/entities/slime_spider_bot.tscn" id="4_y836a"]
+[ext_resource type="AudioStream" uid="uid://bprgulad8c16g" path="res://assets/Audio/combat 2 (loop sample).mp3" id="5_wjxyj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_domrg"]
 sky_top_color = Color(0.44382617, 0.6358568, 0.8604274, 1)
@@ -207,3 +208,7 @@ position = Vector2(96, 168)
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
 transform = Transform3D(0.9576166, 0, -0.28804585, 0, 1, 0, 0.28804585, 0, 0.9576166, -1.1830637, 1.5862598, 5.6311235)
 fov = 72.9
+
+[node name="Test Audio" type="AudioStreamPlayer" parent="." unique_id=1565849325]
+stream = ExtResource("5_wjxyj")
+autoplay = true

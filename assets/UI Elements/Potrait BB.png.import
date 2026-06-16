@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://og5njqhohe31"
-path="res://.godot/imported/Layer 25 copy.png-0ff3fca9dfb02677958a4466052b77c0.ctex"
+uid="uid://247xtn3osolm"
+path="res://.godot/imported/Potrait BB.png-d8be0fdb4831076c76ceac3c35af2380.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI Elements/Layer 25 copy.png"
-dest_files=["res://.godot/imported/Layer 25 copy.png-0ff3fca9dfb02677958a4466052b77c0.ctex"]
+source_file="res://assets/UI Elements/Potrait BB.png"
+dest_files=["res://.godot/imported/Potrait BB.png-d8be0fdb4831076c76ceac3c35af2380.ctex"]
 
 [params]
 
