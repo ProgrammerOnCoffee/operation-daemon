@@ -69,6 +69,8 @@ func attack() -> bool:
 	
 	await get_tree().create_timer(0.7).timeout
 	await entity_3d.return_to_initial_transform()
+	if not selected_enemy.health:
+		selected_enemy.clear()
 	return true
 
 

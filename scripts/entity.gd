@@ -8,6 +8,9 @@ extends Node2D
 ## Emitted when the [Entity]'s turn has ended.
 signal turn_ended()
 
+## The [TransitionManager] used to clear entities when killed.
+static var entity_transition_manager := TransitionManager.duplicate() as TransitionManager
+
 ## This [Entity]'s 2D rect. Used to create a [SubViewport] in 3D scenes and to
 ## position the [Entity] inside it. In the editor, this is displayed as a red rectangle.
 ## [br][br]
@@ -38,9 +41,6 @@ var health := max_health:
 			# TODO add flashing/scaling tween to label when health is <=~10%
 		
 		health = value
-		if health == 0:
-			# Kill entity
-			pass
 ## This [Entity]'s [Module]s.
 var modules: Array[Module]
 ## This [Entity]'s [Daemon]s.
@@ -56,6 +56,14 @@ var health_bar: Control:
 		health_bar = value
 		health_bar.get_node(^"HealthBar").max_value = max_health
 		health = health
+
+
+static func _static_init() -> void:
+	entity_transition_manager.bar_count = 48
+	entity_transition_manager.random_directions = false
+	entity_transition_manager.duration = 0.5
+	entity_transition_manager.spread = 0.5
+	TransitionManager.add_child(entity_transition_manager)
 
 
 func _draw() -> void:
@@ -120,3 +128,18 @@ func take_damage(amount: int) -> void:
 			),
 			String.num_int64(amount)
 	)
+
+
+## Visually removes this entity from the fight.
+func clear() -> void:
+	var dir := +1 if self is Player else -1
+	entity_transition_manager.angle_min = 210 * dir
+	entity_transition_manager.angle_max = 240 * dir
+	await entity_transition_manager.fade(self)
+	hide()
+	entity_3d.hide()
+	entity_3d.vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	if health_bar:
+		var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(health_bar, ^":modulate:a", 0.0, 0.6)
+		tween.finished.connect(health_bar.hide)
