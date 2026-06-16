@@ -97,13 +97,15 @@ func get_effects() -> Array[Effect]:
 	var effects: Array[Effect]
 	for module in modules:
 		for effect in module.effects:
-			effects.append(effect.duplicate())
+			# Reset modified base back to base
+			effect.modified_base = effect.base
+			effects.append(effect)
 	for daemon in daemons:
 		for modifier in daemon.modifiers:
 			for effect in effects:
 				if (modifier.modification_type == effect.modification_type
 						and modifier.target_type == effect.target_type):
-					effect.base *= modifier.percent
+					effect.modified_base *= modifier.percent
 	return effects
 
 

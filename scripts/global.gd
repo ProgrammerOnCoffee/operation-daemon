@@ -12,11 +12,14 @@ var act := 1:
 		act = to
 		act_changed.emit()
 
+## The number of modules that have ever existed. Used to give each module a unique ID.
+var module_count:int = 0
+
 ## -- DAEMON RESEARCH -- ##
 
 signal daemon_discovered(daemon:Daemon)
 
-# The number of daemons that have ever existed, for their IDs.
+## The number of daemons that have ever existed. Used to give each module a unique ID.
 var daemon_count:int = 0
 
 ## All the daemons refined into permanent buffs.

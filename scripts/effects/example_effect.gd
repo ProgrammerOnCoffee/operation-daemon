@@ -1,10 +1,9 @@
-class_name ExampleEffect extends Effect
-# These probably don't even need class_names.
+extends Effect
 # An example healing effect.
 
 ## Name & Description for tooltips.
 func _get_effect_name() -> String: return "Healing"
-func _get_description() -> String: return "Heals the attacker by %s" % base 
+func _get_description() -> String: return "Heals the attacker by %d HP." % base
 
 func _get_effect_color() -> Color: return Color.BLUE
 
@@ -18,6 +17,6 @@ func _get_modification_type() -> String: return "Heal"
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
 
 ## Actually do that healing.
-func apply_effect(target:Node) -> bool:
-	target.health += 10 # Or something like this - there aren't entities yet.
+func apply_effect(target: Entity) -> bool:
+	target.health += int(modified_base) # Or something like this
 	return true ## Free immediately - no DoT
