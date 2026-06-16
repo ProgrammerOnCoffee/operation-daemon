@@ -38,5 +38,6 @@ func load_entity(file_name: String) -> void:
 	var floor_perc := absf(entity.rect.position.y) / entity.rect.size.y
 	## The height of the [Entity3D], in meters.
 	var height := entity_3d.pixel_size * entity.rect.size.y
-	entity_3d.global_position = marker.global_position + Vector3.UP * (height / 2 - height * (1.0 - floor_perc))
 	add_child(entity_3d)
+	entity_3d.global_position = marker.global_position + Vector3.UP * (height / 2 - height * (1.0 - floor_perc))
+	entity_3d.initial_transform = entity_3d.global_transform
