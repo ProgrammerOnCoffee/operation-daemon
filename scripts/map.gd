@@ -31,6 +31,24 @@ func load_entity(file_name: String) -> void:
 	else:
 		marker_name = "EnemyMarker%d" % combat_handler.enemies.size()
 		combat_handler.enemies.append(entity)
+		
+		# Give enemy modules and daemons
+		for i in randi_range(Global.ACT_MODULES[Global.act * 2 - 2], Global.ACT_MODULES[Global.act * 2 - 1]):
+			var effects: Array[Effect]
+			for j in randi_range(Global.ACT_EFFECTS[Global.act * 2 - 2], Global.ACT_EFFECTS[Global.act * 2 - 1]):
+				var effect := Effect.all_effects.values().pick_random().new() as Effect
+				effects.append(effect)
+			entity.modules.append(Module.new(effects))
+		for k in randi_range(Global.ACT_DAEMONS[Global.act * 2 - 2], Global.ACT_DAEMONS[Global.act * 2 - 1]):
+			var modifiers: Array[Modifier]
+			# TODO distinguish between positive and negative modifiers
+			for l in randi_range(Global.ACT_POS_MODIFIERS[Global.act * 2 - 2], Global.ACT_POS_MODIFIERS[Global.act * 2 - 1]):
+				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
+				modifiers.append(modifier)
+			for m in randi_range(Global.ACT_NEG_MODIFIERS[Global.act * 2 - 2], Global.ACT_NEG_MODIFIERS[Global.act * 2 - 1]):
+				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
+				modifiers.append(modifier)
+			entity.daemons.append(Daemon.new(modifiers))
 	
 	## The [Marker3D] this entity will be placed at.
 	var marker := $Markers.get_node(NodePath(marker_name)) as Marker3D

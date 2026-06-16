@@ -1,6 +1,18 @@
 extends Node
 ## Manages some global things, like the Daemon research.
 
+# Every two elements are the min and max number of x that each enemy will have.
+## The min and max number of modules each enemy will have in each act.
+const ACT_MODULES = [1, 1, 2, 2, 3, 3]
+## The min and max number of effects each module will have in each act.
+const ACT_EFFECTS = [1, 1, 1, 2, 2, 2]
+## The min and max number of daemons each enemy will have in each act.
+const ACT_DAEMONS = [2, 2, 4, 5, 6, 7]
+## The min and max number of positive modifiers each daemon will have in each act.
+const ACT_POS_MODIFIERS = [1, 2, 2, 3, 3, 4]
+## The min and max number of negative modifiers each daemon will have in each act.
+const ACT_NEG_MODIFIERS = [2, 3, 3, 4, 4, 4]
+
 ## -- PROGRESSION -- ##
 
 signal act_changed

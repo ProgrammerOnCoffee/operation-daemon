@@ -11,6 +11,25 @@ enum ApplyType {
 	AFTER_DAMAGE, ## Apply this effect after taking damage.
 }
 
+## The list of all effects that can be given to enemies. Each key is an effect's
+## file name, and each value is that effect's script loaded with [method @GDScript.load].
+static var all_effects: Dictionary[String, GDScript]
+
+
+static func _static_init() -> void:
+	# Load all effects dynamically
+	const PATH = "res://scripts/effects/"
+	for file in DirAccess.get_files_at(PATH):
+		if OS.has_feature("editor"):
+			if not file.ends_with(".gd"):
+				continue
+		else:
+			if not file.ends_with(".gd.remap"):
+				continue
+			file = file.substr(0, file.length() - ".remap".length())
+		all_effects[file] = load(PATH.path_join(file))
+
+
 ## The final [member base] of this [Effect] after all [Modifier]s have been
 ## applied. Use this value in [method apply_effect].
 ## [br]
