@@ -16,7 +16,10 @@ func _take_turn() -> void:
 		qte.type = qte.Type.COUNTER if combat_handler.player.is_defending else qte.Type.PARRY
 		var value: float = await qte.pressed
 		if combat_handler.player.is_defending and value > 0.9:
-			take_damage(int(combat_handler.player.get_damage() * value * 0.5), self)
+			combat_handler.player.damage_dealing = int(combat_handler.player.get_damage() * value * 0.5)
+			apply_effects(Effect.ApplyType.BEFORE_ATTACK, combat_handler.player, self)
+			take_damage(combat_handler.player.damage_dealing, combat_handler.player)
+			apply_effects(Effect.ApplyType.AFTER_ATTACK, combat_handler.player, self)
 		else:
 			damage_dealing = (
 					get_damage() if combat_handler.player.is_defending # Counter failed, take full damage
