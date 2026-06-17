@@ -1,33 +1,69 @@
-@abstract class_name Effect extends Resource
+@abstract
+class_name Effect
+extends Resource
 ## An effect that's applied to a target every turn cycle.
+
+## When this [Effect] should be applied.
+enum ApplyType {
+	BEFORE_ATTACK, ## Apply this effect before attacking.
+	AFTER_ATTACK, ## Apply this effect after attacking.
+	BEFORE_DAMAGE, ## Apply this effect before taking damage.
+	AFTER_DAMAGE, ## Apply this effect after taking damage.
+}
+
+## The list of all effects that can be given to enemies. Each key is an effect's
+## file name, and each value is that effect's script loaded with [method @GDScript.load].
+static var all_effects: Dictionary[String, GDScript]
+
+
+static func _static_init() -> void:
+	# Load all effects dynamically
+	const PATH = "res://scripts/effects/"
+	for file in DirAccess.get_files_at(PATH):
+		if OS.has_feature("editor"):
+			if not file.ends_with(".gd"):
+				continue
+		else:
+			if not file.ends_with(".gd.remap"):
+				continue
+			file = file.substr(0, file.length() - ".remap".length())
+		all_effects[file] = load(PATH.path_join(file))
+
+
+## The final [member base] of this [Effect] after all [Modifier]s have been
+## applied. Use this value in [method apply_effect].
+## [br]
+## This is reset to [member base] each time the effect is parsed.
+var modified_base: float
 
 # NOTE: these are all abstract functions and not variables
 # so they can all be set by a subclass in code. The variables
 # let you get the single-value ones like normal variables,
 # but none can be set.
 
-var effect_name :String: get = _get_effect_name
 ## The name of the effect. 
+var effect_name: String: get = _get_effect_name
 @abstract func _get_effect_name() -> String
 
-var description :String: get = _get_description
 ## The description of the effect.
+var description: String: get = _get_description
 @abstract func _get_description() -> String
 
-var effect_color :Color: get = _get_effect_color
 ## The color of the effect - applied as a modulate to enemies. 
+var effect_color: Color: get = _get_effect_color
 @abstract func _get_effect_color() -> Color
 
-var target_type :Module.TARGET: get = _get_target_type
-## Whether this effect is applied to the attacker or attackee
+## Whether this effect should be applied to the attacker or attackee
+var target_type: Module.TARGET: get = _get_target_type
 @abstract func _get_target_type() -> Module.TARGET
 
-var base :float: get = _get_base
+## When this effect should be applied.
+var apply_type: ApplyType: get = _get_apply_type
+@abstract func _get_apply_type() -> ApplyType
+
 ## The base value of the effect. Can be changed via Modifiers.
+var base: float: get = _get_base
 @abstract func _get_base() -> float 
 
-var value:float
-## The final value after all the modifiers are applied. Use this for apply_effect.
-
 ## Apply this effect to a target. Ran by that target.
-@abstract func apply_effect(target:Node) -> bool
+@abstract func apply_effect(target: Entity) -> bool

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://og5njqhohe31"
-path="res://.godot/imported/Layer 25 copy.png-0ff3fca9dfb02677958a4466052b77c0.ctex"
+uid="uid://bvtvru3xno7ek"
+path="res://.godot/imported/Motion Punch.png-9124622de421d94d0dd80c14fe3f7105.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI Elements/Layer 25 copy.png"
-dest_files=["res://.godot/imported/Layer 25 copy.png-0ff3fca9dfb02677958a4466052b77c0.ctex"]
+source_file="res://assets/Player/Motion Punch.png"
+dest_files=["res://.godot/imported/Motion Punch.png-9124622de421d94d0dd80c14fe3f7105.ctex"]
 
 [params]
 

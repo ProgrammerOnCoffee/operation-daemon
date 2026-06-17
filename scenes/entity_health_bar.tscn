@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="1_bu3di"]
 
 [node name="EntityHealthBar" type="Control" unique_id=1840347635]
+z_index = -1
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 3
 anchors_preset = 0

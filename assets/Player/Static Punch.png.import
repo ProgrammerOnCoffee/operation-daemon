@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2ldcs5anfo8s"
-path="res://.godot/imported/Layer 25.png-0a4e602b3ca138f63fe4a110fa243b57.ctex"
+uid="uid://cx01eell5lil6"
+path="res://.godot/imported/Static Punch.png-2429a622a07fc5a8a978b7d60e2d90e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI Elements/Layer 25.png"
-dest_files=["res://.godot/imported/Layer 25.png-0a4e602b3ca138f63fe4a110fa243b57.ctex"]
+source_file="res://assets/Player/Static Punch.png"
+dest_files=["res://.godot/imported/Static Punch.png-2429a622a07fc5a8a978b7d60e2d90e6.ctex"]
 
 [params]
 

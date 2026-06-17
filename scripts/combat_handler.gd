@@ -35,6 +35,7 @@ var _focused_entity: Entity
 
 func _ready() -> void:
 	player.combat_handler = self
+	update_player_health_bar()
 	$CommandWheel.player_3d = player.entity_3d
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
@@ -119,7 +120,7 @@ func turn() -> void:
 func create_qte() -> Control:
 	var qte := $QTERing.duplicate() as Control
 	qte.anchor_left = randf_range(0.4, 0.6)
-	qte.anchor_top = randf_range(0.2, 0.8)
+	qte.anchor_top = randf_range(0.2, 0.7)
 	qte.position -= qte.size / 2
 	qte.rotation_degrees = randi_range(-1, 1) * 45
 	add_child(qte, false, INTERNAL_MODE_FRONT)
@@ -208,6 +209,15 @@ func create_floaty_label(pos: Vector2, text: String) -> Label:
 	label.show()
 	add_child(label, false, INTERNAL_MODE_FRONT)
 	return label
+
+
+## Updates the player's health bar.
+func update_player_health_bar() -> void:
+	# Update health bar and label
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
+		get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value = h
+		get_node(^"PlayerStatus/VBoxContainer/Health/Label").text = "%d%%" % h
+	, get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value, player.health, 0.3)
 
 
 ## Sets the text of a label in the stats list to [param x], formatting it according to the type of stat.
