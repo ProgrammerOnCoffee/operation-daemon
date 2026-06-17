@@ -98,8 +98,8 @@ func update_visual() -> void:
 			
 			lines.append(line)
 		
-		# Unlock the first row.
-		if this_event.row == 0: this_button.available = true
+		# Unlock only the first row.
+		this_button.available = this_event.row == 0
 	
 	# Discard any unused lines.
 	for line in unused_lines: line.queue_free()
@@ -127,8 +127,7 @@ func _on_event_button_pressed(button:EventButton):
 		# Connect the scene's finish signal to the finishing function.
 		recurs_find_event_scene(scene).event_finished.connect(_finish_event)
 		
-		if scene is Control:
-			TransitionManager.transition(self, scene)
+		TransitionManager.transition(self, scene if scene is CanvasItem else null)
 	
 	## Open up the next slots.
 	
@@ -151,14 +150,14 @@ func recurs_find_event_scene(from:Node) -> EventScene:
 func _finish_event() -> void: 
 	
 	# Positioning exception for 'from combat'
-	if current_event.type == Event.TYPE.COMBAT:
-		size.x = 576
-		position.x = 576
-	else:
-		size.x = 1152
-		position.x = 0
+	#if current_event.type == Event.TYPE.COMBAT:
+		#size.x = 576
+		#position.x = 576
+	#else:
+		#size.x = 1152
+		#position.x = 0
 	
-	await TransitionManager.transition_screen(current_event_scene, self)
+	await TransitionManager.transition_screen(current_event_scene if current_event_scene is CanvasItem else null, self)
 	
 	current_event_scene.queue_free()
 	current_event_scene = null

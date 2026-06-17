@@ -15,6 +15,8 @@ func _ready() -> void:
 		load_entity("slime_spider_bot.tscn")
 	add_child(combat_handler)
 	ButtonFeedback.setup_recursive(combat_handler)
+	
+	combat_handler.requested_end.connect($EventScene.event_finished.emit)
 
 
 ## Loads an entity and adds it to the map.

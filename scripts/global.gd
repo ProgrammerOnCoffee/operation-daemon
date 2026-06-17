@@ -1,6 +1,9 @@
 extends Node
 ## Manages some global things, like the Daemon research.
 
+## -- MUSIC -- ##
+@warning_ignore("unused_signal")
+signal request_track_transition(to:String)
 # Every two elements are the min and max number of x that each enemy will have.
 ## The min and max number of modules each enemy will have in each act.
 const ACT_MODULES = [1, 1, 2, 2, 3, 3]
@@ -34,9 +37,7 @@ signal daemon_discovered(daemon:Daemon)
 ## The number of daemons that have ever existed. Used to give each module a unique ID.
 var daemon_count:int = 0
 
-## All the daemons refined into permanent buffs.
-var daemons_refined:Array[Daemon]
-## All the daemons discovered and available for perm-buffs.
+## All the daemons discovered and available for use as permanent buffs in a run.
 var daemons_discovered:Array[Daemon]
 ## All the daemons being researched. Cleared on death.
 var daemon_research:Dictionary[Daemon, float]
