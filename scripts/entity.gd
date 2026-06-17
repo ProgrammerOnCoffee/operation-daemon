@@ -43,6 +43,8 @@ var health := max_health:
 			# TODO add flashing/scaling tween to label when health is <=~10%
 		
 		health = value
+		if self is Player:
+			combat_handler.update_player_health_bar()
 ## This [Entity]'s [Module]s.
 var modules: Array[Module]
 ## This [Entity]'s [Daemon]s.
