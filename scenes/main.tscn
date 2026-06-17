@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://bx6uspo00ayov" path="res://assets/Music/placeholder2.ogg" id="8_85g3d"]
+[ext_resource type="AudioStream" uid="uid://bow7hrg3ge88n" path="res://assets/Music/placeholder1.ogg" id="9_choun"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -1035,6 +1037,10 @@ libraries/ = SubResource("AnimationLibrary_o6xl0")
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
 script = ExtResource("7_o6xl0")
+tracks = Dictionary[String, AudioStreamOggVorbis]({
+"test1": ExtResource("8_85g3d"),
+"test2": ExtResource("9_choun")
+})
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]

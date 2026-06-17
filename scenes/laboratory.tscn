@@ -461,5 +461,5 @@ text = "BEGIN EXPEDITION"
 [connection signal="mouse_entered" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/???/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_input_hover"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/???/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_input_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_hover"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_start_pressed"]
