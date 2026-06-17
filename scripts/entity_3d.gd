@@ -95,8 +95,8 @@ func project_point(p: Vector2) -> Vector3:
 	if billboard:
 		# Subtract angle from sprite to camera to rotation to account for billboard
 		var camera := (
-				EditorInterface.get_editor_viewport_3d() if Engine.is_editor_hint()
-				else get_viewport()).get_camera_3d()
+				Engine.get_singleton(&"EditorInterface").get_editor_viewport_3d() if Engine.is_editor_hint()
+				else get_viewport()).get_camera_3d() as Camera3D
 		rot -= Vector2(global_position.x, global_position.z).angle_to_point(
 				Vector2(camera.global_position.x, camera.global_position.z)) - PI / 2
 	## Half of [member size], rotated by [member rot].
@@ -119,8 +119,8 @@ func unproject_point(p: Vector3) -> Vector2:
 	if billboard:
 		# Subtract angle from sprite to camera to rotation to account for billboard
 		var camera := (
-				EditorInterface.get_editor_viewport_3d() if Engine.is_editor_hint()
-				else get_viewport()).get_camera_3d()
+				Engine.get_singleton(&"EditorInterface").get_editor_viewport_3d() if Engine.is_editor_hint()
+				else get_viewport()).get_camera_3d() as Camera3D
 		rot -= Vector2(global_position.x, global_position.z).angle_to_point(
 				Vector2(camera.global_position.x, camera.global_position.z)) - PI / 2
 	## Half of [member size], rotated by [member rot].
