@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
-[ext_resource type="AudioStream" uid="uid://bx6uspo00ayov" path="res://assets/Music/placeholder2.ogg" id="8_85g3d"]
-[ext_resource type="AudioStream" uid="uid://bow7hrg3ge88n" path="res://assets/Music/placeholder1.ogg" id="9_choun"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -553,9 +551,7 @@ content_margin_left = 8.0
 content_margin_right = 8.0
 bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
 corner_radius_top_left = 20
-corner_radius_top_right = 5
 corner_radius_bottom_right = 20
-corner_radius_bottom_left = 5
 corner_detail = 1
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_tipki"]
@@ -1044,48 +1040,53 @@ scene_parents = {
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI" unique_id=1562524463]
+[node name="ToastDisplay" type="MarginContainer" parent="UILayer/UI" unique_id=1562524463]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="Control" parent="UILayer/UI/MarginContainer" unique_id=1338407791 node_paths=PackedStringArray("child_template")]
+[node name="VBoxContainer" type="Control" parent="UILayer/UI/ToastDisplay" unique_id=1338407791 node_paths=PackedStringArray("child_template")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("7_choun")
 child_template = NodePath("../PanelContainer")
 
-[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/MarginContainer" unique_id=185250072]
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/ToastDisplay" unique_id=185250072]
 visible = false
 custom_minimum_size = Vector2(284, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MarginContainer/PanelContainer" unique_id=1724096027]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/ToastDisplay/PanelContainer" unique_id=1724096027]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer" unique_id=772010308]
+[node name="VBoxContainer" type="HBoxContainer" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer" unique_id=772010308]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=939498550]
+[node name="Label2" type="Label" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer/VBoxContainer" unique_id=939498550]
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 text = "!"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1257104661]
+[node name="Label" type="Label" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer/VBoxContainer" unique_id=1257104661]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
@@ -1096,10 +1097,6 @@ vertical_alignment = 1
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
 script = ExtResource("7_o6xl0")
-tracks = Dictionary[String, AudioStreamOggVorbis]({
-"test1": ExtResource("8_85g3d"),
-"test2": ExtResource("9_choun")
-})
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]

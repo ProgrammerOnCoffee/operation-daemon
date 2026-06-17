@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("qte_press"): for i in 5: create_buffered_toast("?")
+	#if Input.is_action_just_pressed("qte_press"): for i in 5: create_buffered_toast("?")
 	
 	var children := get_children()
 	
