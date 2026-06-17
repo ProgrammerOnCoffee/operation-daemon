@@ -12,6 +12,9 @@ const SPACING := Vector2(80, 80)
 ## The range-randomness applied to the nodes' position on the map.
 const VARIATION := Vector2(0,0)
 
+## Prevent these events from doubling up. Ex, no Rest -> Rest.
+const DISALLOWED_REPEATS:Array[Event.TYPE] = [Event.TYPE.REST]
+
 @export var config:MapConfig
 
 ## The map as a two-dimensional array of nodes.
@@ -142,35 +145,7 @@ func _setup_boss_event() -> void:
 ## Set the types up for all the rooms.
 func _setup_event_types() -> void:
 	
-	# Make a bag to get weighted types from.
-	var type_bag:Array[Event.TYPE]
-	for type in Event.TYPE.size():
-		if not config.event_weights.has(type): continue
-		for i in config.event_weights[type]:
-			type_bag.append(type)
-	
-	# Trace the paths up and fill in event types.
-	var to_be_assigned:Array[Event]
-	for j in config.map_width:
-		var this_event := map_data[0][j] as Event
-		if this_event.next_options and not to_be_assigned.has(this_event):
-			to_be_assigned.append(this_event)
-	
-	# Apply all the random types
-	while to_be_assigned:
-		var this_event := to_be_assigned.pop_front() as Event
-		
-		if this_event.type != Event.TYPE.NONE: continue
-		
-		this_event.type = type_bag.pick_random()
-		
-		# Add the connections from this room up to the queue.
-		# At the end, so they won't be done until they can't be re-added.
-		for event in this_event.next_options:
-			if not to_be_assigned.has(event):
-				to_be_assigned.append(event)
-	
-	# Apply all the type overrides.
+	# Apply all the type overrides first.
 	for override in config.event_overrides:
 		var row := wrapi(override, 0, config.floor_count)
 		var type := config.event_overrides[override] as Event.TYPE
@@ -178,9 +153,49 @@ func _setup_event_types() -> void:
 		for column in config.map_width:
 			var this_event := map_data[row][column] as Event
 			
-			# This is a valid event to set (it was already randomized) - do that.
-			if this_event.type != Event.TYPE.NONE:
+			if this_event.next_options.size():
 				this_event.type = type
+	
+	# Trace the paths up and fill in event types.
+	# Key: the event to do, Value: the one it's in front of for checking purposes.
+	var to_be_assigned:Dictionary[Event, Event]
+	for j in config.map_width:
+		var this_event := map_data[0][j] as Event
+		if this_event.next_options and not to_be_assigned.has(this_event):
+			to_be_assigned[this_event] = null
+	
+	# Apply all the random types
+	while to_be_assigned.keys():
+		var this_event := to_be_assigned.keys().front() as Event
+		var last_event := to_be_assigned[this_event]
+		to_be_assigned.erase(this_event)
+		
+		if this_event.type == Event.TYPE.NONE:
+			this_event.type = get_type_options(last_event, this_event.next_options).pick_random()
+		
+		
+		# Add the connections from this room up to the queue.
+		# At the end, so they won't be done until they can't be re-added.
+		for event in this_event.next_options:
+			if not to_be_assigned.has(event):
+				to_be_assigned[event] = this_event
+	
+	
+
+## Get a weighted list of the possible types following [following]
+func get_type_options(after:Event, before:Array[Event]) -> Array[Event.TYPE]:
+	
+	var bordering_types:Array[Event.TYPE]
+	for event:Event in [after] + before: if event: bordering_types.append(event.type)
+	
+	var type_bag:Array[Event.TYPE]
+	
+	for type in Event.TYPE.size():
+		if not config.event_weights.has(type) or (bordering_types.has(type) and DISALLOWED_REPEATS.has(type)): continue
+		for i in config.event_weights[type]:
+			type_bag.append(type)
+	
+	return type_bag
 
 ## Get all the events in the map that actually do things.
 func get_active_events() -> Array[Event]:

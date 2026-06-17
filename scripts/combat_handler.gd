@@ -206,6 +206,15 @@ func create_floaty_label(pos: Vector2, text: String) -> Label:
 	return label
 
 
+## Updates the player's health bar.
+func update_player_health_bar() -> void:
+	# Update health bar and label
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
+		get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value = h
+		get_node(^"PlayerStatus/VBoxContainer/Health/Label").text = "%d%%" % h
+	, get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value, player.health, 0.3)
+
+
 ## Sets the text of a label in the stats list to [param x], formatting it according to the type of stat.
 func _set_stat_text(x: int, l: Label) -> void:
 	@warning_ignore("integer_division")

@@ -142,9 +142,14 @@ func _on_button_mouse_entered(button: BaseButton) -> void:
 		if button.has_meta(&"_button_feedback_scale_tween"):
 			button.get_meta(&"_button_feedback_scale_tween").kill()
 		var tween := button.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(button, ^":scale", Vector2.ONE * HOVER_SCALE,
-				# Tween for less time if button is already partially scaled
-				remap(button.scale.x, 1.0, HOVER_SCALE, HOVER_SCALE_DURATION, 0.0))
+		if button.get_meta(&"feedback_type", &"") == &"slide":
+			tween.tween_property(button, ^":anchor_left", 1.0,
+					# Tween for less time if button is already partially moved
+					remap(button.anchor_left, 0.0, 1.0, HOVER_SCALE_DURATION * 2, 0.0))
+		else:
+			tween.tween_property(button, ^":scale", Vector2.ONE * HOVER_SCALE,
+					# Tween for less time if button is already partially scaled
+					remap(button.scale.x, 1.0, HOVER_SCALE, HOVER_SCALE_DURATION, 0.0))
 		button.set_meta(&"_button_feedback_scale_tween", tween)
 
 
@@ -154,7 +159,12 @@ func _on_button_mouse_exited(button: BaseButton) -> void:
 		if button.has_meta(&"_button_feedback_scale_tween"):
 			button.get_meta(&"_button_feedback_scale_tween").kill()
 		var tween := button.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(button, ^":scale", Vector2.ONE,
-				# Tween for less time if button isn't fully scaled
-				remap(button.scale.x, HOVER_SCALE, 1.0, HOVER_SCALE_DURATION, 0.0))
+		if button.get_meta(&"feedback_type", &"") == &"slide":
+			tween.tween_property(button, ^":anchor_left", 0.0,
+					# Tween for less time if button isn't fully scaled
+					remap(button.anchor_left, 1.0, 0.0, HOVER_SCALE_DURATION * 2, 0.0))
+		else:
+			tween.tween_property(button, ^":scale", Vector2.ONE,
+					# Tween for less time if button isn't fully scaled
+					remap(button.scale.x, HOVER_SCALE, 1.0, HOVER_SCALE_DURATION, 0.0))
 		button.set_meta(&"_button_feedback_scale_tween", tween)

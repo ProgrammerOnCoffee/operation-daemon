@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bpq7q1y58ck7u"
+path="res://.godot/imported/Attack_Bitmap.png-c60d5f099916d39b1c809c9007bc9803.res"
+
+[deps]
+
+source_file="res://assets/UI Elements/Attack_Bitmap.png"
+dest_files=["res://.godot/imported/Attack_Bitmap.png-c60d5f099916d39b1c809c9007bc9803.res"]
+
+[params]
+
+create_from=1
+threshold=0.25

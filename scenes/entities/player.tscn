@@ -90,7 +90,7 @@ position = Vector2(336, 257.99997)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CommandWheelPoint" type="Marker2D" parent="." index="1" unique_id=1223905428]
-position = Vector2(96, -140)
+position = Vector2(96, -128)
 
 [editable path="Player Character"]
 [editable path="Player Character/PlayerBonesetup"]

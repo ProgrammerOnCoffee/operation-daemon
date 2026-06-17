@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://ccunaudm0isso"
+path="res://.godot/imported/Defend_Bitmap.png-430ef1c49dee05e7e11adb8d11ae8f4c.res"
+
+[deps]
+
+source_file="res://assets/UI Elements/Defend_Bitmap.png"
+dest_files=["res://.godot/imported/Defend_Bitmap.png-430ef1c49dee05e7e11adb8d11ae8f4c.res"]
+
+[params]
+
+create_from=1
+threshold=0.25

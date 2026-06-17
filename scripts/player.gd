@@ -13,8 +13,6 @@ var is_defending: bool
 
 ## Attacks an [Enemy]. Returns whether or not the attack was completed.
 func attack() -> bool:
-	var effects := get_effects()
-	
 	## The enemy the player has selected to attack.
 	var selected_enemy: Enemy
 	if combat_handler.enemies.size() > 1:
@@ -40,18 +38,16 @@ func attack() -> bool:
 		selected_enemy = combat_handler.enemies[0]
 	last_selected_enemy = selected_enemy
 	
-	for effect in effects:
-		@warning_ignore("incompatible_ternary")
-		effect.apply_effect(
-				self if effect.target_type == Module.TARGET.ATTACKER
-				else selected_enemy)
-	
 	await entity_3d.move_to_entity(selected_enemy.entity_3d)
 	
 	for i in attack_count:
 		await get_tree().create_timer(0.2).timeout
 		var qte := combat_handler.create_qte()
-		selected_enemy.take_damage(int(get_damage() * await qte.pressed))
+		damage_dealing = int(get_damage() * await qte.pressed)
+		apply_effects(Effect.ApplyType.BEFORE_ATTACK, self, selected_enemy)
+		selected_enemy.take_damage(damage_dealing, self)
+		damage_dealing = selected_enemy.damage_receiving
+		apply_effects(Effect.ApplyType.AFTER_ATTACK, self, selected_enemy)
 	
 	# Fade health bar back in for all enemies other than selected enemy
 	var fade_bar_in_tween: Tween

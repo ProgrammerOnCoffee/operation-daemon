@@ -658,8 +658,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
-offset_right = 1020.0
-offset_bottom = 186.0
+offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -802,11 +801,11 @@ alignment = 1
 script = SubResource("GDScript_sugp2")
 
 [node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=1719356002]
-custom_minimum_size = Vector2(300, 65)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_jyhfs")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 text = "RETURN"
 
 [node name="Credits" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=526495698]
@@ -815,9 +814,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 576.0
-offset_right = 1132.0
-offset_bottom = 572.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
@@ -963,8 +959,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 620.0
-offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tbgi4")
@@ -1034,12 +1028,12 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
-[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Settings")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("Credits")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("Settings"), NodePath("MainMenu")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("Licenses")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("Credits"), NodePath("MainMenu")]]
-[connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("Licenses"), NodePath("Credits")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("MainMenu/Credits")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Settings"), NodePath("MainMenu")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/Licenses")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu")]]
+[connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Licenses"), NodePath("MainMenu/Credits")]]
 
 [editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
 [editable path="UILayer/UI/WorldMap"]
