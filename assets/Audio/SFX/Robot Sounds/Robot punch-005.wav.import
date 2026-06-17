@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cb53vtqpu72e5"
+path="res://.godot/imported/Robot punch-005.wav-7011697abffaa3bcacb0d7a84b871f4e.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Robot Sounds/Robot punch-005.wav"
+dest_files=["res://.godot/imported/Robot punch-005.wav-7011697abffaa3bcacb0d7a84b871f4e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

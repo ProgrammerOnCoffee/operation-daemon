@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbfcxfi4ihw2b"
+path="res://.godot/imported/Robot Grunt-001.wav-b266c4324585929311ffc3d69e8b5acd.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Robot Sounds/Robot Grunt-001.wav"
+dest_files=["res://.godot/imported/Robot Grunt-001.wav-b266c4324585929311ffc3d69e8b5acd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
