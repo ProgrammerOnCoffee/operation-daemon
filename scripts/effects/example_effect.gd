@@ -8,7 +8,7 @@ func _get_description() -> String: return "Heals the attacker by %d HP." % base
 func _get_effect_color() -> Color: return Color.BLUE
 
 ## Heals 10.0 w/o any modifiers
-func _get_base() -> float: return 10.0
+func _get_base() -> float: return 1.0
 
 ## Targets the attacker
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER

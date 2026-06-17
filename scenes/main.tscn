@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
-[ext_resource type="AudioStream" uid="uid://bx6uspo00ayov" path="res://assets/Music/placeholder2.ogg" id="8_85g3d"]
-[ext_resource type="AudioStream" uid="uid://bow7hrg3ge88n" path="res://assets/Music/placeholder1.ogg" id="9_choun"]
+[ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
+[ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -254,10 +256,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
 Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
 HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
-
-[sub_resource type="Animation" id="Animation_tipki"]
-resource_name = "Laboratory<>WorldMap"
-length = 0.4
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
@@ -540,12 +538,19 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
 _data = {
-&"Laboratory<>WorldMap": SubResource("Animation_tipki"),
 &"Licenses<>Credits": SubResource("Animation_jyhfs"),
 &"MainMenu<>Credits": SubResource("Animation_o6xl0"),
 &"MainMenu<>Settings": SubResource("Animation_tbgi4"),
 &"RESET": SubResource("Animation_tefeu")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+corner_detail = 1
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_tipki"]
 
@@ -820,6 +825,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
@@ -1033,14 +1040,69 @@ scene_parents = {
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_o6xl0")
 
+[node name="ToastDisplay" type="MarginContainer" parent="UILayer/UI" unique_id=1562524463]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="Control" parent="UILayer/UI/ToastDisplay" unique_id=1338407791 node_paths=PackedStringArray("child_template")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("7_choun")
+child_template = NodePath("../PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/ToastDisplay" unique_id=185250072]
+visible = false
+custom_minimum_size = Vector2(284, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/ToastDisplay/PanelContainer" unique_id=1724096027]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer" unique_id=772010308]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer/VBoxContainer" unique_id=939498550]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+text = "!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="UILayer/UI/ToastDisplay/PanelContainer/MarginContainer/VBoxContainer" unique_id=1257104661]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Daemon Discovered: D001"
+vertical_alignment = 1
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
 script = ExtResource("7_o6xl0")
 tracks = Dictionary[String, AudioStreamOggVorbis]({
-"test1": ExtResource("8_85g3d"),
-"test2": ExtResource("9_choun")
+"Combat": ExtResource("11_trceg"),
+"Laboratory": ExtResource("9_ya4ey"),
+"Map": ExtResource("10_eb6dy")
 })
+initial_track = "Laboratory"
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]

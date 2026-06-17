@@ -4,6 +4,8 @@ extends Node
 ## -- MUSIC -- ##
 @warning_ignore("unused_signal")
 signal request_track_transition(to:String)
+
+## -- CONFIGURATION -- ##
 # Every two elements are the min and max number of x that each enemy will have.
 ## The min and max number of modules each enemy will have in each act.
 const ACT_MODULES = [1, 1, 2, 2, 3, 3]
