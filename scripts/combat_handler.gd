@@ -33,6 +33,7 @@ var _focused_entity: Entity
 
 func _ready() -> void:
 	player.combat_handler = self
+	update_player_health_bar()
 	$CommandWheel.player_3d = player.entity_3d
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
@@ -115,7 +116,7 @@ func turn() -> void:
 func create_qte() -> Control:
 	var qte := $QTERing.duplicate() as Control
 	qte.anchor_left = randf_range(0.4, 0.6)
-	qte.anchor_top = randf_range(0.2, 0.8)
+	qte.anchor_top = randf_range(0.2, 0.7)
 	qte.position -= qte.size / 2
 	qte.rotation_degrees = randi_range(-1, 1) * 45
 	add_child(qte, false, INTERNAL_MODE_FRONT)
