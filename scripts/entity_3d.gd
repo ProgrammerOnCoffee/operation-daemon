@@ -42,6 +42,7 @@ func _ready() -> void:
 		vp = SubViewport.new()
 		vp.name = &"SubViewport"
 		vp.transparent_bg = true
+		vp.size_2d_override_stretch = true
 		vp.gui_snap_controls_to_pixels = false
 		add_child(vp)
 		vp.owner = owner
@@ -55,10 +56,10 @@ func _ready() -> void:
 ## Updates [member pixel_size] and [member vp]'s size according to [member resolution_scale].
 func update_resolution() -> void:
 	if vp and entity:
-		entity.scale = Vector2.ONE * resolution_scale
-		entity.position = -entity.rect.position * resolution_scale
+		entity.position = -entity.rect.position
 		vp.size = entity.rect.size * resolution_scale
-	pixel_size = 0.01 / resolution_scale
+		vp.size_2d_override = entity.rect.size
+		scale = Vector3.ONE / resolution_scale
 
 
 ## Moves this [Entity3D] beside [param to] to prepare for an attack.
@@ -71,9 +72,9 @@ func move_to_entity(to: Entity3D) -> void:
 			+ global_position * Vector3(0, 1, 0)
 			# Move beside other entity
 			+ dir * (
-					# Entity viewport size + self viewport size
-					to.vp.size.x * to.pixel_size
-					+ vp.size.x * pixel_size
+					# Entity rect size + self rect size
+					to.entity.rect.size.x * to.pixel_size
+					+ entity.rect.size.x * pixel_size
 			) / 2, 0.8).finished
 
 
@@ -88,7 +89,7 @@ func return_to_initial_transform() -> void:
 func project_point(p: Vector2) -> Vector3:
 	p *= resolution_scale
 	## The size of the viewport, in meters.
-	var size := vp.size * pixel_size
+	var size := entity.rect.size * pixel_size
 	## The global y rotation of this sprite.
 	var rot := global_rotation.y
 	if billboard:
@@ -112,7 +113,7 @@ func project_point(p: Vector2) -> Vector3:
 ## [param p] in world space.
 func unproject_point(p: Vector3) -> Vector2:
 	## The size of the viewport, in meters.
-	var size := vp.size * pixel_size
+	var size := entity.rect.size * pixel_size
 	## The global y rotation of this sprite.
 	var rot := global_rotation.y
 	if billboard:
