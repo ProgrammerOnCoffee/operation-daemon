@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
 [ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
 [ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
+[ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
@@ -190,3 +191,15 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Return To Laboratory"
+
+[node name="Overlay" type="TextureRect" parent="." unique_id=1721509592]
+self_modulate = Color(5.1105056, 5.1105056, 5.1105056, 0.5)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_oebxs")
+expand_mode = 1
+stretch_mode = 6
