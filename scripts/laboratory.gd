@@ -39,6 +39,8 @@ func _start_pressed() -> void:
 	# Reset the current act.
 	Global.act = 0
 	
+	Global.request_track_transition.emit("Map")
+	
 	TransitionManager.transition_screen(self, map)
 
 func _update_discovered_list() -> void:

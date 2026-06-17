@@ -359,7 +359,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=278332539]
 layout_mode = 2
-text = "REROLL"
+text = "RECOMBINE"
 horizontal_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1615868732]
@@ -383,7 +383,7 @@ theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2116117175]
 layout_mode = 2
-text = "USING"
+text = "WITH"
 horizontal_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=14819603]
@@ -397,7 +397,7 @@ show_title = false
 [node name="Button" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=189923064]
 layout_mode = 2
 theme = SubResource("Theme_7eomm")
-text = "REROLL"
+text = "RECOMBINE"
 
 [node name="Logbook" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=414082755]
 use_parent_material = true

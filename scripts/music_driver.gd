@@ -2,6 +2,7 @@ class_name MusicDriver extends AudioStreamPlayer
 ## Manages the vertical adaptive music.
 
 @export var tracks:Dictionary[String, AudioStreamOggVorbis]
+@export var initial_track:String
 
 var bpm:float
 var bar_beats:float
@@ -25,7 +26,9 @@ func _ready() -> void:
 	stream.stream_count = keys.size()
 	for i in keys.size():
 		stream.set_sync_stream(i, tracks[keys[i]])
+		stream.set_sync_stream_volume(i, linear_to_db(0.0))
 	
+	current_stream = get_stream_index(initial_track)
 	
 	play()
 	
@@ -38,8 +41,6 @@ func _ready() -> void:
 		
 		# Both have been found, stop looking.
 		if bar_beats and bpm: break
-	
-	_set_stream_to(0)
 	
 	Global.request_track_transition.connect(buffer_stream_name)
 
@@ -73,12 +74,12 @@ func _process(_delta: float) -> void: if stream is AudioStreamSynchronized:
 		#print(i,"=\t",stream.get_sync_stream_volume(i))
 		var new_volume = move_toward(db_to_linear(stream.get_sync_stream_volume(i)), (i == current_stream) as int, beat_delta / bar_beats) 
 		#print(i,(i == current_stream) as int,":\t",db_to_linear(stream.get_sync_stream_volume(i)),"\t", new_volume)
+		
 		stream.set_sync_stream_volume(i, linear_to_db(new_volume))
-
-func _set_stream_to(index:int): if stream is AudioStreamSynchronized:
-	current_stream = index
-	for i in stream.stream_count:
-		stream.set_sync_stream_volume(i, linear_to_db((i == index) as int))
+	
+	#print(current_stream)
+	#for v in tracks:
+		#print(v, "\t", db_to_linear(stream.get_sync_stream_volume(get_stream_index(v))))
 
 func buffer_stream(index:int):
 	

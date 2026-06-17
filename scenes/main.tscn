@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
+[ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -253,10 +256,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
 Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
 HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
-
-[sub_resource type="Animation" id="Animation_tipki"]
-resource_name = "Laboratory<>WorldMap"
-length = 0.4
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
@@ -539,7 +538,6 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
 _data = {
-&"Laboratory<>WorldMap": SubResource("Animation_tipki"),
 &"Licenses<>Credits": SubResource("Animation_jyhfs"),
 &"MainMenu<>Credits": SubResource("Animation_o6xl0"),
 &"MainMenu<>Settings": SubResource("Animation_tbgi4"),
@@ -827,6 +825,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 576.0
+offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
@@ -1097,6 +1097,12 @@ vertical_alignment = 1
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
 script = ExtResource("7_o6xl0")
+tracks = Dictionary[String, AudioStreamOggVorbis]({
+"Combat": ExtResource("11_trceg"),
+"Laboratory": ExtResource("9_ya4ey"),
+"Map": ExtResource("10_eb6dy")
+})
+initial_track = "Laboratory"
 
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
