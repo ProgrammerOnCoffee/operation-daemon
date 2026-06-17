@@ -33,6 +33,7 @@ var _focused_entity: Entity
 
 func _ready() -> void:
 	player.combat_handler = self
+	update_player_health_bar()
 	$CommandWheel.player_3d = player.entity_3d
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
