@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://x02lbqukklxf" path="res://scripts/entity_health_bar.gd" id="1_3vlfk"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="1_bu3di"]
+[ext_resource type="PackedScene" uid="uid://pu2cj7rilrvh" path="res://scenes/health_bar.tscn" id="3_27okt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ivpn"]
+bg_color = Color(0.26666668, 0.26666668, 0.34117648, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 2
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 2
+corner_detail = 12
+expand_margin_left = 6.0
+expand_margin_top = 2.0
+expand_margin_right = 6.0
+expand_margin_bottom = 2.0
 
 [node name="EntityHealthBar" type="Control" unique_id=1840347635]
 z_index = -1
@@ -12,7 +25,50 @@ grow_horizontal = 2
 theme = ExtResource("1_bu3di")
 script = ExtResource("1_3vlfk")
 
+[node name="Bar" parent="." unique_id=1457236035 instance=ExtResource("3_27okt")]
+instance_shader_parameters/bar_width = 128.0
+instance_shader_parameters/cells = 5
+instance_shader_parameters/gap_width = 9.0
+instance_shader_parameters/slant_width = 2.4
+custom_minimum_size = Vector2(128, 8)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Bar" unique_id=1316723186]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ivpn")
+
+[node name="Label" type="Label" parent="Bar" unique_id=1227546710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -17.0
+offset_right = 18.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HealthLabel"
+text = "0/0"
+
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1717384646]
+visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 1
 anchors_preset = -1
@@ -23,16 +79,3 @@ grow_vertical = 0
 theme_type_variation = &"HealthBar"
 step = 1.0
 show_percentage = false
-
-[node name="HealthLabel" type="Label" parent="HealthBar" unique_id=1227546710]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"HealthLabel"
-text = "0/0"

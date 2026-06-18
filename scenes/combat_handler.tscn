@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 [ext_resource type="Texture2D" uid="uid://247xtn3osolm" path="res://assets/UI Elements/Potrait BB.png" id="16_orqql"]
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
-[ext_resource type="Texture2D" uid="uid://bd7puovl4lhja" path="res://assets/UI Elements/Health Bar.png" id="18_87qa8"]
+[ext_resource type="PackedScene" uid="uid://pu2cj7rilrvh" path="res://scenes/health_bar.tscn" id="18_2sghh"]
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
 [ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="19_xv2y6"]
 [ext_resource type="Script" uid="uid://dmdytesnc0x4m" path="res://scripts/misc_lines.gd" id="21_2sghh"]
@@ -202,13 +202,9 @@ custom_minimum_size = Vector2(62, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerStatus/VBoxContainer/Health" unique_id=967594957]
+[node name="Bar" parent="PlayerStatus/VBoxContainer/Health" unique_id=1457236035 instance=ExtResource("18_2sghh")]
+instance_shader_parameters/cells = 10
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-step = 0.0
-value = 100.0
-texture_progress = ExtResource("18_87qa8")
 
 [node name="Effects" type="Control" parent="PlayerStatus/VBoxContainer" unique_id=1738924861]
 custom_minimum_size = Vector2(0, 32)

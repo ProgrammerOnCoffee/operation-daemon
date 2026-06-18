@@ -36,10 +36,11 @@ var health := max_health:
 		
 		if health_bar:
 			# Update health bar and label
+			health_bar.get_node(^"Bar").health_p = float(value) / max_health
+			var l := health_bar.get_node(^"Bar/Label") as Label
 			create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
-				health_bar.get_node(^"HealthBar").value = h
-				health_bar.get_node(^"HealthBar/HealthLabel").text = "%d/%d" % [h, max_health]
-			, health_bar.get_node(^"HealthBar").value, value, 0.3)
+				l.text = "%d/%d" % [h, max_health]
+			, l.text.substr(0, l.text.length() - 1).to_int(), value, 0.3)
 			# TODO add flashing/scaling tween to label when health is <=~10%
 		
 		health = value
