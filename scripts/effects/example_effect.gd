@@ -6,6 +6,7 @@ func _get_effect_name() -> String: return "Healing"
 func _get_description() -> String: return "Heals the attacker by %d HP." % base
 
 func _get_effect_color() -> Color: return Color.BLUE
+func _get_icon_point_count() -> int: return 0
 
 ## Heals 10.0 w/o any modifiers
 func _get_base() -> float: return 1.0

@@ -4,6 +4,7 @@ func _get_effect_name() -> String: return "Reflective"
 func _get_description() -> String: return "When attacked, damages the attacker by %s%% of the damage they deal." % String.num(base * 100) 
 
 func _get_effect_color() -> Color: return Color.WHITE
+func _get_icon_point_count() -> int: return 7
 
 func _get_base() -> float: return 0.2
 

@@ -25,7 +25,7 @@ func _set_daemon(to:Daemon):
 		# Update the title.
 		
 		title.visible = show_title
-		title.text = "D%s" % Global.lead(daemon.id, 4)
+		title.text = daemon.name
 		
 		# Clear the VBox of any previous information.
 		for child in vbox.get_children(): child.queue_free()

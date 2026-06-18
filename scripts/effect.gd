@@ -42,6 +42,10 @@ var effect_name: String: get = _get_effect_name
 var description: String: get = _get_description
 @abstract func _get_description() -> String
 
+## The point count of this effect's icon.
+var icon_point_count: int: get = _get_icon_point_count
+@abstract func _get_icon_point_count() -> int
+
 ## The color of the effect - applied as a modulate to enemies. 
 var effect_color: Color: get = _get_effect_color
 @abstract func _get_effect_color() -> Color

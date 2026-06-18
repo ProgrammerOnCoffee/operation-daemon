@@ -11,12 +11,12 @@ const MUSIC_TRANSITIONS:Dictionary[Event.TYPE, String] = {
 var current_event_scene:Node # The current node for the open event.
 var current_event:Event
 
-@onready var map_generator:MapGenerator = $MapGenerator
+@onready var map_generator:MapGenerator = $MarginContainer/HBoxContainer/MapGenerator
 
 ## The parent of all buttons.
-@onready var button_space := $MapGenerator/ScrollContainer/PanelContainer
+@onready var button_space := $MarginContainer/HBoxContainer/MapGenerator/ScrollContainer/PanelContainer
 ## The node under the scroll container; the one that needs a new minimum size.
-@onready var scroll_node := $MapGenerator/ScrollContainer/PanelContainer
+@onready var scroll_node := $MarginContainer/HBoxContainer/MapGenerator/ScrollContainer/PanelContainer
 
 var event_buttons:Dictionary[Event, EventButton]
 var lines:Array[Line2D]

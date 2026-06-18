@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cyoh2mfn2chnp"]
+
+[ext_resource type="Script" uid="uid://b4rnklabdhmqu" path="res://scripts/module_entry.gd" id="1_dytst"]
+[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="1_jm37a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqm84"]
+bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pls23"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_width_bottom = 4
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iy"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh0tg"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.17254902, 0.19215687, 0.23921569, 1)
+border_width_bottom = 4
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ModuleEntry" type="PanelContainer" unique_id=217798466]
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqm84")
+script = ExtResource("1_dytst")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=355216943]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Control" parent="HBoxContainer" unique_id=908268028]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+script = ExtResource("1_jm37a")
+points = 5
+filled = false
+
+[node name="Title" type="Label" parent="HBoxContainer" unique_id=1169640209]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "M0001"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=553018157]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1143010760]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 13
+text = "Equip To:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UN" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=141234984]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+text = "UN"
+
+[node name="AT" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=430382729]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+text = "AT"
+
+[node name="SP" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=758771317]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+text = "SP"
