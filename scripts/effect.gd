@@ -29,13 +29,6 @@ static func _static_init() -> void:
 			file = file.substr(0, file.length() - ".remap".length())
 		all_effects[file] = load(PATH.path_join(file))
 
-
-## The final [member base] of this [Effect] after all [Modifier]s have been
-## applied. Use this value in [method apply_effect].
-## [br]
-## This is reset to [member base] each time the effect is parsed.
-var modified_base: float
-
 # NOTE: these are all abstract functions and not variables
 # so they can all be set by a subclass in code. The variables
 # let you get the single-value ones like normal variables,
@@ -66,4 +59,7 @@ var base: float: get = _get_base
 @abstract func _get_base() -> float 
 
 ## Apply this effect to a target. Ran by that target.
+## Returns a bool of whether it should be freed after it's run.
 @abstract func apply_effect(target: Entity) -> bool
+
+func _to_string() -> String: return effect_name + ": " + str(base)

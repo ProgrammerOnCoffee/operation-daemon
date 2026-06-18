@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mse7o10dee5k"]
 
-[ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_8lcef"]
-[ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="1_m4yx5"]
+[ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_v4yus"]
+[ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="2_noiqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lcef"]
 bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
@@ -22,7 +22,7 @@ script/source = "extends Button
 func _pressed() -> void:
 	PlayerData.health += 30
 	print(\"!!?\")
-	event_scene.event_finished.emit()
+	event_scene.event_finished.emit(true)
 "
 
 [node name="RestEvent" type="PanelContainer" unique_id=2057279057]
@@ -32,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8lcef")
-script = ExtResource("1_8lcef")
+script = ExtResource("1_v4yus")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=480262955]
 layout_mode = 2
@@ -62,7 +62,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(400, 75)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_m4yx5")
+theme = ExtResource("2_noiqi")
 theme_override_font_sizes/font_size = 33
 text = "Rest (+30hp)"
 script = SubResource("GDScript_8lcef")
