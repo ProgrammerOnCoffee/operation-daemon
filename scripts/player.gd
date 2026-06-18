@@ -43,11 +43,19 @@ func attack() -> bool:
 	for i in attack_count:
 		await get_tree().create_timer(0.2).timeout
 		var qte := combat_handler.create_qte()
+		
+		# Get the base amount of dmg to deal.
 		damage_dealing = int(get_damage() * await qte.pressed)
-		apply_effects(Effect.ApplyType.BEFORE_ATTACK, self, selected_enemy)
-		selected_enemy.take_damage(damage_dealing, self)
+		# Apply the pre-attack effects.
+		apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)#, self, selected_enemy)
+		# Inflict the relevant effects onto the enemy.
+		inflict_effects(selected_enemy, Module.SLOT.ATTACK)
+		# Do the actual damage to the enemy.
+		selected_enemy.take_damage(damage_dealing)
+		# Recognize the real damage done post-effects.
 		damage_dealing = selected_enemy.damage_receiving
-		apply_effects(Effect.ApplyType.AFTER_ATTACK, self, selected_enemy)
+		# Apply the post-attack effects.
+		apply_self_effects(Effect.ApplyType.AFTER_ATTACK)#, self, selected_enemy)
 	
 	# Fade health bar back in for all enemies other than selected enemy
 	var fade_bar_in_tween: Tween

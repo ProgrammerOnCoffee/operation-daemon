@@ -4,7 +4,7 @@ extends Node
 ##
 ## Handles the logic for each fight.
 
-signal requested_end
+signal requested_end(won:bool)
 
 ## Emitted when the player has selected an [Entity] to attack, if any.
 signal entity_selected(entity: Entity)
@@ -58,7 +58,7 @@ func _ready() -> void:
 			return cam.to_local(a.entity_3d.global_position).z <= cam.to_local(b.entity_3d.global_position).z)
 	turn()
 	
-	$EndScreen/MarginContainer/VBoxContainer/Laboratory.pressed.connect(requested_end.emit)
+	$EndScreen/MarginContainer/VBoxContainer/Continue.pressed.connect(func():requested_end.emit(player.health))
 
 
 func _input(event: InputEvent) -> void:
@@ -141,11 +141,13 @@ func create_qte() -> Control:
 func end_fight() -> void:
 	if player.health:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
+		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Map"
 	else:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
 		$EndScreen/MarginContainer/VBoxContainer/Label.hide()
 		$EndScreen/MarginContainer/VBoxContainer/ScrollContainer.hide()
 		$EndScreen.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Laboratory"
 	
 	# Blur background
 	$BackBufferCopy.show()

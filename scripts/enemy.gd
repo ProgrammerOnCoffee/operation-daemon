@@ -16,19 +16,30 @@ func _take_turn() -> void:
 		qte.type = qte.Type.COUNTER if combat_handler.player.is_defending else qte.Type.PARRY
 		var value: float = await qte.pressed
 		if combat_handler.player.is_defending and value > 0.9:
+			# Figure out how much damage the player's doing.
 			combat_handler.player.damage_dealing = int(combat_handler.player.get_damage() * value * 0.5)
-			apply_effects(Effect.ApplyType.BEFORE_ATTACK, combat_handler.player, self)
-			take_damage(combat_handler.player.damage_dealing, combat_handler.player)
-			apply_effects(Effect.ApplyType.AFTER_ATTACK, combat_handler.player, self)
+			# Apply the player's pre-attack effects.
+			combat_handler.player.apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
+			# NOTE: No effects are applied by a Counter/Parry attack.
+			# Take the damage.
+			take_damage(combat_handler.player.damage_dealing)
+			# Apply the player's post-attack effects.
+			combat_handler.player.apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		else:
 			damage_dealing = (
-					get_damage() if combat_handler.player.is_defending # Counter failed, take full damage
-					else int(get_damage() * (1.0 - value * 0.5))
+				get_damage() if combat_handler.player.is_defending # Counter failed, take full damage
+				else int(get_damage() * (1.0 - value * 0.5))
 			)
-			apply_effects(Effect.ApplyType.BEFORE_ATTACK, self, combat_handler.player)
-			combat_handler.player.take_damage(damage_dealing, self)
+			# Apply pre-attack effects.
+			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
+			# Inflict the enemy's effects onto the player.
+			inflict_effects(combat_handler.player, Module.SLOT.NONE) # Enemy Modules don't have slots.
+			# Do the actual damage.
+			combat_handler.player.take_damage(damage_dealing)
+			# Recognize the real damage dealt post-effects.
 			damage_dealing = combat_handler.player.damage_receiving
-			apply_effects(Effect.ApplyType.AFTER_ATTACK, self, combat_handler.player)
+			# Apply post-attack effects.
+			apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 	
 	await get_tree().create_timer(0.7).timeout
 	await entity_3d.return_to_initial_transform()

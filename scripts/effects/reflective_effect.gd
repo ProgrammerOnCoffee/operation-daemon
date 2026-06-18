@@ -13,5 +13,5 @@ func _get_apply_type() -> ApplyType: return ApplyType.AFTER_DAMAGE
 
 func apply_effect(target: Entity) -> bool:
 	@warning_ignore("narrowing_conversion")
-	target.health -= target.damage_dealing * modified_base
-	return false
+	target.health -= target.damage_dealing * base
+	return true

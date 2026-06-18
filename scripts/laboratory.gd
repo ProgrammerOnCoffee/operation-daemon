@@ -1,4 +1,4 @@
-extends ColorRect
+class_name Laboratory extends ColorRect
 
 @export var map:Control
 
@@ -27,7 +27,8 @@ func _ready() -> void:
 	
 	tab_bar.tab_selected.connect(func(index:int): goal_scroll_position = index * 496)
 	
-	for i in 10:
+	# Debug daemons.
+	for i in 100:
 		Global.daemons_discovered += [Global.get_random_daemon(7)]
 	
 	_update_discovered_list()

@@ -22,7 +22,7 @@ script/source = "extends Button
 func _pressed() -> void:
 	Global.research_all(0.15)
 	Global.attempt_discovery()
-	event_scene.event_finished.emit()
+	event_scene.event_finished.emit(true)
 "
 
 [node name="AnalysisEvent" type="PanelContainer" unique_id=2057279057]
