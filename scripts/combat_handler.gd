@@ -8,6 +8,10 @@ signal requested_end
 
 ## Emitted when the player has selected an [Entity] to attack, if any.
 signal entity_selected(entity: Entity)
+## Emitted when an [Entity] has taken their turn.
+signal step_finished(entity: Entity)
+## Emitted when every [Entity] has taken their turn and a new turn begins.
+signal turn_finished()
 
 ## This fight's [Player].
 @export var player: Player
@@ -35,6 +39,7 @@ var _focused_entity: Entity
 
 func _ready() -> void:
 	player.combat_handler = self
+	step_finished.connect(get_node(^"PlayerStatus/VBoxContainer/Health/Bar").fade_damaged_p.unbind(1))
 	update_player_health_bar()
 	$CommandWheel.player_3d = player.entity_3d
 	# Add a health bar above every enemy
@@ -42,6 +47,7 @@ func _ready() -> void:
 	for enemy in enemies:
 		enemy.combat_handler = self
 		var bar := HEALTH_BAR.instantiate() as Control
+		step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
 		bar.entity_3d = enemy.entity_3d
 		bar.entity_3d.entity.health_bar = bar
 		bar.custom_minimum_size.x = bar.entity_3d.entity.rect.size.x * 0.7
@@ -100,17 +106,20 @@ func turn() -> void:
 				$CommandWheel.hide_wheel()
 				player.defend()
 				break
+	step_finished.emit(player)
 	
 	var is_enemy_alive := false
 	for enemy in enemies:
 		if enemy.health and player.health:
 			is_enemy_alive = true
 			await enemy._take_turn()
+			step_finished.emit(enemy)
 			if not player.health:
 				player.clear()
 				break
 	
 	if player.health and is_enemy_alive:
+		turn_finished.emit()
 		turn()
 	else:
 		end_fight()
@@ -214,10 +223,11 @@ func create_floaty_label(pos: Vector2, text: String) -> Label:
 ## Updates the player's health bar.
 func update_player_health_bar() -> void:
 	# Update health bar and label
+	get_node(^"PlayerStatus/VBoxContainer/Health/Bar").health_p = float(player.health) / player.max_health
+	var l := get_node(^"PlayerStatus/VBoxContainer/Health/Label") as Label
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
-		get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value = h
-		get_node(^"PlayerStatus/VBoxContainer/Health/Label").text = "%d%%" % h
-	, get_node(^"PlayerStatus/VBoxContainer/Health/TextureProgressBar").value, player.health, 0.3)
+		l.text = "%d%%" % h
+	, l.text.substr(0, l.text.length() - 1).to_int(), player.health, 0.3)
 
 
 ## Sets the text of a label in the stats list to [param x], formatting it according to the type of stat.

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://pu2cj7rilrvh"]
+
+[ext_resource type="Shader" uid="uid://c5a38odlmufse" path="res://resources/health.gdshader" id="1_1bvlm"]
+[ext_resource type="Script" uid="uid://csjtejxxwaepo" path="res://scripts/health_bar.gd" id="2_y3kqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8utki"]
+shader = ExtResource("1_1bvlm")
+shader_parameter/health_c = Color(0.8, 0.24, 0.24, 1)
+shader_parameter/damaged_c = Color(0.94, 0.4, 0.09, 1)
+
+[node name="Bar" type="ColorRect" unique_id=1457236035]
+material = SubResource("ShaderMaterial_8utki")
+instance_shader_parameters/bar_width = 243.0
+instance_shader_parameters/cells = 15
+instance_shader_parameters/damaged_p = 1.0
+instance_shader_parameters/health_p = 1.0
+custom_minimum_size = Vector2(243, 20)
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("2_y3kqx")
+
+[connection signal="ready" from="." to="." method="_on_resized"]
+[connection signal="resized" from="." to="." method="_on_resized"]

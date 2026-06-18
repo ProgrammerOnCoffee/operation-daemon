@@ -95,14 +95,14 @@ func transition(from: CanvasItem, to: CanvasItem) -> Signal:
 		set_descendants_use_parent_material(from)
 		from.show()
 		tween.finished.connect(from.hide)
-		tween.finished.connect(_clear_material.bind(from, mat))
+		tween.finished.connect(_clear_material.bind(from, mat), CONNECT_REFERENCE_COUNTED)
 	
 	if to:
 		to.material = to_mat
 		to_mat.set_shader_parameter(&"inverted", true)
 		set_descendants_use_parent_material(to)
 		to.show()
-		tween.finished.connect(_clear_material.bind(to, to_mat))
+		tween.finished.connect(_clear_material.bind(to, to_mat), CONNECT_REFERENCE_COUNTED)
 	
 	for i in bar_count:
 		tween.tween_method(set_cutoff.bind(i), -CUTOFF_EXTEND, 1.0 + CUTOFF_EXTEND, duration).set_delay(randf() * spread)
