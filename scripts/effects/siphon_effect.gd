@@ -12,5 +12,5 @@ func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
 func _get_apply_type() -> ApplyType: return ApplyType.AFTER_ATTACK
 
 func apply_effect(target: Entity) -> bool:
-	target.health += int(target.damage_dealing * modified_base)
-	return false
+	target.health += int(target.damage_dealing * base)
+	return true

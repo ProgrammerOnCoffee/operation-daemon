@@ -12,7 +12,7 @@ func get_new_scene() -> Node:
 	return null
 const SCENES:Dictionary[TYPE, PackedScene] = {
 	TYPE.COMBAT:   preload("res://scenes/event_scenes/combat_scene.tscn"),
-	TYPE.REST:     preload("res://scenes/event_scenes/rest_event.tscn"),
+	TYPE.REST:     preload("res://scenes/event_scenes/rest_scene.tscn"),
 	TYPE.ANALYSIS: preload("res://scenes/event_scenes/analysis_scene.tscn"),
 	TYPE.DAEMON:   preload("res://scenes/event_scenes/daemon_scene.tscn")
 }

@@ -4,4 +4,4 @@ class_name EventScene extends Node
 # (This will get recursively searched for, it just has to be in the event scene.)
 
 @warning_ignore("unused_signal")
-signal event_finished
+signal event_finished(_additional_data)

@@ -108,6 +108,22 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtnrd"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.7058824, 0.7058824, 0.7607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bqev"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.62352943, 0.62352943, 0.67058825, 1)
+corner_detail = 1
+
 [sub_resource type="Theme" id="Theme_7eomm"]
 Button/colors/font_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
 Button/colors/font_disabled_color = Color(0.039215688, 0.043137256, 0.050980393, 0.75686276)
@@ -118,6 +134,11 @@ Button/styles/disabled = SubResource("StyleBoxFlat_6mkvh")
 Button/styles/hover = SubResource("StyleBoxFlat_ehj20")
 Button/styles/normal = SubResource("StyleBoxFlat_fie5y")
 Button/styles/pressed = SubResource("StyleBoxFlat_0qmye")
+PopupMenu/colors/font_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+PopupMenu/colors/font_disabled_color = Color(0.039215688, 0.043137256, 0.050980393, 0.7764706)
+PopupMenu/colors/font_hover_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_wtnrd")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_3bqev")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhqq6"]
 corner_radius_top_left = 20

@@ -13,7 +13,7 @@ func _get_apply_type() -> ApplyType: return ApplyType.BEFORE_ATTACK
 
 func apply_effect(target: Entity) -> bool:
 	@warning_ignore_start("narrowing_conversion")
-	var extra := target.damage_dealing * modified_base
+	var extra := target.damage_dealing * base
 	target.damage_dealing += extra
-	target.health -= extra * modified_base
-	return false
+	target.take_damage(extra * base)
+	return true

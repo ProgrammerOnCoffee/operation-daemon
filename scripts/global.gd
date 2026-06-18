@@ -80,7 +80,7 @@ func attempt_discovery() -> void:
 			# Push out some kind of toast via this??
 			daemon_discovered.emit(daemon)
 
-## Returns a random newly-made daemon. Good for if we ever want modifiers to be weighted.
+## Returns a random newly-made daemon.
 func get_random_daemon(modifier_count := 4) -> Daemon:
 	
 	var modifiers:Array[Modifier]

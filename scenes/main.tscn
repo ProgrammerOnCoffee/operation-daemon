@@ -1025,9 +1025,10 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 node_paths=PackedStringArray("scene_parents") instance=ExtResource("5_tbgi4")]
+[node name="WorldMap" parent="UILayer/UI" unique_id=1068333612 node_paths=PackedStringArray("laboratory", "scene_parents") instance=ExtResource("5_tbgi4")]
 visible = false
 layout_mode = 1
+laboratory = NodePath("../Laboratory")
 scene_parents = {
 1: NodePath("../../.."),
 2: NodePath("../.."),

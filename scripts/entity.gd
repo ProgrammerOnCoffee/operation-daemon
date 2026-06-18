@@ -50,6 +50,8 @@ var health := max_health:
 var modules: Array[Module]
 ## This [Entity]'s [Daemon]s.
 var daemons: Array[Daemon]
+## The [Effects]s currently applied to this [Entity]. Not the same as those they can apply to others.
+var current_effects:Array[Effect]
 ## The amount of damage this entity is about to deal. Used and modified by some effects.
 var damage_dealing: int
 ## The amount of damage this entity is about to receive. Used and modified by some effects.
@@ -99,41 +101,67 @@ func _take_turn() -> void:
 
 
 ## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
-func get_effects() -> Array[Effect]:
-	## The array of [Effect]s to apply.
-	var effects: Array[Effect]
-	for module in modules:
-		for effect in module.effects:
-			# Reset modified base back to base
-			effect.modified_base = effect.base
-			effects.append(effect)
-	for daemon in daemons:
-		for modifier in daemon.modifiers:
-			for effect in effects:
-				if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
-					effect.modified_base *= modifier.percent
-	return effects
+#func get_effects() -> Array[Effect]:
+	### The array of [Effect]s to apply.
+	#var effects: Array[Effect]
+	#for module in modules:
+		#for effect in module.effects:
+			## Reset modified base back to base
+			#effect.modified_base = effect.base
+			#effects.append(effect)
+	#for daemon in daemons:
+		#for modifier in daemon.modifiers:
+			#for effect in effects:
+				#if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
+					#effect.modified_base *= modifier.percent
+	#return effects
 
 
-## Applied the effects returned by [method get_effects] if they match [param apply_type].
-func apply_effects(apply_type: Effect.ApplyType, attacker: Entity, attackee: Entity) -> void:
-	for effect in get_effects():
+## Applied all the [Effect]s currently applied to the entity that match the given [Effect.ApplyType].
+func apply_self_effects(apply_type: Effect.ApplyType) -> void:
+	for effect in current_effects:
 		if effect.apply_type == apply_type:
-			effect.apply_effect(attacker if effect.target_type == Module.TARGET.ATTACKER else attackee)
+			# Apply this effect, and remove it if it says to.
+			if effect.apply_effect(self):
+				current_effects.erase(effect)
+
+## Inflict all the effects from a slot (ATK/SPC) of this entity's onto the player.
+func inflict_effects(onto:Entity, filter:Module.SLOT):
+	# For every effect from a module in the slot being used to attack
+	for module:Module in modules.filter(func(m): return m.slot == filter):
+		for effect in module.effects:
+			
+			# Duplicate the effect.
+			var new_effect := effect.duplicate()
+			
+			# The base should never be changed on the base effect, so the 
+			# duplicate's base is already the right value. No modified_base,
+			# since this duplicate will never need to calculate its modifiers
+			# again.
+			
+			# Apply all the relevant modifiers.
+			for daemon in daemons:
+				for modifier in daemon.modifiers:
+					if modifier.compare_effect(new_effect):
+						new_effect.base *= modifier.percent
+			
+			# Inflict the effect onto the relevant entities.
+			var target := onto if effect.target_type == Module.TARGET.ATTACKEE else self
+			target.current_effects.append(new_effect)
 
 
 ## Returns the amount of damage the [Entity] should deal.
-func get_damage() -> int:
+func get_damage() -> int: 
 	return base_damage + randi_range(-damage_variation, damage_variation)
 
 
 ## Makes this [Entity] take [param amount] damage.
-func take_damage(amount: int, attacker: Entity) -> void:
+func take_damage(amount: int) -> void:
 	if amount <= 0 or health <= 0:
 		return
 	
 	damage_receiving = amount
-	apply_effects(Effect.ApplyType.BEFORE_DAMAGE, attacker, self)
+	apply_self_effects(Effect.ApplyType.BEFORE_DAMAGE)
 	damage_receiving = clampi(damage_receiving, 0, health)
 	# Add amount to damage dealt/taken stats
 	if self is Player:
@@ -148,7 +176,7 @@ func take_damage(amount: int, attacker: Entity) -> void:
 			),
 			String.num_int64(amount)
 	)
-	apply_effects(Effect.ApplyType.AFTER_DAMAGE, attacker, self)
+	apply_self_effects(Effect.ApplyType.AFTER_DAMAGE)
 
 
 ## Visually removes this entity from the fight.

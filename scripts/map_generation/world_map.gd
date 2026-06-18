@@ -6,6 +6,7 @@ const MUSIC_TRANSITIONS:Dictionary[Event.TYPE, String] = {
 	Event.TYPE.COMBAT: "Combat"
 }
 
+@export var laboratory:Laboratory
 @export var scene_parents:Dictionary[Event.TYPE, Node]
 var current_event_scene:Node # The current node for the open event.
 var current_event:Event
@@ -155,14 +156,21 @@ func recurs_find_event_scene(from:Node) -> EventScene:
 	
 	return null
 
-func _finish_event() -> void: 
-		
+func _finish_event(additional_data:bool) -> void: 
+	
 	# Transition back the music if needed
 	if MUSIC_TRANSITIONS.has(current_event.type):
 		Global.request_track_transition.emit("Map")
 	
+	# If this was combat and the player lost, go back to the lab.
+	var transition_to:Control = self
+	if (current_event.type == Event.TYPE.COMBAT or current_event.type == Event.TYPE.BOSS) and not additional_data and laboratory:
+		transition_to = laboratory
+		
+		# Some game-resetting code?
+	
 	# Transition the screen
-	await TransitionManager.transition_screen(current_event_scene if current_event_scene is CanvasItem else null, self)
+	await TransitionManager.transition_screen(current_event_scene if current_event_scene is CanvasItem else null, transition_to)
 	
 	# Free the event.
 	current_event_scene.queue_free()
