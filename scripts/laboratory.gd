@@ -39,6 +39,8 @@ func _process(delta: float) -> void:
 func _start_pressed() -> void: 
 	# Reset the current act.
 	Global.act = 0
+	# Reset the player's health.
+	PlayerData.health = PlayerData.max_health
 	
 	Global.request_track_transition.emit("Map")
 	

@@ -147,6 +147,7 @@ func inflict_effects(onto:Entity, filter:Module.SLOT):
 			
 			# Inflict the effect onto the relevant entities.
 			var target := onto if effect.target_type == Module.TARGET.ATTACKEE else self
+			
 			target.current_effects.append(new_effect)
 
 

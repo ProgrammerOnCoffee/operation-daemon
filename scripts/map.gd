@@ -30,6 +30,12 @@ func load_entity(file_name: String) -> void:
 	if entity is Player:
 		marker_name = "PlayerMarker"
 		combat_handler.player = entity
+		
+		# Import other info from PlayerData
+		for property in ["health", "max_health", "modules"]:
+			entity.set(property, PlayerData.get(property))
+		entity.daemons = PlayerData.permanent_daemons
+		
 	else:
 		marker_name = "EnemyMarker%d" % combat_handler.enemies.size()
 		combat_handler.enemies.append(entity)

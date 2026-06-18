@@ -29,4 +29,4 @@ func _init(set_effects: Array[Effect], set_slot:SLOT = SLOT.NONE) -> void:
 	name = "M%s" % Global.lead(id, 4)
 	slot = set_slot
 
-func _to_string() -> String: return name
+func _to_string() -> String: return name + "/" + str(slot as SLOT)

@@ -8,7 +8,7 @@ func _ready() -> void:
 	_update_daemon_list()
 	
 	for i in 10:
-		PlayerData.modules += [Module.new([], randi_range(0,2) as Module.SLOT)]
+		PlayerData.modules += [Module.new([preload("res://scripts/effects/timebomb_effect.gd").new()], randi_range(0,2) as Module.SLOT)]
 	
 	PlayerData.modules_changed.connect(_update_module_list)
 	_update_module_list()
@@ -49,14 +49,9 @@ func _update_module_list() -> void:
 	for module in PlayerData.modules:
 		var entry := find_entry.call() as ModuleEntry
 		
-		print(entry.get_parent())
-		
-		print(module.slot, " -> ", tabs[module.slot])
 		tabs[module.slot].add_child(entry)
 		
 		entry._display(module)
-	
-	print(PlayerData.modules)
 	
 	# If there are any extra entries, toss 'em.
 	for entry in unused_module_entries: entry.queue_free()

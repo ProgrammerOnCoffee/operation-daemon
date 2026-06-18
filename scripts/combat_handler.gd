@@ -149,6 +149,9 @@ func end_fight() -> void:
 		$EndScreen.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Laboratory"
 	
+	# Push the player's data back to the Singleton.
+	PlayerData.health = player.health # Just this. Everything else's forgotton.
+	
 	# Blur background
 	$BackBufferCopy.show()
 	$Blur.show()
