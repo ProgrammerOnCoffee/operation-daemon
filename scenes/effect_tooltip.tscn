@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://d3hvor3kgrqrt"]
+
+[ext_resource type="Script" uid="uid://c65rgb0y4fsva" path="res://scripts/effect_tooltip.gd" id="1_0esgi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0esgi"]
+bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_0esgi"]
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_0esgi")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qioc8"]
+color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+thickness = 2
+
+[node name="EffectTooltip" type="MarginContainer" unique_id=393815642]
+offset_right = 59.0
+offset_bottom = 93.0
+theme = SubResource("Theme_0esgi")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+script = ExtResource("1_0esgi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=193019321]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=815921535]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 0
+
+[node name="Name" type="Label" parent="VBoxContainer/MarginContainer" unique_id=40218299]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "Overcharhe"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1219131476]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qioc8")
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=1744593926]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Increases damage dealt by %s%%, but damages the attacker by %s%% of the extra damage they deal."
+autowrap_mode = 3
