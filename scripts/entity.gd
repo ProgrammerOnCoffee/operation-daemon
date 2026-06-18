@@ -128,12 +128,12 @@ func get_damage() -> int:
 
 ## Makes this [Entity] take [param amount] damage.
 func take_damage(amount: int, attacker: Entity) -> void:
-	if amount <= 0:
+	if amount <= 0 or health <= 0:
 		return
 	
 	damage_receiving = amount
 	apply_effects(Effect.ApplyType.BEFORE_DAMAGE, attacker, self)
-	damage_receiving = mini(damage_receiving, health)
+	damage_receiving = clampi(damage_receiving, 0, health)
 	# Add amount to damage dealt/taken stats
 	if self is Player:
 		combat_handler.damage_taken += damage_receiving
