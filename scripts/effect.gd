@@ -62,4 +62,7 @@ var base: float: get = _get_base
 ## Returns a bool of whether it should be freed after it's run.
 @abstract func apply_effect(target: Entity) -> bool
 
+## Whether this effect's base effect is positive or not.
+@abstract func _is_beneficial() -> bool
+
 func _to_string() -> String: return effect_name + ": " + str(base)

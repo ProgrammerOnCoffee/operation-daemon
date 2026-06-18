@@ -107,8 +107,18 @@ func _on_recomb_reroll_pressed() -> void:
 		modifier.percent = modifier._get_new_percent()
 	
 	Global.daemons_discovered.erase(recomb_using_selection)
+	recomb_using_selection = null
 	
 	_update_discovered_list()
+	
+	#recomb_reroll_options.select(0)
+	for i in Global.daemons_discovered.size():
+		if Global.daemons_discovered[i] == recomb_reroll_selection: continue
+		recomb_using_options.select(i)
+		_on_recomb_using_selection(i)
+		break
+	
+	
 	
 	recomb_reroll_overview.daemon = recomb_reroll_selection if recomb_reroll_selection else null 
 	recomb_using_overview.daemon = recomb_using_selection if recomb_using_selection else null 

@@ -12,6 +12,7 @@ func _get_base() -> float: return 1.0
 
 ## Targets the attacker
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKER
+func _is_beneficial() -> bool: return true
 
 ## Apply this effect after attacking.
 func _get_apply_type() -> ApplyType: return ApplyType.AFTER_ATTACK

@@ -8,6 +8,7 @@ func _get_effect_color() -> Color: return Color.WHITE
 func _get_base() -> float: return 0.2
 
 func _get_target_type() -> Module.TARGET: return Module.TARGET.ATTACKEE
+func _is_beneficial() -> bool: return true
 
 func _get_apply_type() -> ApplyType: return ApplyType.AFTER_DAMAGE
 
