@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfqc8fyswsn1f"
+path="res://.godot/imported/Counter-004.wav-3a799ff8e0ae7ae5bffa342147858834.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Robot Sounds/Counter-004.wav"
+dest_files=["res://.godot/imported/Counter-004.wav-3a799ff8e0ae7ae5bffa342147858834.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
