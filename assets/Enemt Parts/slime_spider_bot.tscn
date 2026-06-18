@@ -800,6 +800,18 @@ tracks/18/keys = {
 "update": 0,
 "values": [Vector2(33.000076, 38.999874)]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Enemy Bones:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_c7ekk"]
 length = 0.001
@@ -1110,33 +1122,36 @@ color = Color(0.556953, 0.556953, 0.556953, 1)
 color = Color(0.41981316, 0.4198131, 0.41981322, 1)
 
 [node name="Body" parent="Enemy Bones/Bones/Skeleton2D" parent_id_path=PackedInt32Array(986798588, 636062987) index="0" unique_id=910904063]
-rotation = -0.0016046917
-scale = Vector2(0.999907, 0.999907)
+rotation = -0.010814667
+scale = Vector2(0.9998903, 0.9998903)
 
 [node name="Slime2" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1" parent_id_path=PackedInt32Array(986798588, 779886826) index="0" unique_id=835977597]
 position = Vector2(-12.999806, -83.00003)
 rotation = 0.20243295
-scale = Vector2(0.9999816, 0.9999816)
+scale = Vector2(0.99997723, 0.99997723)
+
+[node name="Slime3" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1/Slime2" index="0" unique_id=556742822]
+scale = Vector2(0.9999989, 0.9999989)
 
 [node name="Leg back Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="1" unique_id=1479726037]
 position = Vector2(133.00078, 73.99941)
-rotation = 0.09066145
-scale = Vector2(0.9999912, 0.9999912)
+rotation = 0.043229222
+scale = Vector2(0.99999017, 0.99999017)
 
 [node name="Leg front Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="2" unique_id=2097758821]
 position = Vector2(-88, 88)
-rotation = 0.18915516
-scale = Vector2(0.99998546, 0.99998546)
+rotation = -0.560624
+scale = Vector2(0.99998564, 0.99998564)
 
 [node name="Leg front Rear  Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="3" unique_id=764289327]
 position = Vector2(-202.00024, 31.99996)
-rotation = -0.37488142
-scale = Vector2(0.9999941, 0.9999941)
+rotation = -0.4239353
+scale = Vector2(0.99999547, 0.99999547)
 
 [node name="LegRead  back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body" index="4" unique_id=1176429833]
 position = Vector2(33.000076, 38.999874)
-rotation = 0.19080622
-scale = Vector2(0.99999833, 0.99999833)
+rotation = 0.16059169
+scale = Vector2(0.9999977, 0.9999977)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1637503145]
 libraries/ = SubResource("AnimationLibrary_ftlb6")

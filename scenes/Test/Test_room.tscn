@@ -130,7 +130,7 @@ player = NodePath("../Player/SubViewport/Player")
 enemies = [NodePath("../Spider/SubViewport/SlimeSpiderBot"), NodePath("../Spider2/SubViewport/SlimeSpiderBot"), NodePath("../Spider3/SubViewport/SlimeSpiderBot")]
 
 [node name="Player" type="Sprite3D" parent="." unique_id=882970403 node_paths=PackedStringArray("entity", "vp")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.5, 1.425, 0.875)
+transform = Transform3D(0.5, 0, 0, 0, 0.49917942, 0.028633906, 0, -0.028633906, 0.49917942, -3.5, 1.3900406, 0.9934337)
 billboard = 2
 alpha_cut = 2
 texture = SubResource("ViewportTexture_tyyuc")
@@ -215,7 +215,7 @@ size_2d_override_stretch = true
 position = Vector2(96, 168)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2018614762]
-transform = Transform3D(0.9576166, 0, -0.28804585, 0, 1, 0, 0.28804585, 0, 0.9576166, -1.1830637, 1.5862598, 5.6311235)
+transform = Transform3D(0.8963549, 0, -0.44333717, 0, 1, 0, 0.44333717, 0, 0.8963549, -2.2217753, 1.5862598, 4.9170756)
 fov = 72.9
 
 [node name="Test Audio" type="AudioStreamPlayer" parent="." unique_id=1565849325]
