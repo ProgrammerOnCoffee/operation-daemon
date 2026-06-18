@@ -8,6 +8,10 @@ signal requested_end
 
 ## Emitted when the player has selected an [Entity] to attack, if any.
 signal entity_selected(entity: Entity)
+## Emitted when an [Entity] has taken their turn.
+signal step_finished(entity: Entity)
+## Emitted when every [Entity] has taken their turn and a new turn begins.
+signal turn_finished()
 
 ## This fight's [Player].
 @export var player: Player
@@ -100,17 +104,20 @@ func turn() -> void:
 				$CommandWheel.hide_wheel()
 				player.defend()
 				break
+	step_finished.emit(player)
 	
 	var is_enemy_alive := false
 	for enemy in enemies:
 		if enemy.health and player.health:
 			is_enemy_alive = true
 			await enemy._take_turn()
+			step_finished.emit(enemy)
 			if not player.health:
 				player.clear()
 				break
 	
 	if player.health and is_enemy_alive:
+		turn_finished.emit()
 		turn()
 	else:
 		end_fight()
