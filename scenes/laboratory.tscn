@@ -166,25 +166,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=1420970559]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=675573496]
+layout_mode = 2
+
+[node name="MarginContainer2" type="PanelContainer" parent="HBoxContainer/PanelContainer" unique_id=1420970559]
 use_parent_material = true
 custom_minimum_size = Vector2(576, 648)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_h2vy4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=195350066]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2" unique_id=195350066]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 30
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1032891763]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer" unique_id=1032891763]
 clip_children = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tgbnh")
 
-[node name="TabBar" type="TabBar" parent="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer" unique_id=939204018]
+[node name="TabBar" type="TabBar" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer" unique_id=939204018]
 use_parent_material = true
 layout_mode = 2
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_1du3q")
@@ -196,23 +199,23 @@ tab_0/title = "Injector"
 tab_1/title = "Recombiner"
 tab_2/title = "Logbook"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer" unique_id=947424891]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer" unique_id=947424891]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-scroll_horizontal = 992
+scroll_horizontal = 100
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=2095880999]
+[node name="VBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer" unique_id=2095880999]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Injector" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=443104550]
+[node name="Injector" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=443104550]
 use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
@@ -220,11 +223,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_crtsx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector" unique_id=661812056]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector" unique_id=661812056]
 use_parent_material = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer" unique_id=1679585211]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer" unique_id=1679585211]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 30
@@ -232,7 +235,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer" unique_id=1976850565]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer" unique_id=1976850565]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -241,7 +244,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer" unique_id=554649408]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer" unique_id=554649408]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -249,23 +252,23 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2" unique_id=9066572]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2" unique_id=9066572]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvyni")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer" unique_id=1918078411]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer" unique_id=1918078411]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1229210188]
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1229210188]
 layout_mode = 2
 
-[node name="ItemList" type="ItemList" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1887338086]
+[node name="ItemList" type="ItemList" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1887338086]
 use_parent_material = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
@@ -281,13 +284,13 @@ item_4/text = "a"
 item_5/text = "A"
 item_6/text = "asd"
 
-[node name="HSeparator" type="VSeparator" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1030876535]
+[node name="HSeparator" type="VSeparator" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1030876535]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_crtsx")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1069478068]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1069478068]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -296,16 +299,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer" unique_id=1737115791]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer" unique_id=1737115791]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="DaemonOverview" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("1_fknr6")]
+[node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("1_fknr6")]
 use_parent_material = true
 layout_mode = 2
 
-[node name="Button" type="CheckBox" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=2104998475]
+[node name="Button" type="CheckBox" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=2104998475]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -313,7 +316,7 @@ theme = SubResource("Theme_7eomm")
 text = "Equip (0/5)"
 alignment = 1
 
-[node name="Recombiner" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2063151107]
+[node name="Recombiner" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2063151107]
 use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
@@ -321,11 +324,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_crtsx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner" unique_id=1879994918]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner" unique_id=1879994918]
 use_parent_material = true
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer" unique_id=714794057]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer" unique_id=714794057]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 30
@@ -333,7 +336,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer" unique_id=1294088096]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer" unique_id=1294088096]
 use_parent_material = true
 custom_minimum_size = Vector2(436, 0)
 layout_mode = 2
@@ -343,7 +346,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer" unique_id=1204198932]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer" unique_id=1204198932]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -351,101 +354,116 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2" unique_id=430624323]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2" unique_id=430624323]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvyni")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer" unique_id=905612672]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer" unique_id=905612672]
 layout_mode = 2
 theme_override_constants/margin_left = 11
 theme_override_constants/margin_top = 11
 theme_override_constants/margin_right = 11
 theme_override_constants/margin_bottom = 11
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer" unique_id=86765031]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer" unique_id=86765031]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=707115414]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=707115414]
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_7eomm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1159649275]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1159649275]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=278332539]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=278332539]
 layout_mode = 2
 text = "RECOMBINE"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1615868732]
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1615868732]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="DaemonOverview" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=515104316 instance=ExtResource("1_fknr6")]
+[node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=515104316 instance=ExtResource("1_fknr6")]
 layout_mode = 2
 show_title = false
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972068855]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972068855]
 custom_minimum_size = Vector2(16, 190)
 layout_mode = 2
 text = ">"
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1899953585]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1899953585]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2116117175]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2116117175]
 layout_mode = 2
 text = "WITH"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=14819603]
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=14819603]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="DaemonOverview" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1615809252 instance=ExtResource("1_fknr6")]
+[node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1615809252 instance=ExtResource("1_fknr6")]
 layout_mode = 2
 show_title = false
 
-[node name="Button" type="Button" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=189923064]
+[node name="Button" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=189923064]
 layout_mode = 2
 theme = SubResource("Theme_7eomm")
 text = "RECOMBINE"
 
-[node name="Logbook" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=414082755]
+[node name="Logbook" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=414082755]
 use_parent_material = true
 custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=1346528038]
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=1346528038]
 layout_mode = 2
 current_tab = 0
 
-[node name="001" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer" unique_id=1991566799]
+[node name="001" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer" unique_id=1991566799]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001" unique_id=1278570384]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001" unique_id=1278570384]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001/MarginContainer" unique_id=275687686]
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001/MarginContainer" unique_id=275687686]
 layout_mode = 2
 size_flags_vertical = 1
 text = "LOG 001"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1090214760]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Button" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer" unique_id=1299349436]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("3_6mkvh")
+theme_override_font_sizes/font_size = 17
+text = "Back To Main Menu"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
 use_parent_material = true
@@ -485,16 +503,16 @@ theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 29
 text = "BEGIN EXPEDITION"
 
-[connection signal="tab_clicked" from="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_pressed"]
-[connection signal="tab_hovered" from="HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_hover"]
-[connection signal="item_clicked" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList" to="." method="_on_input_pressed"]
-[connection signal="item_selected" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList" to="." method="_on_injector_selection"]
-[connection signal="mouse_entered" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_hover"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_pressed"]
-[connection signal="toggled" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_toggle_equip"]
-[connection signal="item_selected" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_recomb_reroll_selection"]
-[connection signal="item_selected" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="." method="_on_recomb_using_selection"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_recomb_reroll_pressed"]
+[connection signal="tab_clicked" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_pressed"]
+[connection signal="tab_hovered" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_hover"]
+[connection signal="item_clicked" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList" to="." method="_on_input_pressed"]
+[connection signal="item_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList" to="." method="_on_injector_selection"]
+[connection signal="mouse_entered" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_hover"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_pressed"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_toggle_equip"]
+[connection signal="item_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_recomb_reroll_selection"]
+[connection signal="item_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="." method="_on_recomb_using_selection"]
+[connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_recomb_reroll_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_hover"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_start_pressed"]

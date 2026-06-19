@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
+[ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -1101,10 +1102,12 @@ script = ExtResource("7_o6xl0")
 tracks = Dictionary[String, AudioStreamOggVorbis]({
 "Combat": ExtResource("11_trceg"),
 "Laboratory": ExtResource("9_ya4ey"),
+"MainMenu": ExtResource("12_eb6dy"),
 "Map": ExtResource("10_eb6dy")
 })
-initial_track = "Laboratory"
+initial_track = "MainMenu"
 
+[connection signal="back_to_main_menu" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("MainMenu")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("MainMenu/Credits")]]

@@ -62,9 +62,6 @@ func update_visual() -> void:
 		left  = min(left, event.position.x)
 		right = max(right, event.position.x)
 	
-	print(button_space.size.x)
-	print("-> %s / %s = %s" % [left, right, 0.5 * (left + right)])
-	
 	# Offset to near the bottom of the screen, and so that the middle of all events is in the middle.
 	var offset := Vector2(
 		(button_space.size.x / 2.) - (0.5 * (left + right)),

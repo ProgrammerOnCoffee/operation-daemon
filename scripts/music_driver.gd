@@ -28,7 +28,9 @@ func _ready() -> void:
 		stream.set_sync_stream(i, tracks[keys[i]])
 		stream.set_sync_stream_volume(i, linear_to_db(0.0))
 	
+	print("PLAYING ", initial_track)
 	current_stream = get_stream_index(initial_track)
+	print(current_stream)
 	
 	play()
 	
@@ -62,8 +64,14 @@ func _process(_delta: float) -> void: if stream is AudioStreamSynchronized:
 	
 	# Resolve buffers
 	if stream_buffer != -1 and transition_start_bar != -1 and bar >= transition_start_bar:
-		#print("RES. BUFF")
 		current_stream = stream_buffer
+		
+		if buffer_should_reset:
+			play(0.0)
+		
+		# Update the beepy em
+		bpm = (stream.get_sync_stream(current_stream) as AudioStreamOggVorbis).bpm
+		
 		stream_buffer = -1
 		transition_start_bar = -1
 	
@@ -81,7 +89,9 @@ func _process(_delta: float) -> void: if stream is AudioStreamSynchronized:
 	#for v in tracks:
 		#print(v, "\t", db_to_linear(stream.get_sync_stream_volume(get_stream_index(v))))
 
-func buffer_stream(index:int):
+var buffer_should_reset := false
+func buffer_stream(index:int, should_reset_track := false):
+	buffer_should_reset = should_reset_track
 	
 	stream_buffer = index
 	
