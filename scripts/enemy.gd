@@ -73,6 +73,8 @@ func _take_turn() -> void:
 			inflict_effects(combat_handler.player, Module.SLOT.NONE) # Enemy Modules don't have slots.
 			# Apply pre-attack effects.
 			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
+			# The player analyzing any daemons it's hit w/.
+			Global.research_group(daemons)
 			# Do the actual damage.
 			combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
 			# Recognize the real damage dealt post-effects.

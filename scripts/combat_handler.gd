@@ -139,6 +139,8 @@ func create_qte() -> Control:
 
 ## Ends the current fight and displays a win/lose screen.
 func end_fight() -> void:
+	Global.attempt_discovery()
+	
 	if player.health:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
 		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Map"

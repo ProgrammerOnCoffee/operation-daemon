@@ -57,9 +57,12 @@ func research(daemon:Daemon, amount:float = 0.05) -> bool:
 	if not daemon_research.has(daemon):
 		daemon_research[daemon] = 0
 	
-	# Not the first time, add to the value.
+	# Add to the research value.
 	daemon_research[daemon] += amount
+	
 	return true
+
+func research_group(daemons:Array[Daemon], amount := 0.05) -> void: for daemon in daemons: research(daemon, amount)
 
 ## Research all the currently-being-researched daemons by some amount.
 ## This should happen at the end of each Act, followed by attempt_discovery.
@@ -71,6 +74,8 @@ func research_all(amount:float = 0.10) -> void:
 
 ## Attempt to discover all daemons currently being researched.
 func attempt_discovery() -> void:
+	
+	print("ATTEMPT DISCOVERY -> ")
 	
 	for daemon in daemon_research:
 		# If the chance is passed, this daemon gets successfully researched.
