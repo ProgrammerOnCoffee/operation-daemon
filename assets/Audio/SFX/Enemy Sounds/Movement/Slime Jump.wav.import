@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dmmwsm2wny11e"
-path="res://.godot/imported/Slime Jump.wav-e41c99814fc8a26416f459291760fb4b.sample"
+path="res://.godot/imported/Slime Jump.wav-1feb85c3fe851a2b4c2f2f5ae0422896.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Enemy Sounds/Movement/Slime Jump.wav"
-dest_files=["res://.godot/imported/Slime Jump.wav-e41c99814fc8a26416f459291760fb4b.sample"]
+source_file="res://assets/audio/SFX/Enemy Sounds/Movement/Slime Jump.wav"
+dest_files=["res://.godot/imported/Slime Jump.wav-1feb85c3fe851a2b4c2f2f5ae0422896.sample"]
 
 [params]
 

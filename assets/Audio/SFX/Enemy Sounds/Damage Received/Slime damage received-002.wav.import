@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bhx5uotn6s1ll"
-path="res://.godot/imported/Slime damage received-002.wav-c90f6dac2eb99f33c7b8bb1fdd991876.sample"
+path="res://.godot/imported/Slime damage received-002.wav-6aee4257a76c4537157898bbde8372f8.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Enemy Sounds/Damage Received/Slime damage received-002.wav"
-dest_files=["res://.godot/imported/Slime damage received-002.wav-c90f6dac2eb99f33c7b8bb1fdd991876.sample"]
+source_file="res://assets/audio/SFX/Enemy Sounds/Damage Received/Slime damage received-002.wav"
+dest_files=["res://.godot/imported/Slime damage received-002.wav-6aee4257a76c4537157898bbde8372f8.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dj4qgyt14tiah"
-path="res://.godot/imported/Slime Lick Attack.wav-4dde450bf5cb4f7c46a70d24d2d47c40.sample"
+path="res://.godot/imported/Slime Lick Attack.wav-2f3b342930adcc877624deee8cca7851.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Enemy Sounds/Attacks/Slime Lick Attack.wav"
-dest_files=["res://.godot/imported/Slime Lick Attack.wav-4dde450bf5cb4f7c46a70d24d2d47c40.sample"]
+source_file="res://assets/audio/SFX/Enemy Sounds/Attacks/Slime Lick Attack.wav"
+dest_files=["res://.godot/imported/Slime Lick Attack.wav-2f3b342930adcc877624deee8cca7851.sample"]
 
 [params]
 

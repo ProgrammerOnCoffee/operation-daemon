@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cinckhyo5esgf"
-path="res://.godot/imported/Counter-002.wav-228ee1ad3a25c611bbe4e3569cca30a3.sample"
+path="res://.godot/imported/Counter-002.wav-8b02e8e7d15d9e53be353e1ac8cc9b3e.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Counter and Block/Counter-002.wav"
-dest_files=["res://.godot/imported/Counter-002.wav-228ee1ad3a25c611bbe4e3569cca30a3.sample"]
+source_file="res://assets/audio/SFX/Counter and Block/Counter-002.wav"
+dest_files=["res://.godot/imported/Counter-002.wav-8b02e8e7d15d9e53be353e1ac8cc9b3e.sample"]
 
 [params]
 

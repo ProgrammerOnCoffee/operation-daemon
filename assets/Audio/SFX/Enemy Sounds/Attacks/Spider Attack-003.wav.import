@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bkswdcoc4rmq7"
-path="res://.godot/imported/Spider Attack-003.wav-c80af2fec85a8d32042b63376ff4cd4b.sample"
+path="res://.godot/imported/Spider Attack-003.wav-c5b9456b273d61efe67aee6564244f0c.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Enemy Sounds/Attacks/Spider Attack-003.wav"
-dest_files=["res://.godot/imported/Spider Attack-003.wav-c80af2fec85a8d32042b63376ff4cd4b.sample"]
+source_file="res://assets/audio/SFX/Enemy Sounds/Attacks/Spider Attack-003.wav"
+dest_files=["res://.godot/imported/Spider Attack-003.wav-c5b9456b273d61efe67aee6564244f0c.sample"]
 
 [params]
 
