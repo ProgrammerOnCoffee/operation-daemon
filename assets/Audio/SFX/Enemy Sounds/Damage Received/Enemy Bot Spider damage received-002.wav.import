@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddin8rkluecv3"
+path="res://.godot/imported/Enemy Bot Spider damage received-002.wav-7d0b1c48e763542d1d7c941ec4f40e29.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Enemy Sounds/Damage Received/Enemy Bot Spider damage received-002.wav"
+dest_files=["res://.godot/imported/Enemy Bot Spider damage received-002.wav-7d0b1c48e763542d1d7c941ec4f40e29.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
