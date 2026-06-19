@@ -427,6 +427,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=1346528038]
+layout_mode = 2
+current_tab = 0
+
+[node name="001" type="PanelContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer" unique_id=1991566799]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001" unique_id=1278570384]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001/MarginContainer" unique_id=275687686]
+layout_mode = 2
+size_flags_vertical = 1
+text = "LOG 001"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
 use_parent_material = true
 layout_mode = 2
