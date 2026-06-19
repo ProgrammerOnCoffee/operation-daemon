@@ -55,11 +55,19 @@ func update_visual() -> void:
 	# Rid thineself of any excess buttons.
 	while buttons.size() > events.size(): buttons.pop_front().queue_free()
 	
-	# Offset to near the bottom of the screen, and so that the middle column is in the middle.
+	# Get the furthest left and furthest right event positions for the offset.
+	var left :float = events.front().position.x
+	var right:float = events.front().position.x
+	for event in events:
+		left  = min(left, event.position.x)
+		right = max(right, event.position.x)
+	
+	# Offset to near the bottom of the screen, and so that the middle of all events is in the middle.
 	var offset := Vector2(
-		(button_space.size.x / 2.) - map_generator.SPACING.x * floori(map_generator.config.map_width / 2.),
+		(button_space.size.x / 2.) - (0.5 * (left + right)),
 		map_generator.SPACING.y * (map_generator.config.floor_count + 1)
 		)
+	
 	
 	var unused_lines:Array[Line2D] = lines.duplicate()
 	lines.clear()

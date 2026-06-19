@@ -25,7 +25,7 @@ func _ready() -> void:
 ## Inventory
 @onready var tab_container := $VBoxContainer/TabContainer
 @onready var tabs:Dictionary[Module.SLOT, VBoxContainer] = {
-	Module.SLOT.NONE:    $VBoxContainer/TabContainer/MarginContainer1/HBoxContainer/ScrollContainer/VBoxContainer,
+	Module.SLOT.NONE:    $VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer,
 	Module.SLOT.ATTACK:  $VBoxContainer/TabContainer/MarginContainer2/HBoxContainer/ScrollContainer/VBoxContainer,
 	Module.SLOT.SPECIAL: $VBoxContainer/TabContainer/MarginContainer3/HBoxContainer/ScrollContainer/VBoxContainer
 }

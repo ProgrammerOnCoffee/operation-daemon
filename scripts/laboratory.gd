@@ -1,27 +1,38 @@
 class_name Laboratory extends ColorRect
 
+signal back_to_main_menu
+
 @export var map:Control
 
-@onready var tab_bar          := $HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
-@onready var scroll_container := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer
+@onready var tab_bar          := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
+@onready var scroll_container := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer
 var goal_scroll_position:float
 
 var daemon_dictionary:Dictionary[String, Daemon] # Turn an ID back into a Daemon.
 
 ## Recombiner
-@onready var recomb_reroll_options  := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton
-@onready var recomb_reroll_overview := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DaemonOverview
-@onready var recomb_using_options   := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton
-@onready var recomb_using_overview  := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DaemonOverview
-@onready var recomb_reroll_button   := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/Button
+@onready var recomb_reroll_options  := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton
+@onready var recomb_reroll_overview := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DaemonOverview
+@onready var recomb_using_options   := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton
+@onready var recomb_using_overview  := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DaemonOverview
+@onready var recomb_reroll_button   := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/Button
 var recomb_reroll_selection:Daemon
 var recomb_using_selection:Daemon
 
 ## Injector
-@onready var injector_item_list    := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList
-@onready var injector_overview     := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/DaemonOverview
-@onready var injector_equip_button := $HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button
+@onready var injector_item_list    := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/ItemList
+@onready var injector_overview     := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/DaemonOverview
+@onready var injector_equip_button := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Button
 var injector_selection:Daemon
+
+## Logbook
+@onready var logbook_tabs    := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/PanelContainer/TabBar
+@onready var logbook_title   := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer/Title
+@onready var logbook_content := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer/Content
+@onready var logbook_overlay := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/CorruptionOverlay
+@export  var obscuring_material:ShaderMaterial # Used to make the text illegible
+@export_multiline() var logs:Array[String] 
+var logs_unlocked := 0
 
 func _ready() -> void:
 	
@@ -32,6 +43,17 @@ func _ready() -> void:
 		Global.daemons_discovered += [Global.get_random_daemon(7)]
 	
 	_update_discovered_list()
+	
+	$HBoxContainer/PanelContainer/MarginContainer/Button.pressed.connect(func():
+		back_to_main_menu.emit()
+		Global.request_track_transition.emit("MainMenu", true))
+	
+	logbook_tabs.clear_tabs()
+	# Make a tab for each log.
+	for i in logs.size(): logbook_tabs.add_tab("Log %s" % Global.lead(i + 1, 3))
+	logbook_tabs.tab_selected.connect(_on_log_selected)
+	_on_log_selected(0)
+	Global.act_completed.connect(_unlock_log)
 
 func _process(delta: float) -> void:
 	scroll_container.scroll_horizontal = move_toward(scroll_container.scroll_horizontal, goal_scroll_position, 493 * (delta / 0.1)) # Move 493px in 0.1s
@@ -45,6 +67,20 @@ func _start_pressed() -> void:
 	Global.request_track_transition.emit("Map")
 	
 	TransitionManager.transition_screen(self, map)
+
+func _unlock_log() -> void:
+	logs_unlocked += 1
+	logbook_tabs.current_tab = logs_unlocked - 1
+	_on_log_selected(logs_unlocked - 1)
+	Global.push_toast.emit("Log Decrypted: Log %s" % Global.lead(logs_unlocked, 3))
+
+func _on_log_selected(index:int) -> void: 
+	
+	logbook_title.text = logbook_tabs.get_tab_title(index)
+	logbook_content.text = logs[index]
+	
+	logbook_content.material = null if logs_unlocked > index else obscuring_material
+	logbook_overlay.visible =! logs_unlocked > index
 
 func _update_discovered_list() -> void:
 	
