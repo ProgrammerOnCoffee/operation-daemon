@@ -28,9 +28,7 @@ func _ready() -> void:
 		stream.set_sync_stream(i, tracks[keys[i]])
 		stream.set_sync_stream_volume(i, linear_to_db(0.0))
 	
-	print("PLAYING ", initial_track)
 	current_stream = get_stream_index(initial_track)
-	print(current_stream)
 	
 	play()
 	

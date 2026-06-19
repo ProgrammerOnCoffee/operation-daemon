@@ -56,9 +56,9 @@ func create_toast(text:String):
 	
 	var tween := new.create_tween()
 	tween.tween_property(new, "position:x", -new.size.x - 20, 0)
-	tween.tween_property(new, "position:x", 0.0, 0.4)
+	tween.tween_property(new, "position:x", 0.0, 0.2)
 	tween.parallel()
-	tween.tween_property(new, "modulate:a", 1.0, 0.3)
+	tween.tween_property(new, "modulate:a", 1.0, 0.21)
 	tween.tween_interval(4.7)
 	tween.tween_property(new, "position:x", -new.size.x - 20, 0.5)
 	tween.tween_callback(content.hide)

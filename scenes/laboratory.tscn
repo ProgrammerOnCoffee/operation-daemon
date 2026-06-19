@@ -4,6 +4,28 @@
 [ext_resource type="Script" uid="uid://c4o4qebrk7g3i" path="res://scripts/laboratory.gd" id="1_stu8i"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
 
+[sub_resource type="Shader" id="Shader_ehj20"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Super-simple text obscuring.
+	COLOR.a = 1.0;
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fie5y"]
+shader = SubResource("Shader_ehj20")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2vy4"]
 bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
 border_width_left = 40
@@ -140,6 +162,55 @@ PopupMenu/colors/font_hover_color = Color(0.039215688, 0.043137256, 0.050980393,
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_wtnrd")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_3bqev")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhrvc"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r2u2"]
+bg_color = Color(0.11764706, 0.12156863, 0.13333334, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+
+[sub_resource type="Shader" id="Shader_6mkvh"]
+code = "shader_type canvas_item;
+
+uniform float slowdown = 7.;
+uniform vec4 colorA:source_color;
+uniform vec4 colorB:source_color;
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	
+	if (mod(10. * (UV.x + UV.y - (TIME / slowdown)), 2.) > 1.)
+	{
+		COLOR = colorA;
+	}
+	else{COLOR = colorB;}
+	
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehj20"]
+shader = SubResource("Shader_6mkvh")
+shader_parameter/slowdown = 5.0
+shader_parameter/colorA = Color(1, 0.34901962, 0.34901962, 0.61960787)
+shader_parameter/colorB = Color(0.7607843, 0.26666668, 0.26666668, 0.69803923)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px68r"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhqq6"]
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -155,6 +226,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 script = ExtResource("1_stu8i")
+obscuring_material = SubResource("ShaderMaterial_fie5y")
+logs = Array[String](["webadabooda", "something something explosion", "according to all known laws of aviation there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. THe bee, however, flies anyways."])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1738358358]
 use_parent_material = true
@@ -204,7 +277,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-scroll_horizontal = 100
+scroll_horizontal = 992
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -429,29 +502,86 @@ custom_minimum_size = Vector2(496, 496)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lhrvc")
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=1346528038]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=367380617]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer" unique_id=1795930819]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgbnh")
+
+[node name="TabBar" type="TabBar" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/PanelContainer" unique_id=2085991855]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_1du3q")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_f8rtk")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_i7dll")
 current_tab = 0
+tab_count = 3
+tab_0/title = "001"
+tab_1/title = "002"
+tab_2/title = "003"
 
-[node name="001" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer" unique_id=1991566799]
+[node name="LogDisplay" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer" unique_id=1991566799]
 layout_mode = 2
-metadata/_tab_index = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0r2u2")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001" unique_id=1278570384]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay" unique_id=1278570384]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/TabContainer/001/MarginContainer" unique_id=275687686]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer" unique_id=1307536624]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=275687686]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 23
 text = "LOG 001"
+
+[node name="Content" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=475244506]
+material = SubResource("ShaderMaterial_fie5y")
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Something something lore explanation that makes little to no sense because we love that .-. Something something lore explanation that makes little to no sense because we love that .-. Something something lore explanation that makes little to no sense because we love that .-. Something something lore explanation that makes little to no sense because we love that .-. "
+autowrap_mode = 2
+
+[node name="CorruptionOverlay" type="PanelContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook" unique_id=1952565629]
+material = SubResource("ShaderMaterial_ehj20")
+custom_minimum_size = Vector2(496, 454)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_px68r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/CorruptionOverlay" unique_id=271921708]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/CorruptionOverlay/VBoxContainer" unique_id=1889055542]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+text = "ERROR:
+THIS FILE IS CORRUPTED"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/CorruptionOverlay/VBoxContainer" unique_id=790510622]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 12
+text = "(FIND THE DATA TO RESTORE BY COMPLETING AN ACT)"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1090214760]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -513,6 +643,7 @@ text = "BEGIN EXPEDITION"
 [connection signal="item_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_recomb_reroll_selection"]
 [connection signal="item_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="." method="_on_recomb_using_selection"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_recomb_reroll_pressed"]
+[connection signal="tab_selected" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_hover"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_input_pressed"]
 [connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Button" to="." method="_start_pressed"]
