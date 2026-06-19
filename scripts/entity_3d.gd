@@ -66,22 +66,26 @@ func update_resolution() -> void:
 func move_to_entity(to: Entity3D) -> void:
 	## The direction away from [param to] that this entity will be moved.
 	var dir := Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y) * signf(to.global_position.x - global_position.x)
+	entity.anim_player.play(entity.animation_names.dash, 0.2)
 	await create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).tween_property(self, ^":global_position",
-			to.global_position * Vector3(1, 0, 1)
+			to.initial_transform.origin * Vector3(1, 0, 1)
 			# Keep player y position
 			+ global_position * Vector3(0, 1, 0)
 			# Move beside other entity
 			+ dir * (
-					# Entity rect size + self rect size
-					to.entity.rect.size.x * to.pixel_size
-					+ entity.rect.size.x * pixel_size
-			) / 2, 0.8).finished
+					(to.entity.rect.size.x / 2.0 - to.entity.rect_attack_inset) * to.pixel_size
+					+ (entity.rect.size.x / 2.0 - entity.rect_attack_inset) * pixel_size
+			), entity.animation_durations.dash).finished
+	entity.anim_player.play(entity.animation_names.idle, 0.4)
 
 
 ## Returns this [Entity3D] to its initial [member global_transform].
 func return_to_initial_transform() -> void:
-	await create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE).tween_property(
-			self, ^":global_transform", initial_transform, 0.8).finished
+	entity.anim_player.play(entity.animation_names.b_dash, 0.2, 1.0, entity.animation_names.b_dash == entity.animation_names.dash)
+	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_property(
+			self, ^":global_transform", initial_transform, entity.animation_durations.b_dash)
+	await get_tree().create_timer(entity.animation_durations.b_dash - 0.3).timeout
+	entity.anim_player.play(entity.animation_names.idle, 0.4)
 
 
 ## Returns the 3D point in world space that maps to the 2D coordinate [param p]

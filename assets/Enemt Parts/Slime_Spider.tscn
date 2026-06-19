@@ -91,6 +91,7 @@ target_nodepath = NodePath("Body IK")
 editor/draw_gizmo = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_upmyt"]
+resource_local_to_scene = true
 enabled = true
 strength = 0.941
 modification_count = 6

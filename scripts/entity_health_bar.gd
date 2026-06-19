@@ -27,6 +27,10 @@ func _draw() -> void:
 ## Updates the position of the health bar, moving it above [member entity_3d].
 func update() -> void:
 	if cam and entity_3d:
+		var hbarm := entity_3d.entity.get_node_or_null(^"HealthBarPoint") as Marker2D
 		global_position = cam.unproject_position(
-				entity_3d.project_point(Vector2(entity_3d.entity.rect.size.x / 2.0, 8))
+				entity_3d.project_point(Vector2(
+						entity_3d.entity.rect.size.x / 2.0,
+						(entity_3d.entity.rect.size.y + hbarm.position.y) if hbarm else 0.0
+				))
 		) - size / 2

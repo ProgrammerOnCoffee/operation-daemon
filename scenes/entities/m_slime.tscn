@@ -82,6 +82,7 @@ joint_data/4/enable_constraint = false
 joint_data/4/editor_draw_gizmo = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_0u62b"]
+resource_local_to_scene = true
 enabled = true
 modification_count = 3
 modifications/0 = SubResource("SkeletonModification2DJiggle_fo164")

@@ -160,6 +160,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(546, 453), Vector2(464.86484, 627.0271), Vector2(578.37836, 383.78378), Vector2(578.37836, 383.78378), Vector2(313.51358, 567.5676), Vector2(518.9189, 475.6756), Vector2(546.67566, 455.21622)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Enemy Bones:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ftlb6"]
 resource_name = "Damaged"
@@ -456,6 +468,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(546, 453), Vector2(545.9459, 410.81082), Vector2(545.946, 508.10815), Vector2(540.5405, 394.5946), Vector2(546, 453)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Enemy Bones:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_khmtw"]
 resource_name = "Death"
@@ -566,6 +590,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-88, 88), Vector2(454.0274, -150.56567), Vector2(218.54242, -482.39325), Vector2(1258.3263, 202.91608), Vector2(1141.7546, 221.35205)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Enemy Bones:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_lgpu2"]

@@ -50,7 +50,6 @@ func _ready() -> void:
 		step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
 		bar.entity_3d = enemy.entity_3d
 		bar.entity_3d.entity.health_bar = bar
-		bar.custom_minimum_size.x = bar.entity_3d.entity.rect.size.x * 0.7
 		add_child(bar, false, INTERNAL_MODE_FRONT)
 	
 	_sorted_enemies = enemies.duplicate()
