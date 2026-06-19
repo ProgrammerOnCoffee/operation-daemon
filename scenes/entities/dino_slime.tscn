@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cqb0qmp7e04bm"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_fapb5"]
+[ext_resource type="PackedScene" uid="uid://burrmjoabd4py" path="res://assets/Enemy Parts/Dino Slime/dino_slime_ent.tscn" id="2_jw5kh"]
+
+[node name="Dino Slime" unique_id=1022515043 instance=ExtResource("1_fapb5")]
+rect = Rect2i(-312, -552, 624, 640)
+rect_attack_inset = 192
+base_damage = 12
+damage_variation = 4
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_slime_jump",
+&"b_dash": "dash_slime",
+&"counter": "counter",
+&"dash": "dash_slime",
+&"death": "death_slime",
+&"hit": "hit_slime",
+&"parry": "parry"
+})
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"Dash",
+&"damaged": &"Damaged",
+&"dash": &"Dash",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
+animation_durations = Dictionary[StringName, float]({
+&"attack": 1.0,
+&"b_dash": 2.1,
+&"damaged": 1.0,
+&"dash": 2.1,
+&"death": 1.0,
+&"idle": 1.0,
+&"parry": 1.0
+})
+attack_point = 0.35
+
+[node name="DinoSlime_ENT" parent="." index="0" unique_id=717233030 instance=ExtResource("2_jw5kh")]
+position = Vector2(-92, -271)
+scale = Vector2(0.8, 0.8)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=1579898963]
+position = Vector2(0, -344)

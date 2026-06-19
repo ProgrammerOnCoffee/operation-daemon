@@ -11,8 +11,9 @@ enum ApplyType {
 	AFTER_DAMAGE, ## Apply this effect after taking damage.
 }
 
-## The list of all effects that can be given to enemies. Each key is an effect's
-## file name, and each value is that effect's script loaded with [method @GDScript.load].
+## The list of all effects that can be given to enemies. Each key is aneffect's
+## file name (minus extension), and each value is that effect's script loaded
+## with [method @GDScript.load].
 static var all_effects: Dictionary[String, GDScript]
 
 
@@ -26,8 +27,8 @@ static func _static_init() -> void:
 		else:
 			if not file.ends_with(".gd.remap"):
 				continue
-			file = file.substr(0, file.length() - ".remap".length())
-		all_effects[file] = load(PATH.path_join(file))
+			file = file.substr(0, file.length() - 6)
+		all_effects[file.left(-3)] = load(PATH.path_join(file))
 
 # NOTE: these are all abstract functions and not variables
 # so they can all be set by a subclass in code. The variables

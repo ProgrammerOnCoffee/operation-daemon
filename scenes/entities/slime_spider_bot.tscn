@@ -1,13 +1,22 @@
 [gd_scene format=3 uid="uid://chww5uygi35ie"]
 
 [ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_dke1x"]
-[ext_resource type="PackedScene" uid="uid://bfj5s1idl7ra2" path="res://assets/Enemt Parts/slime_spider_bot.tscn" id="2_5cyl0"]
+[ext_resource type="PackedScene" uid="uid://bfj5s1idl7ra2" path="res://assets/Enemy Parts/Slime Spider Bot/slime_spider_bot_ent.tscn" id="2_5cyl0"]
 
 [node name="SlimeSpiderBot" unique_id=1022515043 instance=ExtResource("1_dke1x")]
-rect = Rect2i(-336, -168, 672, 184)
+rect = Rect2i(-352, -248, 704, 264)
 rect_attack_inset = 228
 base_damage = 5
 max_health = 30
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_robot",
+&"b_dash": "dash_spider",
+&"counter": "counter",
+&"dash": "dash_spider",
+&"death": "death_robot",
+&"hit": "hit_robot",
+&"parry": "parry"
+})
 animation_names = Dictionary[StringName, StringName]({
 &"attack": &"Attack",
 &"b_dash": &"Dash",
@@ -30,3 +39,6 @@ attack_point = 0.5
 
 [node name="Slime Spider Bot" parent="." index="0" unique_id=1915969548 instance=ExtResource("2_5cyl0")]
 position = Vector2(-102, -172)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=916020851]
+position = Vector2(0, -192)

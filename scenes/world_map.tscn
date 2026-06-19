@@ -1,37 +1,24 @@
 [gd_scene format=3 uid="uid://2lu6bt560oec"]
 
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="1_gqm84"]
 [ext_resource type="Script" uid="uid://dq2vsl1va7m58" path="res://scripts/map_generation/map_generator.gd" id="1_oru6e"]
 [ext_resource type="Script" uid="uid://cet8h24wxofts" path="res://scripts/map_generation/world_map.gd" id="1_u82pb"]
 [ext_resource type="Resource" uid="uid://bsnwltb0xrc88" path="res://resources/map_configs/Act1.tres" id="3_u82pb"]
 [ext_resource type="Script" uid="uid://c4u7snpqdesmb" path="res://scripts/inventory.gd" id="4_27p3u"]
-[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="4_qj3iy"]
+[ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="4_qj3iy"]
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="5_qj3iy"]
 [ext_resource type="PackedScene" uid="uid://cyoh2mfn2chnp" path="res://scenes/module_entry.tscn" id="6_27p3u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u82pb"]
-bg_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+bg_color = Color(0.8041228, 0.7573793, 0.6731056, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27p3u"]
-bg_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 draw_center = false
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.17254902, 0.18431373, 0.21960784, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55716"]
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqm84"]
 bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
@@ -40,15 +27,13 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pls23"]
 content_margin_left = 10.0
 content_margin_right = 10.0
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+bg_color = Color(0.17789209, 0.14842954, 0.07194675, 1)
 border_width_bottom = 4
 border_color = Color(0.0792, 0.08844, 0.11, 1)
 corner_radius_top_left = 10
@@ -77,31 +62,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hitc"]
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-border_width_left = 15
-border_width_top = 15
-border_width_right = 15
-border_width_bottom = 15
-border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55716"]
+bg_color = Color(0.3019608, 0.29411766, 0.23137255, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a477"]
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hitc"]
+bg_color = Color(0.3019608, 0.29411766, 0.23137255, 1)
 
 [sub_resource type="Theme" id="Theme_27p3u"]
 Label/font_sizes/font_size = 21
@@ -114,6 +79,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_gqm84")
+theme_type_variation = &"Boxes"
 script = ExtResource("1_u82pb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2132662501]
@@ -123,7 +90,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+color = Color(0.74427897, 0.6947544, 0.5979347, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1949631037]
 layout_mode = 1
@@ -152,7 +119,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+color = Color(0.8444085, 0.7801257, 0.7705261, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/MapGenerator" unique_id=1974676007]
 layout_mode = 1
@@ -180,6 +147,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1222581717]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Modules"
 horizontal_alignment = 1
@@ -188,7 +156,6 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 19
-theme_override_styles/panel = SubResource("StyleBoxFlat_55716")
 current_tab = 0
 tab_0/title = "Attack"
 tab_1/title = "Special"
@@ -226,7 +193,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="Primitive2D" type="Control" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/TabContainer/MarginContainer2/HBoxContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=223103168]
-custom_minimum_size = Vector2(28, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 script = ExtResource("4_qj3iy")
 points = 5
@@ -305,7 +272,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="Primitive2D" type="Control" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/TabContainer/MarginContainer3/HBoxContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=177116563]
-custom_minimum_size = Vector2(28, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 script = ExtResource("4_qj3iy")
 points = 5
@@ -353,7 +320,7 @@ text = "SP"
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=1718182624]
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0hitc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_55716")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/PanelContainer2" unique_id=2124835602]
 layout_mode = 2
@@ -377,6 +344,7 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=2117401611]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Daemons"
 horizontal_alignment = 1
@@ -384,7 +352,7 @@ horizontal_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer" unique_id=19414503]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6a477")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hitc")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=1750462207]
 layout_mode = 2

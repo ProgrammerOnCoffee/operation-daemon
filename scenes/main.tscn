@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d1a18w7sklhef" path="res://scripts/menu.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://cbxo13vg2mn42" path="res://scripts/menu_button.gd" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="1_trceg"]
 [ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
+[ext_resource type="StyleBox" uid="uid://c1t0x1sq8k05l" path="res://assets/MM Button.tres" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
+[ext_resource type="StyleBox" uid="uid://ruh5dw0gi8d2" path="res://assets/MM Hover.tres" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
@@ -101,70 +104,9 @@ func make_points_for(radius:float, vertices:int, modifiers:Dictionary[int, float
 	return points
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
-border_width_right = 15
-border_width_bottom = 10
-border_color = Color(0.3254902, 0.36078432, 0.4509804, 1)
-corner_radius_top_left = 30
-corner_radius_bottom_right = 30
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.34901962)
-shadow_size = 4
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgp6g"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-bg_color = Color(0.1036, 0.1127, 0.14, 1)
-border_width_right = 15
-border_width_bottom = 10
-border_color = Color(0.29520002, 0.32964, 0.41, 1)
-corner_radius_top_left = 30
-corner_radius_bottom_right = 30
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.34901962)
-shadow_size = 4
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
-content_margin_left = 20.0
-content_margin_right = 20.0
-bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
-border_width_right = 15
-border_width_bottom = 10
-border_color = Color(0.21568628, 0.25882354, 0.36078432, 1)
-corner_radius_top_left = 30
-corner_radius_bottom_right = 30
-corner_detail = 1
-shadow_color = Color(0, 0, 0, 0.34901962)
-shadow_size = 4
-shadow_offset = Vector2(5, 5)
-
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
 color = Color(0.071100004, 0.074880004, 0.09, 1)
 thickness = 4
-
-[sub_resource type="Theme" id="Theme_jyhfs"]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 18
-Button/styles/hover = SubResource("StyleBoxFlat_o5qli")
-Button/styles/normal = SubResource("StyleBoxFlat_sgp6g")
-Button/styles/pressed = SubResource("StyleBoxFlat_0wfyh")
-HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
-
-[sub_resource type="Theme" id="Theme_0wfyh"]
-Button/font_sizes/font_size = 14
-Button/styles/hover = SubResource("StyleBoxFlat_o5qli")
-Button/styles/normal = SubResource("StyleBoxFlat_sgp6g")
-Button/styles/pressed = SubResource("StyleBoxFlat_0wfyh")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_jyhfs"]
 color = Color(0.071100004, 0.074880004, 0.09, 1)
@@ -210,6 +152,61 @@ func _selected(new:int):
 	# Find the item in the dictionary, set the mode to its mode.
 	DisplayServer.window_set_mode(OPTIONS[get_item_text(new)])
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.18431373, 0.2, 0.2509804, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.3254902, 0.36078432, 0.4509804, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgp6g"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.1036, 0.1127, 0.14, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.29520002, 0.32964, 0.41, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.09019608, 0.09803922, 0.12156863, 1)
+border_width_right = 15
+border_width_bottom = 10
+border_color = Color(0.21568628, 0.25882354, 0.36078432, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.34901962)
+shadow_size = 4
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Theme" id="Theme_jyhfs"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 18
+Button/styles/hover = SubResource("StyleBoxFlat_o5qli")
+Button/styles/normal = SubResource("StyleBoxFlat_sgp6g")
+Button/styles/pressed = SubResource("StyleBoxFlat_0wfyh")
+HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 20.0
@@ -581,6 +578,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_trceg")
 
 [node name="MenuBackdrop" type="ColorRect" parent="UILayer/UI/MainMenu" unique_id=1985840723]
 use_parent_material = true
@@ -590,18 +588,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+color = Color(0.74509805, 0.69411767, 0.59607846, 1)
 
 [node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=745645119]
 use_parent_material = true
-color = Color(0.13430001, 0.143225, 0.17, 0.7254902)
+color = Color(0.80357844, 0.6511109, 0.506857, 0.7254902)
 polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
 
 [node name="Circle" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=295099895]
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(903, 324)
-color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+color = Color(0.74509805, 0.69411767, 0.59607846, 1)
 polygon = PackedVector2Array(180, 0, 178.58064, 22.559982, 174.34497, 44.764183, 167.35977, 66.26242, 157.7352, 86.71567, 145.62306, 105.801346, 131.21436, 123.21848, 114.73632, 138.69238, 96.448814, 151.97903, 76.640274, 162.86887, 55.623055, 171.19017, 33.72864, 176.8117, 11.30229, 179.6448, -11.302284, 179.6448, -33.728638, 176.8117, -55.623066, 171.19017, -76.64029, 162.86887, -96.448814, 151.97903, -114.73632, 138.69238, -131.21436, 123.218475, -145.62308, 105.80133, -157.7352, 86.715675, -167.35977, 66.26243, -174.34497, 44.764183, -178.58064, 22.559977, -180, -1.57361e-05, -178.58064, -22.559963, -174.34497, -44.76417, -167.35977, -66.26242, -157.7352, -86.71567, -145.62305, -105.80137, -131.21436, -123.218475, -114.73629, -138.6924, -96.44886, -151.979, -76.6403, -162.86887, -55.623077, -171.19017, -33.728645, -176.8117, -11.302297, -179.6448, 11.3023, -179.6448, 33.728653, -176.8117, 55.62308, -171.19017, 76.640305, -162.86887, 96.44879, -151.97905, 114.7363, -138.6924, 131.21434, -123.21849, 145.62305, -105.80135, 157.7352, -86.71567, 167.35977, -66.26242, 174.34497, -44.764168, 178.58064, -22.559961)
 script = SubResource("GDScript_o5qli")
 outer_vertices = 50
@@ -613,7 +611,6 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 size_flags_horizontal = 3
-theme = SubResource("Theme_jyhfs")
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -636,14 +633,15 @@ use_parent_material = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 23
+theme_override_constants/separation = 19
 
 [node name="Start" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=1047255247]
 use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
-theme = SubResource("Theme_0wfyh")
 theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "START"
 script = ExtResource("1_o5qli")
 
@@ -652,6 +650,8 @@ use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "SETTINGS"
 script = ExtResource("1_o5qli")
 
@@ -660,6 +660,8 @@ use_parent_material = true
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "CREDITS"
 script = ExtResource("1_o5qli")
 
@@ -828,6 +830,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
 offset_right = 576.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")

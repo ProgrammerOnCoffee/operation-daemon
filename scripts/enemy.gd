@@ -25,12 +25,17 @@ func _take_turn() -> void:
 			qte = combat_handler.create_qte()
 			qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
 			await get_tree().create_timer(qte_preload_time).timeout
+		if sound_banks.attack == "attack_dino_slime":
+			entity_3d.play_sound(sound_banks.attack)
+		else:
+			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
 		if anim_player.current_animation != animation_names.attack:
 			anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
 		var value: float = await qte.pressed
 		if player.is_defending and value > 0.9:
+			player.entity_3d.play_sound(sound_banks.counter)
 			# Play parry anim
 			player.anim_player.play(player.animation_names.parry, 0.2)
 			# Return to idle anim after parry
@@ -55,6 +60,7 @@ func _take_turn() -> void:
 			combat_handler.player.apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		else:
 			if value >= 0.9 and not player.is_defending:
+				player.entity_3d.play_sound(sound_banks.parry)
 				# Play parry anim
 				player.anim_player.play(player.animation_names.parry, 0.2)
 				# Return to idle anim after parry

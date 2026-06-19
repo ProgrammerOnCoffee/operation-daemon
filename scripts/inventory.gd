@@ -9,11 +9,11 @@ func _ready() -> void:
 	
 	for i in 10:
 		
-		var ef:Array[Effect]= []
-		for j in 1:
-			ef += [Effect.all_effects.values().pick_random().new()]
+		var effects:Array[Effect]= []
+		for j in 3:
+			effects += [Effect.all_effects.values().pick_random().new()]
 			
-		PlayerData.modules += [Module.new(ef, randi_range(0,2) as Module.SLOT)]
+		PlayerData.modules += [Module.new(effects, randi_range(0,2) as Module.SLOT)]
 	
 	PlayerData.modules_changed.connect(_update_module_list)
 	_update_module_list()

@@ -3,8 +3,9 @@ class_name Modifier
 extends Resource
 ## A modifier for an effect that changes the base value by a percentage.
 
-## The list of all modifiers that can be given to enemies. Each key is an modifier's
-## file name, and each value is that modifier's script loaded with [method @GDScript.load].
+## The list of all modifiers that can be given to enemies. Each key is a
+## modifier's file name (minus extension), and each value is that modifier's
+## script loaded with [method @GDScript.load].
 static var all_modifiers: Dictionary[String, GDScript]
 
 
@@ -18,8 +19,8 @@ static func _static_init() -> void:
 		else:
 			if not file.ends_with(".gd.remap"):
 				continue
-			file = file.substr(0, file.length() - ".remap".length())
-		all_modifiers[file] = load(PATH.path_join(file))
+			file = file.substr(0, file.length() - 6)
+		all_modifiers[file.left(-3)] = load(PATH.path_join(file))
 
 
 # NOTE: these are all abstract functions and not variables

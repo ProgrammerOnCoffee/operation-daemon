@@ -93,31 +93,9 @@ func get_random_daemon(modifier_count := 4) -> Daemon:
 	var modifiers:Array[Modifier]
 	
 	for i in modifier_count:
-		modifiers.append(modifier_sources.pick_random().new())
+		modifiers.append(Modifier.all_modifiers.values().pick_random().new())
 	
 	return Daemon.new(modifiers)
-
-## Create an array of all the modifiers in existence
-@onready var modifier_sources:Array[Resource] = _get_modifier_sources()
-func _get_modifier_sources() -> Array[Resource]:
-	
-	var results:Array[Resource]
-	
-	var path := "res://scripts/modifiers/"
-	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if not dir.current_is_dir():
-				if file_name.right(3) == ".gd":
-					results.append(load(path + file_name))
-				
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the path.")
-	
-	return results
 
 ## General Functions
 

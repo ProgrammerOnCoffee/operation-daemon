@@ -12,9 +12,17 @@ var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 func _ready() -> void:
 	load_entity("player.tscn")
 	for i in $Markers.get_child_count() - 1:
-		load_entity("m_slime_enemy.tscn" if i == 2 else "slime_spider_bot.tscn")
+		load_entity("m_slime.tscn" if i == 2 else "angel.tscn" if i == 1 else "slime_spider_bot.tscn")
 	add_child(combat_handler)
 	ButtonFeedback.setup_recursive(combat_handler)
+	
+	if OS.has_feature("editor") and get_parent() == get_tree().root:
+		# Editor debugging
+		var asp := AudioStreamPlayer.new()
+		asp.stream = load("res://assets/Music/combat1_79bpm.ogg")
+		asp.autoplay = true
+		asp.bus = &"Music"
+		add_child(asp)
 	
 	combat_handler.requested_end.connect($EventScene.event_finished.emit)
 
