@@ -1105,7 +1105,6 @@ _data = {
 [node name="Slime Spider Bot" type="Node2D" unique_id=1640616147]
 
 [node name="Enemy Bones" parent="." unique_id=986798588 instance=ExtResource("1_8qs0g")]
-modulate = Color(18.892157, 0, 0, 1)
 position = Vector2(16, 24)
 scale = Vector2(0.185, 0.185)
 
@@ -1120,6 +1119,9 @@ color = Color(0.556953, 0.556953, 0.556953, 1)
 
 [node name="SpiderLeg3A4" parent="Enemy Bones/images" parent_id_path=PackedInt32Array(986798588, 431777185) index="5" unique_id=29492472]
 color = Color(0.41981316, 0.4198131, 0.41981322, 1)
+
+[node name="Bones" parent="Enemy Bones" index="1" unique_id=448116703]
+visible = false
 
 [node name="Body" parent="Enemy Bones/Bones/Skeleton2D" parent_id_path=PackedInt32Array(986798588, 636062987) index="0" unique_id=910904063]
 rotation = -0.010814667

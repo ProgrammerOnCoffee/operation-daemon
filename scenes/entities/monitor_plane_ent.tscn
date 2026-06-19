@@ -139,6 +139,9 @@ _data = {
 
 [node name="Goopy SLimes Bones" parent="." unique_id=483076323 instance=ExtResource("1_3tmp2")]
 
+[node name="Bones" parent="Goopy SLimes Bones/Scale" parent_id_path=PackedInt32Array(483076323, 1933286716) index="1" unique_id=1426243322]
+visible = false
+
 [node name="Base" parent="Goopy SLimes Bones/Scale/Bones/Skeleton2D" parent_id_path=PackedInt32Array(483076323, 222314041) index="0" unique_id=1758993954]
 scale = Vector2(0.99991804, 0.99991804)
 
