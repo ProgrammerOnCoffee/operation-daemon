@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bprgulad8c16g"
-path="res://.godot/imported/combat 2 (loop sample).mp3-9520c3b2c59d84cc7cae6f03e250bc44.mp3str"
+path="res://.godot/imported/combat 2 (loop sample).mp3-c1d5eb13e0f0d4fa1c5f1dfa231fa4ea.mp3str"
 
 [deps]
 
-source_file="res://assets/audio/combat 2 (loop sample).mp3"
-dest_files=["res://.godot/imported/combat 2 (loop sample).mp3-9520c3b2c59d84cc7cae6f03e250bc44.mp3str"]
+source_file="res://assets/Audio/combat 2 (loop sample).mp3"
+dest_files=["res://.godot/imported/combat 2 (loop sample).mp3-c1d5eb13e0f0d4fa1c5f1dfa231fa4ea.mp3str"]
 
 [params]
 

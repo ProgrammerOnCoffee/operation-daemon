@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bvnwhv14dfhno"
-path="res://.godot/imported/Enemy Bot Spider damage received-001.wav-b064504d2ef065c8ebf363b066875750.sample"
+path="res://.godot/imported/Enemy Bot Spider damage received-001.wav-9a883aa082fd43b6cb9fee99a55a861f.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Enemy Sounds/Damage Received/Enemy Bot Spider damage received-001.wav"
-dest_files=["res://.godot/imported/Enemy Bot Spider damage received-001.wav-b064504d2ef065c8ebf363b066875750.sample"]
+source_file="res://assets/Audio/SFX/Enemy Sounds/Damage Received/Enemy Bot Spider damage received-001.wav"
+dest_files=["res://.godot/imported/Enemy Bot Spider damage received-001.wav-9a883aa082fd43b6cb9fee99a55a861f.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://by3xroc14dams"
-path="res://.godot/imported/Enemy Bot Spider Walk-002.wav-34c305c2b07f9efb6e881129bb6750ed.sample"
+path="res://.godot/imported/Enemy Bot Spider Walk-002.wav-ba3ccc8c2caa67257916d5c1450f45da.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Enemy Sounds/Movement/Enemy Bot Spider Walk-002.wav"
-dest_files=["res://.godot/imported/Enemy Bot Spider Walk-002.wav-34c305c2b07f9efb6e881129bb6750ed.sample"]
+source_file="res://assets/Audio/SFX/Enemy Sounds/Movement/Enemy Bot Spider Walk-002.wav"
+dest_files=["res://.godot/imported/Enemy Bot Spider Walk-002.wav-ba3ccc8c2caa67257916d5c1450f45da.sample"]
 
 [params]
 
