@@ -65,7 +65,6 @@ var entity_3d: Entity3D
 var health_bar: Control:
 	set(value):
 		health_bar = value
-		health_bar.get_node(^"HealthBar").max_value = max_health
 		health = health
 
 
