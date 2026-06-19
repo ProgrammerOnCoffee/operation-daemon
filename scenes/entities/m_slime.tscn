@@ -9,6 +9,15 @@ rect_attack_inset = 80
 base_damage = 10
 damage_variation = 2
 max_health = 40
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_slime",
+&"b_dash": "dash_slime_jump",
+&"counter": "counter",
+&"dash": "dash_slime_jump",
+&"death": "death_slime",
+&"hit": "hit_slime",
+&"parry": "parry"
+})
 animation_names = Dictionary[StringName, StringName]({
 &"attack": &"Attack",
 &"b_dash": &"jump",

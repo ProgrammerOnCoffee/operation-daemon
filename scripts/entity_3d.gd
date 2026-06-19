@@ -5,6 +5,8 @@ extends Sprite3D
 ##
 ## Creates a 3D representation of a 2D [Entity] with a [SubViewport].
 
+## The pool of created [AudioStreamPlayer3D]s. Each value is whether or not it is in use.
+static var audio_stream_player_pool: Dictionary[AudioStreamPlayer3D, bool]
 
 ## The [Entity] that this sprite displays.
 @export var entity: Entity:
@@ -30,6 +32,14 @@ extends Sprite3D
 
 ## The initial transform of this [Entity3D] when the fight was loaded.
 @onready var initial_transform := global_transform
+
+
+## Removes [param asp] from the [SceneTree], resets it to its initial state,
+## and updates [member audio_stream_player_pool] to reflect that the [param asp]
+## is no longer being used.
+static func _reset_asp(asp: AudioStreamPlayer3D) -> void:
+	asp.get_parent().remove_child(asp)
+	audio_stream_player_pool[asp] = false
 
 
 func _init() -> void:
@@ -62,8 +72,43 @@ func update_resolution() -> void:
 		scale = Vector3.ONE / resolution_scale
 
 
+## Plays a sound from [param bank].
+func play_sound(bank: String, remaining_loop_count: int = -1) -> void:
+	var asp: AudioStreamPlayer3D
+	for player in audio_stream_player_pool:
+		if not audio_stream_player_pool[player]:
+			audio_stream_player_pool[player] = true
+			asp = player
+			break
+	if not asp:
+		asp = AudioStreamPlayer3D.new()
+		asp.max_db = 0.0
+		asp.autoplay = true
+		asp.panning_strength = 0.5
+		asp.bus = &"SFX"
+		asp.attenuation_filter_cutoff_hz = 20500
+		asp.finished.connect(_reset_asp.bind(asp))
+		audio_stream_player_pool[asp] = true
+	var sound = Entity.sounds[bank].pick_random()
+	if sound is AudioStream:
+		asp.stream = sound
+	else:
+		asp.stream = sound[0]
+		if "loop_after" in sound[1] and "loop_count" in sound[1] and remaining_loop_count != 0:
+			get_tree().create_timer(sound[1].loop_after).timeout.connect(play_sound.bind(bank,
+					(remaining_loop_count if remaining_loop_count != -1 else sound[1].loop_count) - 1
+			))
+		if "next_sound" in sound[1]:
+			get_tree().create_timer(sound[1].next_delay).timeout.connect(play_sound.bind(sound[1].next_sound))
+		if "volume" in sound[1]:
+			asp.volume_db = sound[1].volume
+	asp.pitch_scale = randf_range(0.8, 1.1)
+	add_child(asp)
+
+
 ## Moves this [Entity3D] beside [param to] to prepare for an attack.
 func move_to_entity(to: Entity3D) -> void:
+	play_sound(entity.sound_banks.dash)
 	## The direction away from [param to] that this entity will be moved.
 	var dir := Vector3.LEFT.rotated(Vector3.UP, entity.combat_handler.cam.rotation.y) * signf(to.global_position.x - global_position.x)
 	entity.anim_player.play(entity.animation_names.dash, 0.2)
@@ -81,7 +126,8 @@ func move_to_entity(to: Entity3D) -> void:
 
 ## Returns this [Entity3D] to its initial [member global_transform].
 func return_to_initial_transform() -> void:
-	entity.anim_player.play(entity.animation_names.b_dash, 0.2, 1.0, entity.animation_names.b_dash == entity.animation_names.dash)
+	play_sound(entity.sound_banks.b_dash)
+	entity.anim_player.play(entity.animation_names.b_dash, 0.2, 1.0, entity.animation_names.b_dash == entity.animation_names.dash and entity.animation_names.b_dash != "jump")
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_property(
 			self, ^":global_transform", initial_transform, entity.animation_durations.b_dash)
 	await get_tree().create_timer(entity.animation_durations.b_dash - 0.3).timeout

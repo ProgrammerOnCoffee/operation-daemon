@@ -8,6 +8,15 @@ rect = Rect2i(-312, -552, 624, 640)
 rect_attack_inset = 192
 base_damage = 12
 damage_variation = 4
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_slime_jump",
+&"b_dash": "dash_slime",
+&"counter": "counter",
+&"dash": "dash_slime",
+&"death": "death_slime",
+&"hit": "hit_slime",
+&"parry": "parry"
+})
 animation_names = Dictionary[StringName, StringName]({
 &"attack": &"Attack",
 &"b_dash": &"Dash",

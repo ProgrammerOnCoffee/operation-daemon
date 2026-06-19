@@ -8,6 +8,15 @@ rect = Rect2i(-352, -248, 704, 264)
 rect_attack_inset = 228
 base_damage = 5
 max_health = 30
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_robot",
+&"b_dash": "dash_spider",
+&"counter": "counter",
+&"dash": "dash_spider",
+&"death": "death_robot",
+&"hit": "hit_robot",
+&"parry": "parry"
+})
 animation_names = Dictionary[StringName, StringName]({
 &"attack": &"Attack",
 &"b_dash": &"Dash",

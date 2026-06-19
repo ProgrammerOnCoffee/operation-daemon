@@ -10,6 +10,72 @@ signal turn_ended()
 
 ## The [TransitionManager] used to clear entities when killed.
 static var entity_transition_manager := TransitionManager.duplicate() as TransitionManager
+## The bank of sounds all entities will pull from. Each key is the name of a set
+## of sounds, and each value is either an [Array][[AudioStream]] of sounds, or
+## an [Array][[Array]] where the first element is an [AudioStream] and the second
+## is a configuration dictionary.
+static var sounds: Dictionary[String, Array] = {
+	"attack_angel": [
+		load("uid://cvlill150y258"),
+		load("uid://cb53vtqpu72e5"),
+	],
+	"attack_robot": [
+		load("uid://d07y23uo215bm"),
+		load("uid://b2swg85mx460"),
+		load("uid://dx71ea4fmtwlw"),
+	],
+	"attack_slime": [
+		load("uid://dj4qgyt14tiah"),
+	],
+	"attack_slime_jump": [
+		[load("uid://dmmwsm2wny11e"), { "next_sound": "slime_land", "next_delay": 0.55 }],
+	],
+	"counter": [
+		load("uid://cpxylalf4b0r1"),
+	],
+	"dash_angel": [
+		load("uid://c7jh7peverb58"),
+	],
+	"b_dash_angel": [
+		load("uid://pml0ebyl72ut"),
+	],
+	"dash_robot": [
+		[load("uid://dof1kxqge0x7i"), { "volume": -6.0 }],
+	],
+	"dash_slime": [
+		[load("uid://clwc0rjc7sbua"), { "loop_after": 0.6, "loop_count": 2, "volume": -3.0 }],
+	],
+	"dash_slime_jump": [
+		[load("uid://dmmwsm2wny11e"), { "next_sound": "slime_land", "next_delay": 0.85 }],
+	],
+	"dash_spider": [
+		load("uid://bragk1mdh5ysw"),
+		#load("uid://bvvbjybeytkb"),
+	],
+	"death_robot": [
+		load("uid://c8ajt4e1vtu52"),
+	],
+	"death_slime": [
+		load("uid://c8ajt4e1vtu52"),
+	],
+	"hit_robot": [
+		load("uid://bbfcxfi4ihw2b"),
+		load("uid://cs5vvdsdfntli"),
+		load("uid://dvq6ybkysicfn"),
+		load("uid://ckf4vbwakyq0e"),
+	],
+	"hit_slime": [
+		load("uid://bhfv6fc13tgds"),
+		load("uid://bhx5uotn6s1ll"),
+		#load("uid://d0v230qo07ajw"),
+	],
+	"parry": [
+		load("uid://s6dhybv0qbv"),
+	],
+	"slime_land": [
+		load("uid://cqc3xnrcka1oi"),
+	],
+}
 
 ## This [Entity]'s 2D rect. Used to create a [SubViewport] in 3D scenes and to
 ## position the [Entity] inside it. In the editor, this is displayed as a red rectangle.
@@ -37,6 +103,18 @@ static var entity_transition_manager := TransitionManager.duplicate() as Transit
 @export var damage_variation: int = 1
 ## This [Entity]'s maximum health.
 @export var max_health: int = 100
+
+## The map of common sound bank names to the name of the actual bank in
+## [member sounds] this entity will pull sounds from.
+@export var sound_banks: Dictionary[StringName, String] = {
+	"attack": "attack_robot",
+	"b_dash": "dash_robot",
+	"counter": "counter",
+	"dash": "dash_robot",
+	"death": "death_robot",
+	"hit": "hit_robot",
+	"parry": "parry",
+}
 
 @export_group("Animations")
 ## The map of common animation names to the actual name of the animation in the animation data.
@@ -229,10 +307,12 @@ func take_damage(amount: int, animate: bool = true) -> void:
 	
 	if health:
 		if animate:
+			entity_3d.play_sound(sound_banks.hit)
 			if anim_player.current_animation == animation_names.idle:
 				get_tree().create_timer(animation_durations.damaged).timeout.connect(anim_player.play.bind(animation_names.idle, 03))
 			anim_player.play(animation_names.damaged, 0.1)
 	else:
+		entity_3d.play_sound(sound_banks.death)
 		anim_player.play(animation_names.death, 0.1)
 
 
