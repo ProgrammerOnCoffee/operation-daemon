@@ -111,12 +111,13 @@ func turn() -> void:
 	var is_enemy_alive := false
 	for enemy in enemies:
 		if enemy.health and player.health:
-			is_enemy_alive = true
 			await enemy._take_turn()
 			step_finished.emit(enemy)
 			if not player.health:
 				player.clear()
 				break
+			if enemy.health:
+				is_enemy_alive = true
 	
 	if player.health and is_enemy_alive:
 		turn_finished.emit()
