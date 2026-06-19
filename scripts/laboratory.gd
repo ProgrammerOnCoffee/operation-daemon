@@ -58,6 +58,8 @@ func _process(delta: float) -> void:
 func _start_pressed() -> void: 
 	# Reset the current act.
 	Global.act = 0
+	Global.daemon_research.clear()
+	
 	# Reset the player's health.
 	PlayerData.health = PlayerData.max_health
 	
