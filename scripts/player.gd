@@ -53,6 +53,7 @@ func attack() -> bool:
 			await get_tree().create_timer(0.1).timeout
 			qte = combat_handler.create_qte()
 			await get_tree().create_timer(qte_preload_time).timeout
+		get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
 		if anim_player.current_animation != animation_names.attack:
 			anim_player.play(animation_names.attack, 0.2)
 		

@@ -19,6 +19,7 @@ func _ready() -> void:
 		if child is TextureButton:
 			child.pivot_offset = -child.position
 			child.pressed.connect(_on_command_pressed, CONNECT_APPEND_SOURCE_OBJECT)
+	RenderingServer.frame_pre_draw.connect(update)
 
 
 ## Reveals the buttons in the command wheel.
