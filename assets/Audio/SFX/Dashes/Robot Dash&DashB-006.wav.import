@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://djbh61sx7veyq"
-path="res://.godot/imported/Robot Dash&DashB-006.wav-d387a4cb51f51321b71144ffdca7b542.sample"
+path="res://.godot/imported/Robot Dash&DashB-006.wav-cc0d434b5af3fd55285d66c987534e07.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Dashes/Robot Dash&DashB-006.wav"
-dest_files=["res://.godot/imported/Robot Dash&DashB-006.wav-d387a4cb51f51321b71144ffdca7b542.sample"]
+source_file="res://assets/Audio/SFX/Dashes/Robot Dash&DashB-006.wav"
+dest_files=["res://.godot/imported/Robot Dash&DashB-006.wav-cc0d434b5af3fd55285d66c987534e07.sample"]
 
 [params]
 

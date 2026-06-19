@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d0v230qo07ajw"
-path="res://.godot/imported/Robot Grunt-005.wav-b4b17fd0a3403fd49251843cee34047f.sample"
+path="res://.godot/imported/Robot Grunt-005.wav-1e03edc0be99ee8c015a6b0dff602c98.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Grunts and Groans/Robot Grunt-005.wav"
-dest_files=["res://.godot/imported/Robot Grunt-005.wav-b4b17fd0a3403fd49251843cee34047f.sample"]
+source_file="res://assets/Audio/SFX/Grunts and Groans/Robot Grunt-005.wav"
+dest_files=["res://.godot/imported/Robot Grunt-005.wav-1e03edc0be99ee8c015a6b0dff602c98.sample"]
 
 [params]
 

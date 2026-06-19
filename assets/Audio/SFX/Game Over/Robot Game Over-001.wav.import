@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c0rre36wr0x5j"
-path="res://.godot/imported/Robot Game Over-001.wav-5f34fefcc8ac8a023649ff7191414011.sample"
+path="res://.godot/imported/Robot Game Over-001.wav-e8f71595cbf8d891a26b6991d2c7b54c.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Game Over/Robot Game Over-001.wav"
-dest_files=["res://.godot/imported/Robot Game Over-001.wav-5f34fefcc8ac8a023649ff7191414011.sample"]
+source_file="res://assets/Audio/SFX/Game Over/Robot Game Over-001.wav"
+dest_files=["res://.godot/imported/Robot Game Over-001.wav-e8f71595cbf8d891a26b6991d2c7b54c.sample"]
 
 [params]
 

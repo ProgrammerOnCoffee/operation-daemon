@@ -1,6 +1,167 @@
 [gd_scene format=3 uid="uid://bfj5s1idl7ra2"]
 
 [ext_resource type="PackedScene" uid="uid://d2217s18nrge7" path="res://assets/Enemy Parts/Slime Spider Bot/slime_spider_bot_bones.tscn" id="1_8qs0g"]
+[ext_resource type="Texture2D" uid="uid://dkfty6kx1770t" path="res://icon.svg" id="2_r6e2p"]
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_u4col"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Front Leg IK")
+tip_nodepath = NodePath("Body/Leg front Base/Leg front Base2/Leg front Base3/Leg front Base4")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 9
+joint_data/0/bone2d_node = NodePath("Body/Leg front Base")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 57.14399
+joint_data/0/constraint_angle_max = -171.42798
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 10
+joint_data/1/bone2d_node = NodePath("Body/Leg front Base/Leg front Base2")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 39.99999
+joint_data/1/constraint_angle_max = -91.428
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 11
+joint_data/2/bone2d_node = NodePath("Body/Leg front Base/Leg front Base2/Leg front Base3")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = -34.285995
+joint_data/2/constraint_angle_max = -217.14395
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_g51pm"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Rear Front Leg IK")
+tip_nodepath = NodePath("Body/Leg front Rear  Base/Leg front Rear  Base2/Leg front Rear  Base3/Leg front Rear  Base4")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 13
+joint_data/0/bone2d_node = NodePath("Body/Leg front Rear  Base")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 57.143986
+joint_data/0/constraint_angle_max = -171.42798
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 14
+joint_data/1/bone2d_node = NodePath("Body/Leg front Rear  Base/Leg front Rear  Base2")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 39.999985
+joint_data/1/constraint_angle_max = -91.428
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 15
+joint_data/2/bone2d_node = NodePath("Body/Leg front Rear  Base/Leg front Rear  Base2/Leg front Rear  Base3")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = -34.285995
+joint_data/2/constraint_angle_max = -217.14394
+joint_data/2/constraint_angle_invert = true
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_du5k7"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Back Leg IK")
+tip_nodepath = NodePath("Body/Leg back Base/Leg back Base2/Leg back Base3/Leg back Base4")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 5
+joint_data/0/bone2d_node = NodePath("Body/Leg back Base")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 68.572975
+joint_data/0/constraint_angle_max = -171.42798
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 6
+joint_data/1/bone2d_node = NodePath("Body/Leg back Base/Leg back Base2")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 0.0
+joint_data/1/constraint_angle_max = -74.28498
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 7
+joint_data/2/bone2d_node = NodePath("Body/Leg back Base/Leg back Base2/Leg back Base3")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = false
+joint_data/2/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_kx52u"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Rear Back Leg IK")
+tip_nodepath = NodePath("Body/LegRead  back Base2/LegRead  back Base3/LegRead  back Base4/LegRead  back Base5")
+ccdik_data_chain_length = 3
+joint_data/0/bone_index = 17
+joint_data/0/bone2d_node = NodePath("Body/LegRead  back Base2")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = 11.43
+joint_data/0/constraint_angle_max = -142.857
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 18
+joint_data/1/bone2d_node = NodePath("Body/LegRead  back Base2/LegRead  back Base3")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = -234.286
+joint_data/1/constraint_angle_max = -28.570993
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 19
+joint_data/2/bone2d_node = NodePath("Body/LegRead  back Base2/LegRead  back Base3/LegRead  back Base4")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = false
+joint_data/2/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_eo8eg"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Slime IK")
+tip_nodepath = NodePath("Body/Slime1/Slime2/Slime3/Slime4")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 2
+joint_data/0/bone2d_node = NodePath("Body/Slime1/Slime2")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 3
+joint_data/1/bone2d_node = NodePath("Body/Slime1/Slime2/Slime3")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = true
+editor/draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_r55e4"]
+resource_local_to_scene = true
+bone_index = 0
+bone2d_node = NodePath("Body")
+target_nodepath = NodePath("Body IK")
+editor/draw_gizmo = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_2m4ew"]
+resource_local_to_scene = true
+enabled = true
+strength = 0.941
+modification_count = 6
+modifications/0 = SubResource("SkeletonModification2DCCDIK_u4col")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_g51pm")
+modifications/2 = SubResource("SkeletonModification2DCCDIK_du5k7")
+modifications/3 = SubResource("SkeletonModification2DCCDIK_kx52u")
+modifications/4 = SubResource("SkeletonModification2DCCDIK_eo8eg")
+modifications/5 = SubResource("SkeletonModification2DLookAt_r55e4")
 
 [sub_resource type="Animation" id="Animation_8bjsc"]
 resource_name = "Attack"
@@ -1141,6 +1302,7 @@ _data = {
 [node name="Slime Spider Bot" type="Node2D" unique_id=1640616147]
 
 [node name="Enemy Bones" parent="." unique_id=986798588 instance=ExtResource("1_8qs0g")]
+modulate = Color(18.892157, 0, 0, 1)
 position = Vector2(16, 24)
 scale = Vector2(0.185, 0.185)
 
@@ -1156,10 +1318,10 @@ color = Color(0.556953, 0.556953, 0.556953, 1)
 [node name="SpiderLeg3A4" parent="Enemy Bones/images" parent_id_path=PackedInt32Array(986798588, 431777185) index="5" unique_id=29492472]
 color = Color(0.41981316, 0.4198131, 0.41981322, 1)
 
-[node name="Bones" parent="Enemy Bones" index="1" unique_id=448116703]
-visible = false
+[node name="Skeleton2D" parent="Enemy Bones/Bones" parent_id_path=PackedInt32Array(986798588, 448116703) index="0" unique_id=636062987]
+modification_stack = SubResource("SkeletonModificationStack2D_2m4ew")
 
-[node name="Body" parent="Enemy Bones/Bones/Skeleton2D" parent_id_path=PackedInt32Array(986798588, 636062987) index="0" unique_id=910904063]
+[node name="Body" parent="Enemy Bones/Bones/Skeleton2D" index="0" unique_id=910904063]
 rotation = -0.010814667
 scale = Vector2(0.9998903, 0.9998903)
 
@@ -1169,7 +1331,7 @@ rotation = 0.20243295
 scale = Vector2(0.99997723, 0.99997723)
 
 [node name="Slime3" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1/Slime2" index="0" unique_id=556742822]
-scale = Vector2(0.9999989, 0.9999989)
+scale = Vector2(0.99999887, 0.99999887)
 
 [node name="Leg back Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="1" unique_id=1479726037]
 position = Vector2(133.00078, 73.99941)
@@ -1183,13 +1345,19 @@ scale = Vector2(0.99998564, 0.99998564)
 
 [node name="Leg front Rear  Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="3" unique_id=764289327]
 position = Vector2(-202.00024, 31.99996)
-rotation = -0.4239353
-scale = Vector2(0.99999547, 0.99999547)
+rotation = -0.42393523
+scale = Vector2(0.9999954, 0.9999954)
 
 [node name="LegRead  back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body" index="4" unique_id=1176429833]
 position = Vector2(33.000076, 38.999874)
 rotation = 0.16059169
 scale = Vector2(0.9999977, 0.9999977)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy Bones/Bones/Skeleton2D/Front Leg IK" parent_id_path=PackedInt32Array(986798588, 1262615307) index="0" unique_id=1603892435]
+visible = false
+position = Vector2(0, 301.24292)
+scale = Vector2(1, 5.7069206)
+texture = ExtResource("2_r6e2p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1637503145]
 libraries/ = SubResource("AnimationLibrary_ftlb6")

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqmxgu6lcbyqc" path="res://assets/Enemy Parts/M Slime/Layer 16.png" id="3_k6h5q"]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_fo164"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Body Ik")
 jiggle_data_chain_length = 4
 mass = 5.0
@@ -23,6 +24,7 @@ joint_data/3/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Slime 3/Slime 4"
 joint_data/3/override_defaults = false
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_lrl5o"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Mouth IK")
 tip_nodepath = NodePath("Slime Base/Slime 1/Slime 2/Mouth/Mouth2/Mouth3/Mouth4/Mouth5")
 ccdik_data_chain_length = 4
@@ -52,6 +54,7 @@ joint_data/3/enable_constraint = false
 joint_data/3/editor_draw_gizmo = true
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_k6h5q"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Tonge IK")
 tip_nodepath = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3/Tonge4/Tonge5/Tonge6/Tonge7")
 ccdik_data_chain_length = 5

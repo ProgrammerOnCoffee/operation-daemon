@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dx71ea4fmtwlw"
-path="res://.godot/imported/Robot punch-003.wav-f7f28b500b638a5790e9f0650e717a2c.sample"
+path="res://.godot/imported/Robot punch-003.wav-93fe018d2dcc06ac20621dc78c88283e.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Punches/Robot punch-003.wav"
-dest_files=["res://.godot/imported/Robot punch-003.wav-f7f28b500b638a5790e9f0650e717a2c.sample"]
+source_file="res://assets/Audio/SFX/Punches/Robot punch-003.wav"
+dest_files=["res://.godot/imported/Robot punch-003.wav-93fe018d2dcc06ac20621dc78c88283e.sample"]
 
 [params]
 
