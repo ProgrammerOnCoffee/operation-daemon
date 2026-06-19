@@ -45,6 +45,7 @@ enabled=PackedStringArray("res://addons/button_feedback/plugin.cfg", "res://addo
 
 [gui]
 
+common/snap_controls_to_pixels=false
 theme/custom="uid://b18kjmajkm7k2"
 
 [input]
@@ -90,3 +91,19 @@ qte_press={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(78, 20),"global_position":Vector2(87, 68),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[navigation]
+
+2d/navigation_engine="Dummy"
+3d/navigation_engine="Dummy"
+
+[physics]
+
+2d/physics_engine="Dummy"
+3d/physics_engine="Dummy"
+
+[rendering]
+
+limits/opengl/max_renderable_elements=4096
+limits/opengl/max_renderable_lights=8
+limits/opengl/max_lights_per_object=4
