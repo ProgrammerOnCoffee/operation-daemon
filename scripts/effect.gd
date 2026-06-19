@@ -42,6 +42,10 @@ var effect_name: String: get = _get_effect_name
 var description: String: get = _get_description
 @abstract func _get_description() -> String
 
+## The point count of this effect's icon.
+var icon_point_count: int: get = _get_icon_point_count
+@abstract func _get_icon_point_count() -> int
+
 ## The color of the effect - applied as a modulate to enemies. 
 var effect_color: Color: get = _get_effect_color
 @abstract func _get_effect_color() -> Color
@@ -61,5 +65,8 @@ var base: float: get = _get_base
 ## Apply this effect to a target. Ran by that target.
 ## Returns a bool of whether it should be freed after it's run.
 @abstract func apply_effect(target: Entity) -> bool
+
+## Whether this effect's base effect is positive or not.
+@abstract func _is_beneficial() -> bool
 
 func _to_string() -> String: return effect_name + ": " + str(base)

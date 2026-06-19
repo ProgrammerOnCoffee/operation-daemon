@@ -31,17 +31,15 @@ static func _static_init() -> void:
 var effect_type: Effect: get = _get_effect_type
 @abstract func _get_effect_type() -> Effect
 func compare_effect(to: Effect):
-	return effect_type.effect_name == to.effect_name and effect_type.description == to.description and target_type == to.target_type
+	return effect_type.effect_name == to.effect_name and effect_type.description == to.description 
 
 ## The percentage change to apply to the effect's base, as a float. 0.9 = -10%.
 var percent: float
 @abstract func _get_new_percent() -> float
 
-## Whether this modifier is applied to the attacker or attackee. 
-## Basically, whether it's positive or negative to have applied to yourself.
-var target_type: Module.TARGET
-@abstract func _get_new_target_type() -> Module.TARGET
+# Whether the modifier is beneficial; returns if the target effect is beneficial, flipped if 
+# the percent is under 100%
+func _is_beneficial() -> bool: return effect_type._is_beneficial() != (percent < 1.)
 
 func _init() -> void:
 	percent = _get_new_percent()
-	target_type = _get_new_target_type()

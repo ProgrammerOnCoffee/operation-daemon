@@ -10,7 +10,7 @@ signal daemons_changed
 const max_health:int = 100
 
 # The player's current health.
-var health:int = 30:
+var health:int = 100:
 	set(to):
 		health = clamp(to, 0, max_health)
 		health_changed.emit()
