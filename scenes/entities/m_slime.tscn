@@ -7,6 +7,7 @@
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_fo164"]
 target_nodepath = NodePath("Body Ik")
 jiggle_data_chain_length = 4
+stiffness = 5.0
 mass = 5.0
 damping = 0.2
 joint_data/0/bone_index = 1
@@ -92,10 +93,11 @@ modifications/2 = SubResource("SkeletonModification2DCCDIK_k6h5q")
 [node name="M Slime" type="Node2D" unique_id=1679086926]
 
 [node name="Scale" type="Node2D" parent="." unique_id=811321674]
-position = Vector2(-449, -99)
-scale = Vector2(0.32, 0.32)
+position = Vector2(-10, 76)
+scale = Vector2(0.17, 0.17)
 
 [node name="Bones" type="Node2D" parent="Scale" unique_id=2014117625]
+position = Vector2(-1369.6968, -193.93936)
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Scale/Bones" unique_id=1394820632]
 position = Vector2(0, -2)
@@ -232,6 +234,7 @@ length = 97.433
 bone_angle = 0.0
 
 [node name="Images" type="Node2D" parent="Scale" unique_id=335163174]
+position = Vector2(-1369.6968, -193.93936)
 
 [node name="Body" type="Polygon2D" parent="Scale/Images" unique_id=328245541]
 position = Vector2(1437, 287)
