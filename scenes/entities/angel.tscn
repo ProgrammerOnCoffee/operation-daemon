@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ca4ne62riby73"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_hpy6v"]
+[ext_resource type="PackedScene" uid="uid://b7cijh4wmjv2t" path="res://assets/Enemy Parts/Angel/angel_ent.tscn" id="2_lyfti"]
+
+[node name="Angel" unique_id=1022515043 instance=ExtResource("1_hpy6v")]
+rect = Rect2i(-208, -360, 416, 384)
+rect_attack_inset = 96
+base_damage = 9
+max_health = 30
+animation_durations = Dictionary[StringName, float]({
+&"attack": 0.85,
+&"b_dash": 1.9,
+&"damaged": 1.0,
+&"dash": 1.9,
+&"death": 1.0,
+&"idle": 1.0,
+&"parry": 1.0
+})
+attack_point = 0.275
+
+[node name="Angel ENT" parent="." index="0" unique_id=558561918 instance=ExtResource("2_lyfti")]
+position = Vector2(-25, -208)
+scale = Vector2(0.5, 0.5)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=1427081052]
+position = Vector2(0, -264)
