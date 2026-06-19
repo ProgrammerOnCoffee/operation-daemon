@@ -8,12 +8,25 @@ class_name DaemonOverview extends VBoxContainer
 			title.visible = to
 		show_title = to
 
+@export var title_font_size := -1:
+	set(to):
+		
+		title_font_size = to
+		
+		if not title: return
+		if title_font_size != -1:
+			title.add_theme_font_size_override("font_size", title_font_size)
+		else:
+			title.remove_theme_font_size_override("font_size")
+
 var daemon :Daemon = null: set = _set_daemon
 
 @onready var vbox := $ScrollContainer/VBoxContainer
 @onready var title := $Title
 
-func _ready() -> void: title.visible = show_title
+func _ready() -> void: 
+	title.visible = show_title
+	title_font_size = title_font_size
 
 # Update the overview when the daemon changes.
 func _set_daemon(to:Daemon):

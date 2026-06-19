@@ -5,6 +5,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dytst"]
 draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqm84"]
 bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
@@ -144,6 +149,17 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "M0001"
 
+[node name="UN" type="Button" parent="VBoxContainer/Button/HBoxContainer" unique_id=141234984]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
+text = "Unequip"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button/HBoxContainer" unique_id=553018157]
 custom_minimum_size = Vector2(76, 0)
 layout_mode = 2
@@ -159,16 +175,6 @@ text = "Equip To:"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="UN" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=141234984]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
-text = "UN"
-
 [node name="AT" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=430382729]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -177,7 +183,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
-text = "AT"
+text = "ATK"
 
 [node name="SP" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=758771317]
 layout_mode = 2
@@ -187,7 +193,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
-text = "SP"
+text = "SPC"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1778997379]
 visible = false

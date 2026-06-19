@@ -8,7 +8,7 @@ class_name ModuleEntry extends PanelContainer
 const EFFECT_TIP_SCENE := preload("res://scenes/effect_tooltip.tscn")
 
 @onready var buttons:Dictionary[Module.SLOT, Button] = {
-	Module.SLOT.NONE:    $VBoxContainer/Button/HBoxContainer/HBoxContainer/UN,
+	Module.SLOT.NONE:    $VBoxContainer/Button/HBoxContainer/UN,
 	Module.SLOT.ATTACK:  $VBoxContainer/Button/HBoxContainer/HBoxContainer/AT,
 	Module.SLOT.SPECIAL: $VBoxContainer/Button/HBoxContainer/HBoxContainer/SP
 }
@@ -57,7 +57,14 @@ func _display(new_module:Module = module):
 		new.description_text_size = 15
 		
 		new._display(effect)
-		
+	
+	match module.slot:
+		Module.SLOT.NONE:
+			$VBoxContainer/Button/HBoxContainer/HBoxContainer.show()
+			$VBoxContainer/Button/HBoxContainer/UN.hide()
+		_:
+			$VBoxContainer/Button/HBoxContainer/HBoxContainer.hide()
+			$VBoxContainer/Button/HBoxContainer/UN.show()
 
 
 func _on_toggled(toggled_on: bool) -> void:
