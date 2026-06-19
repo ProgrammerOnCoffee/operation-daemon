@@ -69,10 +69,10 @@ func _take_turn() -> void:
 				get_damage() if player.is_defending # Counter failed, take full damage
 				else int(get_damage() * (1.0 - value * 0.5))
 			)
-			# Apply pre-attack effects.
-			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# Inflict the enemy's effects onto the player.
 			inflict_effects(combat_handler.player, Module.SLOT.NONE) # Enemy Modules don't have slots.
+			# Apply pre-attack effects.
+			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# Do the actual damage.
 			combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
 			# Recognize the real damage dealt post-effects.

@@ -127,3 +127,28 @@ func lead(value:int, zeros:int) -> String:
 	response += string
 	
 	return response
+
+func percent_as_string(percent:float) -> String:
+	var response:String
+	
+	if percent >= 1.0:
+		response += "+"
+		percent -= 1.
+	else:
+		response += "-"
+		percent = 1. - percent
+	
+	response += str(round(percent * 10000) / 100) + "%"
+	
+	return response
+
+# Returns the float as if it was a chance to add 1 to an int.
+# Every 1 is +1, every 0.3 is a 30% chance for +1, etc.
+func float_as_chance_int(value:float) -> int:
+	var response := floori(value)
+	var percent  := abs(value - response) as float
+	
+	if randf() <= percent:
+		response += sign(value) # Match the sign, so if the input is -0.3, it's a 30% chance for -1.
+	
+	return response

@@ -10,9 +10,8 @@ func _ready() -> void:
 	for i in 10:
 		
 		var ef:Array[Effect]= []
-		for j in 3:
-			var e = [preload("res://scripts/effects/timebomb_effect.gd"), preload("res://scripts/effects/overcharge_effect.gd"), preload("res://scripts/effects/reflective_effect.gd")]
-			ef += [e.pick_random().new()]
+		for j in 1:
+			ef += [Effect.all_effects.values().pick_random().new()]
 			
 		PlayerData.modules += [Module.new(ef, randi_range(0,2) as Module.SLOT)]
 	
@@ -78,7 +77,10 @@ func _update_daemon_list() -> void:
 		var button := Button.new()
 		button.flat = true
 		var icon := Primitive2D.new()
-		icon.points = daemon.point_count
+		
+		# Take the first effect's color, and the last's point count.
+		icon.modulate = daemon.modifiers.front().effect_type.effect_color
+		icon.points   = daemon.modifiers.back() .effect_type.icon_point_count
 		
 		icon.custom_minimum_size = Vector2.ONE * 28
 		button.custom_minimum_size = Vector2.ONE * 28

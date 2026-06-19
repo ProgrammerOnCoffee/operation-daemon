@@ -12,7 +12,6 @@ metadata/_custom_type_script = "uid://rnsxwyparcb0"
 
 [node name="Enemy" parent="." unique_id=863613008 instance=ExtResource("3_soymf")]
 position = Vector2(864, 500)
-max_health = 50
 
 [node name="Player" parent="." unique_id=448446519 instance=ExtResource("4_a5t83")]
 position = Vector2(288, 500)
