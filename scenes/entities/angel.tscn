@@ -8,6 +8,15 @@ rect = Rect2i(-208, -360, 416, 384)
 rect_attack_inset = 96
 base_damage = 9
 max_health = 30
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"Dash",
+&"damaged": &"Damaged",
+&"dash": &"Dash",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
 animation_durations = Dictionary[StringName, float]({
 &"attack": 0.85,
 &"b_dash": 1.9,

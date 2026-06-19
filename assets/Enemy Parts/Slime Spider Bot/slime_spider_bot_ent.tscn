@@ -1302,7 +1302,6 @@ _data = {
 [node name="Slime Spider Bot" type="Node2D" unique_id=1640616147]
 
 [node name="Enemy Bones" parent="." unique_id=986798588 instance=ExtResource("1_8qs0g")]
-modulate = Color(18.892157, 0, 0, 1)
 position = Vector2(16, 24)
 scale = Vector2(0.185, 0.185)
 
