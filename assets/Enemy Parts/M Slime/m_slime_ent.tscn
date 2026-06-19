@@ -1,0 +1,273 @@
+[gd_scene format=3 uid="uid://mgu1ko53enkq"]
+
+[ext_resource type="PackedScene" uid="uid://xb2grit8kwea" path="res://assets/Enemy Parts/M Slime/m_slime_bones.tscn" id="1_4xkgj"]
+
+[sub_resource type="Animation" id="Animation_bn3wm"]
+resource_name = "Attack"
+length = 1.7666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.47, 0.99, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1237.4999, -444.8749), Vector2(1918.7499, -451.1249), Vector2(1012.4999, -566.74994), Vector2(1393.75, -713.62494)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.39999998, 0.61, 0.8333333, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1362.4999, 433.2499), Vector2(271.87494, -260.5), Vector2(1171.8749, 477), Vector2(1224.9999, 526.99994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.47, 0.48, 0.99, 1.01),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1191, 200.00003), Vector2(1237.4999, 405.125), Vector2(1212.5, 395.75), Vector2(1021.875, 727), Vector2(1234.375, 161.37497)]
+}
+
+[sub_resource type="Animation" id="Animation_jra4f"]
+resource_name = "Damaged"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666669, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1237.4999, -444.8749), Vector2(2075, -394.87494), Vector2(1381.2498, -513.625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666669, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1296.0001, 463.00006), Vector2(2712.5, 308.24997), Vector2(1234.375, 483.24994)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666669, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1191, 200.00003), Vector2(1253.125, 226.99997), Vector2(1181.2499, 95.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("M Slime:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333333, 0.19999999, 0.3333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.89047015, 0.09625354, 0.90642756, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4b0of"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1237.4999, -444.8749), Vector2(1537.4999, -472.9999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1296.0001, 463.00006)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1191, 200.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_26rvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1392.0001, -424.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1296.0001, 463.00006)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1191, 200.00003)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("M Slime:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("M Slime:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 22)]
+}
+
+[sub_resource type="Animation" id="Animation_4xkgj"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.54, 0.76666665, 0.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1237.4999, -444.8749), Vector2(2012.4999, -113.62491), Vector2(1462.4999, -260.5), Vector2(999.9999, -210.49995), Vector2(1381.25, -385.49994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1362.4999, 433.2499)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.94),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1191, 200.00003), Vector2(1162.5, 151.99997)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("M Slime:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.54, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 22), Vector2(-20, -198), Vector2(-1, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fsap"]
+_data = {
+&"Attack": SubResource("Animation_bn3wm"),
+&"Damaged": SubResource("Animation_jra4f"),
+&"Idle": SubResource("Animation_4b0of"),
+&"RESET": SubResource("Animation_26rvg"),
+&"jump": SubResource("Animation_4xkgj")
+}
+
+[node name="Med SLime ENT" type="Node2D" unique_id=263273724]
+
+[node name="M Slime" parent="." unique_id=1679086926 instance=ExtResource("1_4xkgj")]
+position = Vector2(8, 22)
+
+[node name="Bones" parent="M Slime/Scale" parent_id_path=PackedInt32Array(1679086926, 811321674) index="0" unique_id=2014117625]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1281135999]
+libraries/ = SubResource("AnimationLibrary_7fsap")
+autoplay = &"Idle"
+
+[editable path="M Slime"]

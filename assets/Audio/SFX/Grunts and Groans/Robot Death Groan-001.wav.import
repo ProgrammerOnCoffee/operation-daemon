@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c8ajt4e1vtu52"
-path="res://.godot/imported/Robot Death Groan-001.wav-75bcb51e950faaf066c06cacae0ba154.sample"
+path="res://.godot/imported/Robot Death Groan-001.wav-8731b61db57f99b3ceaab720e9dd1a1f.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Grunts and Groans/Robot Death Groan-001.wav"
-dest_files=["res://.godot/imported/Robot Death Groan-001.wav-75bcb51e950faaf066c06cacae0ba154.sample"]
+source_file="res://assets/audio/SFX/Grunts and Groans/Robot Death Groan-001.wav"
+dest_files=["res://.godot/imported/Robot Death Groan-001.wav-8731b61db57f99b3ceaab720e9dd1a1f.sample"]
 
 [params]
 

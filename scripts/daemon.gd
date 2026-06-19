@@ -6,6 +6,8 @@ extends Resource
 var id: int
 ## This [Daemon]'s unique name.
 var name: String
+## This [Daemon]'s point count for icons.
+var point_count:int
 ## The array of [Modifier]s contained in this [Daemon].
 var modifiers: Array[Modifier]:
 	set(to):
@@ -21,7 +23,7 @@ static func compound_modifiers(input: Array[Modifier]) -> Array[Modifier]:
 		var found := false
 		
 		for check_modifier in compounded_modifiers:
-			if modifier.compare_effect(check_modifier.effect_type) and check_modifier.target_type == modifier.target_type:
+			if modifier.compare_effect(check_modifier.effect_type):
 				check_modifier.percent *= modifier.percent
 				found = true
 				break
@@ -37,4 +39,7 @@ func _init(set_modifiers: Array[Modifier] = []) -> void:
 	
 	Global.daemon_count += 1
 	id = Global.daemon_count
-	name = "D%d" % id
+	name = "D%s" % Global.lead(id,4)
+	
+	point_count = randi_range(2, 8)
+	if point_count == 2: point_count = 1

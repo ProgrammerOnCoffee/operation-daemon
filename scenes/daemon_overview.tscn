@@ -23,25 +23,5 @@ horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=960036552]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=576292972]
-layout_mode = 2
-tooltip_text = "Upon a Attack with this Daemon, the following modifiers will be applied to Modules that affect the target."
-mouse_filter = 1
-theme_override_font_sizes/font_size = 20
-text = "Target Modifiers [?]"
-
-[node name="Target" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1284945135]
-layout_mode = 2
-theme = SubResource("Theme_qrd0n")
-
-[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1893055961]
-layout_mode = 2
-tooltip_text = "Upon a Attack with this Daemon, the following modifiers will be applied to Modules that affect the user."
-mouse_filter = 1
-theme_override_font_sizes/font_size = 20
-text = "Self Modifiers [?]"
-
-[node name="Self" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=122750076]
-layout_mode = 2
+size_flags_horizontal = 3
 theme = SubResource("Theme_qrd0n")

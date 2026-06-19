@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://cyoh2mfn2chnp"]
+
+[ext_resource type="Script" uid="uid://b4rnklabdhmqu" path="res://scripts/module_entry.gd" id="1_dytst"]
+[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="1_jm37a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dytst"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqm84"]
+bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fr15"]
+bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b80gg"]
+bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.21176471)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pls23"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_width_bottom = 4
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iy"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sh0tg"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.17254902, 0.19215687, 0.23921569, 1)
+border_width_bottom = 4
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rplcl"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.078431375, 0.09019608, 0.10980392, 1)
+border_color = Color(0.0792, 0.08844, 0.11, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mblv6"]
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 0.29411766)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0esgi"]
+bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_0esgi"]
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_0esgi")
+
+[node name="ModuleEntry" type="PanelContainer" unique_id=272676256]
+custom_minimum_size = Vector2(0, 32)
+offset_right = 322.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dytst")
+script = ExtResource("1_dytst")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=125141851]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=16080144]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_gqm84")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3fr15")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b80gg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_b80gg")
+toggle_mode = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button" unique_id=355216943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Icon" type="Control" parent="VBoxContainer/Button/HBoxContainer" unique_id=908268028]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("1_jm37a")
+points = 5
+filled = false
+
+[node name="Title" type="Label" parent="VBoxContainer/Button/HBoxContainer" unique_id=1169640209]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "M0001"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button/HBoxContainer" unique_id=553018157]
+custom_minimum_size = Vector2(76, 0)
+layout_mode = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=1143010760]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 13
+text = "Equip To:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="UN" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=141234984]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
+text = "UN"
+
+[node name="AT" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=430382729]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
+text = "AT"
+
+[node name="SP" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=758771317]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
+text = "SP"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1778997379]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mblv6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=20903329]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1771365630]
+layout_mode = 2
+theme = SubResource("Theme_0esgi")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1905716184]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Effects"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=324386728]
+layout_mode = 2
+theme = SubResource("Theme_0esgi")
+
+[connection signal="toggled" from="VBoxContainer/Button" to="." method="_on_toggled"]

@@ -60,6 +60,8 @@ func default_tween() -> void:
 func set_available(to:bool) -> void:
 	available = to
 	
+	button.disabled = not available
+	
 	default_tween()
 
 ## Update all the relevant variables when setting the room data.

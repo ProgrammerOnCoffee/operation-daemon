@@ -12,9 +12,17 @@ var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 func _ready() -> void:
 	load_entity("player.tscn")
 	for i in $Markers.get_child_count() - 1:
-		load_entity("m_slime_enemy.tscn" if i == 2 else "slime_spider_bot.tscn")
+		load_entity("m_slime.tscn" if i == 2 else "slime_spider_bot.tscn")
 	add_child(combat_handler)
 	ButtonFeedback.setup_recursive(combat_handler)
+	
+	if OS.has_feature("editor") and get_parent() == get_tree().root:
+		# Editor debugging
+		var asp := AudioStreamPlayer.new()
+		asp.stream = load("res://assets/Music/combat1_79bpm.ogg")
+		asp.autoplay = true
+		asp.bus = &"Music"
+		add_child(asp)
 	
 	combat_handler.requested_end.connect($EventScene.event_finished.emit)
 
@@ -30,6 +38,12 @@ func load_entity(file_name: String) -> void:
 	if entity is Player:
 		marker_name = "PlayerMarker"
 		combat_handler.player = entity
+		
+		# Import other info from PlayerData
+		for property in ["health", "max_health", "modules"]:
+			entity.set(property, PlayerData.get(property))
+		entity.daemons = PlayerData.permanent_daemons
+		
 	else:
 		marker_name = "EnemyMarker%d" % combat_handler.enemies.size()
 		combat_handler.enemies.append(entity)

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b1hcv6bxok132"
-path="res://.godot/imported/Robot Block Shield-001.wav-78a974b8acee888970a253fba4883faa.sample"
+path="res://.godot/imported/Robot Block Shield-001.wav-392b7f9482cacd9a921e5835947475b2.sample"
 
 [deps]
 
-source_file="res://assets/Audio/SFX/Counter and Block/Robot Block Shield-001.wav"
-dest_files=["res://.godot/imported/Robot Block Shield-001.wav-78a974b8acee888970a253fba4883faa.sample"]
+source_file="res://assets/audio/SFX/Counter and Block/Robot Block Shield-001.wav"
+dest_files=["res://.godot/imported/Robot Block Shield-001.wav-392b7f9482cacd9a921e5835947475b2.sample"]
 
 [params]
 

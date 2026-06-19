@@ -11,8 +11,9 @@ enum ApplyType {
 	AFTER_DAMAGE, ## Apply this effect after taking damage.
 }
 
-## The list of all effects that can be given to enemies. Each key is an effect's
-## file name, and each value is that effect's script loaded with [method @GDScript.load].
+## The list of all effects that can be given to enemies. Each key is aneffect's
+## file name (minus extension), and each value is that effect's script loaded
+## with [method @GDScript.load].
 static var all_effects: Dictionary[String, GDScript]
 
 
@@ -26,8 +27,8 @@ static func _static_init() -> void:
 		else:
 			if not file.ends_with(".gd.remap"):
 				continue
-			file = file.substr(0, file.length() - ".remap".length())
-		all_effects[file] = load(PATH.path_join(file))
+			file = file.substr(0, file.length() - 6)
+		all_effects[file.left(-3)] = load(PATH.path_join(file))
 
 # NOTE: these are all abstract functions and not variables
 # so they can all be set by a subclass in code. The variables
@@ -41,6 +42,10 @@ var effect_name: String: get = _get_effect_name
 ## The description of the effect.
 var description: String: get = _get_description
 @abstract func _get_description() -> String
+
+## The point count of this effect's icon.
+var icon_point_count: int: get = _get_icon_point_count
+@abstract func _get_icon_point_count() -> int
 
 ## The color of the effect - applied as a modulate to enemies. 
 var effect_color: Color: get = _get_effect_color
@@ -61,5 +66,8 @@ var base: float: get = _get_base
 ## Apply this effect to a target. Ran by that target.
 ## Returns a bool of whether it should be freed after it's run.
 @abstract func apply_effect(target: Entity) -> bool
+
+## Whether this effect's base effect is positive or not.
+@abstract func _is_beneficial() -> bool
 
 func _to_string() -> String: return effect_name + ": " + str(base)
