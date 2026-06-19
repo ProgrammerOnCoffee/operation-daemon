@@ -263,6 +263,9 @@ _data = {
 [node name="M Slime" parent="." unique_id=1679086926 instance=ExtResource("1_4xkgj")]
 position = Vector2(8, 22)
 
+[node name="Bones" parent="M Slime/Scale" parent_id_path=PackedInt32Array(1679086926, 811321674) index="0" unique_id=2014117625]
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1281135999]
 libraries/ = SubResource("AnimationLibrary_7fsap")
 autoplay = &"Idle"

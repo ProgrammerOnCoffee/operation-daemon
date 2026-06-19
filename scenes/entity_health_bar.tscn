@@ -18,7 +18,6 @@ expand_margin_bottom = 2.0
 
 [node name="EntityHealthBar" type="Control" unique_id=1840347635]
 z_index = -1
-custom_minimum_size = Vector2(256, 0)
 layout_mode = 3
 anchors_preset = 0
 grow_horizontal = 2
@@ -66,16 +65,3 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HealthLabel"
 text = "0/0"
-
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=1717384646]
-visible = false
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_type_variation = &"HealthBar"
-step = 1.0
-show_percentage = false

@@ -12,7 +12,7 @@ var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 func _ready() -> void:
 	load_entity("player.tscn")
 	for i in $Markers.get_child_count() - 1:
-		load_entity("slime_spider_bot.tscn")
+		load_entity("m_slime_enemy.tscn" if i == 2 else "slime_spider_bot.tscn")
 	add_child(combat_handler)
 	ButtonFeedback.setup_recursive(combat_handler)
 	
@@ -54,10 +54,6 @@ func load_entity(file_name: String) -> void:
 	
 	## The [Marker3D] this entity will be placed at.
 	var marker := $Markers.get_node(NodePath(marker_name)) as Marker3D
-	## The percentage across the [Entity3D]'s viewport the floor level should be.
-	var floor_perc := absf(entity.rect.position.y) / entity.rect.size.y
-	## The height of the [Entity3D], in meters.
-	var height := entity_3d.pixel_size * entity.rect.size.y
 	add_child(entity_3d)
-	entity_3d.global_position = marker.global_position + Vector3.UP * (height / 2 - height * (1.0 - floor_perc))
+	entity_3d.global_position = marker.global_position - entity_3d.project_point(-entity.rect.position)
 	entity_3d.initial_transform = entity_3d.global_transform

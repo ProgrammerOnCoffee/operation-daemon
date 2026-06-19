@@ -19,6 +19,15 @@ static var entity_transition_manager := TransitionManager.duplicate() as Transit
 	set(value):
 		rect = value
 		queue_redraw()
+## The additional distance (in pixels) that the entity should be moved towards
+## other entities when attacking them.
+## [br]
+## By default, entities are moved towards each other so that the edges of their
+## viewports overlap. [member rect] is usually wider than the entity's regular
+## stance to keep animations like attack from clipping outside of the viewport,
+## so increase this value in order to move entities closer to each other and
+## make their attacks seem to actually hit each other.
+@export var rect_attack_inset: int
 ## The number of times this entity will attack in a single turn.
 @export var attack_count: int = 1
 ## The base damage this [Entity] deals before effects.
@@ -28,6 +37,31 @@ static var entity_transition_manager := TransitionManager.duplicate() as Transit
 @export var damage_variation: int = 1
 ## This [Entity]'s maximum health.
 @export var max_health: int = 100
+
+@export_group("Animations")
+## The map of common animation names to the actual name of the animation in the animation data.
+@export var animation_names: Dictionary[StringName, StringName] = {
+	"attack": &"Attack",
+	"b_dash": &"BDash",
+	"damaged": &"Damaged",
+	"dash": &"Dash",
+	"death": &"Death",
+	"idle": &"Idle",
+	"parry": &"Parry",
+}
+## The map of common animation names to the duration they should take in-game.
+@export var animation_durations: Dictionary[StringName, float] = {
+	"attack": 1.0,
+	"b_dash": 1.0,
+	"damaged": 1.0,
+	"dash": 1.0,
+	"death": 1.0,
+	"idle": 1.0,
+	"parry": 1.0,
+}
+## The exact point during the entity's attack animation that the entity attacks.
+## Used to time QTEs and determine when the player has responded to them perfectly.
+@export var attack_point: float
 
 ## This [Entity]'s current health.
 var health := max_health:
@@ -40,7 +74,7 @@ var health := max_health:
 			var l := health_bar.get_node(^"Bar/Label") as Label
 			create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
 				l.text = "%d/%d" % [h, max_health]
-			, l.text.substr(0, l.text.length() - 1).to_int(), value, 0.3)
+			, l.text.substr(0, l.text.find("/")).to_int(), value, 0.3)
 			# TODO add flashing/scaling tween to label when health is <=~10%
 		
 		health = value
@@ -59,13 +93,14 @@ var damage_receiving: int
 
 ## The [CombatHandler] node handling this [Entity]'s actions.
 var combat_handler: CombatHandler
+## This [Entity]'s [AnimationPlayer] node.
+var anim_player: AnimationPlayer
 ## The [Entity3D] displaying this [Entity].
 var entity_3d: Entity3D
 ## This [Entity]'s health bar.
 var health_bar: Control:
 	set(value):
 		health_bar = value
-		health_bar.get_node(^"HealthBar").max_value = max_health
 		health = health
 
 
@@ -79,12 +114,25 @@ static func _static_init() -> void:
 
 func _draw() -> void:
 	if Engine.is_editor_hint():
+		var x := rect.position.x + (rect_attack_inset if self is Enemy else rect.size.x - rect_attack_inset)
+		draw_line(Vector2(x, rect.position.y), Vector2(x, rect.position.y + rect.size.y), Color.BLUE)
 		draw_rect(rect, Color.RED, false)
 
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	
+	# Find entity's [AnimationPlayer] dynamically
+	var queue := get_children()
+	while queue:
+		var new_queue: Array[Node]
+		for child in queue:
+			if child is AnimationPlayer:
+				anim_player = child
+				break
+			new_queue.append_array(child.get_children())
+		queue = new_queue
 	
 	# Run setter to update health bar and label
 	if health_bar:
@@ -156,7 +204,7 @@ func get_damage() -> int:
 
 
 ## Makes this [Entity] take [param amount] damage.
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, animate: bool = true) -> void:
 	if amount <= 0 or health <= 0:
 		return
 	
@@ -177,6 +225,14 @@ func take_damage(amount: int) -> void:
 			String.num_int64(amount)
 	)
 	apply_self_effects(Effect.ApplyType.AFTER_DAMAGE)
+	
+	if health:
+		if animate:
+			if anim_player.current_animation == animation_names.idle:
+				get_tree().create_timer(animation_durations.damaged).timeout.connect(anim_player.play.bind(animation_names.idle, 03))
+			anim_player.play(animation_names.damaged, 0.1)
+	else:
+		anim_player.play(animation_names.death, 0.1)
 
 
 ## Visually removes this entity from the fight.

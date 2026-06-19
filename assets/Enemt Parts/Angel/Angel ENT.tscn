@@ -2335,6 +2335,9 @@ metadata/_edit_horizontal_guides_ = [414.0]
 
 [node name="Angel Bones" parent="." unique_id=1587888110 instance=ExtResource("1_7tgf0")]
 
+[node name="Bones" parent="Angel Bones/Position" parent_id_path=PackedInt32Array(1587888110, 1703821912) index="1" unique_id=42359806]
+visible = false
+
 [node name="Belly" parent="Angel Bones/Position/Bones/Skeleton2D" parent_id_path=PackedInt32Array(1587888110, 1771878783) index="0" unique_id=142925697]
 position = Vector2(1.203841, 23.99444)
 rotation = 0.050183505

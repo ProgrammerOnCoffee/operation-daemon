@@ -50,7 +50,6 @@ func _ready() -> void:
 		step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
 		bar.entity_3d = enemy.entity_3d
 		bar.entity_3d.entity.health_bar = bar
-		bar.custom_minimum_size.x = bar.entity_3d.entity.rect.size.x * 0.7
 		add_child(bar, false, INTERNAL_MODE_FRONT)
 	
 	_sorted_enemies = enemies.duplicate()
@@ -111,12 +110,13 @@ func turn() -> void:
 	var is_enemy_alive := false
 	for enemy in enemies:
 		if enemy.health and player.health:
-			is_enemy_alive = true
 			await enemy._take_turn()
 			step_finished.emit(enemy)
 			if not player.health:
 				player.clear()
 				break
+			if enemy.health:
+				is_enemy_alive = true
 	
 	if player.health and is_enemy_alive:
 		turn_finished.emit()

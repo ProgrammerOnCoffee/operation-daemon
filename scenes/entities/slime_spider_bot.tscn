@@ -4,9 +4,29 @@
 [ext_resource type="PackedScene" uid="uid://bfj5s1idl7ra2" path="res://assets/Enemt Parts/slime_spider_bot.tscn" id="2_5cyl0"]
 
 [node name="SlimeSpiderBot" unique_id=1022515043 instance=ExtResource("1_dke1x")]
-rect = Rect2i(-96, -168, 192, 184)
+rect = Rect2i(-336, -168, 672, 184)
+rect_attack_inset = 228
 base_damage = 5
 max_health = 30
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"Dash",
+&"damaged": &"Damaged",
+&"dash": &"Dash",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
+animation_durations = Dictionary[StringName, float]({
+&"attack": 1.0,
+&"b_dash": 2.0,
+&"damaged": 1.0,
+&"dash": 1.8,
+&"death": 1.0,
+&"idle": 1.0,
+&"parry": 1.0
+})
+attack_point = 0.5
 
 [node name="Slime Spider Bot" parent="." index="0" unique_id=1915969548 instance=ExtResource("2_5cyl0")]
 position = Vector2(-102, -172)
