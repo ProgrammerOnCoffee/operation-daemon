@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cyoh2mfn2chnp"]
 
 [ext_resource type="Script" uid="uid://b4rnklabdhmqu" path="res://scripts/module_entry.gd" id="1_dytst"]
-[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="1_jm37a"]
+[ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="1_jm37a"]
+[ext_resource type="Theme" uid="uid://b18kjmajkm7k2" path="res://resources/main_theme.tres" id="1_mblv6"]
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="4_3fr15"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dytst"]
 draw_center = false
@@ -50,7 +52,7 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pls23"]
 content_margin_left = 10.0
 content_margin_right = 10.0
-bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+bg_color = Color(0.38685745, 0.4161098, 0.4841051, 1)
 border_width_bottom = 4
 border_color = Color(0.0792, 0.08844, 0.11, 1)
 corner_radius_top_left = 10
@@ -110,6 +112,7 @@ PopupPanel/styles/panel = SubResource("StyleBoxFlat_0esgi")
 custom_minimum_size = Vector2(0, 32)
 offset_right = 322.0
 offset_bottom = 36.0
+theme = ExtResource("1_mblv6")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dytst")
 script = ExtResource("1_dytst")
 
@@ -136,7 +139,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
 [node name="Icon" type="Control" parent="VBoxContainer/Button/HBoxContainer" unique_id=908268028]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(37, 0)
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("1_jm37a")
@@ -163,6 +166,7 @@ text = "Unequip"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button/HBoxContainer" unique_id=553018157]
 custom_minimum_size = Vector2(76, 0)
 layout_mode = 2
+theme = ExtResource("4_3fr15")
 theme_override_constants/separation = 3
 alignment = 1
 
@@ -177,22 +181,10 @@ vertical_alignment = 1
 
 [node name="AT" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=430382729]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
 text = "ATK"
 
 [node name="SP" type="Button" parent="VBoxContainer/Button/HBoxContainer/HBoxContainer" unique_id=758771317]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxFlat_pls23")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qj3iy")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sh0tg")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rplcl")
 text = "SPC"
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1778997379]
