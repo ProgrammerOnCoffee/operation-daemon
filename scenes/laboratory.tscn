@@ -201,6 +201,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+scroll_horizontal = 992
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 

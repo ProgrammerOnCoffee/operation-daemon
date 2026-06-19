@@ -1,10 +1,26 @@
+@tool
 class_name EffectTooltip extends Control
 ## A fancy tooltip for Effects.
+
+## Overrides for the text sizes.
+@export var title_text_size := -1:
+	set(to):
+		title_text_size = to
+		$VBoxContainer/MarginContainer/Name.add_theme_font_size_override("font_size", title_text_size)
+@export var description_text_size := -1:
+	set(to):
+		description_text_size = to
+		$VBoxContainer/Description.add_theme_font_size_override("font_size", description_text_size)
 
 var char_progress := 0.0
 
 func _ready() -> void:
 	get_parent().theme = theme
+	
+	if description_text_size > 0:
+		$VBoxContainer/Description.add_theme_font_size_override("font_size", description_text_size)
+	if title_text_size > 0:
+		$VBoxContainer/MarginContainer/Name.add_theme_font_size_override("font_size", title_text_size)
 
 func _display(effect:Effect):
 	$VBoxContainer/MarginContainer/Name.text = effect.effect_name

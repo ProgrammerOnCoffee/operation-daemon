@@ -10,6 +10,7 @@ var buffer_timer := 0.0
 
 func _ready() -> void:
 	Global.daemon_discovered.connect(func(daemon:Daemon): create_buffered_toast("Daemon Discovered: D" + Global.lead(daemon.id, 4)))
+	Global.push_toast.connect(create_buffered_toast)
 
 func _process(delta: float) -> void:
 	

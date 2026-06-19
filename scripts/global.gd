@@ -1,9 +1,11 @@
 extends Node
 ## Manages some global things, like the Daemon research.
 
-## -- MUSIC -- ##
+## -- MISC -- ##
 @warning_ignore("unused_signal")
 signal request_track_transition(to:String)
+@warning_ignore("unused_signal")
+signal push_toast(text:String) # Ask the toast manager to make some toast.
 
 ## -- CONFIGURATION -- ##
 # Every two elements are the min and max number of x that each enemy will have.

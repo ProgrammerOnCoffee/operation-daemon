@@ -8,7 +8,13 @@ func _ready() -> void:
 	_update_daemon_list()
 	
 	for i in 10:
-		PlayerData.modules += [Module.new([preload("res://scripts/effects/timebomb_effect.gd").new()], randi_range(0,2) as Module.SLOT)]
+		
+		var ef:Array[Effect]= []
+		for j in 3:
+			var e = [preload("res://scripts/effects/timebomb_effect.gd"), preload("res://scripts/effects/overcharge_effect.gd"), preload("res://scripts/effects/reflective_effect.gd")]
+			ef += [e.pick_random().new()]
+			
+		PlayerData.modules += [Module.new(ef, randi_range(0,2) as Module.SLOT)]
 	
 	PlayerData.modules_changed.connect(_update_module_list)
 	_update_module_list()

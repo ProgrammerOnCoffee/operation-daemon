@@ -3,8 +3,8 @@ extends Effect
 func _get_effect_name() -> String: return "Overcharge"
 func _get_description() -> String: return "Increases damage dealt by %s%%, but damages the attacker by %s%% of the extra damage they deal." % [String.num(base * 100), String.num(base * 100)]
 
-func _get_effect_color() -> Color: return Color.WHITE
-func _get_icon_point_count() -> int: return 4
+func _get_effect_color() -> Color: return Color(0.82, 0.479, 0.18, 1.0)
+func _get_icon_point_count() -> int: return 3
 
 func _get_base() -> float: return 0.3
 
