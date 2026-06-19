@@ -4,4 +4,10 @@
 
 [resource]
 script = ExtResource("1_knoxm")
+event_weights = Dictionary[int, int]({
+1: 8,
+2: 4,
+3: 1,
+4: 2
+})
 metadata/_custom_type_script = "uid://bh8vaosl5kcit"

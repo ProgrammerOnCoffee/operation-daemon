@@ -14,8 +14,9 @@ func _is_beneficial() -> bool: return true
 func _get_apply_type() -> ApplyType: return ApplyType.BEFORE_ATTACK
 
 func apply_effect(target: Entity) -> bool:
-	@warning_ignore_start("narrowing_conversion")
-	var extra := target.damage_dealing * base
+	var extra := floori(target.damage_dealing * base)
+	
 	target.damage_dealing += extra
-	target.take_damage(extra * base)
+	target.take_damage(floori(extra * base))
+	
 	return true

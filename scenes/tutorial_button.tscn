@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dpl7kq7v86xct"]
+
+[ext_resource type="Script" uid="uid://mjnw8nxr6xmg" path="res://scripts/tutorial_button.gd" id="1_stlov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mimh"]
+bg_color = Color(0.7294118, 0.76862746, 0.8392157, 1)
+border_width_bottom = 5
+border_color = Color(0.4627451, 0.50980395, 0.6, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4it6"]
+bg_color = Color(0.7294118, 0.76862746, 0.8392157, 1)
+border_width_top = 5
+border_color = Color(0.4627451, 0.50980395, 0.6, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjrxm"]
+bg_color = Color(0.7921569, 0.83137256, 0.9098039, 1)
+border_width_bottom = 5
+border_color = Color(0.4627451, 0.50980395, 0.6, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uemy"]
+bg_color = Color(0.63529414, 0.6745098, 0.7411765, 1)
+border_width_top = 5
+border_color = Color(0.4627451, 0.50980395, 0.6, 0)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="TutorialButton" type="Button" unique_id=1662630263]
+custom_minimum_size = Vector2(40, 45)
+offset_right = 20.0
+offset_bottom = 40.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.7882353)
+theme_override_styles/normal = SubResource("StyleBoxFlat_6mimh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j4it6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjrxm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j4it6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3uemy")
+toggle_mode = true
+text = "?"
+script = ExtResource("1_stlov")
+metadata/_edit_group_ = true

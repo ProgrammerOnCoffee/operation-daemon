@@ -61,10 +61,10 @@ func attack() -> bool:
 		# Get the base amount of dmg to deal.
 		damage_dealing = int(get_damage() * await qte.pressed)
 		if damage_dealing:
-			# Apply the pre-attack effects.
-			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# Inflict the relevant effects onto the enemy.
 			inflict_effects(selected_enemy, Module.SLOT.ATTACK)
+			# Apply the pre-attack effects.
+			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# Do the actual damage to the enemy.
 			selected_enemy.take_damage(damage_dealing)
 			# Recognize the real damage done post-effects.
