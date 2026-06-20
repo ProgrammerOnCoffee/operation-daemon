@@ -11,10 +11,6 @@ var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 
 func _ready() -> void:
 	load_entity("player.tscn")
-	for i in $Markers.get_child_count() - 1:
-		load_entity("m_slime.tscn" if i == 2 else "angel.tscn" if i == 1 else "slime_spider_bot.tscn")
-	add_child(combat_handler)
-	ButtonFeedback.setup_recursive(combat_handler)
 	
 	if OS.has_feature("editor") and get_parent() == get_tree().root:
 		# Editor debugging
@@ -23,7 +19,15 @@ func _ready() -> void:
 		asp.autoplay = true
 		asp.bus = &"Music"
 		add_child(asp)
+		
+		for i in $Markers.get_child_count() - 1:
+			load_entity("m_slime.tscn" if i == 2 else "angel.tscn" if i == 1 else "slime_spider_bot.tscn")
+	else:
+		for i in 1:
+			load_enemy()
 	
+	add_child(combat_handler)
+	ButtonFeedback.setup_recursive(combat_handler)
 	combat_handler.requested_end.connect($EventScene.event_finished.emit)
 
 
@@ -47,31 +51,23 @@ func load_entity(file_name: String) -> void:
 	else:
 		marker_name = "EnemyMarker%d" % combat_handler.enemies.size()
 		combat_handler.enemies.append(entity)
-		
-		# Give enemy modules and daemons
-		var range_index := Vector2(
-			2 * Global.act, (2 * Global.act) + 1
-		)
-		print(range_index)
-		for i in randi_range(Global.ACT_MODULES[range_index.x], Global.ACT_MODULES[range_index.y]):
-			var effects: Array[Effect]
-			for j in randi_range(Global.ACT_EFFECTS[range_index.x], Global.ACT_EFFECTS[range_index.y]):
-				var effect := Effect.all_effects.values().pick_random().new() as Effect
-				effects.append(effect)
-			entity.modules.append(Module.new(effects))
-		for k in randi_range(Global.ACT_DAEMONS[range_index.x], Global.ACT_DAEMONS[range_index.y]):
-			var modifiers: Array[Modifier]
-			# TODO distinguish between positive and negative modifiers
-			for l in randi_range(Global.ACT_POS_MODIFIERS[range_index.x], Global.ACT_POS_MODIFIERS[range_index.y]):
-				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
-				modifiers.append(modifier)
-			for m in randi_range(Global.ACT_NEG_MODIFIERS[range_index.x], Global.ACT_NEG_MODIFIERS[range_index.y]):
-				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
-				modifiers.append(modifier)
-			entity.daemons.append(Daemon.new(modifiers))
 	
 	## The [Marker3D] this entity will be placed at.
 	var marker := $Markers.get_node(NodePath(marker_name)) as Marker3D
 	add_child(entity_3d)
 	entity_3d.global_position = marker.global_position - entity_3d.project_point(-entity.rect.position)
 	entity_3d.initial_transform = entity_3d.global_transform
+
+
+## Loads a random enemy from this act's global pool.
+func load_enemy() -> void:
+	var enemy_3d := Global.pick_enemy()
+	## The name of the [Marker3D] this entity will be placed at.
+	var marker_name := "EnemyMarker%d" % combat_handler.enemies.size()
+	combat_handler.enemies.append(enemy_3d.entity)
+	
+	## The [Marker3D] this entity will be placed at.
+	var marker := $Markers.get_node(NodePath(marker_name)) as Marker3D
+	add_child(enemy_3d)
+	enemy_3d.global_position = marker.global_position - enemy_3d.project_point(-enemy_3d.entity.rect.position)
+	enemy_3d.initial_transform = enemy_3d.global_transform
