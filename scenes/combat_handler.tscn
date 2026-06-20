@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
 [ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvid"]
 bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
@@ -66,6 +67,43 @@ border_color = Color(0.48235294, 0.8784314, 0.8784314, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
 shader_parameter/blur = 2.000000095
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4dvid"]
+color = Color(1, 1, 1, 0.38431373)
+thickness = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ymss"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.2, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.73333335)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxk2p"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.3, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.73333335)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgcwr"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.2, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.8039216)
 
 [node name="CombatHandler" type="Node" unique_id=583709940]
 script = ExtResource("1_2p8v4")
@@ -490,7 +528,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EndScreen" type="PanelContainer" parent="." unique_id=1197025100]
+[node name="EndScreen" type="TextureRect" parent="." unique_id=1560622371]
 visible = false
 custom_minimum_size = Vector2(384, 0)
 anchors_preset = 8
@@ -501,12 +539,16 @@ anchor_bottom = 0.5
 offset_left = -192.0
 offset_top = -213.0
 offset_right = 192.0
-offset_bottom = 213.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("24_vi8kl")
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="EndScreen" unique_id=1278299414]
-layout_mode = 2
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 492.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer" unique_id=681185561]
 layout_mode = 2
@@ -517,7 +559,9 @@ theme_type_variation = &"LLabel"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1742068799]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
 
 [node name="Stats" type="GridContainer" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=2002435215]
 layout_mode = 2
@@ -547,6 +591,11 @@ text = "Time Fought:"
 layout_mode = 2
 size_flags_horizontal = 10
 
+[node name="HSeparator3" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1437355052]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
+
 [node name="Label" type="Label" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=2141624533]
 layout_mode = 2
 text = "Rewards:"
@@ -558,13 +607,25 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer/VBoxContainer/ScrollContainer" unique_id=813709679]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HSeparator2" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1881530624]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
 
 [node name="Continue" type="Button" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=963526792]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ymss")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sxk2p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qgcwr")
 text = "Return To Laboratory"
 
 [node name="ZoomInPlayer" type="AudioStreamPlayer" parent="." unique_id=908736535]

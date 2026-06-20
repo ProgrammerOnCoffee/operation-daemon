@@ -3,18 +3,19 @@
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="1_iew7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rsht"]
-content_margin_left = 7.0
-content_margin_top = 6.0
-content_margin_right = 7.0
-content_margin_bottom = 6.0
-bg_color = Color(0.101960786, 0.08235294, 0.03529412, 1)
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 11
-corner_radius_top_right = 8
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 9
+content_margin_left = 16.0
+content_margin_top = 2.0
+content_margin_right = 26.0
+content_margin_bottom = 2.0
+bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+skew = Vector2(0.71, 0)
+corner_radius_top_right = 30
+corner_radius_bottom_left = 17
+corner_detail = 1
+shadow_color = Color(0.05, 0.05, 0.05, 0.49803922)
+shadow_size = 2
+shadow_offset = Vector2(-2, 3)
+anti_aliasing_size = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iew7b"]
 content_margin_left = 7.0
@@ -189,21 +190,6 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rsht"]
-content_margin_left = 16.0
-content_margin_top = 2.0
-content_margin_right = 26.0
-content_margin_bottom = 2.0
-bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
-skew = Vector2(0.71, 0)
-corner_radius_top_right = 30
-corner_radius_bottom_left = 17
-corner_detail = 1
-shadow_color = Color(0.05, 0.05, 0.05, 0.49803922)
-shadow_size = 2
-shadow_offset = Vector2(-2, 3)
-anti_aliasing_size = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2xtc"]
 bg_color = Color(0.0722475, 0.07224231, 0.025504539, 1)

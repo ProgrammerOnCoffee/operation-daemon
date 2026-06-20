@@ -136,6 +136,8 @@ func create_qte() -> Control:
 	qte.fade_in()
 	return qte
 
+## Scene for loot entries for the end-screen
+const LOOT_ENTRY_SCENE := preload("res://scenes/loot_entry.tscn")
 
 ## Ends the current fight and displays a win/lose screen.
 func end_fight() -> void:
@@ -144,15 +146,25 @@ func end_fight() -> void:
 	if player.health:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
 		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Map"
+		$EndScreen.texture = preload("res://assets/UI Elements/Success.png")
 	else:
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
 		$EndScreen/MarginContainer/VBoxContainer/Label.hide()
 		$EndScreen/MarginContainer/VBoxContainer/ScrollContainer.hide()
 		$EndScreen.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Laboratory"
+		$EndScreen.texture = preload("res://assets/UI Elements/Failure.png")
 	
 	# Push the player's data back to the Singleton.
 	PlayerData.health = player.health # Just this. Everything else's forgotton.
+	
+	## Make the loot entries for modules to give the player.
+	for module in get_loot_modules():
+		var new := LOOT_ENTRY_SCENE.instantiate() as LootEntry
+		
+		$EndScreen/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer.add_child(new)
+		
+		new._display(module)
 	
 	# Blur background
 	$BackBufferCopy.show()
@@ -166,16 +178,39 @@ func end_fight() -> void:
 	stats_tween.tween_interval(TransitionManager.duration)
 	for l: Label in $EndScreen/MarginContainer/VBoxContainer/Stats.get_children():
 		if l.text:
-			stats_tween.tween_property(l, ^":text", l.text, 0.3)
+			stats_tween.tween_property(l, ^":text", l.text, 0.25)
 			l.text = ""
 		else:
 			@warning_ignore("integer_division")
 			stats_tween.tween_method(_set_stat_text.bind(l), 0,
 					damage_dealt if l.name == "Dealt"
 					else damage_taken if l.name == "Taken"
-					else (Time.get_ticks_msec() - start_time) / 1000, 0.4)
-		stats_tween.tween_interval(0.2)
+					else (Time.get_ticks_msec() - start_time) / 1000, 0.3)
+		stats_tween.tween_interval(0.1)
 
+func get_loot_modules() -> Array[Module]:
+	
+	# Get the effects from the enemies.
+	var viable_effects:Array[Effect]
+	for enemy in enemies: # Add all the possible effects
+		for module in enemy.modules:
+			for effect in module.effects: if effect._is_beneficial():
+				viable_effects.append(effect)
+	
+	# Construct new modules using the viable effects.
+	var loot:Array[Module]
+	for i in Global.float_as_chance_int(1.5):
+		
+		var effs:Array[Effect]
+		for j in Global.float_as_chance_int(randf_range(1.3, 2.1)):
+			effs.append(viable_effects.pick_random())
+		
+		var new := Module.new(effs, Module.SLOT.NONE)
+		
+		loot.append(new)
+	
+	return loot
+	
 
 ## Prompts the player to select an [Enemy] to attack.
 func select_enemy() -> Enemy:

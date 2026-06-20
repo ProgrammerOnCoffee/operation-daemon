@@ -610,8 +610,8 @@ offset_left = 1094.0
 offset_top = 18.0
 offset_right = 1134.0
 offset_bottom = 63.0
-info_panel = NodePath("../MapTutorial2")
-close_button = NodePath("../MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
+info_panel = NodePath("../InventoryTut")
+close_button = NodePath("../InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
 
 [node name="MapTutorial" type="HBoxContainer" parent="." unique_id=637946714]
 layout_mode = 1
@@ -746,7 +746,7 @@ size_flags_horizontal = 3
 text = "Boss"
 horizontal_alignment = 1
 
-[node name="MapTutorial2" type="HBoxContainer" parent="." unique_id=567213763]
+[node name="InventoryTut" type="HBoxContainer" parent="." unique_id=567213763]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -756,11 +756,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Control2" type="Control" parent="MapTutorial2" unique_id=115531206]
+[node name="Control2" type="Control" parent="InventoryTut" unique_id=115531206]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Panel" type="MarginContainer" parent="MapTutorial2" unique_id=816697599]
+[node name="Panel" type="MarginContainer" parent="InventoryTut" unique_id=816697599]
 custom_minimum_size = Vector2(462, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -769,57 +769,57 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MapTutorial2/Panel" unique_id=1618539043]
+[node name="PanelContainer" type="PanelContainer" parent="InventoryTut/Panel" unique_id=1618539043]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d8vbv")
 
-[node name="MarginContainer" type="MarginContainer" parent="MapTutorial2/Panel/PanelContainer" unique_id=938089088]
+[node name="MarginContainer" type="MarginContainer" parent="InventoryTut/Panel/PanelContainer" unique_id=938089088]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapTutorial2/Panel/PanelContainer/MarginContainer" unique_id=321148347]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer" unique_id=321148347]
 layout_mode = 2
 theme = SubResource("Theme_1ra3e")
 theme_override_constants/separation = 33
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1273160347]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1273160347]
 layout_mode = 2
 theme_override_constants/separation = -4
 
-[node name="Label" type="Label" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1840775153]
+[node name="Label" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1840775153]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "TUTORIAL DEBRIEF"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=211670107]
+[node name="Label2" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=211670107]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Inventory"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=153055279]
+[node name="Label" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=153055279]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "View your equipped Modules, which apply unique effects to your Attack and Special. Click a Module to view its Effects."
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1513345534]
+[node name="Label2" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1513345534]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "View unequipped modules and equip them to an attack slot - Attack or Special"
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=2125508564]
+[node name="Label3" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=2125508564]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
 text = "View your Daemons - percent changes to Modules' effects. These can be made in the Lab, or contracted from irradiatied"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="MapTutorial2/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=191693858]
+[node name="Button" type="Button" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=191693858]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -833,13 +833,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_fsuak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xdla5")
 text = "Close Debrief"
 
-[node name="Control" type="Control" parent="MapTutorial2" unique_id=595181580]
+[node name="Control" type="Control" parent="InventoryTut" unique_id=595181580]
 custom_minimum_size = Vector2(462, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Line2D" type="Line2D" parent="MapTutorial2/Control" unique_id=355388266]
+[node name="Line2D" type="Line2D" parent="InventoryTut/Control" unique_id=355388266]
 position = Vector2(0, 84)
 points = PackedVector2Array(-71, 270, 8, 289)
 width = 6.0
@@ -848,7 +848,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D3" type="Line2D" parent="MapTutorial2/Control" unique_id=2054830347]
+[node name="Line2D3" type="Line2D" parent="InventoryTut/Control" unique_id=2054830347]
 position = Vector2(-4, 275)
 points = PackedVector2Array(-71, 270, 8, 289)
 width = 6.0
@@ -857,7 +857,7 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="MapTutorial2/Control" unique_id=851093475]
+[node name="Line2D2" type="Line2D" parent="InventoryTut/Control" unique_id=851093475]
 position = Vector2(28, -101)
 points = PackedVector2Array(-95, 265, -17, 260)
 width = 6.0
