@@ -14,7 +14,8 @@ config/name="GWJ 94"
 run/main_scene="uid://dh035oqbuwd5q"
 run/print_header=false
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/image="uid://cru8imuvgs17w"
+boot_splash/stretch_mode=4
+boot_splash/image="uid://clqhle5y4evac"
 config/icon="res://icon.svg"
 boot_splash/image.editor_hint=""
 
