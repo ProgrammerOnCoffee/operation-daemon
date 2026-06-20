@@ -21,7 +21,7 @@ corner_radius_bottom_right = 59
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttdsl"]
-bg_color = Color(0.07222641, 0.075514294, 0.05359587, 1)
+bg_color = Color(0.3003, 0.33, 0.315645, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di1k3"]
 bg_color = Color(0.17, 0.16631667, 0.1258, 1)
