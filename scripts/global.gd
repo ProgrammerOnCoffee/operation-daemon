@@ -15,7 +15,7 @@ signal act_changed
 signal act_completed
 signal run_ended
 
-var act := 1:
+var act := 0:
 	set(to):
 		act = to
 		act_changed.emit()
@@ -50,7 +50,6 @@ const ACT_NEG_MODIFIERS = [2, 3, 3, 4, 4, 4]
 
 ## The pool of enemies that will be used throughout the current act.
 var enemy_pool: Array[Enemy]
-
 
 ## Generates a new pool of enemies that will be used throughout the current act.
 func generate_enemy_pool() -> void:
@@ -104,6 +103,21 @@ func generate_enemy_pool() -> void:
 			enemy.daemons.append(Daemon.new(modifiers))
 		enemy_pool[i] = enemy
 
+## The odds of having each num of enemies per act. [3,4,5] -> [1,1,1,2,2,2,2,3,3,3,3,3].pick_random()
+const ACT_ENEMY_WEIGHTS = [
+	[8,3,1],
+	[7,5,2],
+	[5,7,3],
+]
+
+func get_weighted_enemy_count() -> int:
+	
+	var pool:Array[int]
+	for i in ACT_ENEMY_WEIGHTS[act].size():
+		for j in ACT_ENEMY_WEIGHTS[act][i]:
+			pool.append(i + 1)
+	
+	return pool.pick_random()
 
 ## Picks an enemy from the [member enemy_pool] and creates an [Entity3D] for it.
 func pick_enemy() -> Entity3D:

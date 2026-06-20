@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://djrj1qugwhtj5"]
 
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="1_5ldva"]
 [ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_retqc"]
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="2_5ldva"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="2_xonkf"]
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5ldva")
 theme_override_styles/panel = SubResource("StyleBoxFlat_xonkf")
 script = ExtResource("1_retqc")
 
