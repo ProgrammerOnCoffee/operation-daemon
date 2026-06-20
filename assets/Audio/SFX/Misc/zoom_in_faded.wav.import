@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d3w72urh6oo5"
-path="res://.godot/imported/zoom_in_faded.wav-c48476d96650d1af42b697308df6a889.sample"
+path="res://.godot/imported/zoom_in_faded.wav-772e2e8882a5585ebc9c06b79b51c748.sample"
 
 [deps]
 
-source_file="res://assets/audio/SFX/Misc/zoom_in_faded.wav"
-dest_files=["res://.godot/imported/zoom_in_faded.wav-c48476d96650d1af42b697308df6a889.sample"]
+source_file="res://assets/Audio/SFX/Misc/zoom_in_faded.wav"
+dest_files=["res://.godot/imported/zoom_in_faded.wav-772e2e8882a5585ebc9c06b79b51c748.sample"]
 
 [params]
 
