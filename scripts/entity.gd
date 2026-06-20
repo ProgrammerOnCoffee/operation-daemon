@@ -43,20 +43,29 @@ static var sounds: Dictionary[String, Array] = {
 		[load("uid://dof1kxqge0x7i"), { "volume": -6.0 }],
 	],
 	"dash_slime": [
-		[load("uid://clwc0rjc7sbua"), { "loop_after": 0.6, "loop_count": 2, "volume": -3.0 }],
+		[load("uid://5nwkunvbj4ma"), { "next_sound": "dash_slime", "next_delay": 0.6, "next_count": 2, "volume": -3.0 }],
+		[load("uid://c20iy386aq0q4"), { "next_sound": "dash_slime", "next_delay": 0.6, "next_count": 2 }],
 	],
 	"dash_slime_jump": [
 		[load("uid://dmmwsm2wny11e"), { "next_sound": "slime_land", "next_delay": 0.85 }],
 	],
 	"dash_spider": [
 		load("uid://bragk1mdh5ysw"),
-		#load("uid://bvvbjybeytkb"),
+	],
+	"b_dash_spider": [
+		[load("uid://by3xroc14dams"), { "volume": -9.0 }],
 	],
 	"death_robot": [
 		load("uid://c8ajt4e1vtu52"),
 	],
 	"death_slime": [
-		load("uid://c8ajt4e1vtu52"),
+		load("uid://lyg48wyatxgy"),
+		load("uid://bc51ptet4ko3c"),
+	],
+	"death_monitor_plane": [
+		load("uid://c07wpp23qds51"),
+		load("uid://0qbhthnhgdxa"),
+		load("uid://c8jwmbykiv6x8"),
 	],
 	"hit_robot": [
 		load("uid://bbfcxfi4ihw2b"),
@@ -67,7 +76,6 @@ static var sounds: Dictionary[String, Array] = {
 	"hit_slime": [
 		load("uid://bhfv6fc13tgds"),
 		load("uid://bhx5uotn6s1ll"),
-		#load("uid://d0v230qo07ajw"),
 	],
 	"parry": [
 		load("uid://s6dhybv0qbv"),
@@ -283,7 +291,7 @@ func get_damage() -> int:
 
 
 ## Makes this [Entity] take [param amount] damage.
-func take_damage(amount: int, animate: bool = true) -> void:
+func take_damage(amount: int, animate: bool = false) -> void:
 	if amount <= 0 or health <= 0:
 		return
 	

@@ -16,8 +16,13 @@ enum Type {
 
 ## If [code]true[/code], this QTE is currently running and waiting for player input.
 var is_running := false
+## If [code]true[/code], this QTE has expired or has been responded to by the player.
+var has_ended: bool
 ## The type of QTE.
 var type: Type
+
+## The [Tween] currently fading in/out the QTE.
+var _tween: Tween
 
 
 func _process(delta: float) -> void:
@@ -50,19 +55,22 @@ func fade_in() -> void:
 	show()
 	scale = Vector2.ONE * 0.5
 	modulate.a = 0.0
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).set_parallel()
-	tween.tween_property(self, ^":scale", Vector2.ONE, 0.4)
-	tween.tween_property(self, ^":modulate:a", 1.0, 0.3)
-	tween.tween_property(self, ^":is_running", true, 0.3)
+	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).set_parallel()
+	_tween.tween_property(self, ^":scale", Vector2.ONE, 0.4)
+	_tween.tween_property(self, ^":modulate:a", 1.0, 0.3)
+	_tween.tween_property(self, ^":is_running", true, 0.3)
 
 
 ## Quickly fades out the QTE and stops running it.
 func fade_out() -> void:
+	if _tween:
+		_tween.kill()
+	has_ended = true
 	is_running = false
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).set_parallel()
-	tween.tween_property(self, ^":scale", Vector2.ONE * 1.5, 0.4)
-	tween.tween_property(self, ^":modulate:a", 0.0, 0.3)
-	tween.finished.connect(queue_free)
+	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART).set_parallel()
+	_tween.tween_property(self, ^":scale", Vector2.ONE * 1.5, 0.4)
+	_tween.tween_property(self, ^":modulate:a", 0.0, 0.3)
+	_tween.finished.connect(queue_free)
 	
 	var value := get_value()
 	if value >= 0.9 or (type == Type.ATTACK and is_zero_approx(value)):
