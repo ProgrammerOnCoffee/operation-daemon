@@ -1,0 +1,305 @@
+[gd_scene format=3 uid="uid://1gwn6w4bicpm"]
+
+[ext_resource type="PackedScene" uid="uid://cpwcm63jufsdy" path="res://assets/Boss/Boss_Bones.tscn" id="1_hjhy4"]
+
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_87qgq"]
+target_nodepath = NodePath("Head")
+jiggle_data_chain_length = 7
+stiffness = 1.0
+mass = 30.0
+use_gravity = true
+gravity = Vector2(0, 20)
+joint_data/0/bone_index = 2
+joint_data/0/bone2d_node = NodePath("L_Wire/L_Wire2")
+joint_data/0/override_defaults = false
+joint_data/1/bone_index = 6
+joint_data/1/bone2d_node = NodePath("L wire/L wire 2")
+joint_data/1/override_defaults = false
+joint_data/2/bone_index = 7
+joint_data/2/bone2d_node = NodePath("L wire/L wire 2/L wire 3")
+joint_data/2/override_defaults = false
+joint_data/3/bone_index = 8
+joint_data/3/bone2d_node = NodePath("L wire/L wire 2/L wire 3/L wire 4")
+joint_data/3/override_defaults = false
+joint_data/4/bone_index = -1
+joint_data/4/bone2d_node = NodePath("")
+joint_data/4/override_defaults = false
+joint_data/5/bone_index = 5
+joint_data/5/bone2d_node = NodePath("L wire")
+joint_data/5/override_defaults = false
+joint_data/6/bone_index = 1
+joint_data/6/bone2d_node = NodePath("L_Wire")
+joint_data/6/override_defaults = false
+
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_21woo"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Head")
+jiggle_data_chain_length = 5
+stiffness = 1.0
+mass = 30.0
+use_gravity = true
+gravity = Vector2(0, 20)
+joint_data/0/bone_index = 9
+joint_data/0/bone2d_node = NodePath("R wire")
+joint_data/0/override_defaults = false
+joint_data/1/bone_index = 10
+joint_data/1/bone2d_node = NodePath("R wire/R wire 2")
+joint_data/1/override_defaults = false
+joint_data/2/bone_index = 11
+joint_data/2/bone2d_node = NodePath("R wire/R wire 2/R Wire 3")
+joint_data/2/override_defaults = false
+joint_data/3/bone_index = 12
+joint_data/3/bone2d_node = NodePath("R wire/R wire 2/R Wire 3/r Wire 4")
+joint_data/3/override_defaults = true
+joint_data/3/stiffness = 3.0
+joint_data/3/mass = 0.75
+joint_data/3/damping = 0.75
+joint_data/3/use_gravity = false
+joint_data/4/bone_index = -1
+joint_data/4/bone2d_node = NodePath("")
+joint_data/4/override_defaults = false
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_yud22"]
+bone_index = 0
+bone2d_node = NodePath("Head")
+target_nodepath = NodePath("HEad look at")
+additional_rotation = -174.77496
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_nft2c"]
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_mt67n"]
+resource_local_to_scene = true
+enabled = true
+modification_count = 4
+modifications/0 = SubResource("SkeletonModification2DJiggle_87qgq")
+modifications/1 = SubResource("SkeletonModification2DJiggle_21woo")
+modifications/2 = SubResource("SkeletonModification2DLookAt_yud22")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_nft2c")
+
+[sub_resource type="Animation" id="Animation_hjhy4"]
+resource_name = "Attack"
+length = 1.9666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Bones/Skeleton2D/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5666667, 1.4666667, 1.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(363.00003, 230.00002), Vector2(279.00003, 103.00002), Vector2(279.00003, 103.00002), Vector2(327.00003, 203.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Bones/Skeleton2D/Head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.10874016]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Bones/Skeleton2D/HEad look at:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4666667, 1.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(134, 205), Vector2(79, 77), Vector2(79, 77), Vector2(127, 177)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Bones/Skeleton2D/HEad look at:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Images/Body/Tube:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666668, 0.6, 0.93333334, 1.1, 1.3000001, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 11.720373, 13.145152, 1), Color(1, 1, 1, 1), Color(0, 11.720373, 13.145152, 1), Color(12.67433, 5.30347, 9.053065, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Images/Head:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.06666666, 0.56666666, 1.4333333, 1.9000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.295853, 2.9264998, 5.0955405, 1), Color(2.295853, 2.9264998, 5.0955405, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twvns"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Images/Body/Tube:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 1.5, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(3.3948815, 4.4812865, 5.8091125, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Bones/Skeleton2D/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4666667, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(363.00003, 230.00002), Vector2(340.00003, 205), Vector2(274, 170)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Bones/Skeleton2D/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4666667, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.10874016, 2.9057264e-07, -0.24497816]
+}
+
+[sub_resource type="Animation" id="Animation_1e741"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Images/Body/Tube:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Bones/Skeleton2D/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(340.00003, 205)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Bones/Skeleton2D/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.9057264e-07]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Bones/Skeleton2D/HEad look at:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(134, 205)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Bones/Skeleton2D/HEad look at:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Images/Body/Tube:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Images/Head:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cveae"]
+_data = {
+&"Attack": SubResource("Animation_hjhy4"),
+&"Idle": SubResource("Animation_twvns"),
+&"RESET": SubResource("Animation_1e741")
+}
+
+[node name="Boss_Main_ENT" type="Node2D" unique_id=565868173]
+
+[node name="Node2D" parent="." unique_id=225943918 instance=ExtResource("1_hjhy4")]
+
+[node name="Skeleton2D" parent="Node2D/Bones" parent_id_path=PackedInt32Array(225943918, 586425908) index="0" unique_id=148740631]
+modification_stack = SubResource("SkeletonModificationStack2D_mt67n")
+
+[node name="Head" parent="Node2D/Bones/Skeleton2D" index="0" unique_id=834099693]
+rotation = 2.9057264e-07
+scale = Vector2(0.99982375, 0.99982375)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=189551496]
+libraries/ = SubResource("AnimationLibrary_cveae")
+autoplay = &"Idle"
+
+[editable path="Node2D"]
