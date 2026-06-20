@@ -10,7 +10,7 @@ base_damage = 5
 max_health = 30
 sound_banks = Dictionary[StringName, String]({
 &"attack": "attack_robot",
-&"b_dash": "dash_spider",
+&"b_dash": "b_dash_spider",
 &"counter": "counter",
 &"dash": "dash_spider",
 &"death": "death_robot",
@@ -35,7 +35,7 @@ animation_durations = Dictionary[StringName, float]({
 &"idle": 1.0,
 &"parry": 1.0
 })
-attack_point = 0.5
+attack_point = 0.475
 
 [node name="Slime Spider Bot" parent="." index="0" unique_id=1915969548 instance=ExtResource("2_5cyl0")]
 position = Vector2(-102, -172)

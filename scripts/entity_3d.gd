@@ -98,8 +98,10 @@ func play_sound(bank: String, remaining_loop_count: int = -1) -> void:
 			get_tree().create_timer(sound[1].loop_after).timeout.connect(play_sound.bind(bank,
 					(remaining_loop_count if remaining_loop_count != -1 else sound[1].loop_count) - 1
 			))
-		if "next_sound" in sound[1]:
-			get_tree().create_timer(sound[1].next_delay).timeout.connect(play_sound.bind(sound[1].next_sound))
+		if "next_sound" in sound[1] and remaining_loop_count != 0:
+			get_tree().create_timer(sound[1].next_delay).timeout.connect(play_sound.bind(sound[1].next_sound,
+					(remaining_loop_count if remaining_loop_count != -1 else sound[1].next_count if "next_count" in sound[1] else -1) - 1
+			))
 		if "volume" in sound[1]:
 			asp.volume_db = sound[1].volume
 	asp.pitch_scale = randf_range(0.8, 1.1)
