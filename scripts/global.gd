@@ -79,7 +79,7 @@ func generate_enemy_pool() -> void:
 			var modifiers: Array[Modifier]
 			## The remaining number of positive modifiers to generate.
 			var pos_mod_n := randi_range(Global.ACT_POS_MODIFIERS[act_min], Global.ACT_POS_MODIFIERS[act_max])
-			## The remaining number of negative modifiers to generate.
+			## The remaining number of negative modiGlGlobal.ACT_MODULES[act_min], Global.ACT_MODULES[act_maxobal.ACT_MODULES[act_min], Global.ACT_MODULES[act_maxfiers to generate.
 			var neg_mod_n := randi_range(Global.ACT_NEG_MODIFIERS[act_min], Global.ACT_NEG_MODIFIERS[act_max])
 			while pos_mod_n or neg_mod_n:
 				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
@@ -126,8 +126,10 @@ func pick_enemy() -> Entity3D:
 	## The duplicated [Enemy] that will actually be loaded into the fight.
 	var entity := enemy.duplicate() as Enemy
 	entity.daemons = enemy.daemons
+	entity.modules = enemy.modules
 	var entity_3d := Entity3D.new()
 	entity_3d.entity = entity
+	
 	return entity_3d
 
 

@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
 [ext_resource type="PackedScene" uid="uid://pu2cj7rilrvh" path="res://scenes/health_bar.tscn" id="18_2sghh"]
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
-[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="19_xv2y6"]
 [ext_resource type="Script" path="res://scripts/misc_lines.gd" id="21_2sghh"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="21_dtxwj"]
 [ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
@@ -289,34 +288,20 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerStatus/VBoxContainer/Effects" unique_id=811613526]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerStatus/VBoxContainer/Effects" unique_id=17400417]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
 
-[node name="Control" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=2064193911]
-custom_minimum_size = Vector2(32, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerStatus/VBoxContainer/Effects/ScrollContainer" unique_id=811613526]
 layout_mode = 2
-script = ExtResource("19_xv2y6")
-points = 1
-filled = false
-
-[node name="Control2" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=1631770698]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-script = ExtResource("19_xv2y6")
-
-[node name="Control3" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=138646948]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-script = ExtResource("19_xv2y6")
-points = 5
-filled = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Lines" type="Control" parent="PlayerStatus/VBoxContainer" unique_id=2070921127]
 custom_minimum_size = Vector2(0, 8)

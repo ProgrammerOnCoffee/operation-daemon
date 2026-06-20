@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bfj5s1idl7ra2" path="res://assets/Enemy Parts/Slime Spider Bot/slime_spider_bot_ent.tscn" id="2_5cyl0"]
 
 [node name="SlimeSpiderBot" unique_id=1022515043 instance=ExtResource("1_dke1x")]
+modulate = Color(0, 0.11764706, 1, 1)
 rect = Rect2i(-352, -248, 704, 264)
 rect_attack_inset = 228
 base_damage = 5

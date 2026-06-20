@@ -11,6 +11,23 @@ extends Control
 
 func _ready() -> void:
 	RenderingServer.frame_pre_draw.connect(update)
+	
+	# Update the module bar. Doesn't change, so don't change.
+	for module in entity_3d.entity.modules:
+		var new_icon := Primitive2D.new()
+		new_icon.filled = false
+		
+		new_icon.custom_minimum_size = Vector2.ONE * 25
+		
+		$ModuleBox.add_child(new_icon)
+		
+		
+		if module.effects:
+			new_icon.points = module.effects[0].icon_point_count
+			new_icon.modulate = module.effects[0].effect_color
+		else:
+			new_icon.points = 1
+			new_icon.modulate = Color.WHITE
 
 
 func _draw() -> void:

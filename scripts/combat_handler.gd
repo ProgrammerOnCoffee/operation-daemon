@@ -45,6 +45,8 @@ func _ready() -> void:
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
 	for enemy in enemies:
+		print(enemy, ":\t", enemy.modules)
+		
 		enemy.combat_handler = self
 		var bar := HEALTH_BAR.instantiate() as Control
 		step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
@@ -272,6 +274,22 @@ func update_player_health_bar() -> void:
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_method(func(h: int) -> void:
 		l.text = "%d%%" % h
 	, l.text.substr(0, l.text.length() - 1).to_int(), player.health, 0.3)
+	
+	# Make the module icons, while we're at it.
+	for module in player.modules:
+		var new_icon := Primitive2D.new()
+		
+		new_icon.filled = false
+		new_icon.custom_minimum_size = Vector2.ONE * 25
+		
+		$PlayerStatus/VBoxContainer/Effects/ScrollContainer/HBoxContainer.add_child(new_icon)
+		
+		if module.effects:
+			new_icon.points = module.effects[0].icon_point_count
+			new_icon.modulate = module.effects[0].effect_color
+		else:
+			new_icon.points = 1
+			new_icon.modulate = Color.WHITE
 
 
 ## Sets the text of a label in the stats list to [param x], formatting it according to the type of stat.

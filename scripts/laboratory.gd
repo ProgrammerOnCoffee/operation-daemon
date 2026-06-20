@@ -54,6 +54,8 @@ func _ready() -> void:
 	_on_log_selected(0)
 	Global.act_completed.connect(_unlock_log)
 	Global.daemon_discovered.connect(_update_discovered_list)
+	
+	injector_equip_button.disabled = true
 
 func _process(delta: float) -> void:
 	scroll_container.scroll_horizontal = move_toward(scroll_container.scroll_horizontal, goal_scroll_position, 493 * (delta / 0.1)) # Move 493px in 0.1s
@@ -172,6 +174,10 @@ func _on_injector_selection(index: int) -> void:
 	injector_equip_button.disabled = PlayerData.permanent_daemons.size() >= 5 and not PlayerData.permanent_daemons.has(injector_selection)
 
 func _toggle_equip(toggled_on: bool) -> void:
+	
+	if not injector_selection:
+		injector_equip_button.disabled = true
+		return
 	
 	# Toggling and able to select more.
 	if toggled_on and PlayerData.permanent_daemons.size() < 5:
