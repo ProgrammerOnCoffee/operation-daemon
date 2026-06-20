@@ -25,7 +25,7 @@ func _take_turn() -> void:
 			qte = combat_handler.create_qte()
 			qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
 			await get_tree().create_timer(qte_preload_time).timeout
-		if sound_banks.attack == "attack_dino_slime":
+		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
 		else:
 			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
