@@ -131,8 +131,9 @@ func return_to_initial_transform() -> void:
 	play_sound(entity.sound_banks.b_dash)
 	var reverse := entity.animation_names.b_dash == entity.animation_names.dash and entity.animation_names.b_dash != "jump"
 	entity.anim_player.play(entity.animation_names.b_dash, 0.1, -1.0 if reverse else 1.0, reverse)
+	var delay := 0.05 if entity.animation_names.b_dash == "jump" else 0.0
 	create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).tween_property(
-			self, ^":global_transform", initial_transform, entity.animation_durations.b_dash)
+			self, ^":global_transform", initial_transform, entity.animation_durations.b_dash).set_delay(delay)
 	await get_tree().create_timer(entity.animation_durations.b_dash - 0.3).timeout
 	entity.anim_player.play(entity.animation_names.idle, 0.4)
 
