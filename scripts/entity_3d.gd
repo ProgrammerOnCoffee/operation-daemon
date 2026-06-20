@@ -58,6 +58,16 @@ func _ready() -> void:
 		vp.owner = owner
 	if not texture:
 		texture = vp.get_texture()
+	
+	# Create a copy with no_depth_test to fix sprites clipping through the floor
+	var copy := Sprite3D.new()
+	copy.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+	copy.alpha_cut = SpriteBase3D.ALPHA_CUT_OPAQUE_PREPASS
+	copy.texture = texture
+	copy.no_depth_test = true
+	add_child(copy, false, INTERNAL_MODE_FRONT)
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	
 	if entity:
 		# Run setter
 		entity = entity
