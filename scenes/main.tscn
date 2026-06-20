@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://clqhle5y4evac" path="res://assets/images/splash.png" id="12_0ld40"]
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_muem4"]
@@ -1353,6 +1354,18 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
 text = "Daemon Discovered: D001"
 vertical_alignment = 1
+
+[node name="Splash" type="TextureRect" parent="UILayer/UI" unique_id=2089094100]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_0ld40")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
 stream = SubResource("AudioStreamSynchronized_tipki")

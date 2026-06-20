@@ -3,6 +3,14 @@ extends Control
 
 @onready var transition_player := $TransitionPlayer
 
+
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		$Splash.show()
+		await get_tree().create_timer(1.0).timeout
+		TransitionManager.fade($Splash)
+
+
 func transition(from:NodePath, to:NodePath):
 	if transition_player.is_playing(): return
 	
