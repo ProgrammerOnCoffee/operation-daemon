@@ -38,10 +38,6 @@ func _ready() -> void:
 	
 	tab_bar.tab_selected.connect(func(index:int): goal_scroll_position = index * 496)
 	
-	# Debug daemons.
-	for i in 100:
-		Global.daemons_discovered += [Global.get_random_daemon(7)]
-	
 	_update_discovered_list()
 	
 	$HBoxContainer/PanelContainer/MarginContainer/Button.pressed.connect(func():
@@ -54,6 +50,7 @@ func _ready() -> void:
 	logbook_tabs.tab_selected.connect(_on_log_selected)
 	_on_log_selected(0)
 	Global.act_completed.connect(_unlock_log)
+	Global.daemon_discovered.connect(_update_discovered_list)
 
 func _process(delta: float) -> void:
 	scroll_container.scroll_horizontal = move_toward(scroll_container.scroll_horizontal, goal_scroll_position, 493 * (delta / 0.1)) # Move 493px in 0.1s
@@ -61,6 +58,8 @@ func _process(delta: float) -> void:
 func _start_pressed() -> void: 
 	# Reset the current act.
 	Global.act = 0
+	Global.daemon_research.clear()
+	
 	# Reset the player's health.
 	PlayerData.health = PlayerData.max_health
 	
@@ -82,7 +81,7 @@ func _on_log_selected(index:int) -> void:
 	logbook_content.material = null if logs_unlocked > index else obscuring_material
 	logbook_overlay.visible =! logs_unlocked > index
 
-func _update_discovered_list() -> void:
+func _update_discovered_list(..._args:Array) -> void:
 	
 	# Clear existing lists
 	injector_item_list.clear()

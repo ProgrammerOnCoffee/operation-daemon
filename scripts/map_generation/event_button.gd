@@ -74,5 +74,4 @@ func set_event(to:Event) -> void:
 	overlay.rotation = randf_range(-PI/14, PI/14)
 	
 	button.texture_normal = ICONS[event.type]
-	#button.size = Vector2.ZERO
-	#button.pivot_offset = size / 2
+	overlay.modulate.a = 0.0

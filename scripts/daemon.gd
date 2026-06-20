@@ -6,8 +6,6 @@ extends Resource
 var id: int
 ## This [Daemon]'s unique name.
 var name: String
-## This [Daemon]'s point count for icons.
-var point_count:int
 ## The array of [Modifier]s contained in this [Daemon].
 var modifiers: Array[Modifier]:
 	set(to):
@@ -40,6 +38,3 @@ func _init(set_modifiers: Array[Modifier] = []) -> void:
 	Global.daemon_count += 1
 	id = Global.daemon_count
 	name = "D%s" % Global.lead(id,4)
-	
-	point_count = randi_range(2, 8)
-	if point_count == 2: point_count = 1

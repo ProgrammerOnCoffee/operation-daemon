@@ -49,19 +49,23 @@ func load_entity(file_name: String) -> void:
 		combat_handler.enemies.append(entity)
 		
 		# Give enemy modules and daemons
-		for i in randi_range(Global.ACT_MODULES[Global.act * 2 - 2], Global.ACT_MODULES[Global.act * 2 - 1]):
+		var range_index := Vector2(
+			2 * Global.act, (2 * Global.act) + 1
+		)
+		print(range_index)
+		for i in randi_range(Global.ACT_MODULES[range_index.x], Global.ACT_MODULES[range_index.y]):
 			var effects: Array[Effect]
-			for j in randi_range(Global.ACT_EFFECTS[Global.act * 2 - 2], Global.ACT_EFFECTS[Global.act * 2 - 1]):
+			for j in randi_range(Global.ACT_EFFECTS[range_index.x], Global.ACT_EFFECTS[range_index.y]):
 				var effect := Effect.all_effects.values().pick_random().new() as Effect
 				effects.append(effect)
 			entity.modules.append(Module.new(effects))
-		for k in randi_range(Global.ACT_DAEMONS[Global.act * 2 - 2], Global.ACT_DAEMONS[Global.act * 2 - 1]):
+		for k in randi_range(Global.ACT_DAEMONS[range_index.x], Global.ACT_DAEMONS[range_index.y]):
 			var modifiers: Array[Modifier]
 			# TODO distinguish between positive and negative modifiers
-			for l in randi_range(Global.ACT_POS_MODIFIERS[Global.act * 2 - 2], Global.ACT_POS_MODIFIERS[Global.act * 2 - 1]):
+			for l in randi_range(Global.ACT_POS_MODIFIERS[range_index.x], Global.ACT_POS_MODIFIERS[range_index.y]):
 				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
 				modifiers.append(modifier)
-			for m in randi_range(Global.ACT_NEG_MODIFIERS[Global.act * 2 - 2], Global.ACT_NEG_MODIFIERS[Global.act * 2 - 1]):
+			for m in randi_range(Global.ACT_NEG_MODIFIERS[range_index.x], Global.ACT_NEG_MODIFIERS[range_index.y]):
 				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
 				modifiers.append(modifier)
 			entity.daemons.append(Daemon.new(modifiers))

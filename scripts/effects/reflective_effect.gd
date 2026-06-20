@@ -14,6 +14,5 @@ func _is_beneficial() -> bool: return true
 func _get_apply_type() -> ApplyType: return ApplyType.AFTER_DAMAGE
 
 func apply_effect(target: Entity) -> bool:
-	@warning_ignore("narrowing_conversion")
-	target.health -= target.damage_dealing * base
+	target.health -= floori(target.damage_dealing * base)
 	return true
