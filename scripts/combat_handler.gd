@@ -200,12 +200,14 @@ func focus_entity(entity: Entity) -> void:
 	const D = 0.35
 	if entity:
 		if not _focused_entity:
+			$ZoomInPlayer.play()
 			tween.tween_property(cam, ^":fov", _cam_initial_fov * 0.8, D)
 		tween.tween_property(cam, ^":global_position",
 				_cam_initial_transform.origin.lerp(entity.entity_3d.global_position, 0.4), D)
 		tween.tween_property(cam, ^":global_rotation",
 				Basis.looking_at(entity.entity_3d.global_position - _cam_initial_transform.origin).get_euler(), D)
 	else:
+		$ZoomOutPlayer.play()
 		# Return to initial view
 		tween.tween_property(cam, ^":fov", _cam_initial_fov, D)
 		tween.tween_property(cam, ^":global_transform", _cam_initial_transform, D)

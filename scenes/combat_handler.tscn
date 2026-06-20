@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
 [ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="19_xv2y6"]
 [ext_resource type="Script" path="res://scripts/misc_lines.gd" id="21_2sghh"]
+[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
+[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
@@ -376,3 +378,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Return To Laboratory"
+
+[node name="ZoomInPlayer" type="AudioStreamPlayer" parent="." unique_id=908736535]
+stream = ExtResource("22_8utki")
+bus = &"SFX"
+
+[node name="ZoomOutPlayer" type="AudioStreamPlayer" parent="." unique_id=1631642410]
+stream = ExtResource("23_gb8rm")
+bus = &"SFX"
