@@ -582,6 +582,167 @@ tracks/47/keys = {
 "values": [0.053404182]
 }
 
+[sub_resource type="Animation" id="Animation_35xa3"]
+resource_name = "Damaged"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Right Wing:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-88.68201, 67.23255), Vector2(-57.947384, 43.17691)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Right Wing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.3856621]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Body Ik:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, -315), Vector2(27.275154, -310.87695)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Body Ik:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Left Wing:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(106, -36), Vector2(213.90697, -60.48214)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Left Wing:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.5049791]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Triangle thing:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 60), Vector2(-3.105369, 60.558983)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Triangle thing:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.6221449]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50.8126, -1.6925426)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.33761698]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -21)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.4997807]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Angel Bones/Position:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892157, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jixjt"]
 resource_name = "Dash"
 length = 1.1
@@ -1161,6 +1322,394 @@ tracks/47/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-0.21480048]
+}
+
+[sub_resource type="Animation" id="Animation_3ig4j"]
+resource_name = "Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Left Wing:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(106, -36), Vector2(150.14793, 189.2773)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Left Wing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5365573]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-70.408066, 166.01715)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.7168785]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -43)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -58)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -21)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head/Head Tip:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, -91)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head/Head Tip:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Top:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96.01527, -53.01322), Vector2(46.13904, 130.19821)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Top:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.7246854e-09, 2.2711654]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Middle:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.36666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(117.018684, 14.997818), Vector2(-33.734825, -264.8738)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Middle:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.36666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.7246854e-09, 1.5886147]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Bot:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(98.01559, 94.01062), Vector2(38.2111, 90.985115)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Left Wing Bot:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.7246854e-09, 1.1358516]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Top:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-92.697365, -33.777542), Vector2(-1.2196503, -99.00026)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Top:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.7246854e-09, 0.31293258]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Middle:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-81.2769, 53.35739), Vector2(23.42089, 53.159378)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Middle:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.121554896, 1.4894941]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Bot:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-67.23874, 115.72995), Vector2(72.84251, 237.04329)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Right Wing Bot:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.29956767, -0.80785537]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Triangle thing:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.26666665, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 60), Vector2(148.07935, -76.85535), Vector2(-30.915314, -339.6457)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Belly/Triangle thing:rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.26666665, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5306783, 3.0043724]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Right Wing:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-88.68201, 67.23255), Vector2(-247.19348, 193.49295)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Right Wing:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5699526]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Body Ik:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -315)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Angel Bones/Position/Bones/Skeleton2D/Body Ik:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Angel Bones/Position:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(52, 152)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Angel Bones/Position:rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.053404182]
 }
 
 [sub_resource type="Animation" id="Animation_1ql16"]
@@ -2321,11 +2870,25 @@ tracks/48/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Angel Bones/Position:modulate")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rhkyo"]
 _data = {
 &"Attack": SubResource("Animation_nw0ii"),
+&"Damaged": SubResource("Animation_35xa3"),
 &"Dash": SubResource("Animation_jixjt"),
+&"Death": SubResource("Animation_3ig4j"),
 &"Idle": SubResource("Animation_1ql16"),
 &"RESET": SubResource("Animation_oynkj")
 }
@@ -2335,13 +2898,20 @@ metadata/_edit_horizontal_guides_ = [414.0]
 
 [node name="Angel Bones" parent="." unique_id=1587888110 instance=ExtResource("1_7tgf0")]
 
-[node name="Bones" parent="Angel Bones/Position" parent_id_path=PackedInt32Array(1587888110, 1703821912) index="1" unique_id=42359806]
-visible = false
+[node name="RightLowerWing" parent="Angel Bones/Position/Images" parent_id_path=PackedInt32Array(1587888110, 1947587272) index="4" unique_id=998106904]
+z_index = -1
+polygon = PackedVector2Array(79.899994, -184, 51.100006, -184, 41.899994, -179, 37.600006, -179, 30.800003, -171, 25.5, -171, 22.5, -167, 21.199997, -167, 13.5, -148.4, 13.5, -146.7, -23.5, -94, -24.699997, -94, -46.5, -55.5, -46.5, -46.800003, -53.4, -39, -54.699997, -39, -70.6, -11, -72.2, -11, -74.5, 2.800003, -74.5, 4.300003, -91.5, 28, -92.6, 28, -134.6, 98, -135.7, 98, -141.5, 109.5, -141.5, 118.399994, -159.5, 152.6, -159.5, 173, -154.5, 176.9, -154.5, 178.4, -139.5, 183.4, -139.5, 184, -129.8, 184, -107.2, 181, -102.1, 181, -74.1, 170, -58.7041, 184.50024, -54, 160, -51.699997, 160, -9.600006, 121, -8.600006, 121, 36.5, 66.7, 36.5, 64.8, 54.199997, 49, 56.399994, 49, 73.399994, 29, 79.3, 29, 102.5, 7.899994, 102.5, 6.899994, 136, -16, 137.70001, -16, 159.5, -55.699997, 159.5, -90.6, 144.5, -137.3, 144.5, -140.6, 138.5, -150.6, 138.5, -152.9, 132.5, -158, 132.5, -159.1, 107.5, -175.2, 107.5, -176.5)
+
+[node name="RightMiddleWing" parent="Angel Bones/Position/Images" parent_id_path=PackedInt32Array(1587888110, 1947587272) index="5" unique_id=1071374173]
+z_index = -1
+
+[node name="RightTopWing" parent="Angel Bones/Position/Images" parent_id_path=PackedInt32Array(1587888110, 1947587272) index="6" unique_id=1735689481]
+z_index = -1
 
 [node name="Belly" parent="Angel Bones/Position/Bones/Skeleton2D" parent_id_path=PackedInt32Array(1587888110, 1771878783) index="0" unique_id=142925697]
 position = Vector2(1.203841, 23.99444)
 rotation = 0.050183505
-scale = Vector2(0.99999565, 0.99999565)
+scale = Vector2(0.99988276, 0.99988276)
 editor_settings/show_bone_gizmo = false
 
 [node name="Torso" parent="Angel Bones/Position/Bones/Skeleton2D/Belly" index="0" unique_id=1657271605]
@@ -2356,7 +2926,7 @@ editor_settings/show_bone_gizmo = false
 [node name="Head" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck" index="0" unique_id=1591595549]
 position = Vector2(11.070738, -18.216816)
 rotation = -0.17486027
-scale = Vector2(0.99993426, 0.99993426)
+scale = Vector2(0.9998837, 0.9998837)
 editor_settings/show_bone_gizmo = false
 
 [node name="Head Tip" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso/Neck/Head" index="0" unique_id=52942668]
@@ -2364,49 +2934,65 @@ editor_settings/show_bone_gizmo = false
 
 [node name="Left Wing Top" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="1" unique_id=1183204116]
 position = Vector2(100, -93)
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.000172, 1.000172)
 editor_settings/show_bone_gizmo = false
 
 [node name="Left Wing Middle" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="2" unique_id=42854567]
 position = Vector2(117, -25)
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.000172, 1.000172)
 editor_settings/show_bone_gizmo = false
 
 [node name="Left Wing Bot" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="3" unique_id=2099775468]
 position = Vector2(97, 50)
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.0001721, 1.0001721)
 editor_settings/show_bone_gizmo = false
 
 [node name="Right Wing Top" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="4" unique_id=1291680820]
 position = Vector2(-88, -82)
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.000172, 1.000172)
 editor_settings/show_bone_gizmo = false
 
 [node name="Right Wing Middle" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="5" unique_id=763458582]
 position = Vector2(-77, -5)
 rotation = 0.0
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.000172, 1.000172)
 editor_settings/show_bone_gizmo = false
 
 [node name="Right Wing Bot" parent="Angel Bones/Position/Bones/Skeleton2D/Belly/Torso" index="6" unique_id=1531603367]
 position = Vector2(-75, 46)
 rotation = 0.0
-scale = Vector2(1.0000591, 1.0000591)
+scale = Vector2(1.0001721, 1.0001721)
 editor_settings/show_bone_gizmo = false
 
 [node name="Triangle thing" parent="Angel Bones/Position/Bones/Skeleton2D/Belly" index="1" unique_id=358386827]
 rotation = 0.06023088
-scale = Vector2(0.9999467, 0.9999467)
+scale = Vector2(0.9998657, 0.9998657)
 editor_settings/show_bone_gizmo = false
 
 [node name="Right Wing" parent="Angel Bones/Position/Bones/Skeleton2D" parent_id_path=PackedInt32Array(1587888110, 1771878783) index="1" unique_id=885656972]
 position = Vector2(-86, 36)
+
+[node name="RemoteTransform2D2" parent="Angel Bones/Position/Bones/Skeleton2D/Right Wing/Right WingsM" parent_id_path=PackedInt32Array(1587888110, 527834816) index="0" unique_id=607288120]
+position = Vector2(3.0223122, 4.7361374)
+rotation = 1.5726801
+
+[node name="RemoteTransform2D3" parent="Angel Bones/Position/Bones/Skeleton2D/Right Wing/Right WingsB" parent_id_path=PackedInt32Array(1587888110, 11521392) index="0" unique_id=572101738]
+position = Vector2(-2.1223755, -34.797165)
+rotation = -0.87061733
 
 [node name="Body Ik" parent="Angel Bones/Position/Bones/Skeleton2D" parent_id_path=PackedInt32Array(1587888110, 1771878783) index="2" unique_id=728188972]
 editor_settings/show_bone_gizmo = false
 
 [node name="Left Wing" parent="Angel Bones/Position/Bones/Skeleton2D" parent_id_path=PackedInt32Array(1587888110, 1771878783) index="3" unique_id=2018470124]
 position = Vector2(106, -36)
+
+[node name="RemoteTransform2D" parent="Angel Bones/Position/Bones/Skeleton2D/Left Wing/Left WingsT" parent_id_path=PackedInt32Array(1587888110, 1755581086) index="0" unique_id=627832202]
+position = Vector2(18.45005, 30.848738)
+rotation = -0.68022263
+
+[node name="RemoteTransform2D2" parent="Angel Bones/Position/Bones/Skeleton2D/Left Wing/Left WingsM" parent_id_path=PackedInt32Array(1587888110, 1045901010) index="0" unique_id=1227790749]
+position = Vector2(14.008105, 103.70299)
+rotation = -1.5310256
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1794696985]
 libraries/ = SubResource("AnimationLibrary_rhkyo")

@@ -2,6 +2,94 @@
 
 [ext_resource type="PackedScene" uid="uid://xb2grit8kwea" path="res://assets/Enemy Parts/M Slime/m_slime_bones.tscn" id="1_4xkgj"]
 
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_iy3vy"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Body Ik")
+jiggle_data_chain_length = 4
+mass = 5.0
+damping = 0.2
+joint_data/0/bone_index = 1
+joint_data/0/bone2d_node = NodePath("Slime Base/Slime 1")
+joint_data/0/override_defaults = false
+joint_data/1/bone_index = 2
+joint_data/1/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2")
+joint_data/1/override_defaults = false
+joint_data/2/bone_index = 3
+joint_data/2/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Slime 3")
+joint_data/2/override_defaults = false
+joint_data/3/bone_index = 4
+joint_data/3/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Slime 3/Slime 4")
+joint_data/3/override_defaults = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_oedyh"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Mouth IK")
+tip_nodepath = NodePath("Slime Base/Slime 1/Slime 2/Mouth/Mouth2/Mouth3/Mouth4/Mouth5")
+ccdik_data_chain_length = 4
+joint_data/0/bone_index = 14
+joint_data/0/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Mouth/Mouth2")
+joint_data/0/rotate_from_joint = true
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 15
+joint_data/1/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Mouth/Mouth2/Mouth3")
+joint_data/1/rotate_from_joint = true
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 16
+joint_data/2/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Mouth/Mouth2/Mouth3/Mouth4")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = true
+joint_data/2/constraint_angle_min = 0.0
+joint_data/2/constraint_angle_max = 305.865
+joint_data/2/constraint_angle_invert = false
+joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = true
+joint_data/3/bone_index = 13
+joint_data/3/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Mouth")
+joint_data/3/rotate_from_joint = false
+joint_data/3/enable_constraint = false
+joint_data/3/editor_draw_gizmo = true
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_mji5a"]
+resource_local_to_scene = true
+target_nodepath = NodePath("Tonge IK")
+tip_nodepath = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3/Tonge4/Tonge5/Tonge6/Tonge7")
+ccdik_data_chain_length = 5
+joint_data/0/bone_index = 7
+joint_data/0/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2")
+joint_data/0/rotate_from_joint = true
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 8
+joint_data/1/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3")
+joint_data/1/rotate_from_joint = true
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = false
+joint_data/2/bone_index = 9
+joint_data/2/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3/Tonge4")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = false
+joint_data/2/editor_draw_gizmo = false
+joint_data/3/bone_index = 10
+joint_data/3/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3/Tonge4/Tonge5")
+joint_data/3/rotate_from_joint = false
+joint_data/3/enable_constraint = false
+joint_data/3/editor_draw_gizmo = false
+joint_data/4/bone_index = 11
+joint_data/4/bone2d_node = NodePath("Slime Base/Slime 1/Slime 2/Tonge/Tonge2/Tonge3/Tonge4/Tonge5/Tonge6")
+joint_data/4/rotate_from_joint = false
+joint_data/4/enable_constraint = false
+joint_data/4/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_jkep2"]
+resource_local_to_scene = true
+enabled = true
+modification_count = 3
+modifications/0 = SubResource("SkeletonModification2DJiggle_iy3vy")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_oedyh")
+modifications/2 = SubResource("SkeletonModification2DCCDIK_mji5a")
+
 [sub_resource type="Animation" id="Animation_bn3wm"]
 resource_name = "Attack"
 length = 1.7666667
@@ -92,6 +180,106 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.89047015, 0.09625354, 0.90642756, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qvaog"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1237.4999, -444.8749), Vector2(2450, 120.75009), Vector2(2862.5, 405.12497)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1362.4999, 433.2499), Vector2(2112.4995, 789.49994)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1191, 200.00003), Vector2(1278.1248, -85.500015)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("M Slime:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.295, 1.295), Vector2(1, 1), Vector2(0.355, 0.355)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("M Slime:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, 21), Vector2(5, -22), Vector2(6, 20), Vector2(8, 109.00001)]
 }
 
 [sub_resource type="Animation" id="Animation_4b0of"]
@@ -197,6 +385,54 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(8, 22)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Body Ik:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Tonge IK:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("M Slime/Scale/Bones/Skeleton2D/Mouth IK:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.1346233]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("M Slime:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4xkgj"]
 resource_name = "jump"
@@ -253,18 +489,23 @@ tracks/3/keys = {
 _data = {
 &"Attack": SubResource("Animation_bn3wm"),
 &"Damaged": SubResource("Animation_jra4f"),
+&"Death": SubResource("Animation_qvaog"),
 &"Idle": SubResource("Animation_4b0of"),
 &"RESET": SubResource("Animation_26rvg"),
 &"jump": SubResource("Animation_4xkgj")
 }
 
 [node name="Med SLime ENT" type="Node2D" unique_id=263273724]
+metadata/_edit_horizontal_guides_ = [165.0]
 
 [node name="M Slime" parent="." unique_id=1679086926 instance=ExtResource("1_4xkgj")]
 position = Vector2(8, 22)
 
-[node name="Bones" parent="M Slime/Scale" parent_id_path=PackedInt32Array(1679086926, 811321674) index="0" unique_id=2014117625]
-visible = false
+[node name="Skeleton2D" parent="M Slime/Scale/Bones" parent_id_path=PackedInt32Array(1679086926, 2014117625) index="0" unique_id=1394820632]
+modification_stack = SubResource("SkeletonModificationStack2D_jkep2")
+
+[node name="Body Ik" parent="M Slime/Scale/Bones/Skeleton2D" index="1" unique_id=632532510]
+position = Vector2(1392.0001, -424.00003)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1281135999]
 libraries/ = SubResource("AnimationLibrary_7fsap")

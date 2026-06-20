@@ -10,8 +10,8 @@ joint_data/0/bone_index = 23
 joint_data/0/bone2d_node = NodePath("Belly/Base Tail")
 joint_data/0/rotate_from_joint = false
 joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 5.7139993
-joint_data/0/constraint_angle_max = 308.57095
+joint_data/0/constraint_angle_min = 5.713998
+joint_data/0/constraint_angle_max = 308.57092
 joint_data/0/constraint_angle_invert = true
 joint_data/0/constraint_in_localspace = true
 joint_data/0/editor_draw_gizmo = true
@@ -19,7 +19,7 @@ joint_data/1/bone_index = 24
 joint_data/1/bone2d_node = NodePath("Belly/Base Tail/T1")
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 125.71397
+joint_data/1/constraint_angle_min = 125.71396
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = true
 joint_data/1/constraint_in_localspace = true
@@ -29,7 +29,7 @@ joint_data/2/bone2d_node = NodePath("Belly/Base Tail/T1/T2")
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = 17.142998
-joint_data/2/constraint_angle_max = 205.71397
+joint_data/2/constraint_angle_max = 205.71393
 joint_data/2/constraint_angle_invert = true
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true
@@ -37,8 +37,8 @@ joint_data/3/bone_index = 26
 joint_data/3/bone2d_node = NodePath("Belly/Base Tail/T1/T2/T3")
 joint_data/3/rotate_from_joint = false
 joint_data/3/enable_constraint = true
-joint_data/3/constraint_angle_min = 28.570995
-joint_data/3/constraint_angle_max = 182.85696
+joint_data/3/constraint_angle_min = 28.570988
+joint_data/3/constraint_angle_max = 182.85693
 joint_data/3/constraint_angle_invert = true
 joint_data/3/constraint_in_localspace = true
 joint_data/3/editor_draw_gizmo = true
@@ -47,7 +47,7 @@ joint_data/4/bone2d_node = NodePath("Belly/Base Tail/T1/T2/T3/T4")
 joint_data/4/rotate_from_joint = false
 joint_data/4/enable_constraint = true
 joint_data/4/constraint_angle_min = 45.714
-joint_data/4/constraint_angle_max = 278.60992
+joint_data/4/constraint_angle_max = 278.60986
 joint_data/4/constraint_angle_invert = true
 joint_data/4/constraint_in_localspace = true
 joint_data/4/editor_draw_gizmo = true
@@ -85,7 +85,7 @@ joint_data/1/use_target_rotation = true
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_ftsb8"]
 target_nodepath = NodePath("Head IK")
 tip_nodepath = NodePath("Belly/Base1/Base2/Base3/Base4/Base5/Base6/Base7/Base8")
-ccdik_data_chain_length = 7
+ccdik_data_chain_length = 5
 joint_data/0/bone_index = 4
 joint_data/0/bone2d_node = NodePath("Belly/Base1/Base2/Base3/Base4")
 joint_data/0/rotate_from_joint = false
@@ -105,7 +105,7 @@ joint_data/3/bone_index = 7
 joint_data/3/bone2d_node = NodePath("Belly/Base1/Base2/Base3/Base4/Base5/Base6/Base7")
 joint_data/3/rotate_from_joint = false
 joint_data/3/enable_constraint = true
-joint_data/3/constraint_angle_min = 102.85699
+joint_data/3/constraint_angle_min = 102.856964
 joint_data/3/constraint_angle_max = 360.0
 joint_data/3/constraint_angle_invert = false
 joint_data/3/constraint_in_localspace = true
@@ -115,16 +115,6 @@ joint_data/4/bone2d_node = NodePath("Belly/Base1/Base2/Base3")
 joint_data/4/rotate_from_joint = false
 joint_data/4/enable_constraint = false
 joint_data/4/editor_draw_gizmo = true
-joint_data/5/bone_index = 2
-joint_data/5/bone2d_node = NodePath("Belly/Base1/Base2")
-joint_data/5/rotate_from_joint = false
-joint_data/5/enable_constraint = false
-joint_data/5/editor_draw_gizmo = true
-joint_data/6/bone_index = 1
-joint_data/6/bone2d_node = NodePath("Belly/Base1")
-joint_data/6/rotate_from_joint = false
-joint_data/6/enable_constraint = false
-joint_data/6/editor_draw_gizmo = true
 editor/draw_gizmo = false
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_cx3fi"]
@@ -159,7 +149,7 @@ joint_data/1/enable_constraint = false
 joint_data/1/editor_draw_gizmo = false
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_7f3ly"]
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_bauh2"]
 resource_local_to_scene = true
 enabled = true
 modification_count = 6
@@ -206,7 +196,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.40000004, 0.73333335, 0.8333334, 0.9333334, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-209.00002, -111.00001), Vector2(-118, -44), Vector2(-125, -265), Vector2(-45.98368, -397.89453), Vector2(-121.01419, -395.6791), Vector2(-170.21753, -285.16895), Vector2(-225.54395, -87.44608), Vector2(-161.38081, -119.6284)]
+"values": [Vector2(-125.00001, -149), Vector2(-118, -44), Vector2(-125, -265), Vector2(-45.98368, -397.89453), Vector2(-121.01419, -395.6791), Vector2(-170.21753, -285.16895), Vector2(-225.54395, -87.44608), Vector2(-161.38081, -119.6284)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -401,6 +391,191 @@ tracks/18/keys = {
 "values": [Vector2(-12.998375, 18.996216), Vector2(-12.99823, 18.996038)]
 }
 
+[sub_resource type="Animation" id="Animation_ig23o"]
+resource_name = "Damaged"
+length = 0.23333333
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Foot IK:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(41, 113), Vector2(74.12158, 117.138245)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Foot IK:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dino Bones/Bones/Skeleton2D/Tail IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(195, -177), Vector2(307.96887, -34.537186)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dino Bones/Bones/Skeleton2D/Tail IK:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-134, -137), Vector2(-44.68074, -449.6616)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dino Bones/Bones/Skeleton2D/Back Arm IK:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175, -58)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dino Bones/Bones/Skeleton2D/Back Arm IK:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.085104]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Arm Ik:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-55, -29)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Arm Ik:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.4484636, 0.3698926]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dino Bones/Bones/Skeleton2D/Back foot IK:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-61, 116), Vector2(33.17653, 130.27225)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dino Bones/Bones/Skeleton2D/Back foot IK:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dino Bones:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(40, -29)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Dino Bones:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.31040323]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Dino Bones:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.20000002, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(18.892157, 0, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_maylq"]
 resource_name = "Dash"
 length = 0.7
@@ -556,10 +731,10 @@ tracks/12/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.36666667, 0.7),
+"times": PackedFloat32Array(0, 0.33333334, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-135, -174), Vector2(-149, -167), Vector2(-135, -174)]
+"values": [Vector2(-131.66907, -221.01485), Vector2(-130.54843, -185.35953), Vector2(-131.66907, -221.01485)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -620,6 +795,178 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-3.920929, -17.048996)]
+}
+
+[sub_resource type="Animation" id="Animation_3b6po"]
+resource_name = "Death"
+length = 0.46666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dino Bones:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.33333334, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-69, 406), Vector2(-78, 382), Vector2(-73, 414.99997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dino Bones:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5923336]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Foot IK:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, 113)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Foot IK:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dino Bones/Bones/Skeleton2D/Tail IK:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(195, -177), Vector2(-10.59758, -264.36804)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dino Bones/Bones/Skeleton2D/Tail IK:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.10000001, 0.3, 0.33333334, 0.43333337),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-134, -137), Vector2(-147.82712, -428.26047), Vector2(142.46045, -430.042), Vector2(-75.89574, -529.8358), Vector2(36.099823, -528.4236), Vector2(-87.24689, -560.08734)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dino Bones/Bones/Skeleton2D/Back Arm IK:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175, -58)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dino Bones/Bones/Skeleton2D/Back Arm IK:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.085104]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Arm Ik:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-55, -29)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dino Bones/Bones/Skeleton2D/Front Arm Ik:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.3, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.4484636, 2.6997588, 2.4085546, 2.9461796]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dino Bones/Bones/Skeleton2D/Back foot IK:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-61, 116)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Dino Bones/Bones/Skeleton2D/Back foot IK:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_wb20u"]
@@ -705,10 +1052,10 @@ tracks/6/path = NodePath("Dino Bones/Bones/Skeleton2D/Head IK:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1, 1.2, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-131, -138), Vector2(-105, -121), Vector2(-111, -140), Vector2(-46, -148.00002)]
+"values": [Vector2(-150, -93.000015), Vector2(-105.999985, -122.000015)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -792,7 +1139,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.2900453, 0.099933445, 0.23873846]
+"values": [0.2900453, -0.12246296, 0.23873846]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -1097,11 +1444,25 @@ tracks/22/keys = {
 "update": 0,
 "values": [Vector2(-12.99823, 18.996038)]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Dino Bones:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(18.892157, 0, 0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_78cmf"]
 _data = {
 &"Attack": SubResource("Animation_bbjfb"),
+&"Damaged": SubResource("Animation_ig23o"),
 &"Dash": SubResource("Animation_maylq"),
+&"Death": SubResource("Animation_3b6po"),
 &"Idle": SubResource("Animation_wb20u"),
 &"RESET": SubResource("Animation_ikia8")
 }
@@ -1110,13 +1471,10 @@ _data = {
 metadata/_edit_horizontal_guides_ = [336.0]
 
 [node name="Dino Bones" parent="." unique_id=312544773 instance=ExtResource("1_jhvda")]
+modulate = Color(18.892157, 0, 0, 1)
 
 [node name="Skeleton2D" parent="Dino Bones/Bones" parent_id_path=PackedInt32Array(312544773, 749107458) index="0" unique_id=2040274698]
-visible = false
-modification_stack = SubResource("SkeletonModificationStack2D_7f3ly")
-
-[node name="Belly" parent="Dino Bones/Bones/Skeleton2D" index="0" unique_id=1682291410]
-scale = Vector2(0.9999937, 0.9999937)
+modification_stack = SubResource("SkeletonModificationStack2D_bauh2")
 
 [node name="Base6" parent="Dino Bones/Bones/Skeleton2D/Belly/Base1/Base2/Base3/Base4/Base5" parent_id_path=PackedInt32Array(312544773, 1990613430) index="0" unique_id=404943185]
 position = Vector2(-12.99823, 18.996038)
@@ -1125,32 +1483,26 @@ position = Vector2(-12.99823, 18.996038)
 position = Vector2(50.013947, -7.996216)
 rotation = 1.7143956
 
-[node name="Front Leg" parent="Dino Bones/Bones/Skeleton2D/Belly" index="1" unique_id=224370367]
+[node name="Front Leg" parent="Dino Bones/Bones/Skeleton2D/Belly" parent_id_path=PackedInt32Array(312544773, 1682291410) index="1" unique_id=224370367]
 position = Vector2(35.003876, 22.003433)
 rotation = -0.33758888
-scale = Vector2(0.99999493, 0.99999493)
 
-[node name="Back LEg" parent="Dino Bones/Bones/Skeleton2D/Belly" index="2" unique_id=100626546]
+[node name="Back LEg" parent="Dino Bones/Bones/Skeleton2D/Belly" parent_id_path=PackedInt32Array(312544773, 1682291410) index="2" unique_id=100626546]
 position = Vector2(-36.005524, 26.000534)
 rotation = -1.0844219
-scale = Vector2(1.0000012, 1.0000012)
-
-[node name="Tail IK" parent="Dino Bones/Bones/Skeleton2D" index="1" unique_id=1348826484]
-scale = Vector2(0.99997514, 0.99997514)
 
 [node name="Head IK" parent="Dino Bones/Bones/Skeleton2D" index="2" unique_id=1071371905]
 position = Vector2(-117, -172)
-scale = Vector2(0.99999243, 0.99999243)
 
 [node name="Back Arm IK" parent="Dino Bones/Bones/Skeleton2D" index="3" unique_id=820466328]
 position = Vector2(-154, -45)
 rotation = 2.100748
-scale = Vector2(0.9999965, 0.9999965)
+scale = Vector2(1, 1)
 
 [node name="Front Arm Ik" parent="Dino Bones/Bones/Skeleton2D" index="4" unique_id=336478395]
 position = Vector2(43.999992, 8.999996)
 rotation = 2.1211624
-scale = Vector2(0.9999964, 0.9999964)
+scale = Vector2(0.99997526, 0.99997526)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1753380492]
 libraries/ = SubResource("AnimationLibrary_78cmf")
