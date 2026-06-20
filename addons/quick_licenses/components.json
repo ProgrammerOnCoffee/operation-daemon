@@ -32,4 +32,14 @@
 			}
 		]
 	},
+	{
+		"name": "Science Gothic font",
+		"source": "https://fonts.google.com/specimen/Science+Gothic",
+		"parts": [
+			{
+				"copyright": ["2024, Font Detective LLC <https://github.com/googlefonts/science-gothic/OFL.txt>"],
+				"license": "OFL-1.1"
+			}
+		]
+	},
 ]
