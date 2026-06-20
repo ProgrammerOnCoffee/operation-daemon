@@ -17,7 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://clqhle5y4evac" path="res://assets/images/splash.png" id="12_0ld40"]
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
+[ext_resource type="Script" uid="uid://dh3s8gvxiywif" path="res://scripts/menu_bar.gd" id="12_gqmmt"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_muem4"]
 
@@ -108,212 +110,6 @@ func make_points_for(radius:float, vertices:int, modifiers:Dictionary[int, float
 	
 	return points
 "
-
-[sub_resource type="Animation" id="Animation_0ld40"]
-resource_name = "Background"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TextureRect3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1544, 7), Vector2(-738, 7)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect3:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../TextureRect2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-549, 586), Vector2(1540, 586)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../TextureRect2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../TextureRect4:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1547.9999, 24), Vector2(-507.00006, 24)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect4:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../TextureRect5:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-623, 539), Vector2(1908, 539)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../TextureRect5:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_gqmmt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TextureRect3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1544, 7)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect3:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../TextureRect2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-252, 586)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../TextureRect2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../TextureRect4:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1547.9999, 24)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect4:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../TextureRect5:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-507.00006, 539)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../TextureRect5:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc10j"]
-_data = {
-&"Background": SubResource("Animation_0ld40"),
-&"RESET": SubResource("Animation_gqmmt")
-}
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
 color = Color(0.071100004, 0.074880004, 0.09, 1)
@@ -472,62 +268,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/MainMenu/Credits:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu/Licenses:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-648, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu/Licenses:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.399, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/MainMenu/Credits:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.001, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
@@ -536,62 +284,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/MainMenu/Credits:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-648, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.399, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/MainMenu/Credits:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.001, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_tbgi4"]
@@ -600,62 +300,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/MainMenu/Settings:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-648, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.19900002, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(903, 324), Vector2(903, 651), Vector2(249, 42), Vector2(249, 324)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.399, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/MainMenu/Settings:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.001, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_tefeu"]
@@ -663,86 +315,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/MainMenu/Settings:position")
+tracks/0/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(576, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/MainMenu/MainMenu:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu/MenuBackdrop/Circle:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Vector2(903, 324)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/MainMenu/MainMenu:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI/MainMenu/Settings:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("UI/MainMenu/Credits:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI/MainMenu/Licenses:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
@@ -801,6 +381,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_muem4")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=745645119]
 visible = false
@@ -820,11 +402,81 @@ script = SubResource("GDScript_o5qli")
 outer_vertices = 50
 outer_radius = 180.0
 
+[node name="Bars" type="Control" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=1218761024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bar" type="TextureRect" parent="UILayer/UI/MainMenu/MenuBackdrop/Bars" unique_id=814885982]
+layout_mode = 1
+offset_left = 1154.0
+offset_top = 12.0
+offset_right = 2093.0
+offset_bottom = 29.0
+mouse_filter = 2
+texture = ExtResource("8_dp3eg")
+script = ExtResource("12_gqmmt")
+backwards = true
+speed = 256.0
+
+[node name="Bar2" type="TextureRect" parent="UILayer/UI/MainMenu/MenuBackdrop/Bars" unique_id=1722793194]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1194.0
+offset_top = -608.0
+offset_right = 2133.0
+offset_bottom = -591.0
+scale = Vector2(0.925, 0.345)
+mouse_filter = 2
+texture = ExtResource("8_dp3eg")
+stretch_mode = 2
+script = ExtResource("12_gqmmt")
+backwards = true
+speed = 512.0
+
+[node name="Bar3" type="TextureRect" parent="UILayer/UI/MainMenu/MenuBackdrop/Bars" unique_id=1828429368]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -978.0
+offset_top = -56.0
+offset_right = -39.0
+offset_bottom = -39.0
+scale = Vector2(0.925, 0.345)
+mouse_filter = 2
+texture = ExtResource("8_dp3eg")
+stretch_mode = 2
+script = ExtResource("12_gqmmt")
+speed = 480.0
+
+[node name="Bar4" type="TextureRect" parent="UILayer/UI/MainMenu/MenuBackdrop/Bars" unique_id=2035957364]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -939.0
+offset_top = -31.0
+offset_bottom = -14.0
+mouse_filter = 2
+texture = ExtResource("8_dp3eg")
+stretch_mode = 2
+script = ExtResource("12_gqmmt")
+speed = 224.0
+
 [node name="MainMenu" type="MarginContainer" parent="UILayer/UI/MainMenu" unique_id=1157474728]
-use_parent_material = true
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 40
@@ -837,7 +489,7 @@ layout_mode = 2
 theme_override_constants/separation = 70
 alignment = 1
 
-[node name="Panel2" type="Panel" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1391106576]
+[node name="Control" type="Control" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1331561544]
 layout_mode = 2
 
 [node name="Title2" type="TextureRect" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=507848633]
@@ -857,7 +509,7 @@ theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 theme_override_font_sizes/font_size = 79
 text = "[GAME NAME]"
 
-[node name="Panel" type="Panel" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1846783490]
+[node name="Control2" type="Control" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=119100406]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=391984751]
@@ -897,28 +549,15 @@ theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "CREDITS"
 script = ExtResource("1_o5qli")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=101117696]
-libraries/ = SubResource("AnimationLibrary_yc10j")
-autoplay = &"Background"
-speed_scale = 0.295
-
-[node name="TextureRect2" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1085695935]
-position = Vector2(-252, 586)
-texture = ExtResource("8_dp3eg")
-
-[node name="TextureRect3" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=13546974]
-position = Vector2(1544, 7)
-texture = ExtResource("8_dp3eg")
-
-[node name="TextureRect4" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=560517003]
-position = Vector2(1547.9999, 24)
-scale = Vector2(0.925, 0.3448529)
-texture = ExtResource("8_dp3eg")
-
-[node name="TextureRect5" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=2034216183]
-position = Vector2(-507.00006, 539)
-scale = Vector2(0.925, 0.3448529)
-texture = ExtResource("8_dp3eg")
+[node name="Quit" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=176792694]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 38.255)
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/hover = ExtResource("5_jkv2x")
+text = "QUIT"
+script = ExtResource("1_o5qli")
 
 [node name="Settings" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=436066926]
 visible = false
@@ -926,18 +565,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 576.0
-offset_right = 576.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Control" type="Control" parent="UILayer/UI/MainMenu/Settings" unique_id=1781843264]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Settings" unique_id=2085169770]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -946,6 +584,7 @@ theme_override_constants/margin_bottom = 40
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer" unique_id=664928527]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
 layout_mode = 2
@@ -968,6 +607,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
 layout_mode = 2
@@ -1083,20 +723,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 576.0
-offset_right = 576.0
-offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_jyhfs")
+alignment = 1
 
 [node name="Control" type="Control" parent="UILayer/UI/MainMenu/Credits" unique_id=1082398860]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Credits" unique_id=782163251]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -1106,6 +744,7 @@ theme_override_constants/margin_bottom = 40
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1711591947]
 layout_mode = 2
@@ -1234,10 +873,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_tbgi4")
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MainMenu/Licenses" unique_id=1460534805]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -1281,6 +920,7 @@ custom_minimum_size = Vector2(384, 0)
 size_flags_horizontal = 4
 
 [node name="Control" type="Control" parent="UILayer/UI/MainMenu/Licenses" unique_id=1780471704]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1354,6 +994,18 @@ theme_override_font_sizes/font_size = 20
 text = "Daemon Discovered: D001"
 vertical_alignment = 1
 
+[node name="Splash" type="TextureRect" parent="UILayer/UI" unique_id=2089094100]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_0ld40")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
@@ -1369,10 +1021,11 @@ initial_track = "MainMenu"
 [connection signal="back_to_main_menu" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("MainMenu")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("MainMenu/Credits")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Settings"), NodePath("MainMenu")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Credits")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Quit" to="UILayer/UI" method="_on_quit_pressed"]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Settings"), NodePath("MainMenu/MainMenu")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/Licenses")]]
-[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/MainMenu")]]
 [connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Licenses"), NodePath("MainMenu/Credits")]]
 
 [editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
