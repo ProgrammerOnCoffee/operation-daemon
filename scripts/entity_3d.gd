@@ -92,6 +92,7 @@ func play_sound(bank: String, remaining_loop_count: int = -1) -> void:
 			break
 	if not asp:
 		asp = AudioStreamPlayer3D.new()
+		asp.volume_db = 0.0
 		asp.max_db = 0.0
 		asp.autoplay = true
 		asp.panning_strength = 0.5
@@ -99,6 +100,8 @@ func play_sound(bank: String, remaining_loop_count: int = -1) -> void:
 		asp.attenuation_filter_cutoff_hz = 20500
 		asp.finished.connect(_reset_asp.bind(asp))
 		audio_stream_player_pool[asp] = true
+	asp.pitch_scale = randf_range(0.8, 1.1)
+	
 	var sound = Entity.sounds[bank].pick_random()
 	if sound is AudioStream:
 		asp.stream = sound
@@ -114,7 +117,8 @@ func play_sound(bank: String, remaining_loop_count: int = -1) -> void:
 			))
 		if "volume" in sound[1]:
 			asp.volume_db = sound[1].volume
-	asp.pitch_scale = randf_range(0.8, 1.1)
+		if "pitch_scale" in sound[1]:
+			asp.pitch_scale *= sound[1].pitch_scale
 	add_child(asp)
 
 
