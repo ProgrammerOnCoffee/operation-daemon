@@ -802,6 +802,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_muem4")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=745645119]
 visible = false
