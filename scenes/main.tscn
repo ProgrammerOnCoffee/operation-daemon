@@ -6,15 +6,20 @@
 [ext_resource type="Script" uid="uid://bli1u5xx8njbb" path="res://scripts/bus_slider.gd" id="3_sugp2"]
 [ext_resource type="StyleBox" uid="uid://c1t0x1sq8k05l" path="res://assets/MM Button.tres" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://coah5prguom4a" path="res://addons/quick_licenses/quick_licenses.tscn" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://eenx8pko6fxe" path="res://assets/UI Elements/Background.png" id="4_muem4"]
+[ext_resource type="Texture2D" uid="uid://bcaamixdton6q" path="res://assets/UI Elements/Title.png" id="5_dp3eg"]
 [ext_resource type="StyleBox" uid="uid://ruh5dw0gi8d2" path="res://assets/MM Hover.tres" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://2lu6bt560oec" path="res://scenes/world_map.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://oyxkbik65rda" path="res://scenes/laboratory.tscn" id="5_tefeu"]
 [ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://dqvwltowy5k7v" path="res://assets/UI Elements/Bars.png" id="8_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_muem4"]
 
 [sub_resource type="GDScript" id="GDScript_o5qli"]
 script/source = "@tool 
@@ -103,6 +108,212 @@ func make_points_for(radius:float, vertices:int, modifiers:Dictionary[int, float
 	
 	return points
 "
+
+[sub_resource type="Animation" id="Animation_0ld40"]
+resource_name = "Background"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1544, 7), Vector2(-738, 7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TextureRect3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-549, 586), Vector2(1540, 586)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureRect2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TextureRect4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1547.9999, 24), Vector2(-507.00006, 24)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TextureRect4:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../TextureRect5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-623, 539), Vector2(1908, 539)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../TextureRect5:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gqmmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1544, 7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TextureRect3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TextureRect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-252, 586)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../TextureRect2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../TextureRect4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1547.9999, 24)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TextureRect4:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../TextureRect5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-507.00006, 539)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../TextureRect5:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc10j"]
+_data = {
+&"Background": SubResource("Animation_0ld40"),
+&"RESET": SubResource("Animation_gqmmt")
+}
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_sugp2"]
 color = Color(0.071100004, 0.074880004, 0.09, 1)
@@ -580,7 +791,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_trceg")
 
-[node name="MenuBackdrop" type="ColorRect" parent="UILayer/UI/MainMenu" unique_id=1985840723]
+[node name="MenuBackdrop" type="TextureRect" parent="UILayer/UI/MainMenu" unique_id=1776158594]
+z_index = -3
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
@@ -588,18 +800,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.74509805, 0.69411767, 0.59607846, 1)
+texture = ExtResource("4_muem4")
 
 [node name="Polygon2D" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=745645119]
+visible = false
+z_index = -2
 use_parent_material = true
 color = Color(0.80357844, 0.6511109, 0.506857, 0.7254902)
+texture = SubResource("ImageTexture_muem4")
 polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
 
 [node name="Circle" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=295099895]
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(903, 324)
-color = Color(0.74509805, 0.69411767, 0.59607846, 1)
+color = Color(0.13, 0.10746667, 0.045500003, 0.41960785)
 polygon = PackedVector2Array(180, 0, 178.58064, 22.559982, 174.34497, 44.764183, 167.35977, 66.26242, 157.7352, 86.71567, 145.62306, 105.801346, 131.21436, 123.21848, 114.73632, 138.69238, 96.448814, 151.97903, 76.640274, 162.86887, 55.623055, 171.19017, 33.72864, 176.8117, 11.30229, 179.6448, -11.302284, 179.6448, -33.728638, 176.8117, -55.623066, 171.19017, -76.64029, 162.86887, -96.448814, 151.97903, -114.73632, 138.69238, -131.21436, 123.218475, -145.62308, 105.80133, -157.7352, 86.715675, -167.35977, 66.26243, -174.34497, 44.764183, -178.58064, 22.559977, -180, -1.57361e-05, -178.58064, -22.559963, -174.34497, -44.76417, -167.35977, -66.26242, -157.7352, -86.71567, -145.62305, -105.80137, -131.21436, -123.218475, -114.73629, -138.6924, -96.44886, -151.979, -76.6403, -162.86887, -55.623077, -171.19017, -33.728645, -176.8117, -11.302297, -179.6448, 11.3023, -179.6448, 33.728653, -176.8117, 55.62308, -171.19017, 76.640305, -162.86887, 96.44879, -151.97905, 114.7363, -138.6924, 131.21434, -123.21849, 145.62305, -105.80135, 157.7352, -86.71567, 167.35977, -66.26242, 174.34497, -44.764168, 178.58064, -22.559961)
 script = SubResource("GDScript_o5qli")
 outer_vertices = 50
@@ -622,24 +837,41 @@ layout_mode = 2
 theme_override_constants/separation = 70
 alignment = 1
 
+[node name="Panel2" type="Panel" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1391106576]
+layout_mode = 2
+
+[node name="Title2" type="TextureRect" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=507848633]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_dp3eg")
+expand_mode = 3
+stretch_mode = 3
+
 [node name="Title" type="Label" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1053968331]
+visible = false
 use_parent_material = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 theme_override_font_sizes/font_size = 79
 text = "[GAME NAME]"
+
+[node name="Panel" type="Panel" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1846783490]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=391984751]
 use_parent_material = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 19
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
 
 [node name="Start" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=1047255247]
 use_parent_material = true
-custom_minimum_size = Vector2(0, 65)
+custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "START"
@@ -647,9 +879,9 @@ script = ExtResource("1_o5qli")
 
 [node name="Settings" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=1464845893]
 use_parent_material = true
-custom_minimum_size = Vector2(0, 65)
+custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "SETTINGS"
@@ -657,13 +889,36 @@ script = ExtResource("1_o5qli")
 
 [node name="Credits" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=174548514]
 use_parent_material = true
-custom_minimum_size = Vector2(0, 65)
+custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "CREDITS"
 script = ExtResource("1_o5qli")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=101117696]
+libraries/ = SubResource("AnimationLibrary_yc10j")
+autoplay = &"Background"
+speed_scale = 0.295
+
+[node name="TextureRect2" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1085695935]
+position = Vector2(-252, 586)
+texture = ExtResource("8_dp3eg")
+
+[node name="TextureRect3" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=13546974]
+position = Vector2(1544, 7)
+texture = ExtResource("8_dp3eg")
+
+[node name="TextureRect4" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=560517003]
+position = Vector2(1547.9999, 24)
+scale = Vector2(0.925, 0.3448529)
+texture = ExtResource("8_dp3eg")
+
+[node name="TextureRect5" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=2034216183]
+position = Vector2(-507.00006, 539)
+scale = Vector2(0.925, 0.3448529)
+texture = ExtResource("8_dp3eg")
 
 [node name="Settings" type="HBoxContainer" parent="UILayer/UI/MainMenu" unique_id=436066926]
 visible = false
