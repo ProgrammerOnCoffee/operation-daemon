@@ -31,7 +31,7 @@ joint_data/6/bone_index = 1
 joint_data/6/bone2d_node = NodePath("L_Wire")
 joint_data/6/override_defaults = false
 
-[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_21woo"]
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_hjhy4"]
 resource_local_to_scene = true
 target_nodepath = NodePath("Head")
 jiggle_data_chain_length = 5
@@ -63,16 +63,16 @@ joint_data/4/override_defaults = false
 bone_index = 0
 bone2d_node = NodePath("Head")
 target_nodepath = NodePath("HEad look at")
-additional_rotation = -174.77496
+additional_rotation = -174.77495
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_nft2c"]
 
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_mt67n"]
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_87qgq"]
 resource_local_to_scene = true
 enabled = true
 modification_count = 4
 modifications/0 = SubResource("SkeletonModification2DJiggle_87qgq")
-modifications/1 = SubResource("SkeletonModification2DJiggle_21woo")
+modifications/1 = SubResource("SkeletonModification2DJiggle_hjhy4")
 modifications/2 = SubResource("SkeletonModification2DLookAt_yud22")
 modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_nft2c")
 
@@ -292,7 +292,7 @@ _data = {
 [node name="Node2D" parent="." unique_id=225943918 instance=ExtResource("1_hjhy4")]
 
 [node name="Skeleton2D" parent="Node2D/Bones" parent_id_path=PackedInt32Array(225943918, 586425908) index="0" unique_id=148740631]
-modification_stack = SubResource("SkeletonModificationStack2D_mt67n")
+modification_stack = SubResource("SkeletonModificationStack2D_87qgq")
 
 [node name="Head" parent="Node2D/Bones/Skeleton2D" index="0" unique_id=834099693]
 rotation = 2.9057264e-07

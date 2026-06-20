@@ -19,6 +19,10 @@ static var sounds: Dictionary[String, Array] = {
 		load("uid://cvlill150y258"),
 		load("uid://cb53vtqpu72e5"),
 	],
+	"attack_goopy_plane": [
+		[load("uid://eag2q5dt6aha"), { "pitch_scale": 2.0 }],
+		[load("uid://pnu66jqjsg4n"), { "pitch_scale": 2.0 }],
+	],
 	"attack_robot": [
 		load("uid://d07y23uo215bm"),
 		load("uid://b2swg85mx460"),
@@ -39,6 +43,9 @@ static var sounds: Dictionary[String, Array] = {
 	"b_dash_angel": [
 		load("uid://pml0ebyl72ut"),
 	],
+	"dash_goopy_plane": [
+		load("uid://bvvbjybeytkb"),
+	],
 	"dash_robot": [
 		[load("uid://dof1kxqge0x7i"), { "volume": -6.0 }],
 	],
@@ -55,6 +62,11 @@ static var sounds: Dictionary[String, Array] = {
 	"b_dash_spider": [
 		[load("uid://by3xroc14dams"), { "volume": -9.0 }],
 	],
+	"death_goopy_plane": [
+		load("uid://c07wpp23qds51"),
+		load("uid://0qbhthnhgdxa"),
+		load("uid://c8jwmbykiv6x8"),
+	],
 	"death_robot": [
 		load("uid://c8ajt4e1vtu52"),
 	],
@@ -62,16 +74,15 @@ static var sounds: Dictionary[String, Array] = {
 		load("uid://lyg48wyatxgy"),
 		load("uid://bc51ptet4ko3c"),
 	],
-	"death_monitor_plane": [
-		load("uid://c07wpp23qds51"),
-		load("uid://0qbhthnhgdxa"),
-		load("uid://c8jwmbykiv6x8"),
-	],
 	"hit_robot": [
 		load("uid://bbfcxfi4ihw2b"),
 		load("uid://cs5vvdsdfntli"),
 		load("uid://dvq6ybkysicfn"),
 		load("uid://ckf4vbwakyq0e"),
+	],
+	"hit_goopy_plane": [
+		load("uid://dc52y5q3ryf73"),
+		load("uid://du12omanop5ak"),
 	],
 	"hit_slime": [
 		load("uid://bhfv6fc13tgds"),
@@ -304,7 +315,7 @@ func take_damage(amount: int, animate: bool = false) -> void:
 	else:
 		combat_handler.damage_dealt += damage_receiving
 	
-	health -= amount
+	health -= damage_receiving
 	combat_handler.create_floaty_label(
 			combat_handler.cam.unproject_position(
 					entity_3d.project_point(Vector2(rect.size) * Vector2(0.5, 0.25))

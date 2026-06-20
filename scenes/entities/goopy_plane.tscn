@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bda2dom3t85op"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_3muwh"]
+[ext_resource type="PackedScene" uid="uid://yrd11ki2emue" path="res://assets/Enemy Parts/Goopy Plane/goopy_plane_ent.tscn" id="2_s7qly"]
+
+[node name="Goopy Plane" unique_id=1022515043 instance=ExtResource("1_3muwh")]
+rect = Rect2i(-224, -304, 448, 472)
+rect_attack_inset = 128
+max_health = 15
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_goopy_plane",
+&"b_dash": "dash_goopy_plane",
+&"counter": "counter",
+&"dash": "dash_goopy_plane",
+&"death": "death_goopy_plane",
+&"hit": "hit_goopy_plane",
+&"parry": "parry"
+})
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"Dash",
+&"damaged": &"Damaged",
+&"dash": &"Dash",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
+animation_durations = Dictionary[StringName, float]({
+&"attack": 0.9,
+&"b_dash": 2.0,
+&"damaged": 0.85,
+&"dash": 2.0,
+&"death": 1.0,
+&"idle": 1.0,
+&"parry": 1.0
+})
+attack_point = 0.65
+
+[node name="Goopy Plane ENt" parent="." index="0" unique_id=1726038403 instance=ExtResource("2_s7qly")]
+position = Vector2(-26.000004, -216)
+scale = Vector2(0.6, 0.6)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=1613406114]
+position = Vector2(0, -456)

@@ -17,15 +17,6 @@ sound_banks = Dictionary[StringName, String]({
 &"hit": "hit_robot",
 &"parry": "parry"
 })
-animation_names = Dictionary[StringName, StringName]({
-&"attack": &"Attack",
-&"b_dash": &"Dash",
-&"damaged": &"Damaged",
-&"dash": &"Dash",
-&"death": &"Death",
-&"idle": &"Idle",
-&"parry": &"Parry"
-})
 animation_durations = Dictionary[StringName, float]({
 &"attack": 0.85,
 &"b_dash": 1.9,
