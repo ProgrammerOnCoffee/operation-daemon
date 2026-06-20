@@ -291,7 +291,7 @@ func get_damage() -> int:
 
 
 ## Makes this [Entity] take [param amount] damage.
-func take_damage(amount: int, animate: bool = true) -> void:
+func take_damage(amount: int, animate: bool = false) -> void:
 	if amount <= 0 or health <= 0:
 		return
 	

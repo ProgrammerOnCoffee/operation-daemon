@@ -66,7 +66,7 @@ func attack() -> bool:
 			# Apply the pre-attack effects.
 			apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# Do the actual damage to the enemy.
-			selected_enemy.take_damage(damage_dealing)
+			selected_enemy.take_damage(damage_dealing, true)
 			# Recognize the real damage done post-effects.
 			damage_dealing = selected_enemy.damage_receiving
 			# Apply the post-attack effects.

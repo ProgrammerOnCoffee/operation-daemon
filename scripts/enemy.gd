@@ -55,7 +55,7 @@ func _take_turn() -> void:
 			combat_handler.player.apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# NOTE: No effects are applied by a Counter/Parry attack.
 			# Take the damage.
-			take_damage(combat_handler.player.damage_dealing)
+			take_damage(combat_handler.player.damage_dealing, true)
 			# Apply the player's post-attack effects.
 			combat_handler.player.apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		else:
