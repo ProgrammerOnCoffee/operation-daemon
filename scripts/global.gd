@@ -75,8 +75,6 @@ func research_all(amount:float = 0.10) -> void:
 ## Attempt to discover all daemons currently being researched.
 func attempt_discovery() -> void:
 	
-	print("ATTEMPT DISCOVERY -> ")
-	
 	for daemon in daemon_research:
 		# If the chance is passed, this daemon gets successfully researched.
 		if randf() <= daemon_research[daemon]:

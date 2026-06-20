@@ -1,5 +1,13 @@
 class_name TutorialButton extends Button
 
+## Allows for single-use triggering of tutorial panels. Good for opening a panel
+## the first time something happens.
+static var excluded_triggers:Array[StringName]
+func trigger(id:StringName, node_path:NodePath):
+	if excluded_triggers.has(id): return
+	states[node_path] = true
+	excluded_triggers.append(id)
+
 ## Whether or not these buttons' panels are open. Persistent past queue-freeing.
 static var states:Dictionary[NodePath, bool]
 @onready var path := get_path()
@@ -12,15 +20,17 @@ static var states:Dictionary[NodePath, bool]
 
 func _ready() -> void:
 	if not states.has(path):
-		states[path] = true
+		states[path] = info_panel.visible
 	
 	button_pressed = states[path]
 	
 	info_panel.visible = button_pressed
 	
-	close_button.pressed.connect(set_pressed.bind(false))
+	if close_button:
+		close_button.pressed.connect(set_pressed.bind(false))
 
 func _toggled(toggled_on: bool) -> void:
+	
 	if toggled_on: TransitionManager.transition(null, info_panel)
 	else:          TransitionManager.transition(info_panel, null)
 	

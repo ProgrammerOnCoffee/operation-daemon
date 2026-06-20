@@ -52,7 +52,6 @@ func load_entity(file_name: String) -> void:
 		var range_index := Vector2(
 			2 * Global.act, (2 * Global.act) + 1
 		)
-		print(range_index)
 		for i in randi_range(Global.ACT_MODULES[range_index.x], Global.ACT_MODULES[range_index.y]):
 			var effects: Array[Effect]
 			for j in randi_range(Global.ACT_EFFECTS[range_index.x], Global.ACT_EFFECTS[range_index.y]):
