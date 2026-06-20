@@ -1,6 +1,7 @@
 [gd_resource type="SkeletonModification2DJiggle" format=3 uid="uid://ba6b3jcbq0vi7"]
 
 [resource]
+resource_local_to_scene = true
 target_nodepath = NodePath("L_Tent IK")
 jiggle_data_chain_length = 7
 stiffness = 1.5

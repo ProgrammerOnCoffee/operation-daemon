@@ -32,6 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_wlffi"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Slime _Ik")
 jiggle_data_chain_length = 7
 stiffness = 1.0
@@ -61,6 +62,7 @@ joint_data/6/bone2d_node = NodePath("Base/Slime")
 joint_data/6/override_defaults = false
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_4y6w2"]
+resource_local_to_scene = true
 target_nodepath = NodePath("R_Tent IK")
 jiggle_data_chain_length = 7
 stiffness = 1.5
@@ -91,11 +93,13 @@ joint_data/6/bone2d_node = NodePath("Base/Tent/Tent2/Tent3/Tent4/Tent5/Tent6/Ten
 joint_data/6/override_defaults = false
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_lyd3f"]
+resource_local_to_scene = true
 bone_index = 0
 bone2d_node = NodePath("Base")
 target_nodepath = NodePath("Body Lookat")
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_4y6w2"]
+resource_local_to_scene = true
 fabrik_data_chain_length = 4
 joint_data/0/bone_index = -1
 joint_data/0/bone2d_node = NodePath("")
@@ -111,6 +115,7 @@ joint_data/3/magnet_position = Vector2(0, 0)
 joint_data/3/use_target_rotation = false
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_lyd3f"]
+resource_local_to_scene = true
 enabled = true
 modification_count = 5
 modifications/0 = SubResource("SkeletonModification2DJiggle_wlffi")
@@ -215,7 +220,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Tent2" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2" unique_id=1943050371]
 position = Vector2(188.0012, 11.000305)
-rotation = 0.01861956
+rotation = 0.018619558
 scale = Vector2(0.9999995, 0.9999995)
 rest = Transform2D(0.9998262, 0.018618478, -0.018618478, 0.9998262, 188.0012, 11.000305)
 editor_settings/show_bone_gizmo = false
@@ -223,15 +228,15 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Tent3" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2/Tent2" unique_id=914621673]
 position = Vector2(200.99986, 8.000137)
-rotation = -0.03929878
-scale = Vector2(0.99999845, 0.99999845)
+rotation = -0.039298784
+scale = Vector2(0.9999984, 0.9999984)
 rest = Transform2D(0.99922645, -0.03928861, 0.03928861, 0.99922645, 200.99986, 8.000137)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Tent4" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2/Tent2/Tent3" unique_id=2108795676]
 position = Vector2(240.00044, 19.000153)
-rotation = 0.022450909
+rotation = 0.022450907
 scale = Vector2(0.99999887, 0.99999887)
 rest = Transform2D(0.99974686, 0.022449, -0.022449, 0.99974686, 240.00044, 19.000153)
 editor_settings/show_bone_gizmo = false
@@ -240,7 +245,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Tent5" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2/Tent2/Tent3/Tent4" unique_id=951926941]
 position = Vector2(247.00046, 13.999466)
 rotation = -0.047997944
-scale = Vector2(0.9999816, 0.9999816)
+scale = Vector2(0.9999815, 0.9999815)
 rest = Transform2D(0.99883, -0.047978636, 0.047978636, 0.99883, 247.00046, 13.999466)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -248,14 +253,14 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Tent6" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2/Tent2/Tent3/Tent4/Tent5" unique_id=1034949307]
 position = Vector2(236.00403, 25)
 rotation = 0.065479495
-scale = Vector2(0.999996, 0.999996)
+scale = Vector2(0.99999595, 0.99999595)
 rest = Transform2D(0.9978531, 0.06543246, -0.06543246, 0.9978531, 236.00403, 25)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Tent7" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent2/Tent2/Tent3/Tent4/Tent5/Tent6" unique_id=366404674]
 position = Vector2(193.99658, 7.9992523)
-rotation = -0.06155465
+rotation = -0.061554648
 scale = Vector2(0.99999124, 0.99999124)
 rest = Transform2D(0.99809736, -0.061515253, 0.061515253, 0.99809736, 193.99658, 7.9992523)
 editor_settings/show_bone_gizmo = false
@@ -292,7 +297,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Slime4" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Slime/Slime2/Slime3" unique_id=1349815184]
 position = Vector2(-6.052887, 187.1192)
-rotation = -0.034136515
+rotation = -0.03413651
 scale = Vector2(0.999909, 0.999909)
 rest = Transform2D(0.99932647, -0.034126785, 0.034126785, 0.99932647, -6.052887, 187.1192)
 editor_settings/show_bone_gizmo = false
@@ -300,8 +305,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Slime5" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Slime/Slime2/Slime3/Slime4" unique_id=1964978851]
 position = Vector2(-11.997787, 168.9964)
-rotation = 0.02319921
-scale = Vector2(0.9999903, 0.9999903)
+rotation = 0.023199212
+scale = Vector2(0.9999902, 0.9999902)
 rest = Transform2D(0.9997213, 0.023196904, -0.023196904, 0.9997213, -11.997787, 168.9964)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
@@ -309,7 +314,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Slime6" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Slime/Slime2/Slime3/Slime4/Slime5" unique_id=644694220]
 position = Vector2(-3.0006104, 63.97644)
 rotation = 1.5735451
-scale = Vector2(1.000085, 1.000085)
+scale = Vector2(1.0000849, 1.0000849)
 rest = Transform2D(-0.0027490023, 1.0000814, -1.0000814, -0.0027490023, -3.0006104, 63.97644)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -336,14 +341,14 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Tent3" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent/Tent2" unique_id=1705307428]
 position = Vector2(200.99811, 7.9996185)
 rotation = -0.03922884
-scale = Vector2(0.9999817, 0.9999817)
+scale = Vector2(0.99998164, 0.99998164)
 rest = Transform2D(0.99921244, -0.039218068, 0.039218068, 0.99921244, 200.99811, 7.9996185)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Tent4" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent/Tent2/Tent3" unique_id=1401299866]
 position = Vector2(240.00525, 18.999573)
-rotation = 0.022377381
+rotation = 0.02237738
 scale = Vector2(0.9999956, 0.9999956)
 rest = Transform2D(0.99974525, 0.022375418, -0.022375418, 0.99974525, 240.00525, 18.999573)
 editor_settings/show_bone_gizmo = false
@@ -352,7 +357,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Tent5" type="Bone2D" parent="Scale/Bones/Skeleton2D/Base/Tent/Tent2/Tent3/Tent4" unique_id=1637107864]
 position = Vector2(247.0014, 13.998688)
 rotation = -0.048915587
-scale = Vector2(0.99999374, 0.99999374)
+scale = Vector2(0.9999937, 0.9999937)
 rest = Transform2D(0.9987977, -0.04889578, 0.04889578, 0.9987977, 247.0014, 13.998688)
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
