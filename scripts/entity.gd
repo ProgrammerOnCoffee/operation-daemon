@@ -304,7 +304,7 @@ func take_damage(amount: int, animate: bool = false) -> void:
 	else:
 		combat_handler.damage_dealt += damage_receiving
 	
-	health -= amount
+	health -= damage_receiving
 	combat_handler.create_floaty_label(
 			combat_handler.cam.unproject_position(
 					entity_3d.project_point(Vector2(rect.size) * Vector2(0.5, 0.25))
