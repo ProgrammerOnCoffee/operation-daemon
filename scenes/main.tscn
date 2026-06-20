@@ -898,6 +898,16 @@ theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "CREDITS"
 script = ExtResource("1_o5qli")
 
+[node name="Quit" type="Button" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=176792694]
+use_parent_material = true
+custom_minimum_size = Vector2(0, 38.255)
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/hover = ExtResource("5_jkv2x")
+text = "QUIT"
+script = ExtResource("1_o5qli")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer" unique_id=101117696]
 libraries/ = SubResource("AnimationLibrary_yc10j")
 autoplay = &"Background"
@@ -1383,6 +1393,7 @@ initial_track = "MainMenu"
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu"), NodePath("MainMenu/Credits")]]
+[connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Quit" to="UILayer/UI" method="_on_quit_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/Button" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Settings"), NodePath("MainMenu")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/Licenses")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu")]]
