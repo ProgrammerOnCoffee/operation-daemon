@@ -2,6 +2,10 @@ class_name Laboratory extends ColorRect
 
 signal back_to_main_menu
 
+## If [code]true[/code], no sounds will be played by [method _on_input_hover],
+## [method _on_input_down], or [method _on_input_pressed].
+static var input_sound_debounce: bool = true
+
 @export var map:Control
 
 @onready var tab_bar          := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
@@ -198,6 +202,12 @@ func _toggle_equip(toggled_on: bool) -> void:
 	_update_using_option_states()
 
 ## Hijack ButtonFeedback for sound effects. Heh heh heh.
-func _on_input_hover  (..._args:Array) -> void: ButtonFeedback.button_hover_player  .play()
-func _on_input_down   (..._args:Array) -> void: ButtonFeedback.button_down_player   .play()
-func _on_input_pressed(..._args:Array) -> void: ButtonFeedback.button_pressed_player.play()
+func _on_input_hover(..._args:Array) -> void:
+	if not input_sound_debounce:
+		ButtonFeedback.button_hover_player.play()
+func _on_input_down(..._args:Array) -> void:
+	if not input_sound_debounce:
+		ButtonFeedback.button_down_player.play()
+func _on_input_pressed(..._args:Array) -> void:
+	if not input_sound_debounce:
+		ButtonFeedback.button_pressed_player.play()

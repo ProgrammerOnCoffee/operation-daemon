@@ -11,6 +11,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		$Splash.show()
 		await get_tree().create_timer(1.0).timeout
+		Laboratory.input_sound_debounce = false
 		TransitionManager.fade($Splash)
 	
 	if OS.get_name() == "Web":
