@@ -59,7 +59,7 @@ func attack() -> bool:
 		
 		var start_t := Time.get_ticks_msec()
 		# Get the base amount of dmg to deal.
-		damage_dealing = int(get_damage() * await qte.pressed)
+		damage_dealing = 0 if qte.has_ended else int(get_damage() * await qte.pressed)
 		if damage_dealing:
 			# Inflict the relevant effects onto the enemy.
 			inflict_effects(selected_enemy, Module.SLOT.ATTACK)
