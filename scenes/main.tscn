@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dqvwltowy5k7v" path="res://assets/UI Elements/Bars.png" id="8_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="11_0ld40"]
 [ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 
@@ -109,6 +110,11 @@ func make_points_for(radius:float, vertices:int, modifiers:Dictionary[int, float
 	return points
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+bg_color = Color(0.1882353, 0.16078432, 0.08235294, 1)
+corner_radius_top_right = 55
+corner_detail = 1
+
 [sub_resource type="Animation" id="Animation_0ld40"]
 resource_name = "Background"
 length = 4.0
@@ -116,7 +122,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TextureRect3:position")
+tracks/0/path = NodePath("../Node2D/TextureRect3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -128,7 +134,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect3:rotation")
+tracks/1/path = NodePath("../Node2D/TextureRect3:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -140,7 +146,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../TextureRect2:position")
+tracks/2/path = NodePath("../Node2D/TextureRect2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -152,7 +158,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../TextureRect2:rotation")
+tracks/3/path = NodePath("../Node2D/TextureRect2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -164,7 +170,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../TextureRect4:position")
+tracks/4/path = NodePath("../Node2D/TextureRect4:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -176,7 +182,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect4:rotation")
+tracks/5/path = NodePath("../Node2D/TextureRect4:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -188,7 +194,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TextureRect5:position")
+tracks/6/path = NodePath("../Node2D/TextureRect5:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -200,7 +206,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../TextureRect5:rotation")
+tracks/7/path = NodePath("../Node2D/TextureRect5:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -215,7 +221,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TextureRect3:position")
+tracks/0/path = NodePath("../Node2D/TextureRect3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,7 +233,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../TextureRect3:rotation")
+tracks/1/path = NodePath("../Node2D/TextureRect3:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -239,7 +245,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../TextureRect2:position")
+tracks/2/path = NodePath("../Node2D/TextureRect2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -251,7 +257,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../TextureRect2:rotation")
+tracks/3/path = NodePath("../Node2D/TextureRect2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -263,7 +269,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../TextureRect4:position")
+tracks/4/path = NodePath("../Node2D/TextureRect4:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -275,7 +281,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../TextureRect4:rotation")
+tracks/5/path = NodePath("../Node2D/TextureRect4:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -287,7 +293,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../TextureRect5:position")
+tracks/6/path = NodePath("../Node2D/TextureRect5:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -299,7 +305,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../TextureRect5:rotation")
+tracks/7/path = NodePath("../Node2D/TextureRect5:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -335,6 +341,19 @@ func _toggled(toggled_on: bool) -> void:
 	
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+bg_color = Color(0.3019608, 0.2627451, 0.14509805, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
+bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+
+[sub_resource type="Theme" id="Theme_yc10j"]
+PopupMenu/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_hover_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/fonts/font = ExtResource("11_0ld40")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_0ld40")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_gqmmt")
 
 [sub_resource type="GDScript" id="GDScript_sugp2"]
 script/source = "extends OptionButton
@@ -466,6 +485,9 @@ Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
 HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
 
+[sub_resource type="Theme" id="Theme_0ld40"]
+Button/font_sizes/font_size = 18
+
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
 length = 0.4
@@ -555,7 +577,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-648, 0)]
+"values": [Vector2(0, 0), Vector2(-1152, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -593,6 +615,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/MainMenu/MainMenu/VBoxContainer/Node2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_tbgi4"]
 resource_name = "MainMenu<>Settings"
@@ -619,7 +653,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-648, 0)]
+"values": [Vector2(0, 0), Vector2(-1152, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -656,6 +690,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/MainMenu/MainMenu/VBoxContainer/Node2D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tefeu"]
@@ -743,6 +789,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/MainMenu/MainMenu/VBoxContainer/Node2D:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6xl0"]
@@ -871,8 +929,12 @@ theme_override_constants/separation = 8
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dp3eg")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "START"
 script = ExtResource("1_o5qli")
@@ -881,8 +943,12 @@ script = ExtResource("1_o5qli")
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dp3eg")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "SETTINGS"
 script = ExtResource("1_o5qli")
@@ -891,8 +957,12 @@ script = ExtResource("1_o5qli")
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dp3eg")
 theme_override_styles/hover = ExtResource("5_jkv2x")
 text = "CREDITS"
 script = ExtResource("1_o5qli")
@@ -902,20 +972,23 @@ libraries/ = SubResource("AnimationLibrary_yc10j")
 autoplay = &"Background"
 speed_scale = 0.295
 
-[node name="TextureRect2" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=1085695935]
+[node name="Node2D" type="Node2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=450279988]
+position = Vector2(-80, -40)
+
+[node name="TextureRect2" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/Node2D" unique_id=1085695935]
 position = Vector2(-252, 586)
 texture = ExtResource("8_dp3eg")
 
-[node name="TextureRect3" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=13546974]
+[node name="TextureRect3" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/Node2D" unique_id=13546974]
 position = Vector2(1544, 7)
 texture = ExtResource("8_dp3eg")
 
-[node name="TextureRect4" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=560517003]
+[node name="TextureRect4" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/Node2D" unique_id=560517003]
 position = Vector2(1547.9999, 24)
 scale = Vector2(0.925, 0.3448529)
 texture = ExtResource("8_dp3eg")
 
-[node name="TextureRect5" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer" unique_id=2034216183]
+[node name="TextureRect5" type="Sprite2D" parent="UILayer/UI/MainMenu/MainMenu/VBoxContainer/Node2D" unique_id=2034216183]
 position = Vector2(-507.00006, 539)
 scale = Vector2(0.925, 0.3448529)
 texture = ExtResource("8_dp3eg")
@@ -949,6 +1022,7 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 theme_override_font_sizes/font_size = 34
 text = "Settings"
 horizontal_alignment = 1
@@ -971,6 +1045,7 @@ theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Audio"
 horizontal_alignment = 1
 
@@ -981,6 +1056,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1357506537]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Master"
 horizontal_alignment = 1
 
@@ -1000,6 +1076,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1798174764]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Music"
 horizontal_alignment = 1
 
@@ -1018,6 +1095,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1375289710]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "SFX"
 horizontal_alignment = 1
 
@@ -1037,6 +1115,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_jyhfs")
 
 [node name="Label2" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1833306572]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Video"
 horizontal_alignment = 1
 
@@ -1046,11 +1125,18 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=17625826]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "VSync"
 
 [node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=678935027]
 custom_minimum_size = Vector2(175, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_focus_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_pressed_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_hover_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_font_sizes/font_size = 17
 toggle_mode = true
 text = "Enabled"
 script = SubResource("GDScript_tbgi4")
@@ -1061,12 +1147,24 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1605973238]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Window Mode"
 
 [node name="Button" type="OptionButton" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=307813271]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme = SubResource("Theme_yc10j")
+theme_override_colors/font_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_focus_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_pressed_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_hover_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.92156863, 0.92156863, 0.92156863, 1)
+theme_override_font_sizes/font_size = 17
 alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
 script = SubResource("GDScript_sugp2")
 
 [node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=1719356002]
@@ -1110,6 +1208,7 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1711591947]
 layout_mode = 2
 theme_type_variation = &"LLabel"
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Credits"
 horizontal_alignment = 1
 
@@ -1126,6 +1225,7 @@ size_flags_horizontal = 3
 
 [node name="Art" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1393050274]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Art:"
 horizontal_alignment = 1
 
@@ -1133,6 +1233,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://kyveri.carrd.co/"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Kyveri"
 uri = "https://kyveri.carrd.co/"
 
@@ -1142,6 +1246,7 @@ size_flags_horizontal = 3
 
 [node name="Music" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=1188704147]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Music:"
 horizontal_alignment = 1
 
@@ -1149,6 +1254,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://www.myokami.it/"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Myokami"
 uri = "https://www.myokami.it/"
 
@@ -1158,6 +1267,7 @@ layout_mode = 2
 
 [node name="SFX" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1909346346]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Sound Effects:"
 horizontal_alignment = 1
 
@@ -1165,6 +1275,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://jewelzaudioworks.carrd.co/"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Jewelz AudioWorks"
 uri = "https://jewelzaudioworks.carrd.co/"
 
@@ -1174,6 +1288,7 @@ layout_mode = 2
 
 [node name="Programming" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1039555680]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Programming:"
 horizontal_alignment = 1
 
@@ -1186,17 +1301,26 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://baton-0.itch.io/"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Baton"
 uri = "https://baton-0.itch.io/"
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=756247622]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = " and "
 
 [node name="Coffee" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=666543186]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://programmeroncoffee.github.io/"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "ProgrammerOnCoffee"
 uri = "https://programmeroncoffee.github.io/"
 
@@ -1211,6 +1335,10 @@ layout_mode = 2
 [node name="Licenses" type="Button" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1992042749]
 layout_mode = 2
 theme_type_variation = &"SButton"
+theme_override_colors/font_color = Color(0.21176471, 0.17254902, 0.07450981, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.23921569, 0.101960786, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 theme_override_font_sizes/font_size = 24
 text = "View Third-party Licenses"
 flat = true
@@ -1249,8 +1377,14 @@ layout_mode = 2
 components_preload = true
 components_unload_when_hidden = false
 
+[node name="Label" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="0" unique_id=1515889541]
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+
 [node name="HSeparator" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="1" unique_id=129493548]
 custom_minimum_size = Vector2(0, 25)
+
+[node name="VBoxContainer" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List/ScrollContainer/MarginContainer" parent_id_path=PackedInt32Array(215431176, 94450446) index="0" unique_id=423335146]
+theme = SubResource("Theme_0ld40")
 
 [node name="HSeparator2" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="3" unique_id=85258963]
 custom_minimum_size = Vector2(0, 25)

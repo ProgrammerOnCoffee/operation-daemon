@@ -227,7 +227,29 @@ grow_vertical = 2
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 script = ExtResource("1_stu8i")
 obscuring_material = SubResource("ShaderMaterial_fie5y")
-logs = Array[String](["webadabooda", "something something explosion", "according to all known laws of aviation there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. THe bee, however, flies anyways."])
+logs = Array[String](["Everything was going so well. 
+
+The Biology and Engineering departments' respective projects were ahead of schedule, even. In hindsight, we should have slowed down - made sure we were taking the proper safety precautions. 
+
+But it's too late for wishing things had gone differently - now we need to start figuring out how to combat them. We got lucky that the Astronomy department was already building a atmospheric research lab, but who knows how long these supplies will last. Well. Back to work.
+
+- Dr. Angela Williams", "We've begun work on a solution. 
+
+A laboratory of sorts, that we can send down to the surface and remotely research them - to try and find a way to counter their strange powers; the others have started calling them 'Modules', and 'Daemons'. 
+
+The Engineering department -what remains of it - is getting excited about some device to make identical robot drones using the new technology, to send out to collect samples. 
+
+I'm just trying to make sure the whole thing remains intact on reentry - we don't have a lot of materials, so it's going to be a challenge. Some kind of external shielding?
+
+- Dr. Angela W.", "This is risky.
+
+The shielding is nowhere near as strong as I'd like, but there's nothing more I can do with the materials on hand. We'll just have to pray that a 30% chance is enough.
+
+The software team has been bickering about the drones for a while - something about them having visual hallucinations of a woman with a turtle on her head? Even worse, she apparently looks like me - they've dubbed her 'Dr. Angela Turtle.'
+
+They haven't been able to debug the hallucinations, and the longer we take, the less time we'll have to get samples. The team's decided we're sending it down at the end of the week - not enough time, but all we can risk.
+
+- Dr. Angela Williams"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1738358358]
 use_parent_material = true
@@ -532,21 +554,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0r2u2")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay" unique_id=1278570384]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer" unique_id=1307536624]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer" unique_id=2070480951]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=275687686]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/ScrollContainer" unique_id=1307536624]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 23
-text = "LOG 001"
+size_flags_horizontal = 3
 
-[node name="Content" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=475244506]
+[node name="Content" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/ScrollContainer/VBoxContainer" unique_id=475244506]
 material = SubResource("ShaderMaterial_fie5y")
 layout_mode = 2
 size_flags_vertical = 1
