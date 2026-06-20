@@ -8,17 +8,6 @@ signal request_track_transition(to:String)
 signal push_toast(text:String) # Ask the toast manager to make some toast.
 
 ## -- CONFIGURATION -- ##
-# Every two elements are the min and max number of x that each enemy will have.
-## The min and max number of modules each enemy will have in each act.
-const ACT_MODULES = [1, 1, 2, 2, 3, 3]
-## The min and max number of effects each module will have in each act.
-const ACT_EFFECTS = [1, 1, 1, 2, 2, 2]
-## The min and max number of daemons each enemy will have in each act.
-const ACT_DAEMONS = [2, 2, 4, 5, 6, 7]
-## The min and max number of positive modifiers each daemon will have in each act.
-const ACT_POS_MODIFIERS = [1, 2, 2, 3, 3, 4]
-## The min and max number of negative modifiers each daemon will have in each act.
-const ACT_NEG_MODIFIERS = [2, 3, 3, 4, 4, 4]
 
 ## -- PROGRESSION -- ##
 
@@ -33,6 +22,102 @@ var act := 1:
 
 ## The number of modules that have ever existed. Used to give each module a unique ID.
 var module_count:int = 0
+
+
+func _ready() -> void:
+	act_changed.connect(generate_enemy_pool)
+
+
+#region Enemy pool
+
+var ALL_ENTITIES: Dictionary[String, PackedScene] = {
+	"angel": load("res://scenes/entities/angel.tscn"),
+	"dino_slime": load("res://scenes/entities/dino_slime.tscn"),
+	"m_slime": load("res://scenes/entities/m_slime.tscn"),
+	"slime_spider_bot": load("res://scenes/entities/slime_spider_bot.tscn"),
+}
+# Every two elements are the min and max number of x that each enemy will have.
+## The min and max number of modules each enemy will have in each act.
+const ACT_MODULES = [1, 1, 2, 2, 3, 3]
+## The min and max number of effects each module will have in each act.
+const ACT_EFFECTS = [1, 1, 1, 2, 2, 2]
+## The min and max number of daemons each enemy will have in each act.
+const ACT_DAEMONS = [2, 2, 4, 5, 6, 7]
+## The min and max number of positive modifiers each daemon will have in each act.
+const ACT_POS_MODIFIERS = [1, 2, 2, 3, 3, 4]
+## The min and max number of negative modifiers each daemon will have in each act.
+const ACT_NEG_MODIFIERS = [2, 3, 3, 4, 4, 4]
+
+## The pool of enemies that will be used throughout the current act.
+var enemy_pool: Array[Enemy]
+
+
+## Generates a new pool of enemies that will be used throughout the current act.
+func generate_enemy_pool() -> void:
+	## The set of available enemies in this act.
+	var available_enemies = (
+		[ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime] if act == 0
+		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.dino_slime] if act == 1
+		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.dino_slime, ALL_ENTITIES.angel]
+	)
+	## The number of enemies in this act's pool.
+	var pool_size := randi_range(6, 8)
+	enemy_pool.resize(pool_size)
+	for i in pool_size:
+		var enemy := available_enemies.pick_random().instantiate() as Enemy
+		
+		# Give enemy modules and daemons
+		var act_min := 2 * Global.act
+		var act_max := 2 * Global.act + 1
+		for j in randi_range(Global.ACT_MODULES[act_min], Global.ACT_MODULES[act_max]):
+			var effects: Array[Effect]
+			for k in randi_range(Global.ACT_EFFECTS[act_min], Global.ACT_EFFECTS[act_max]):
+				var effect := Effect.all_effects.values().pick_random().new() as Effect
+				effects.append(effect)
+			enemy.modules.append(Module.new(effects))
+		
+		for l in randi_range(Global.ACT_DAEMONS[act_min], Global.ACT_DAEMONS[act_max]):
+			var modifiers: Array[Modifier]
+			## The remaining number of positive modifiers to generate.
+			var pos_mod_n := randi_range(Global.ACT_POS_MODIFIERS[act_min], Global.ACT_POS_MODIFIERS[act_max])
+			## The remaining number of negative modifiers to generate.
+			var neg_mod_n := randi_range(Global.ACT_NEG_MODIFIERS[act_min], Global.ACT_NEG_MODIFIERS[act_max])
+			while pos_mod_n or neg_mod_n:
+				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
+				if pos_mod_n == 0:
+					# Only add modifier if it's negative
+					if not modifier._is_beneficial():
+						modifiers.append(modifier)
+						neg_mod_n -= 1
+				elif neg_mod_n == 0:
+					# Only add modifier if it's positive
+					if modifier._is_beneficial():
+						modifiers.append(modifier)
+						pos_mod_n -= 1
+				else:
+					# Add modifier regardless of whether it's positive or negative
+					modifiers.append(modifier)
+					if modifier._is_beneficial():
+						pos_mod_n -= 1
+					else:
+						neg_mod_n -= 1
+			enemy.daemons.append(Daemon.new(modifiers))
+		enemy_pool[i] = enemy
+
+
+## Picks an enemy from the [member enemy_pool] and creates an [Entity3D] for it.
+func pick_enemy() -> Entity3D:
+	## The selected [Enemy].
+	var enemy := enemy_pool.pick_random() as Enemy
+	## The duplicated [Enemy] that will actually be loaded into the fight.
+	var entity := enemy.duplicate() as Enemy
+	entity.daemons = enemy.daemons
+	var entity_3d := Entity3D.new()
+	entity_3d.entity = entity
+	return entity_3d
+
+
+#endregion
 
 ## -- DAEMON RESEARCH -- ##
 
