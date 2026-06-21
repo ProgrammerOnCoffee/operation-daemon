@@ -393,6 +393,7 @@ texture = SubResource("ImageTexture_muem4")
 polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
 
 [node name="Circle" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=295099895]
+visible = false
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(903, 324)
