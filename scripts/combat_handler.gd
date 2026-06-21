@@ -149,10 +149,12 @@ func end_fight() -> void:
 	Global.attempt_discovery()
 	
 	if player.health:
+		$SuccessPlayer.play()
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Success"
 		$EndScreen/MarginContainer/VBoxContainer/Continue.text = "Return To Map"
 		$EndScreen.texture = preload("res://assets/UI Elements/Success.png")
 	else:
+		$FailurePlayer.play()
 		$EndScreen/MarginContainer/VBoxContainer/Status.text = "Failure"
 		$EndScreen/MarginContainer/VBoxContainer/Label.hide()
 		$EndScreen/MarginContainer/VBoxContainer/ScrollContainer.hide()

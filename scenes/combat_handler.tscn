@@ -25,6 +25,8 @@
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
 [ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
 [ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
+[ext_resource type="AudioStream" uid="uid://bwex074o1snb4" path="res://assets/audio/SFX/Misc/Fight Complete.wav" id="26_4dvid"]
+[ext_resource type="AudioStream" uid="uid://b1384asnwk30q" path="res://assets/audio/SFX/Game Over/Robot Game Over-003.wav" id="27_8ymss"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtxwj"]
 bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
@@ -700,6 +702,15 @@ bus = &"SFX"
 
 [node name="ZoomOutPlayer" type="AudioStreamPlayer" parent="." unique_id=1631642410]
 stream = ExtResource("23_gb8rm")
+bus = &"SFX"
+
+[node name="SuccessPlayer" type="AudioStreamPlayer" parent="." unique_id=1229758412]
+stream = ExtResource("26_4dvid")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="FailurePlayer" type="AudioStreamPlayer" parent="." unique_id=1693124680]
+stream = ExtResource("27_8ymss")
 bus = &"SFX"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359232852]
