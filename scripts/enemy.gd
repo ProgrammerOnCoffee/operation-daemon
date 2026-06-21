@@ -5,6 +5,39 @@ extends Entity
 ##
 ## An enemy entity in a fight stage.
 
+## All the Node2Ds that can get modulated by Effect colors.
+@onready var colorables:Array[Node2D] = (func() -> Array[Node2D]:
+	
+	# Recursively search for nodes with 'Color' in the name.
+	var search := func(with:Node, function:Callable) -> Array[Node2D]:
+		# Can't recursively call a function declared like this, so
+		# instead have it passed to itself.
+		
+		if not with: return []
+		
+		var array:Array[Node2D]
+		
+		if with.name.contains("Color"): array += [with]
+		
+		for child in with.get_children():
+			array += function.call(child, function)
+		
+		return array
+	
+	return search.call(self, search) ).call()
+func _ready() -> void:
+	super()
+	
+	var effects:Array[Effect]
+	for module in modules: effects += module.effects
+	for node in colorables:
+		
+		var id := int(node.name.replace("Color ", ""))
+		
+		if id > effects.size() - 1: return
+		
+		print('setting ', node, "'s modulate to ", effects[id].effect_color, ' from ', effects[id])
+		node.modulate = effects[id].effect_color
 
 func _take_turn() -> void:
 	var player := combat_handler.player

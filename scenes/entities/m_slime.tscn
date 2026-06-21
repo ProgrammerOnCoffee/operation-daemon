@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://mgu1ko53enkq" path="res://assets/Enemy Parts/M Slime/m_slime_ent.tscn" id="2_e3nyf"]
 
 [node name="MSlime" unique_id=1022515043 instance=ExtResource("1_dcdea")]
-rect = Rect2i(-236, -384, 472, 400)
+rect = null
 rect_attack_inset = 80
+attack_count = null
 base_damage = 10
 damage_variation = 2
 max_health = 40
