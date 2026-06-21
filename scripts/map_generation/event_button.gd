@@ -43,12 +43,9 @@ func _mouse_exit() -> void:
 func default_tween() -> void:
 	if tween and tween.is_running(): tween.kill()
 	
-	print("DEFAULTED")
-	
 	# Available - oscillate.
 	if available:
 		
-		print("OSCIL")
 		tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 		tween.set_loops()
 		
@@ -62,8 +59,6 @@ func default_tween() -> void:
 
 func set_available(to:bool) -> void:
 	available = to
-	
-	print("SA2",to)
 	
 	button.disabled = not available
 	

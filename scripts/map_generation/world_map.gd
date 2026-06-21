@@ -32,7 +32,6 @@ func _ready() -> void:
 	_regenerate_map()
 
 func _regenerate_map():
-	print("AC", Global.act)
 	map_generator.generate_map()
 	
 	await get_tree().create_timer(0.1).timeout
@@ -79,7 +78,6 @@ func update_visual() -> void:
 	lines.clear()
 	
 	
-	print("\nREGENNED")
 	# Reassign the buttons to their new events, and make lines.
 	for i in events.size():
 		var this_button := buttons[i]
@@ -121,7 +119,6 @@ func update_visual() -> void:
 		
 		
 		# Unlock only the first row.
-		print(this_button.event.type, " -> ", this_event.row == 0)
 		this_button.available = this_event.row == 0
 	
 	
