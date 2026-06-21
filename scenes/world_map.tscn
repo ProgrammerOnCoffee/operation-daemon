@@ -747,7 +747,6 @@ text = "Boss"
 horizontal_alignment = 1
 
 [node name="InventoryTut" type="HBoxContainer" parent="." unique_id=567213763]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -783,7 +782,7 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer" unique_id=321148347]
 layout_mode = 2
 theme = SubResource("Theme_1ra3e")
-theme_override_constants/separation = 33
+theme_override_constants/separation = 22
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1273160347]
 layout_mode = 2
@@ -816,7 +815,7 @@ autowrap_mode = 2
 [node name="Label3" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=2125508564]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "View your Daemons - percent changes to Modules' effects. These can be made in the Lab, or contracted from irradiatied"
+text = "View your Daemons - percent changes to Modules' effects. These can be made in the Lab, or contracted from irradiatied zones."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=191693858]
