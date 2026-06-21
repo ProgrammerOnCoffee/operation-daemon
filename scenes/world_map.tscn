@@ -754,16 +754,8 @@ mouse_filter = 2
 
 [node name="Panel" type="MarginContainer" parent="InventoryTut" unique_id=816697599]
 custom_minimum_size = Vector2(462, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -924.0
-offset_right = -462.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 3
+layout_mode = 2
+size_flags_horizontal = 10
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -834,14 +826,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_xdla5")
 text = "Close Debrief"
 
 [node name="Control" type="Control" parent="InventoryTut" unique_id=595181580]
-layout_mode = 1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -462.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 3
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 mouse_filter = 2
 
 [node name="Line2D" type="Line2D" parent="InventoryTut/Control" unique_id=355388266]
@@ -886,4 +873,13 @@ theme_override_font_sizes/font_size = 12
 text = "Press P to Pause"
 vertical_alignment = 2
 
+[node name="TutorialButton2" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel") instance=ExtResource("9_55716")]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 680.0
+offset_right = 76.0
+offset_bottom = 725.0
+info_panel = NodePath("../MapTutorial")
+
 [connection signal="event_selected" from="." to="TutorialButton" method="trigger" binds= [&"MapInv", NodePath(".")]]
+[connection signal="event_selected" from="." to="TutorialButton2" method="set_pressed" binds= [false]]
