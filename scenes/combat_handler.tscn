@@ -26,6 +26,8 @@
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
 [ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
 [ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
+[ext_resource type="AudioStream" uid="uid://bwex074o1snb4" path="res://assets/audio/SFX/Misc/Fight Complete.wav" id="26_4dvid"]
+[ext_resource type="AudioStream" uid="uid://b1384asnwk30q" path="res://assets/audio/SFX/Game Over/Robot Game Over-003.wav" id="27_8ymss"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtxwj"]
 bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
@@ -377,10 +379,15 @@ visible = false
 copy_mode = 2
 
 [node name="TutorialButton" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel", "close_button") instance=ExtResource("21_dtxwj")]
-offset_left = 1095.0
-offset_top = 586.0
-offset_right = 1135.0
-offset_bottom = 631.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 info_panel = NodePath("../CombatTut")
 close_button = NodePath("../CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
 
@@ -417,7 +424,6 @@ theme_override_constants/separation = 15
 
 [node name="Label3" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer" unique_id=1946431993]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("22_vi8kl")
 theme_override_font_sizes/font_size = 15
 text = "Select
 (Space/Click)"
@@ -431,7 +437,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1080704778]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("22_vi8kl")
 theme_override_font_sizes/font_size = 15
 text = "Prev. Enemy
 (A/Left)"
@@ -439,7 +444,6 @@ horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2055597010]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("22_vi8kl")
 theme_override_font_sizes/font_size = 15
 text = "Cancel
 (Q/Esc)"
@@ -447,7 +451,6 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1049854331]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("22_vi8kl")
 theme_override_font_sizes/font_size = 15
 text = "Next. Enemy
 (D/Right)"
@@ -610,10 +613,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -213.0
-offset_right = 192.0
-offset_bottom = 279.0
+offset_left = -192.5
+offset_top = -282.5
+offset_right = 192.5
+offset_bottom = 282.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("24_vi8kl")
@@ -676,7 +679,7 @@ text = "Rewards:"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=742223516]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 188)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer/VBoxContainer/ScrollContainer" unique_id=813709679]
@@ -697,6 +700,7 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_8ymss")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sxk2p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qgcwr")
@@ -708,6 +712,15 @@ bus = &"SFX"
 
 [node name="ZoomOutPlayer" type="AudioStreamPlayer" parent="." unique_id=1631642410]
 stream = ExtResource("23_gb8rm")
+bus = &"SFX"
+
+[node name="SuccessPlayer" type="AudioStreamPlayer" parent="." unique_id=1229758412]
+stream = ExtResource("26_4dvid")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="FailurePlayer" type="AudioStreamPlayer" parent="." unique_id=1693124680]
+stream = ExtResource("27_8ymss")
 bus = &"SFX"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359232852]

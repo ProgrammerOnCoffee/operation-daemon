@@ -5,7 +5,8 @@ class_name WorldMap extends Control
 signal event_selected
 
 const MUSIC_TRANSITIONS:Dictionary[Event.TYPE, String] = {
-	Event.TYPE.COMBAT: "Combat"
+	Event.TYPE.COMBAT: "Combat",
+	Event.TYPE.BOSS: "Combat",
 }
 
 @export var laboratory:Laboratory
@@ -148,10 +149,13 @@ func _on_event_button_pressed(button:EventButton):
 	var scene := button.event.get_new_scene()
 	if scene:
 		current_event_scene = scene
-		if current_event.type == Event.TYPE.COMBAT:
+		if current_event.type == Event.TYPE.COMBAT or current_event.type == Event.TYPE.BOSS:
 			# Set window aspect scale mode to prevent the left and right sides
 			# of the 3D scene from clipping out of the player's screen
 			get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP_HEIGHT
+		
+		if current_event.type == Event.TYPE.BOSS:
+			scene.is_boss_fight = true
 		
 		# Add the scene to the corresponding parent
 		scene_parents[button.event.type].add_child(scene)

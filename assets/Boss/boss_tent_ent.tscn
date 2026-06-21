@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dfuufnafdwqlt" path="res://assets/Boss/boss_tent_bones.tscn" id="1_2pjj8"]
 
-[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_o8k2m"]
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_2pjj8"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Child BOt")
 jiggle_data_chain_length = 4
 stiffness = 1.0
@@ -26,7 +27,8 @@ joint_data/3/bone_index = 18
 joint_data/3/bone2d_node = NodePath("CHild/Bone2D2/Bone2D3/Bone2D4/Bone2D5")
 joint_data/3/override_defaults = false
 
-[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_meudg"]
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_o8k2m"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Head")
 jiggle_data_chain_length = 8
 mass = 30.0
@@ -58,12 +60,12 @@ joint_data/7/bone_index = 8
 joint_data/7/bone2d_node = NodePath("Base Tent/Base Tent2/Base Tent3/Base Tent4/Base Tent5/Base Tent6/Base Tent7/Base Tent8/Base Tent9")
 joint_data/7/override_defaults = false
 
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_x7e6g"]
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_meudg"]
 resource_local_to_scene = true
 enabled = true
 modification_count = 2
-modifications/0 = SubResource("SkeletonModification2DJiggle_o8k2m")
-modifications/1 = SubResource("SkeletonModification2DJiggle_meudg")
+modifications/0 = SubResource("SkeletonModification2DJiggle_2pjj8")
+modifications/1 = SubResource("SkeletonModification2DJiggle_o8k2m")
 
 [sub_resource type="Animation" id="Animation_2pjj8"]
 resource_name = "Attack"
@@ -627,7 +629,7 @@ metadata/_edit_horizontal_guides_ = [383.0]
 [node name="Boss Tent_Bones" parent="." unique_id=225454301 instance=ExtResource("1_2pjj8")]
 
 [node name="Skeleton2D" parent="Boss Tent_Bones/Bones" parent_id_path=PackedInt32Array(225454301, 832275658) index="0" unique_id=2029659843]
-modification_stack = SubResource("SkeletonModificationStack2D_x7e6g")
+modification_stack = SubResource("SkeletonModificationStack2D_meudg")
 
 [node name="Base Tent9" parent="Boss Tent_Bones/Bones/Skeleton2D/Base Tent/Base Tent2/Base Tent3/Base Tent4/Base Tent5/Base Tent6/Base Tent7/Base Tent8" parent_id_path=PackedInt32Array(225454301, 245814624) index="0" unique_id=581114960]
 position = Vector2(2.3016357, -78.07573)

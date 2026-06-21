@@ -5,6 +5,13 @@ extends Entity
 ##
 ## An enemy entity in a fight stage.
 
+## How frequently the boss will spawn more tentacles (every nth turn).
+static var boss_spawn_tentacles_frequency := 3
+
+## The number of turns until this [Enemy] will take their next turn.
+var turns_until_next_turn: int
+
+
 ## All the Node2Ds that can get modulated by Effect colors.
 @onready var colorables:Array[Node2D] = (func() -> Array[Node2D]:
 	
@@ -43,11 +50,34 @@ func _ready() -> void:
 
 func _take_turn() -> void:
 	var player := combat_handler.player
-	health_bar.z_index += 1
-	entity_3d.move_to_entity(player.entity_3d)
-	await get_tree().create_timer(animation_durations.dash - 0.2).timeout
-	anim_player.play(animation_names.idle, 0.2)
-	await get_tree().create_timer(0.4).timeout
+	if animation_names.dash:
+		health_bar.z_index += 1
+		entity_3d.move_to_entity(player.entity_3d)
+		await get_tree().create_timer(animation_durations.dash - 0.2).timeout
+		anim_player.play(animation_names.idle, 0.2)
+		await get_tree().create_timer(0.4).timeout
+	elif sound_banks.dash:
+		entity_3d.play_sound(sound_banks.dash)
+	
+	if name == &"Boss":
+		turns_until_next_turn -= 1
+		if turns_until_next_turn > 0:
+			return
+		turns_until_next_turn = boss_spawn_tentacles_frequency
+		
+		if entity_3d.get_parent().get_tentacles_n() <= 0:
+			turns_until_next_turn += 1
+			return
+		
+		turns_until_next_turn = 3
+		entity_3d.play_sound(sound_banks.attack)
+		anim_player.play(animation_names.attack, 0.2)
+		await get_tree().create_timer(animation_durations.attack).timeout
+		anim_player.play(animation_names.idle, 1.0)
+		entity_3d.get_parent().spawn_tentacles()
+		await get_tree().create_timer(0.7).timeout
+		turn_ended.emit()
+		return
 	
 	## The target time that the player should respond to the QTE after.
 	const PERFECT_QTE_TIME := 0.6 * 3 / 4
@@ -55,11 +85,28 @@ func _take_turn() -> void:
 	var qte_preload_time := PERFECT_QTE_TIME - attack_point
 	var qte: Control
 	for i in Global.float_as_chance_int(Global.ENEMY_ATTACK_COUNTS[Global.act] * attack_count):
-		#if i == 0:
+	
 		await get_tree().create_timer(0.1).timeout
 		qte = combat_handler.create_qte()
 		qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
-		await get_tree().create_timer(qte_preload_time).timeout
+		if qte_preload_time > 0:
+			await get_tree().create_timer(qte_preload_time).timeout
+		else:
+			qte.hide()
+			anim_player.play(animation_names.attack, 0.2)
+			if name == &"Tentacle":
+				var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
+				var dist_to_player := entity_3d.initial_transform.origin.distance_to(combat_handler.player.entity_3d.initial_transform.origin)
+				var scale_tween := create_tween()
+				scale_tween.tween_interval(0.5)
+				scale_tween.tween_property(child, ^":scale", Vector2.ONE * (2.0 if entity_3d.initial_transform.origin.z < combat_handler.player.entity_3d.initial_transform.origin.z else 1.5), 1.7)
+				scale_tween.parallel().tween_method(func(p: float) -> void:
+					child.position.x = (child.position.x - 38.0) * p + 38.0, 1.0, dist_to_player / 3.2, 1.7)
+				scale_tween.tween_property(child, ^":scale", Vector2.ONE * 1.0, 0.7)
+				scale_tween.parallel().tween_method(func(p: float) -> void:
+					child.position.x = (child.position.x - 38.0) * p + 38.0, dist_to_player / 3.2, 1.0, 0.7)
+			await get_tree().create_timer(-qte_preload_time).timeout
+			qte.show()
 		
 		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
@@ -70,7 +117,7 @@ func _take_turn() -> void:
 		anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
-		var value: float = (0.0 if qte.has_ended else await qte.pressed) if qte else 0.0
+		var value: float = 0.0 if (not is_instance_valid(qte)) or qte.has_ended else await qte.pressed
 		if player.is_defending and value > 0.9:
 			player.entity_3d.play_sound(sound_banks.counter)
 			# Play parry anim
@@ -92,7 +139,11 @@ func _take_turn() -> void:
 			combat_handler.player.apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# NOTE: No effects are applied by a Counter/Parry attack.
 			# Take the damage.
-			take_damage(combat_handler.player.damage_dealing, true)
+			var elapsed_t := (Time.get_ticks_msec() - start_t) * 0.001
+			if elapsed_t >= attack_point:
+				take_damage(combat_handler.player.damage_dealing, true)
+			else:
+				get_tree().create_timer(attack_point - elapsed_t).timeout.connect(take_damage.bind(combat_handler.player.damage_dealing, true))
 			# Apply the player's post-attack effects.
 			combat_handler.player.apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		else:
@@ -119,7 +170,11 @@ func _take_turn() -> void:
 			# The player analyzing any daemons it's hit w/.
 			Global.research_group(daemons)
 			# Do the actual damage.
-			combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
+			var elapsed_t := (Time.get_ticks_msec() - start_t) * 0.001
+			if elapsed_t >= attack_point:
+				combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
+			else:
+				get_tree().create_timer(attack_point - elapsed_t).timeout.connect(combat_handler.player.take_damage.bind(damage_dealing, value < 0.9 or player.is_defending))
 			# Recognize the real damage dealt post-effects.
 			damage_dealing = combat_handler.player.damage_receiving
 			# Apply post-attack effects.
@@ -143,6 +198,11 @@ func _take_turn() -> void:
 			#await get_tree().create_timer(attack_end_time).timeout
 	
 	await get_tree().create_timer(0.7).timeout
-	await entity_3d.return_to_initial_transform()
-	health_bar.z_index -= 1
+	if animation_names.b_dash:
+		await entity_3d.return_to_initial_transform()
+		health_bar.z_index -= 1
+	else:
+		if sound_banks.b_dash:
+			entity_3d.play_sound(sound_banks.b_dash)
+		anim_player.play(animation_names.idle, 0.4)
 	turn_ended.emit()

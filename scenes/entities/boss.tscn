@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dwhj2mak61u1"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_53opr"]
+[ext_resource type="PackedScene" uid="uid://1gwn6w4bicpm" path="res://assets/Boss/boss_main_ent.tscn" id="2_riuy6"]
+
+[node name="Boss" unique_id=1022515043 instance=ExtResource("1_53opr")]
+rect = Rect2i(-128, -288, 256, 312)
+rect_attack_inset = 8
+max_health = 200
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_boss",
+&"b_dash": "dash_robot",
+&"counter": "counter",
+&"dash": "dash_robot",
+&"death": "death_robot",
+&"hit": "hit_boss",
+&"parry": "parry"
+})
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"",
+&"damaged": &"Damaged",
+&"dash": &"",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
+
+[node name="Boss_Main_ENT" parent="." index="0" unique_id=565868173 instance=ExtResource("2_riuy6")]
+position = Vector2(-198, -294)
+scale = Vector2(0.6, 0.6)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=1585484182]
+position = Vector2(0, -304)
