@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://mgu1ko53enkq" path="res://assets/Enemy Parts/M Slime/m_slime_ent.tscn" id="2_e3nyf"]
 
 [node name="MSlime" unique_id=1022515043 instance=ExtResource("1_dcdea")]
-rect = Rect2i(-236, -384, 472, 400)
-rect_attack_inset = 80
+rect = Rect2i(-204, -336, 408, 352)
+rect_attack_inset = 64
+attack_count = 1
 base_damage = 10
 damage_variation = 2
 max_health = 40
@@ -39,8 +40,8 @@ animation_durations = Dictionary[StringName, float]({
 attack_point = 0.6
 
 [node name="HealthBarPoint" type="Marker2D" parent="." index="0" unique_id=1800675889]
-position = Vector2(0, -264)
+position = Vector2(0, -232)
 
 [node name="Med SLime ENT" parent="." index="1" unique_id=263273724 instance=ExtResource("2_e3nyf")]
-position = Vector2(-13, -124.99999)
-scale = Vector2(0.7, 0.7)
+position = Vector2(-13, -101)
+scale = Vector2(0.6, 0.6)
