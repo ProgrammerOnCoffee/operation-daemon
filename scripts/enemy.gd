@@ -36,7 +36,6 @@ func _ready() -> void:
 		
 		if id > effects.size() - 1: return
 		
-		print('setting ', node, "'s modulate to ", effects[id].effect_color, ' from ', effects[id])
 		node.modulate = effects[id].effect_color
 
 func _take_turn() -> void:

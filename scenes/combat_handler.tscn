@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_2p8v4"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="2_a8me0"]
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_tb0t7"]
-[ext_resource type="Script" path="res://scripts/floaty_label.gd" id="4_fnwho"]
+[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="4_fnwho"]
 [ext_resource type="Texture2D" uid="uid://ula2soydh481" path="res://assets/UI Elements/Attack.png" id="4_tb0t7"]
 [ext_resource type="Texture2D" uid="uid://cun2fk1qycq6l" path="res://assets/images/svg/qte_ring.svg" id="5_61ait"]
 [ext_resource type="BitMap" uid="uid://bpq7q1y58ck7u" path="res://assets/UI Elements/Attack_Bitmap.png" id="5_fnwho"]
@@ -12,19 +12,29 @@
 [ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="7_3uv2x"]
 [ext_resource type="BitMap" uid="uid://dpgjvnnixeibq" path="res://assets/UI Elements/Special_Bitmap.png" id="7_oebxs"]
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
-[ext_resource type="Shader" path="res://resources/blur.gdshader" id="8_oebxs"]
+[ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
 [ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
 [ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 [ext_resource type="Texture2D" uid="uid://247xtn3osolm" path="res://assets/UI Elements/Potrait BB.png" id="16_orqql"]
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
 [ext_resource type="PackedScene" uid="uid://pu2cj7rilrvh" path="res://scenes/health_bar.tscn" id="18_2sghh"]
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
-[ext_resource type="Script" path="res://scripts/misc_lines.gd" id="21_2sghh"]
+[ext_resource type="Script" uid="uid://dmdytesnc0x4m" path="res://scripts/misc_lines.gd" id="21_2sghh"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="21_dtxwj"]
 [ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
 [ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
 [ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtxwj"]
+bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
+skew = Vector2(0.01, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvid"]
 bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
@@ -363,6 +373,74 @@ offset_right = 1135.0
 offset_bottom = 631.0
 info_panel = NodePath("../CombatTut")
 close_button = NodePath("../CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
+
+[node name="ControlPrompts" type="MarginContainer" parent="." unique_id=965756407]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="ControlPrompts" unique_id=1149618895]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dtxwj")
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlPrompts/PanelContainer" unique_id=602618648]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlPrompts/PanelContainer/MarginContainer" unique_id=178205840]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="Label3" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer" unique_id=1946431993]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_vi8kl")
+theme_override_font_sizes/font_size = 15
+text = "Select
+(Space/Click)"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer" unique_id=43138574]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1080704778]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_vi8kl")
+theme_override_font_sizes/font_size = 15
+text = "Prev. Enemy
+(A/Left)"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2055597010]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_vi8kl")
+theme_override_font_sizes/font_size = 15
+text = "Cancel
+(Q/Esc)"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ControlPrompts/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1049854331]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("22_vi8kl")
+theme_override_font_sizes/font_size = 15
+text = "Next. Enemy
+(D/Right)"
+horizontal_alignment = 1
 
 [node name="CombatTut" type="HBoxContainer" parent="." unique_id=1222562908]
 anchors_preset = 15

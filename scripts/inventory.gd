@@ -7,14 +7,6 @@ func _ready() -> void:
 	PlayerData.daemons_changed.connect(_update_daemon_list)
 	_update_daemon_list()
 	
-	for i in 10:
-		
-		var effects:Array[Effect]= []
-		for j in 3:
-			effects += [Effect.all_effects.values().pick_random().new()]
-			
-		PlayerData.modules += [Module.new(effects, randi_range(0,2) as Module.SLOT)]
-	
 	PlayerData.modules_changed.connect(_update_module_list)
 	_update_module_list()
 

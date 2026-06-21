@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://clqhle5y4evac" path="res://assets/images/splash.png" id="12_0ld40"]
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 [ext_resource type="Script" uid="uid://dh3s8gvxiywif" path="res://scripts/menu_bar.gd" id="12_gqmmt"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="12_yc10j"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_muem4"]
 
@@ -131,6 +132,19 @@ func _toggled(toggled_on: bool) -> void:
 	
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
 "
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
+bg_color = Color(0.36, 0.30144, 0.1404, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+
+[sub_resource type="Theme" id="Theme_jscy8"]
+PopupMenu/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+PopupMenu/colors/font_hover_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/fonts/font = ExtResource("12_yc10j")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_gqmmt")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_yc10j")
 
 [sub_resource type="GDScript" id="GDScript_sugp2"]
 script/source = "extends OptionButton
@@ -261,6 +275,11 @@ Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
 Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")
 HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
+
+[sub_resource type="Theme" id="Theme_yc10j"]
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("12_yc10j")
+Label/colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
@@ -393,6 +412,7 @@ texture = SubResource("ImageTexture_muem4")
 polygon = PackedVector2Array(953, 0, 1152, 0, 1152, 387, 289, 648, 0, 648, 0, 318)
 
 [node name="Circle" type="Polygon2D" parent="UILayer/UI/MainMenu/MenuBackdrop" unique_id=295099895]
+visible = false
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(903, 324)
@@ -523,6 +543,9 @@ theme_override_constants/separation = 8
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.93, 0.8835, 0.8835, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
@@ -533,6 +556,9 @@ script = ExtResource("1_o5qli")
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.93, 0.8835, 0.8835, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
@@ -543,6 +569,9 @@ script = ExtResource("1_o5qli")
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.93, 0.8835, 0.8835, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
@@ -553,6 +582,9 @@ script = ExtResource("1_o5qli")
 use_parent_material = true
 custom_minimum_size = Vector2(0, 38.255)
 layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.93, 0.8835, 0.8835, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.90588236, 0.8627451, 0.8627451, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("4_a8y0u")
 theme_override_styles/hover = ExtResource("5_jkv2x")
@@ -588,6 +620,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer" unique_id=525148587]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 theme_override_font_sizes/font_size = 34
 text = "Settings"
 horizontal_alignment = 1
@@ -611,6 +644,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=545528121]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Audio"
 horizontal_alignment = 1
 
@@ -621,6 +655,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1357506537]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Master"
 horizontal_alignment = 1
 
@@ -640,6 +675,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1798174764]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Music"
 horizontal_alignment = 1
 
@@ -658,6 +694,7 @@ theme_override_constants/separation = 20
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1375289710]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "SFX"
 horizontal_alignment = 1
 
@@ -677,6 +714,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_jyhfs")
 
 [node name="Label2" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1833306572]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Video"
 horizontal_alignment = 1
 
@@ -686,11 +724,19 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=17625826]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "VSync"
 
 [node name="Button" type="Button" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=678935027]
 custom_minimum_size = Vector2(175, 35)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_disabled_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 17
 toggle_mode = true
 text = "Enabled"
 script = SubResource("GDScript_tbgi4")
@@ -701,11 +747,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1605973238]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Window Mode"
 
 [node name="Button" type="OptionButton" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=307813271]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+theme = SubResource("Theme_jscy8")
+theme_override_colors/font_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_disabled_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 17
 alignment = 1
 script = SubResource("GDScript_sugp2")
 
@@ -749,6 +804,7 @@ alignment = 1
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1711591947]
 layout_mode = 2
 theme_type_variation = &"LLabel"
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Credits"
 horizontal_alignment = 1
 
@@ -765,6 +821,7 @@ size_flags_horizontal = 3
 
 [node name="Art" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer" unique_id=1393050274]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Art:"
 horizontal_alignment = 1
 
@@ -772,6 +829,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://kyveri.carrd.co/"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 text = "Kyveri"
 uri = "https://kyveri.carrd.co/"
 
@@ -781,6 +841,7 @@ size_flags_horizontal = 3
 
 [node name="Music" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HBoxContainer/VBoxContainer2" unique_id=1188704147]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Music:"
 horizontal_alignment = 1
 
@@ -788,6 +849,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://www.myokami.it/"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 text = "Myokami"
 uri = "https://www.myokami.it/"
 
@@ -797,6 +861,7 @@ layout_mode = 2
 
 [node name="SFX" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1909346346]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Sound Effects:"
 horizontal_alignment = 1
 
@@ -804,6 +869,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://jewelzaudioworks.carrd.co/"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 text = "Jewelz AudioWorks"
 uri = "https://jewelzaudioworks.carrd.co/"
 
@@ -813,6 +881,7 @@ layout_mode = 2
 
 [node name="Programming" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1039555680]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = "Programming:"
 horizontal_alignment = 1
 
@@ -825,17 +894,24 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://baton-0.itch.io/"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 text = "Baton"
 uri = "https://baton-0.itch.io/"
 
 [node name="Label" type="Label" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=756247622]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 text = " and "
 
 [node name="Coffee" type="LinkButton" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/HFlowContainer" unique_id=666543186]
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "https://programmeroncoffee.github.io/"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 text = "ProgrammerOnCoffee"
 uri = "https://programmeroncoffee.github.io/"
 
@@ -850,6 +926,9 @@ layout_mode = 2
 [node name="Licenses" type="Button" parent="UILayer/UI/MainMenu/Credits/MarginContainer/VBox" unique_id=1992042749]
 layout_mode = 2
 theme_type_variation = &"SButton"
+theme_override_colors/font_color = Color(0.18039216, 0.14901961, 0.0627451, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_colors/font_hover_color = Color(0.3019608, 0.25490198, 0.13333334, 1)
 theme_override_font_sizes/font_size = 24
 text = "View Third-party Licenses"
 flat = true
@@ -888,8 +967,14 @@ layout_mode = 2
 components_preload = true
 components_unload_when_hidden = false
 
+[node name="Label" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="0" unique_id=1515889541]
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+
 [node name="HSeparator" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="1" unique_id=129493548]
 custom_minimum_size = Vector2(0, 25)
+
+[node name="VBoxContainer" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List/ScrollContainer/MarginContainer" parent_id_path=PackedInt32Array(215431176, 94450446) index="0" unique_id=423335146]
+theme = SubResource("Theme_yc10j")
 
 [node name="HSeparator2" parent="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses/List" parent_id_path=PackedInt32Array(215431176, 774536963) index="3" unique_id=85258963]
 custom_minimum_size = Vector2(0, 25)

@@ -245,23 +245,6 @@ func _take_turn() -> void:
 	turn_ended.emit.call_deferred()
 
 
-## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
-#func get_effects() -> Array[Effect]:
-	### The array of [Effect]s to apply.
-	#var effects: Array[Effect]
-	#for module in modules:
-		#for effect in module.effects:
-			## Reset modified base back to base
-			#effect.modified_base = effect.base
-			#effects.append(effect)
-	#for daemon in daemons:
-		#for modifier in daemon.modifiers:
-			#for effect in effects:
-				#if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
-					#effect.modified_base *= modifier.percent
-	#return effects
-
-
 ## Applied all the [Effect]s currently applied to the entity that match the given [Effect.ApplyType].
 func apply_self_effects(apply_type: Effect.ApplyType) -> void:
 	for effect in current_effects:

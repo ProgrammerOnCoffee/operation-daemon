@@ -16,6 +16,7 @@ func attack() -> bool:
 	## The enemy the player has selected to attack.
 	var selected_enemy: Enemy
 	if combat_handler.enemies.size() > 1:
+		TransitionManager.transition(null, combat_handler.control_prompts)
 		var alive_enemies: Array[Enemy]
 		for enemy in combat_handler.enemies:
 			if enemy.health:

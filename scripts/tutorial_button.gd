@@ -5,7 +5,7 @@ class_name TutorialButton extends Button
 static var excluded_triggers:Array[StringName]
 func trigger(id:StringName, node_path:NodePath):
 	if excluded_triggers.has(id): return
-	states[node_path] = true
+	button_pressed = true
 	excluded_triggers.append(id)
 
 ## Whether or not these buttons' panels are open. Persistent past queue-freeing.
@@ -31,6 +31,7 @@ func _ready() -> void:
 
 func _toggled(toggled_on: bool) -> void:
 	
+	#print("TRANS ", info_panel)
 	if toggled_on: TransitionManager.transition(null, info_panel)
 	else:          TransitionManager.transition(info_panel, null)
 	
