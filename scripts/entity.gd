@@ -113,8 +113,8 @@ static var sounds: Dictionary[String, Array] = {
 ## so increase this value in order to move entities closer to each other and
 ## make their attacks seem to actually hit each other.
 @export var rect_attack_inset: int
-## The number of times this entity will attack in a single turn.
-@export var attack_count: int = 1
+## The number of attacks for the player, and a multiplier to the act attack count for enemies.
+@export var attack_count:float = 1
 ## The base damage this [Entity] deals before effects.
 @export var base_damage: int = 10
 ## The variation applied [member base_damage]. Base damage dealt is equal to

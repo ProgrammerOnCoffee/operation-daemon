@@ -28,6 +28,9 @@ extends Entity
 func _ready() -> void:
 	super()
 	
+	max_health *= Global.ENEMY_HEALTH_COEFFICENTS[Global.act]
+	health = max_health
+	
 	var effects:Array[Effect]
 	for module in modules: effects += module.effects
 	for node in colorables:
@@ -51,7 +54,7 @@ func _take_turn() -> void:
 	## How long before beginning the attack animation the QTE will be loaded.
 	var qte_preload_time := PERFECT_QTE_TIME - attack_point
 	var qte: Control
-	for i in attack_count:
+	for i in Global.float_as_chance_int(Global.ENEMY_ATTACK_COUNTS[Global.act] * attack_count):
 		if i == 0:
 			await get_tree().create_timer(0.1).timeout
 			qte = combat_handler.create_qte()
@@ -65,7 +68,7 @@ func _take_turn() -> void:
 			anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
-		var value: float = 0.0 if qte.has_ended else await qte.pressed
+		var value: float = (0.0 if qte.has_ended else await qte.pressed) if qte else 0.0
 		if player.is_defending and value > 0.9:
 			player.entity_3d.play_sound(sound_banks.counter)
 			# Play parry anim

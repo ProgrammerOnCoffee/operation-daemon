@@ -47,7 +47,6 @@ func _ready() -> void:
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
 	for enemy in enemies:
-		print(enemy, ":\t", enemy.modules)
 		
 		enemy.combat_handler = self
 		var bar := HEALTH_BAR.instantiate() as Control

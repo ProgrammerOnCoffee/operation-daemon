@@ -26,9 +26,7 @@ var act := 0:
 var module_count:int = 0
 
 
-func _ready() -> void:
-	act_changed.connect(generate_enemy_pool)
-
+func _ready() -> void: act_changed.connect(generate_enemy_pool)
 
 #region Enemy pool
 
@@ -111,6 +109,10 @@ const ACT_ENEMY_WEIGHTS = [
 	[7,5,2],
 	[5,7,3],
 ]
+## The number of attacks enemies do in each act.
+const ENEMY_ATTACK_COUNTS := [1.2, 1.6, 2.4]
+## A multiplier on the enemies' health in each act.
+const ENEMY_HEALTH_COEFFICENTS := [1., 1.4, 2.6]
 
 func get_weighted_enemy_count() -> int:
 	

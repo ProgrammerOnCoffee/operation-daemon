@@ -3,7 +3,12 @@ class_name TutorialButton extends Button
 ## Allows for single-use triggering of tutorial panels. Good for opening a panel
 ## the first time something happens.
 static var excluded_triggers:Array[StringName]
-func trigger(id:StringName, node_path:NodePath):
+func trigger(id:StringName, _node_path:NodePath):
+	
+	# I only ended up using this in *one place*, and that place
+	# could use a delay.
+	await get_tree().create_timer(2.0).timeout
+	
 	if excluded_triggers.has(id): return
 	button_pressed = true
 	excluded_triggers.append(id)
