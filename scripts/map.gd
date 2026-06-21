@@ -32,7 +32,7 @@ func _ready() -> void:
 			load_entity("angel.tscn")
 		else:
 			for i in $Markers.get_child_count() - 1:
-				load_entity("boss.tscn" if i == 0 else "tentacle.tscn")
+				load_entity("slime_spider_bot.tscn" if i == 0 else "slime_spider_bot.tscn")
 	else:
 		if is_boss_fight:
 			load_entity("boss.tscn")

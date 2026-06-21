@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
 [ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
 [ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
+[ext_resource type="PackedScene" uid="uid://ciylc51iyvld7" path="res://assets/UI Elements/QTE_Ring.tscn" id="14_sxk2p"]
 [ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 [ext_resource type="Texture2D" uid="uid://247xtn3osolm" path="res://assets/UI Elements/Potrait BB.png" id="16_orqql"]
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
@@ -21,10 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
 [ext_resource type="Script" uid="uid://dmdytesnc0x4m" path="res://scripts/misc_lines.gd" id="21_2sghh"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="21_dtxwj"]
-[ext_resource type="Texture2D" uid="uid://dqe0stlt6b6qc" path="res://assets/UI Elements/Ring Back.png" id="22_4dvid"]
-[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
-[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
-[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
+[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="Texture2D" uid="uid://dqe0stlt6b6qc" path="res://assets/UI Elements/Ring Back.png" id="23_k5jin"]
 [ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
 [ext_resource type="AudioStream" uid="uid://bwex074o1snb4" path="res://assets/Audio/SFX/Misc/Fight Complete.wav" id="26_4dvid"]
 [ext_resource type="AudioStream" uid="uid://b1384asnwk30q" path="res://assets/Audio/SFX/Game Over/Robot Game Over-003.wav" id="27_8ymss"]
@@ -61,9 +62,9 @@ HSeparator/styles/separator = SubResource("StyleBoxLine_dtxwj")
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("22_vi8kl")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ymss"]
-atlas = ExtResource("22_4dvid")
-region = Rect2(164.185, 73.905, 440, 440)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd4s1"]
+atlas = ExtResource("23_k5jin")
+region = Rect2(162.04095, 64.79997, 454.44098, 454.44098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5jin"]
 bg_color = Color(0.5294118, 1, 1, 0.6901961)
@@ -210,6 +211,9 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("7_3uv2x")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="QTECircle" parent="." unique_id=1303849341 instance=ExtResource("14_sxk2p")]
+visible = false
 
 [node name="Overlay" type="TextureRect" parent="." unique_id=1721509592]
 self_modulate = Color(5.1105056, 5.1105056, 5.1105056, 0.5)
@@ -575,13 +579,13 @@ layout_mode = 2
 [node name="Label4" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2034337057]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "During your/enemy attacks, click within the success window to do/negate the most damage. "
+text = "During your/enemies' attacks, click when the red circle enters the blue ring to do/negate the most damage. "
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=842150366]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = SubResource("AtlasTexture_8ymss")
+texture = SubResource("AtlasTexture_cd4s1")
 expand_mode = 1
 stretch_mode = 5
 
