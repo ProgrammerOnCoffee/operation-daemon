@@ -90,7 +90,11 @@ func _take_turn() -> void:
 			combat_handler.player.apply_self_effects(Effect.ApplyType.BEFORE_ATTACK)
 			# NOTE: No effects are applied by a Counter/Parry attack.
 			# Take the damage.
-			take_damage(combat_handler.player.damage_dealing, true)
+			var elapsed_t := (Time.get_ticks_msec() - start_t) * 0.001
+			if elapsed_t >= attack_point:
+				take_damage(combat_handler.player.damage_dealing, true)
+			else:
+				get_tree().create_timer(attack_point - elapsed_t).timeout.connect(take_damage.bind(combat_handler.player.damage_dealing, true))
 			# Apply the player's post-attack effects.
 			combat_handler.player.apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		else:
@@ -117,7 +121,11 @@ func _take_turn() -> void:
 			# The player analyzing any daemons it's hit w/.
 			Global.research_group(daemons)
 			# Do the actual damage.
-			combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
+			var elapsed_t := (Time.get_ticks_msec() - start_t) * 0.001
+			if elapsed_t >= attack_point:
+				combat_handler.player.take_damage(damage_dealing, value < 0.9 or player.is_defending)
+			else:
+				get_tree().create_timer(attack_point - elapsed_t).timeout.connect(combat_handler.player.take_damage.bind(damage_dealing, value < 0.9 or player.is_defending))
 			# Recognize the real damage dealt post-effects.
 			damage_dealing = combat_handler.player.damage_receiving
 			# Apply post-attack effects.
