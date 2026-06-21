@@ -48,6 +48,7 @@ enabled=PackedStringArray("res://addons/button_feedback/plugin.cfg", "res://addo
 
 common/snap_controls_to_pixels=false
 theme/custom="uid://b18kjmajkm7k2"
+theme/custom_font="uid://d2cruml7w4o5s"
 
 [input]
 
