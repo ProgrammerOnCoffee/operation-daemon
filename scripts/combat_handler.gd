@@ -30,6 +30,8 @@ var damage_taken: int
 @onready var _cam_initial_transform := cam.global_transform
 ## The initial fov of the camera when the fight was loaded.
 @onready var _cam_initial_fov := cam.fov
+## The control for the control prompts (change enemy selection, cancel attacks, etc)
+@onready var control_prompts := $ControlPrompts
 
 ## [member enemies] sorted by each enemy's z position in the [member cam]'s local coordinates.
 var _sorted_enemies: Array[Enemy]
@@ -45,7 +47,6 @@ func _ready() -> void:
 	# Add a health bar above every enemy
 	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
 	for enemy in enemies:
-		print(enemy, ":\t", enemy.modules)
 		
 		enemy.combat_handler = self
 		var bar := HEALTH_BAR.instantiate() as Control
@@ -82,8 +83,10 @@ func _input(event: InputEvent) -> void:
 					break
 		elif event.is_action_pressed(&"select_confirm"):
 			entity_selected.emit(_focused_entity)
+			TransitionManager.transition(control_prompts, null)
 		elif event.is_action_pressed(&"select_cancel"):
 			entity_selected.emit(null)
+			TransitionManager.transition(control_prompts, null)
 
 
 ## Sequentially prompts all entities to take a turn.
@@ -199,13 +202,23 @@ func get_loot_modules() -> Array[Module]:
 			for effect in module.effects: if effect._is_beneficial():
 				viable_effects.append(effect)
 	
+	# IF the enemies didn't have any effects (poor enemies D:), make a random one.
+	if viable_effects.size() <= 0: 
+		viable_effects += [Effect.all_effects.values().pick_random().new()]
+	
 	# Construct new modules using the viable effects.
 	var loot:Array[Module]
 	for i in Global.float_as_chance_int(1.5):
 		
+		var bag := viable_effects.duplicate()
 		var effs:Array[Effect]
+		
 		for j in Global.float_as_chance_int(randf_range(1.3, 2.1)):
-			effs.append(viable_effects.pick_random())
+			if bag.size() < 1: break
+			 
+			var added := bag.pick_random() as Effect
+			effs.append(added)
+			bag.erase(added)
 		
 		var new := Module.new(effs, Module.SLOT.NONE)
 		
@@ -276,6 +289,9 @@ func update_player_health_bar() -> void:
 	, l.text.substr(0, l.text.length() - 1).to_int(), player.health, 0.3)
 	
 	# Make the module icons, while we're at it.
+	for child in $PlayerStatus/VBoxContainer/Effects/ScrollContainer/HBoxContainer.get_children():
+		child.queue_free()
+	
 	for module in player.modules:
 		var new_icon := Primitive2D.new()
 		

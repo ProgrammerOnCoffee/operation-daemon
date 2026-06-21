@@ -113,8 +113,8 @@ static var sounds: Dictionary[String, Array] = {
 ## so increase this value in order to move entities closer to each other and
 ## make their attacks seem to actually hit each other.
 @export var rect_attack_inset: int
-## The number of times this entity will attack in a single turn.
-@export var attack_count: int = 1
+## The number of attacks for the player, and a multiplier to the act attack count for enemies.
+@export var attack_count:float = 1
 ## The base damage this [Entity] deals before effects.
 @export var base_damage: int = 10
 ## The variation applied [member base_damage]. Base damage dealt is equal to
@@ -243,23 +243,6 @@ func _ready() -> void:
 ## If this is an [Enemy], attacks the player.
 func _take_turn() -> void:
 	turn_ended.emit.call_deferred()
-
-
-## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
-#func get_effects() -> Array[Effect]:
-	### The array of [Effect]s to apply.
-	#var effects: Array[Effect]
-	#for module in modules:
-		#for effect in module.effects:
-			## Reset modified base back to base
-			#effect.modified_base = effect.base
-			#effects.append(effect)
-	#for daemon in daemons:
-		#for modifier in daemon.modifiers:
-			#for effect in effects:
-				#if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
-					#effect.modified_base *= modifier.percent
-	#return effects
 
 
 ## Applied all the [Effect]s currently applied to the entity that match the given [Effect.ApplyType].

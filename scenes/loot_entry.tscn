@@ -2,52 +2,27 @@
 
 [ext_resource type="Theme" uid="uid://b18kjmajkm7k2" path="res://resources/main_theme.tres" id="1_tb8c3"]
 [ext_resource type="Script" uid="uid://qs75k0yoprt2" path="res://scripts/loot_entry.gd" id="2_8ieln"]
-[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="3_xjtwx"]
+[ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="3_xjtwx"]
 [ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="4_gjxec"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dytst"]
-draw_center = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb8c3"]
+bg_color = Color(0, 0, 0, 0.42745098)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
+border_color = Color(0, 0, 0, 0.42745098)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqm84"]
-bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ieln"]
+bg_color = Color(0, 0, 0, 0.42745098)
+draw_center = false
+border_color = Color(0, 0, 0, 0.42745098)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fr15"]
-bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjtwx"]
+bg_color = Color(0, 0, 0, 0.15294118)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b80gg"]
-bg_color = Color(0.67058825, 0.67058825, 0.67058825, 0.21176471)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.67058825, 0.67058825, 0.67058825, 0.078431375)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjxec"]
+bg_color = Color(1, 1, 1, 0.24313726)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mblv6"]
 bg_color = Color(0.101960786, 0.11372549, 0.14117648, 0.29411766)
@@ -71,7 +46,7 @@ custom_minimum_size = Vector2(0, 32)
 offset_right = 322.0
 offset_bottom = 36.0
 theme = ExtResource("1_tb8c3")
-theme_override_styles/panel = SubResource("StyleBoxFlat_dytst")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tb8c3")
 script = ExtResource("2_8ieln")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=125141851]
@@ -80,10 +55,10 @@ layout_mode = 2
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=16080144]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_gqm84")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3fr15")
-theme_override_styles/hover = SubResource("StyleBoxFlat_b80gg")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_b80gg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ieln")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xjtwx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gjxec")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_xjtwx")
 toggle_mode = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Button" unique_id=355216943]

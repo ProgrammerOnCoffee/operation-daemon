@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://ci4b0pn5vgtj3"]
 
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="1_kqpku"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 content_margin_left = 10.0
 content_margin_top = 0.0
@@ -46,6 +48,7 @@ Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_kqpku")
 Button/styles/hover = SubResource("StyleBoxFlat_tbgi4")
 Button/styles/normal = SubResource("StyleBoxFlat_jyhfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_tefeu")

@@ -3,17 +3,17 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://qlkw6aafj7l0"
-path="res://.godot/imported/combat2.ogg-9d601ba45436d9000ca14ddf980d2ef9.oggvorbisstr"
+path="res://.godot/imported/combat2.ogg-3fa01151925740e066559cb07eaeb1b6.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/audio/music/combat2.ogg"
-dest_files=["res://.godot/imported/combat2.ogg-9d601ba45436d9000ca14ddf980d2ef9.oggvorbisstr"]
+source_file="res://assets/Audio/music/combat2.ogg"
+dest_files=["res://.godot/imported/combat2.ogg-3fa01151925740e066559cb07eaeb1b6.oggvorbisstr"]
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
-beat_count=0
+loop=true
+loop_offset=0.0
+bpm=120.0
+beat_count=188
 bar_beats=4

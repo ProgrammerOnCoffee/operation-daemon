@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cet8h24wxofts" path="res://scripts/map_generation/world_map.gd" id="1_u82pb"]
 [ext_resource type="Resource" uid="uid://bsnwltb0xrc88" path="res://resources/map_configs/Act1.tres" id="3_u82pb"]
 [ext_resource type="Script" uid="uid://c4u7snpqdesmb" path="res://scripts/inventory.gd" id="4_27p3u"]
-[ext_resource type="Script" path="res://scripts/primitive_2d.gd" id="4_qj3iy"]
+[ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="4_qj3iy"]
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="5_qj3iy"]
 [ext_resource type="PackedScene" uid="uid://cyoh2mfn2chnp" path="res://scenes/module_entry.tscn" id="6_27p3u"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="9_55716"]
@@ -747,7 +747,6 @@ text = "Boss"
 horizontal_alignment = 1
 
 [node name="InventoryTut" type="HBoxContainer" parent="." unique_id=567213763]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -783,7 +782,7 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer" unique_id=321148347]
 layout_mode = 2
 theme = SubResource("Theme_1ra3e")
-theme_override_constants/separation = 33
+theme_override_constants/separation = 22
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1273160347]
 layout_mode = 2
@@ -816,7 +815,7 @@ autowrap_mode = 2
 [node name="Label3" type="Label" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=2125508564]
 layout_mode = 2
 theme_override_font_sizes/font_size = 21
-text = "View your Daemons - percent changes to Modules' effects. These can be made in the Lab, or contracted from irradiatied"
+text = "View your Daemons - percent changes to Modules' effects. These can be made in the Lab, or contracted from irradiatied zones."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=191693858]
@@ -866,6 +865,20 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Label" type="Label" parent="." unique_id=116501638]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -47.0
+offset_right = 126.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_font_sizes/font_size = 12
+text = "Press P to Pause"
+vertical_alignment = 2
+
 [connection signal="event_selected" from="." to="TutorialButton" method="set_pressed" binds= [false]]
 [connection signal="event_selected" from="." to="TutorialButton2" method="trigger" binds= [&"MapInv", NodePath(".")]]
-[connection signal="event_selected" from="." to="TutorialButton2" method="set_pressed" binds= [true]]
