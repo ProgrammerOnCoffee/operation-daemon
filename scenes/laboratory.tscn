@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="4_fie5y"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="5_0qmye"]
+[ext_resource type="PackedScene" uid="uid://yyutrblraiid" path="res://assets/Dr Anglea Turtle/dr_angela_turtle.tscn" id="6_7eomm"]
 
 [sub_resource type="Shader" id="Shader_ehj20"]
 code = "shader_type canvas_item;
@@ -689,11 +690,16 @@ horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=400642682]
 use_parent_material = true
+clip_contents = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhqq6")
+
+[node name="Dr Angela Turtle" parent="HBoxContainer/MarginContainer/VBoxContainer/Panel" unique_id=1222050955 instance=ExtResource("6_7eomm")]
+position = Vector2(75, 312)
+scale = Vector2(0.4, 0.4)
 
 [node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1089969643]
 use_parent_material = true
