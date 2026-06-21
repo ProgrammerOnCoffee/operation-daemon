@@ -15,7 +15,7 @@ func _ready() -> void:
 		TransitionManager.fade($Splash)
 	
 	if OS.get_name() == "Web":
-		$QuitButton.show()
+		$MainMenu/MainMenu/VBoxContainer/VBoxContainer/Quit.hide()
 
 
 func transition(from_path: NodePath, to_path: NodePath):
