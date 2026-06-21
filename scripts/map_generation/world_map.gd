@@ -140,6 +140,10 @@ func _on_event_button_pressed(button:EventButton):
 	var scene := button.event.get_new_scene()
 	if scene:
 		current_event_scene = scene
+		if current_event.type == Event.TYPE.COMBAT:
+			# Set window aspect scale mode to prevent the left and right sides
+			# of the 3D scene from clipping out of the player's screen
+			get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP_HEIGHT
 		
 		# Add the scene to the corresponding parent
 		scene_parents[button.event.type].add_child(scene)
@@ -193,6 +197,8 @@ func _finish_event(additional_data:bool) -> void:
 		Global.act_completed.emit()
 		Global.daemon_research.clear() # Reset all ongoing research.
 	
+	# Revert window aspect scale mode once the transition screen is fully opaque
+	get_tree().create_timer(TransitionManager.duration + TransitionManager.spread).timeout.connect(get_window().set.bind(&"content_scale_aspect", Window.CONTENT_SCALE_ASPECT_EXPAND))
 	# Transition the screen
 	await TransitionManager.transition_screen(current_event_scene if current_event_scene is CanvasItem else null, transition_to)
 	
