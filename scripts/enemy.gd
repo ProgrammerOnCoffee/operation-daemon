@@ -80,7 +80,7 @@ func _take_turn() -> void:
 		return
 	
 	## The target time that the player should respond to the QTE after.
-	const PERFECT_QTE_TIME := 0.6 * 3 / 4
+	const PERFECT_QTE_TIME := QTECircle.PARRY_PERFECT_DURATION
 	## How long before beginning the attack animation the QTE will be loaded.
 	var qte_preload_time := PERFECT_QTE_TIME - attack_point
 	var qte: Control
