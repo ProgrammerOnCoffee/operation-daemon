@@ -1,19 +1,15 @@
 [gd_scene format=3 uid="uid://djrj1qugwhtj5"]
 
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="1_5ldva"]
 [ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_retqc"]
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="2_5ldva"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="2_xonkf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lcef"]
-bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xonkf"]
+bg_color = Color(0.74509805, 0.69411767, 0.59607846, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp2fe"]
-bg_color = Color(0.17254902, 0.18431373, 0.21960784, 1)
-corner_radius_top_left = 70
-corner_radius_top_right = 70
-corner_radius_bottom_right = 70
-corner_radius_bottom_left = 70
-corner_detail = 1
+[sub_resource type="Theme" id="Theme_5ldva"]
+Label/colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
 
 [sub_resource type="GDScript" id="GDScript_85m7x"]
 script/source = "extends Button
@@ -40,39 +36,59 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8lcef")
+theme = ExtResource("1_5ldva")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xonkf")
 script = ExtResource("1_retqc")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=480262955]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qp2fe")
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=613554217]
+visible = false
+position = Vector2(-146.3707, 328.55573)
+rotation = -0.42948598
+color = Color(1, 1, 1, 0.16470589)
+polygon = PackedVector2Array(1069, -444, -207, 238, -212, 314, 1090, -386)
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1029574618]
+[node name="Polygon2D3" type="Polygon2D" parent="." unique_id=1851335201]
+visible = false
+position = Vector2(-93.37067, 195.55574)
+rotation = -0.429486
+scale = Vector2(0.48910412, 0.48910412)
+color = Color(1, 1, 1, 0.16470589)
+polygon = PackedVector2Array(1069, -444, -207, 238, -212, 314, 1090, -386)
+
+[node name="Polygon2D4" type="Polygon2D" parent="." unique_id=703290590]
+color = Color(0.6117647, 0.5568628, 0.42745098, 1)
+polygon = PackedVector2Array(0, 648, -149, 333, 1246, 333, 1152, 648)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=82810264]
+color = Color(0.21960784, 0.19215687, 0.1254902, 1)
+polygon = PackedVector2Array(0, 648, 395, 333, 757, 333, 1152, 648)
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1029574618]
 layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1684950788]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=1684950788]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1024201917]
-custom_minimum_size = Vector2(800, 0)
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer" unique_id=1024201917]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_font_sizes/font_size = 42
 text = "You Walked Through A Contaminated Zone"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="DaemonOverview" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("2_5ldva")]
+[node name="DaemonOverview" parent="MarginContainer2/VBoxContainer" unique_id=1406311835 instance=ExtResource("2_5ldva")]
 custom_minimum_size = Vector2(300, 250)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_5ldva")
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1950961265 node_paths=PackedStringArray("event_scene", "overview")]
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1950961265 node_paths=PackedStringArray("event_scene", "overview")]
 custom_minimum_size = Vector2(500, 75)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -81,9 +97,9 @@ theme_override_font_sizes/font_size = 33
 text = "Contract Daemon"
 autowrap_mode = 2
 script = SubResource("GDScript_85m7x")
-event_scene = NodePath("../../../..")
+event_scene = NodePath("../../..")
 overview = NodePath("../DaemonOverview")
 
-[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1026875785]
+[node name="Control2" type="Control" parent="MarginContainer2/VBoxContainer" unique_id=1026875785]
 layout_mode = 2
 size_flags_vertical = 3

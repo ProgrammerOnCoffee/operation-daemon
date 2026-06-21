@@ -73,6 +73,8 @@ func _update_daemon_list() -> void:
 	
 	# Make the new icons.
 	for daemon in PlayerData.permanent_daemons:
+		if not daemon: continue
+		
 		# Make the nodes and add 'em
 		var button := Button.new()
 		button.flat = true

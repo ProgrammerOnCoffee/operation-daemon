@@ -15,7 +15,7 @@ signal act_changed
 signal act_completed
 signal run_ended
 
-var act := 1:
+var act := 0:
 	set(to):
 		act = to
 		act_changed.emit()
@@ -51,7 +51,6 @@ const ACT_NEG_MODIFIERS = [2, 3, 3, 4, 4, 4]
 ## The pool of enemies that will be used throughout the current act.
 var enemy_pool: Array[Enemy]
 
-
 ## Generates a new pool of enemies that will be used throughout the current act.
 func generate_enemy_pool() -> void:
 	## The set of available enemies in this act.
@@ -80,7 +79,7 @@ func generate_enemy_pool() -> void:
 			var modifiers: Array[Modifier]
 			## The remaining number of positive modifiers to generate.
 			var pos_mod_n := randi_range(Global.ACT_POS_MODIFIERS[act_min], Global.ACT_POS_MODIFIERS[act_max])
-			## The remaining number of negative modifiers to generate.
+			## The remaining number of negative modiGlGlobal.ACT_MODULES[act_min], Global.ACT_MODULES[act_maxobal.ACT_MODULES[act_min], Global.ACT_MODULES[act_maxfiers to generate.
 			var neg_mod_n := randi_range(Global.ACT_NEG_MODIFIERS[act_min], Global.ACT_NEG_MODIFIERS[act_max])
 			while pos_mod_n or neg_mod_n:
 				var modifier := Modifier.all_modifiers.values().pick_random().new() as Modifier
@@ -104,6 +103,21 @@ func generate_enemy_pool() -> void:
 			enemy.daemons.append(Daemon.new(modifiers))
 		enemy_pool[i] = enemy
 
+## The odds of having each num of enemies per act. [3,4,5] -> [1,1,1,2,2,2,2,3,3,3,3,3].pick_random()
+const ACT_ENEMY_WEIGHTS = [
+	[8,3,1],
+	[7,5,2],
+	[5,7,3],
+]
+
+func get_weighted_enemy_count() -> int:
+	
+	var pool:Array[int]
+	for i in ACT_ENEMY_WEIGHTS[act].size():
+		for j in ACT_ENEMY_WEIGHTS[act][i]:
+			pool.append(i + 1)
+	
+	return pool.pick_random()
 
 ## Picks an enemy from the [member enemy_pool] and creates an [Entity3D] for it.
 func pick_enemy() -> Entity3D:
@@ -112,8 +126,10 @@ func pick_enemy() -> Entity3D:
 	## The duplicated [Enemy] that will actually be loaded into the fight.
 	var entity := enemy.duplicate() as Enemy
 	entity.daemons = enemy.daemons
+	entity.modules = enemy.modules
 	var entity_3d := Entity3D.new()
 	entity_3d.entity = entity
+	
 	return entity_3d
 
 
@@ -159,8 +175,6 @@ func research_all(amount:float = 0.10) -> void:
 
 ## Attempt to discover all daemons currently being researched.
 func attempt_discovery() -> void:
-	
-	print("ATTEMPT DISCOVERY -> ")
 	
 	for daemon in daemon_research:
 		# If the chance is passed, this daemon gets successfully researched.

@@ -23,7 +23,7 @@ func _ready() -> void:
 		for i in $Markers.get_child_count() - 1:
 			load_entity("m_slime.tscn" if i == 2 else "angel.tscn" if i == 1 else "slime_spider_bot.tscn")
 	else:
-		for i in 1:
+		for i in Global.get_weighted_enemy_count():
 			load_enemy()
 	
 	add_child(combat_handler)

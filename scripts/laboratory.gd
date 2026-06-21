@@ -31,8 +31,7 @@ var injector_selection:Daemon
 
 ## Logbook
 @onready var logbook_tabs    := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/PanelContainer/TabBar
-@onready var logbook_title   := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer/Title
-@onready var logbook_content := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer/Content
+@onready var logbook_content := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/ScrollContainer/VBoxContainer/Content
 @onready var logbook_overlay := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/CorruptionOverlay
 @export  var obscuring_material:ShaderMaterial # Used to make the text illegible
 @export_multiline() var logs:Array[String] 
@@ -55,6 +54,8 @@ func _ready() -> void:
 	_on_log_selected(0)
 	Global.act_completed.connect(_unlock_log)
 	Global.daemon_discovered.connect(_update_discovered_list)
+	
+	injector_equip_button.disabled = true
 
 func _process(delta: float) -> void:
 	scroll_container.scroll_horizontal = move_toward(scroll_container.scroll_horizontal, goal_scroll_position, 493 * (delta / 0.1)) # Move 493px in 0.1s
@@ -78,8 +79,6 @@ func _unlock_log() -> void:
 	Global.push_toast.emit("Log Decrypted: Log %s" % Global.lead(logs_unlocked, 3))
 
 func _on_log_selected(index:int) -> void: 
-	
-	logbook_title.text = logbook_tabs.get_tab_title(index)
 	logbook_content.text = logs[index]
 	
 	logbook_content.material = null if logs_unlocked > index else obscuring_material
@@ -99,7 +98,7 @@ func _update_discovered_list(..._args:Array) -> void:
 		daemon_dictionary[id] = daemon
 		
 		# Add each daemon to the lists.
-		injector_item_list   .add_item(id)
+		injector_item_list   .add_item((">" if PlayerData.permanent_daemons.has(daemon) else "") + id)
 		recomb_reroll_options.add_item(id)
 		recomb_using_options.add_item(id)
 		
@@ -175,6 +174,10 @@ func _on_injector_selection(index: int) -> void:
 	injector_equip_button.disabled = PlayerData.permanent_daemons.size() >= 5 and not PlayerData.permanent_daemons.has(injector_selection)
 
 func _toggle_equip(toggled_on: bool) -> void:
+	
+	if not injector_selection:
+		injector_equip_button.disabled = true
+		return
 	
 	# Toggling and able to select more.
 	if toggled_on and PlayerData.permanent_daemons.size() < 5:

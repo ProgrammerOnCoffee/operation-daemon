@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://mse7o10dee5k"]
 
 [ext_resource type="Script" uid="uid://c1fylo3xb5bvf" path="res://scripts/event_scene.gd" id="1_v4yus"]
+[ext_resource type="Theme" uid="uid://dwkor4b6w3vxe" path="res://assets/Main_theme.tres" id="1_y2oi8"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="2_noiqi"]
+[ext_resource type="Shader" uid="uid://bftuh6gjcpnnv" path="res://resources/scroll_lines.gdshader" id="4_nnxdn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lcef"]
 bg_color = Color(0.14509805, 0.15294118, 0.18431373, 1)
@@ -25,12 +27,58 @@ func _pressed() -> void:
 	event_scene.event_finished.emit(true)
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djokn"]
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2xn4"]
+shader = ExtResource("4_nnxdn")
+shader_parameter/slowdown = 3.0
+shader_parameter/colorA = Color(0.2627451, 0.7176471, 0.8, 1)
+shader_parameter/colorB = Color(0.23529412, 0.62352943, 0.7882353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sigd3"]
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j214l"]
+bg_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.101960786, 0.11372549, 0.14117648, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 1
+
 [node name="RestEvent" type="PanelContainer" unique_id=2057279057]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_y2oi8")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8lcef")
 script = ExtResource("1_v4yus")
 
@@ -47,6 +95,7 @@ theme_override_constants/margin_bottom = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1684950788]
 layout_mode = 2
+theme_override_constants/separation = 21
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1024201917]
 layout_mode = 2
@@ -55,8 +104,8 @@ text = "You Reached A Charging Station"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1025782522]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1950961265 node_paths=PackedStringArray("event_scene")]
 custom_minimum_size = Vector2(400, 75)
@@ -64,9 +113,33 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_noiqi")
 theme_override_font_sizes/font_size = 33
-text = "Rest (+30hp)"
+text = "Rest (+30 Health)"
 script = SubResource("GDScript_8lcef")
 event_scene = NodePath("../../../..")
+
+[node name="Control3" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=645958175]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=20446361]
+layout_mode = 2
+alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1367917766]
+custom_minimum_size = Vector2(275, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_djokn")
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel" unique_id=1484464693]
+material = SubResource("ShaderMaterial_v2xn4")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sigd3")
+
+[node name="Panel2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=788937787]
+custom_minimum_size = Vector2(25, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_j214l")
 
 [node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1026875785]
 layout_mode = 2
