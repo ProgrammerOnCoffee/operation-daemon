@@ -92,10 +92,10 @@ func _process(_delta: float) -> void: if stream is AudioStreamSynchronized:
 		var new_volume = linear_to_db(move_toward(db_to_linear(stream.get_sync_stream_volume(i) - (track_volume_offsets[stream_names[i]] if track_volume_offsets.has(stream_names[i]) else 0.)), (i == current_stream) as int, beat_delta / bar_beats)) 
 		#print(i,(i == current_stream) as int,":\t",db_to_linear(stream.get_sync_stream_volume(i)),"\t", new_volume)
 		
-		print("B4", new_volume)
+		#print("B4", new_volume)
 		if track_volume_offsets.has(stream_names[i]):
 			new_volume += track_volume_offsets[stream_names[i]]
-		print("AF", new_volume)
+		#print("AF", new_volume)
 		
 		stream.set_sync_stream_volume(i, new_volume)
 

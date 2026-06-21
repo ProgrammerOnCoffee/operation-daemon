@@ -31,7 +31,10 @@ func _ready() -> void:
 	_regenerate_map()
 
 func _regenerate_map():
+	print("AC", Global.act)
 	map_generator.generate_map()
+	
+	await get_tree().create_timer(0.1).timeout
 	
 	update_visual()
 
@@ -74,6 +77,8 @@ func update_visual() -> void:
 	var unused_lines:Array[Line2D] = lines.duplicate()
 	lines.clear()
 	
+	
+	print("\nREGENNED")
 	# Reassign the buttons to their new events, and make lines.
 	for i in events.size():
 		var this_button := buttons[i]
@@ -113,8 +118,11 @@ func update_visual() -> void:
 			
 			lines.append(line)
 		
+		
 		# Unlock only the first row.
+		print(this_button.event.type, " -> ", this_event.row == 0)
 		this_button.available = this_event.row == 0
+	
 	
 	# Discard any unused lines.
 	for line in unused_lines: line.queue_free()
@@ -156,18 +164,21 @@ func _on_event_button_pressed(button:EventButton):
 		# Change the music if necessary
 		if MUSIC_TRANSITIONS.has(button.event.type):
 			Global.request_track_transition.emit(MUSIC_TRANSITIONS[button.event.type])
-	else:
+	else: # No scene :( wait half a sec then finish it automatically
+		await get_tree().create_timer(0.5).timeout
 		_finish_event(true)
 	
-	## Open up the next slots.
+	## Open up the next slots, unless this is the last one.
 	
-	current_row = button.event.row + 1
-	
-	for av_button in event_buttons.values(): av_button.available = false
-	
-	for event in button.event.next_options:
-		event_buttons[event].available = true  
-	
+	if not button.event.row >= map_generator.config.floor_count -1:
+		
+		current_row = button.event.row + 1
+		
+		for av_button in event_buttons.values(): av_button.available = false
+		
+		for event in button.event.next_options:
+			event_buttons[event].available = true  
+		
 	event_selected.emit()
 
 func recurs_find_event_scene(from:Node) -> EventScene:
