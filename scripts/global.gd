@@ -14,7 +14,9 @@ signal setting_changed(setting_name:String, new_value:Variant)
 ## -- PROGRESSION -- ##
 
 signal act_changed
+@warning_ignore("unused_signal")
 signal act_completed
+@warning_ignore("unused_signal")
 signal run_ended
 
 var act := 0:
@@ -33,6 +35,7 @@ func _ready() -> void: act_changed.connect(generate_enemy_pool)
 var ALL_ENTITIES: Dictionary[String, PackedScene] = {
 	"angel": load("res://scenes/entities/angel.tscn"),
 	"dino_slime": load("res://scenes/entities/dino_slime.tscn"),
+	"goopy_plane": load("res://scenes/entities/goopy_plane.tscn"),
 	"m_slime": load("res://scenes/entities/m_slime.tscn"),
 	"slime_spider_bot": load("res://scenes/entities/slime_spider_bot.tscn"),
 }
@@ -53,11 +56,11 @@ var enemy_pool: Array[Enemy]
 
 ## Generates a new pool of enemies that will be used throughout the current act.
 func generate_enemy_pool() -> void:
-	## The set of available enemies in this act.
+	## The weighted set of available enemies in this act.
 	var available_enemies = (
-		[ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime] if act == 0
-		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.dino_slime] if act == 1
-		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.dino_slime, ALL_ENTITIES.angel]
+		[ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.m_slime, ALL_ENTITIES.goopy_plane] if act == 0
+		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.goopy_plane, ALL_ENTITIES.dino_slime] if act == 1
+		else [ALL_ENTITIES.slime_spider_bot, ALL_ENTITIES.m_slime, ALL_ENTITIES.goopy_plane, ALL_ENTITIES.dino_slime, ALL_ENTITIES.dino_slime, ALL_ENTITIES.angel, ALL_ENTITIES.angel]
 	)
 	## The number of enemies in this act's pool.
 	var pool_size := randi_range(6, 8)
