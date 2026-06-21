@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mgu1ko53enkq"]
 
-[ext_resource type="PackedScene" uid="uid://xb2grit8kwea" path="res://assets/Enemy Parts/M Slime/m_slime_bones.tscn" id="1_4xkgj"]
+[ext_resource type="PackedScene" uid="uid://xb2grit8kwea" path="res://scenes/entities/m_slime.tscn" id="1_4xkgj"]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_iy3vy"]
 resource_local_to_scene = true

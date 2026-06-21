@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://crxiha2603h48" path="res://scenes/daemon_overview.tscn" id="1_fknr6"]
 [ext_resource type="Script" uid="uid://c4o4qebrk7g3i" path="res://scripts/laboratory.gd" id="1_stu8i"]
+[ext_resource type="Shader" uid="uid://bftuh6gjcpnnv" path="res://resources/scroll_lines.gdshader" id="3_0qmye"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="4_fie5y"]
+[ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="5_0qmye"]
 
 [sub_resource type="Shader" id="Shader_ehj20"]
 code = "shader_type canvas_item;
@@ -173,32 +176,8 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 corner_detail = 1
 
-[sub_resource type="Shader" id="Shader_6mkvh"]
-code = "shader_type canvas_item;
-
-uniform float slowdown = 7.;
-uniform vec4 colorA:source_color;
-uniform vec4 colorB:source_color;
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	
-	if (mod(10. * (UV.x + UV.y - (TIME / slowdown)), 2.) > 1.)
-	{
-		COLOR = colorA;
-	}
-	else{COLOR = colorB;}
-	
-}
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehj20"]
-shader = SubResource("Shader_6mkvh")
+shader = ExtResource("3_0qmye")
 shader_parameter/slowdown = 5.0
 shader_parameter/colorA = Color(1, 0.34901962, 0.34901962, 0.61960787)
 shader_parameter/colorB = Color(0.7607843, 0.26666668, 0.26666668, 0.69803923)
@@ -210,6 +189,25 @@ corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cixbc"]
+bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
+skew = Vector2(0.01, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7eomm"]
+color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+thickness = 4
+
+[sub_resource type="Theme" id="Theme_6p266"]
+HSeparator/styles/separator = SubResource("StyleBoxLine_7eomm")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("4_fie5y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhqq6"]
 corner_radius_top_left = 20
@@ -227,7 +225,29 @@ grow_vertical = 2
 color = Color(0.17254902, 0.18431373, 0.21960784, 1)
 script = ExtResource("1_stu8i")
 obscuring_material = SubResource("ShaderMaterial_fie5y")
-logs = Array[String](["webadabooda", "something something explosion", "according to all known laws of aviation there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. THe bee, however, flies anyways."])
+logs = Array[String](["Everything was going so well. 
+
+The Biology and Engineering departments' respective projects were ahead of schedule, even. In hindsight, we should have slowed down - made sure we were taking the proper safety precautions. 
+
+But it's too late for wishing things had gone differently - now we need to start figuring out how to combat them. We got lucky that the Astronomy department was already building a atmospheric research lab, but who knows how long these supplies will last. Well. Back to work.
+
+- Dr. Angela Williams", "We've begun work on a solution. 
+
+A laboratory of sorts, that we can send down to the surface and remotely research them - to try and find a way to counter their strange powers; the others have started calling them 'Modules', and 'Daemons'. 
+
+The Engineering department -what remains of it - is getting excited about some device to make identical robot drones using the new technology, to send out to collect samples. 
+
+I'm just trying to make sure the whole thing remains intact on reentry - we don't have a lot of materials, so it's going to be a challenge. Some kind of external shielding?
+
+- Dr. Angela W.", "This is risky.
+
+The shielding is nowhere near as strong as I'd like, but there's nothing more I can do with the materials on hand. We'll just have to pray that a 30% chance is enough.
+
+The software team has been bickering about the drones for a while - something about them having visual hallucinations of a woman with a turtle on her head? Even worse, she apparently looks like me - they've dubbed her 'Dr. Angela Turtle.'
+
+They haven't been able to debug the hallucinations, and the longer we take, the less time we'll have to get samples. The team's decided we're sending it down at the end of the week - not enough time, but all we can risk.
+
+- Dr. Angela Williams"])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1738358358]
 use_parent_material = true
@@ -277,7 +297,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-scroll_horizontal = 992
+scroll_horizontal = 100
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -532,21 +552,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0r2u2")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay" unique_id=1278570384]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer" unique_id=1307536624]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer" unique_id=2070480951]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=275687686]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/ScrollContainer" unique_id=1307536624]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 23
-text = "LOG 001"
+size_flags_horizontal = 3
 
-[node name="Content" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/VBoxContainer" unique_id=475244506]
+[node name="Content" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Logbook/VBoxContainer/LogDisplay/MarginContainer/ScrollContainer/VBoxContainer" unique_id=475244506]
 material = SubResource("ShaderMaterial_fie5y")
 layout_mode = 2
 size_flags_vertical = 1
@@ -595,6 +613,59 @@ theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 17
 text = "Back To Main Menu"
 
+[node name="ExpeditionTut" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1065745643]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut" unique_id=1993631467]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cixbc")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer" unique_id=1861207466]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer" unique_id=183992305]
+layout_mode = 2
+theme = SubResource("Theme_6p266")
+theme_override_constants/separation = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer/VBoxContainer" unique_id=1206209866]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1815145804]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "TUTORIAL DEBRIEF"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1270061353]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Expeditions"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer/VBoxContainer" unique_id=160911767]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer/MarginContainer/VBoxContainer" unique_id=1755503672]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "You don't currently have any samples, so the Laboratory is useless. Come back after completing an expedition and discovering some Daemons.
+
+
+Press the 'Begin Expedition' Button in the bottom right to begin an expedition."
+autowrap_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
 use_parent_material = true
 layout_mode = 2
@@ -632,6 +703,15 @@ size_flags_horizontal = 4
 theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 29
 text = "BEGIN EXPEDITION"
+
+[node name="TutorialButton" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel", "close_button") instance=ExtResource("5_0qmye")]
+layout_mode = 0
+offset_left = -85.0
+offset_top = 385.0
+offset_right = -45.0
+offset_bottom = 430.0
+info_panel = NodePath("../HBoxContainer/PanelContainer/ExpeditionTut")
+close_button = NodePath("../HBoxContainer/MarginContainer/VBoxContainer/Button")
 
 [connection signal="tab_clicked" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_pressed"]
 [connection signal="tab_hovered" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_hover"]

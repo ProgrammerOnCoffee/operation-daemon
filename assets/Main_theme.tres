@@ -2,11 +2,66 @@
 
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="1_iew7b"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rsht"]
+content_margin_left = 16.0
+content_margin_top = 2.0
+content_margin_right = 26.0
+content_margin_bottom = 2.0
+bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+skew = Vector2(0.71, 0)
+corner_radius_top_right = 30
+corner_radius_bottom_left = 17
+corner_detail = 1
+shadow_color = Color(0.05, 0.05, 0.05, 0.49803922)
+shadow_size = 2
+shadow_offset = Vector2(-2, 3)
+anti_aliasing_size = 2.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iew7b"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
 bg_color = Color(0.21117607, 0.17717162, 0.07802073, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5gxm"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(0.16078432, 0.12941177, 0.05490196, 1)
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 11
+corner_radius_top_right = 8
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rux8"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
 bg_color = Color(0.13163108, 0.109458275, 0.046094522, 1)
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 11
+corner_radius_top_right = 8
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4xc6"]
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(0.101960786, 0.08235294, 0.03529412, 1)
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 border_blend = true
@@ -136,21 +191,6 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rsht"]
-content_margin_left = 16.0
-content_margin_top = 2.0
-content_margin_right = 26.0
-content_margin_bottom = 2.0
-bg_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
-skew = Vector2(0.71, 0)
-corner_radius_top_right = 30
-corner_radius_bottom_left = 17
-corner_detail = 1
-shadow_color = Color(0.05, 0.05, 0.05, 0.49803922)
-shadow_size = 2
-shadow_offset = Vector2(-2, 3)
-anti_aliasing_size = 2.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2xtc"]
 bg_color = Color(0.0722475, 0.07224231, 0.025504539, 1)
 
@@ -159,8 +199,11 @@ default_font = ExtResource("1_iew7b")
 Button/colors/font_color = Color(0.90483254, 0.8637957, 0.86418724, 1)
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_iew7b")
+Button/styles/disabled = SubResource("StyleBoxFlat_4rsht")
 Button/styles/hover = SubResource("StyleBoxFlat_iew7b")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_n5gxm")
 Button/styles/normal = SubResource("StyleBoxFlat_4rux8")
+Button/styles/pressed = SubResource("StyleBoxFlat_h4xc6")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/fonts/font = ExtResource("1_iew7b")
 Panel/styles/panel = SubResource("StyleBoxFlat_h1pki")

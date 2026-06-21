@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rnsxwyparcb0" path="res://scripts/combat_handler.gd" id="1_2p8v4"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="2_a8me0"]
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_tb0t7"]
-[ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="4_fnwho"]
+[ext_resource type="Script" path="res://scripts/floaty_label.gd" id="4_fnwho"]
 [ext_resource type="Texture2D" uid="uid://ula2soydh481" path="res://assets/UI Elements/Attack.png" id="4_tb0t7"]
 [ext_resource type="Texture2D" uid="uid://cun2fk1qycq6l" path="res://assets/images/svg/qte_ring.svg" id="5_61ait"]
 [ext_resource type="BitMap" uid="uid://bpq7q1y58ck7u" path="res://assets/UI Elements/Attack_Bitmap.png" id="5_fnwho"]
@@ -12,21 +12,97 @@
 [ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="7_3uv2x"]
 [ext_resource type="BitMap" uid="uid://dpgjvnnixeibq" path="res://assets/UI Elements/Special_Bitmap.png" id="7_oebxs"]
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
-[ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
+[ext_resource type="Shader" path="res://resources/blur.gdshader" id="8_oebxs"]
 [ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
 [ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 [ext_resource type="Texture2D" uid="uid://247xtn3osolm" path="res://assets/UI Elements/Potrait BB.png" id="16_orqql"]
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
 [ext_resource type="PackedScene" uid="uid://pu2cj7rilrvh" path="res://scenes/health_bar.tscn" id="18_2sghh"]
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
-[ext_resource type="Script" uid="uid://diod4v2lfnkx2" path="res://scripts/primitive_2d.gd" id="19_xv2y6"]
-[ext_resource type="Script" uid="uid://dmdytesnc0x4m" path="res://scripts/misc_lines.gd" id="21_2sghh"]
-[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
-[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="Script" path="res://scripts/misc_lines.gd" id="21_2sghh"]
+[ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="21_dtxwj"]
+[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
+[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvid"]
+bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
+skew = Vector2(0.01, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dtxwj"]
+color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+thickness = 4
+
+[sub_resource type="Theme" id="Theme_sxk2p"]
+HSeparator/styles/separator = SubResource("StyleBoxLine_dtxwj")
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("22_vi8kl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5jin"]
+bg_color = Color(0.5294118, 1, 1, 0.6901961)
+skew = Vector2(0.455, 0)
+border_width_bottom = 4
+border_color = Color(0.48235294, 0.8784314, 0.8784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd4s1"]
+bg_color = Color(0.39607844, 0.85882354, 0.85882354, 0.6901961)
+skew = Vector2(0.455, 0)
+border_width_bottom = 4
+border_color = Color(0.48235294, 0.8784314, 0.8784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3qhi"]
+bg_color = Color(0.6313726, 1, 1, 0.6901961)
+skew = Vector2(0.455, 0)
+border_width_bottom = 4
+border_color = Color(0.48235294, 0.8784314, 0.8784314, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kogqg"]
 shader = ExtResource("8_oebxs")
 shader_parameter/blur = 2.000000095
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4dvid"]
+color = Color(1, 1, 1, 0.38431373)
+thickness = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ymss"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.2, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.73333335)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxk2p"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.3, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.73333335)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgcwr"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+draw_center = false
+skew = Vector2(0.2, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.8039216)
 
 [node name="CombatHandler" type="Node" unique_id=583709940]
 script = ExtResource("1_2p8v4")
@@ -212,33 +288,20 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerStatus/VBoxContainer/Effects" unique_id=811613526]
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerStatus/VBoxContainer/Effects" unique_id=17400417]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
 
-[node name="Control" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=2064193911]
-custom_minimum_size = Vector2(32, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerStatus/VBoxContainer/Effects/ScrollContainer" unique_id=811613526]
 layout_mode = 2
-script = ExtResource("19_xv2y6")
-points = 1
-filled = false
-
-[node name="Control2" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=1631770698]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-script = ExtResource("19_xv2y6")
-
-[node name="Control3" type="Control" parent="PlayerStatus/VBoxContainer/Effects/HBoxContainer" unique_id=138646948]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-script = ExtResource("19_xv2y6")
-points = 5
-filled = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Lines" type="Control" parent="PlayerStatus/VBoxContainer" unique_id=2070921127]
 custom_minimum_size = Vector2(0, 8)
@@ -293,6 +356,154 @@ script = ExtResource("21_2sghh")
 visible = false
 copy_mode = 2
 
+[node name="TutorialButton" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel", "close_button") instance=ExtResource("21_dtxwj")]
+offset_left = 1095.0
+offset_top = 586.0
+offset_right = 1135.0
+offset_bottom = 631.0
+info_panel = NodePath("../CombatTut")
+close_button = NodePath("../CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
+
+[node name="CombatTut" type="HBoxContainer" parent="." unique_id=1222562908]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CombatTut" unique_id=1872238222]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="MarginContainer" parent="CombatTut" unique_id=1826400152]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="CombatTut/Panel" unique_id=1592288400]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dvid")
+
+[node name="MarginContainer" type="MarginContainer" parent="CombatTut/Panel/PanelContainer" unique_id=977121106]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatTut/Panel/PanelContainer/MarginContainer" unique_id=1010655924]
+layout_mode = 2
+theme = SubResource("Theme_sxk2p")
+theme_override_constants/separation = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1392402824]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1178046448]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "TUTORIAL DEBRIEF"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1789004531]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Combat"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1543170176]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=886873375]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Combat is taken in turns. Choose your action from the Command Wheel.
+"
+autowrap_mode = 2
+
+[node name="CommandWheel" type="VBoxContainer" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1820700108]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_a8me0")
+theme_override_constants/separation = -15
+
+[node name="Attack" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CommandWheel" unique_id=1489890781]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_tb0t7")
+expand_mode = 1
+stretch_mode = 4
+metadata/feedback_type = &"slide"
+
+[node name="Special" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CommandWheel" unique_id=1515560038]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_3uv2x")
+expand_mode = 1
+stretch_mode = 4
+metadata/feedback_type = &"slide"
+
+[node name="Defend" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CommandWheel" unique_id=356919157]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_gq7i8")
+expand_mode = 1
+stretch_mode = 4
+metadata/feedback_type = &"slide"
+
+[node name="Label2" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=2121233587]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack:   Apply any Modules in the ATK slot.
+Special: Apply any Modules in SPC slot.
+Defend:  Prepare to counterattack  attacks."
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=897978641]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label3" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=1615281222]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Quick Time Events"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=294811323]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2034337057]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "During your/enemy attacks, you have to click when the ticker enters the green zone of the ring to do/negate the most damage. "
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=842150366]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("5_61ait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=857706172]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer" unique_id=176119691]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_k5jin")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cd4s1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u3qhi")
+text = "Try It"
+
 [node name="Blur" type="ColorRect" parent="." unique_id=1364224248]
 visible = false
 material = SubResource("ShaderMaterial_kogqg")
@@ -302,7 +513,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EndScreen" type="PanelContainer" parent="." unique_id=1197025100]
+[node name="EndScreen" type="TextureRect" parent="." unique_id=1560622371]
 visible = false
 custom_minimum_size = Vector2(384, 0)
 anchors_preset = 8
@@ -313,12 +524,16 @@ anchor_bottom = 0.5
 offset_left = -192.0
 offset_top = -213.0
 offset_right = 192.0
-offset_bottom = 213.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("24_vi8kl")
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="EndScreen" unique_id=1278299414]
-layout_mode = 2
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 492.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer" unique_id=681185561]
 layout_mode = 2
@@ -329,7 +544,9 @@ theme_type_variation = &"LLabel"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1742068799]
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
 
 [node name="Stats" type="GridContainer" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=2002435215]
 layout_mode = 2
@@ -359,6 +576,11 @@ text = "Time Fought:"
 layout_mode = 2
 size_flags_horizontal = 10
 
+[node name="HSeparator3" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1437355052]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
+
 [node name="Label" type="Label" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=2141624533]
 layout_mode = 2
 text = "Rewards:"
@@ -370,13 +592,25 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndScreen/MarginContainer/VBoxContainer/ScrollContainer" unique_id=813709679]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HSeparator2" type="HSeparator" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=1881530624]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4dvid")
 
 [node name="Continue" type="Button" parent="EndScreen/MarginContainer/VBoxContainer" unique_id=963526792]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ymss")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sxk2p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qgcwr")
 text = "Return To Laboratory"
 
 [node name="ZoomInPlayer" type="AudioStreamPlayer" parent="." unique_id=908736535]

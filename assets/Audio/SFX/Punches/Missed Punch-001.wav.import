@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btc5hw6vgd4dk"
+path="res://.godot/imported/Missed Punch-001.wav-2662283d67a2051b1ee4603b64b7fe7c.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Punches/Missed Punch-001.wav"
+dest_files=["res://.godot/imported/Missed Punch-001.wav-2662283d67a2051b1ee4603b64b7fe7c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
