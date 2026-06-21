@@ -68,7 +68,7 @@ func _take_turn() -> void:
 			anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
-		var value: float = (0.0 if qte.has_ended else await qte.pressed) if qte else 0.0
+		var value: float = 0.0 if (not is_instance_valid(qte)) or qte.has_ended else await qte.pressed
 		if player.is_defending and value > 0.9:
 			player.entity_3d.play_sound(sound_banks.counter)
 			# Play parry anim
