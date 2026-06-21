@@ -14,6 +14,7 @@ corner_radius_bottom_right = 15
 corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_0esgi"]
+Label/colors/font_color = Color(1, 1, 1, 1)
 PopupPanel/styles/panel = SubResource("StyleBoxFlat_0esgi")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_qioc8"]
@@ -57,3 +58,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 19
 text = "Increases damage dealt by %s%%, but damages the attacker by %s%% of the extra damage they deal."
 autowrap_mode = 3
+visible_characters = 5863
+visible_ratio = 61.71579

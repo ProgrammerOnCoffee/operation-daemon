@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://tckoi7buyblh"]
+
+[ext_resource type="PackedScene" uid="uid://dqtmxptrfthr1" path="res://scenes/entities/enemy.tscn" id="1_11r6p"]
+[ext_resource type="PackedScene" uid="uid://b8evmaxj7xhk0" path="res://assets/Boss/boss_tent_ent.tscn" id="2_ck0rm"]
+
+[node name="Tentacle" unique_id=1022515043 instance=ExtResource("1_11r6p")]
+rect = Rect2i(-800, -328, 1600, 344)
+rect_attack_inset = 664
+base_damage = 6
+max_health = 20
+sound_banks = Dictionary[StringName, String]({
+&"attack": "attack_robot",
+&"b_dash": "",
+&"counter": "counter",
+&"dash": "dash_tentacle",
+&"death": "death_tentacle",
+&"hit": "hit_tentacle",
+&"parry": "parry"
+})
+animation_names = Dictionary[StringName, StringName]({
+&"attack": &"Attack",
+&"b_dash": &"",
+&"damaged": &"Damaged",
+&"dash": &"",
+&"death": &"Death",
+&"idle": &"Idle",
+&"parry": &"Parry"
+})
+animation_durations = Dictionary[StringName, float]({
+&"attack": 3.1,
+&"b_dash": 1.0,
+&"damaged": 0.6,
+&"dash": 1.0,
+&"death": 1.0,
+&"idle": 1.0,
+&"parry": 1.0
+})
+attack_point = 1.6
+
+[node name="Boss_Tent_Ent" parent="." index="0" unique_id=47712456 instance=ExtResource("2_ck0rm")]
+position = Vector2(-77, -306)
+scale = Vector2(0.8, 0.8)
+
+[node name="HealthBarPoint" type="Marker2D" parent="." index="1" unique_id=1812956569]
+position = Vector2(0, -344)

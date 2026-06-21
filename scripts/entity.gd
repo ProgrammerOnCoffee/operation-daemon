@@ -7,6 +7,8 @@ extends Node2D
 
 ## Emitted when the [Entity]'s turn has ended.
 signal turn_ended()
+## Emitted when the [Entity] has died.
+signal died()
 
 ## The [TransitionManager] used to clear entities when killed.
 static var entity_transition_manager := TransitionManager.duplicate() as TransitionManager
@@ -18,6 +20,10 @@ static var sounds: Dictionary[String, Array] = {
 	"attack_angel": [
 		load("uid://cvlill150y258"),
 		load("uid://cb53vtqpu72e5"),
+	],
+	"attack_boss": [
+		load("uid://qaa8qcxn86vc"),
+		#load("uid://c0rre36wr0x5j"),
 	],
 	"attack_goopy_plane": [
 		[load("uid://eag2q5dt6aha"), { "pitch_scale": 2.0 }],
@@ -62,6 +68,12 @@ static var sounds: Dictionary[String, Array] = {
 	"b_dash_spider": [
 		[load("uid://by3xroc14dams"), { "volume": -9.0 }],
 	],
+	"dash_tentacle": [
+		load("uid://ddin8rkluecv3"),
+	],
+	"death_boss": [
+		load("uid://dhbnc7uknjyt"),
+	],
 	"death_goopy_plane": [
 		load("uid://c07wpp23qds51"),
 		load("uid://0qbhthnhgdxa"),
@@ -73,6 +85,12 @@ static var sounds: Dictionary[String, Array] = {
 	"death_slime": [
 		load("uid://lyg48wyatxgy"),
 		load("uid://bc51ptet4ko3c"),
+	],
+	"death_tentacle": [
+		load("uid://b1y28jgo53u76"),
+	],
+	"hit_boss": [
+		load("uid://50nt4vnf5tv6"),
 	],
 	"hit_robot": [
 		load("uid://bbfcxfi4ihw2b"),
@@ -87,6 +105,9 @@ static var sounds: Dictionary[String, Array] = {
 	"hit_slime": [
 		load("uid://bhfv6fc13tgds"),
 		load("uid://bhx5uotn6s1ll"),
+	],
+	"hit_tentacle": [
+		load("uid://br24oa6svpydc"),
 	],
 	"parry": [
 		load("uid://s6dhybv0qbv"),
@@ -113,8 +134,8 @@ static var sounds: Dictionary[String, Array] = {
 ## so increase this value in order to move entities closer to each other and
 ## make their attacks seem to actually hit each other.
 @export var rect_attack_inset: int
-## The number of times this entity will attack in a single turn.
-@export var attack_count: int = 1
+## The number of attacks for the player, and a multiplier to the act attack count for enemies.
+@export var attack_count:float = 1
 ## The base damage this [Entity] deals before effects.
 @export var base_damage: int = 10
 ## The variation applied [member base_damage]. Base damage dealt is equal to
@@ -234,7 +255,7 @@ func _ready() -> void:
 	# Run setter to update health bar and label
 	if health_bar:
 		health_bar = health_bar
-	health = health
+	health = max_health
 
 
 ## Prompts this [Entity] to take its turn.
@@ -243,23 +264,6 @@ func _ready() -> void:
 ## If this is an [Enemy], attacks the player.
 func _take_turn() -> void:
 	turn_ended.emit.call_deferred()
-
-
-## Returns the array of [Effect]s to apply, based on this entity's [member modules] and [member daemon]s.
-#func get_effects() -> Array[Effect]:
-	### The array of [Effect]s to apply.
-	#var effects: Array[Effect]
-	#for module in modules:
-		#for effect in module.effects:
-			## Reset modified base back to base
-			#effect.modified_base = effect.base
-			#effects.append(effect)
-	#for daemon in daemons:
-		#for modifier in daemon.modifiers:
-			#for effect in effects:
-				#if modifier.compare_effect(effect) and modifier.target_type == effect.target_type:
-					#effect.modified_base *= modifier.percent
-	#return effects
 
 
 ## Applied all the [Effect]s currently applied to the entity that match the given [Effect.ApplyType].
@@ -329,8 +333,10 @@ func take_damage(amount: int, animate: bool = false) -> void:
 			entity_3d.play_sound(sound_banks.hit)
 			if anim_player.current_animation == animation_names.idle:
 				get_tree().create_timer(animation_durations.damaged).timeout.connect(anim_player.play.bind(animation_names.idle, 03))
-			anim_player.play(animation_names.damaged, 0.1)
+			if anim_player.has_animation(animation_names.damaged):
+				anim_player.play(animation_names.damaged, 0.1)
 	else:
+		died.emit()
 		entity_3d.play_sound(sound_banks.death)
 		anim_player.play(animation_names.death, 0.1)
 

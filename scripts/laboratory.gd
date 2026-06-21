@@ -6,7 +6,10 @@ signal back_to_main_menu
 ## [method _on_input_down], or [method _on_input_pressed].
 static var input_sound_debounce: bool = true
 
+@export var main_menu:Control
+
 @export var map:Control
+@export var pause_screen:PauseScreen
 
 @onready var tab_bar          := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
 @onready var scroll_container := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer
@@ -45,7 +48,7 @@ func _ready() -> void:
 	
 	$HBoxContainer/PanelContainer/MarginContainer/Button.pressed.connect(func():
 		back_to_main_menu.emit()
-		Global.request_track_transition.emit("MainMenu", true))
+		TransitionManager.transition_screen(self, main_menu))
 	
 	logbook_tabs.clear_tabs()
 	# Make a tab for each log.
@@ -70,7 +73,8 @@ func _start_pressed() -> void:
 	
 	Global.request_track_transition.emit("Map")
 	
-	TransitionManager.transition_screen(self, map)
+	await TransitionManager.transition_screen(self, map)
+	pause_screen.can_pause = true
 
 func _unlock_log() -> void:
 	logs_unlocked += 1

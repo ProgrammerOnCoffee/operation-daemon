@@ -31,7 +31,7 @@ joint_data/2/bone2d_node = NodePath("Body/Leg front Base/Leg front Base2/Leg fro
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = -34.285995
-joint_data/2/constraint_angle_max = -217.14388
+joint_data/2/constraint_angle_max = -217.14381
 joint_data/2/constraint_angle_invert = true
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = false
@@ -64,7 +64,7 @@ joint_data/2/bone2d_node = NodePath("Body/Leg front Rear  Base/Leg front Rear  B
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = -34.285995
-joint_data/2/constraint_angle_max = -217.14386
+joint_data/2/constraint_angle_max = -217.1438
 joint_data/2/constraint_angle_invert = true
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = false
@@ -117,7 +117,7 @@ joint_data/1/bone2d_node = NodePath("Body/LegRead  back Base2/LegRead  back Base
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
 joint_data/1/constraint_angle_min = -234.286
-joint_data/1/constraint_angle_max = -28.570984
+joint_data/1/constraint_angle_max = -28.570976
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
 joint_data/1/editor_draw_gizmo = false
@@ -1311,7 +1311,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_r55e4")
 
 [node name="Body" parent="Enemy Bones/Bones/Skeleton2D" index="0" unique_id=910904063]
 rotation = -0.0021480976
-scale = Vector2(0.99988997, 0.99988997)
+scale = Vector2(0.9998898, 0.9998898)
 
 [node name="Slime2" parent="Enemy Bones/Bones/Skeleton2D/Body/Slime1" parent_id_path=PackedInt32Array(986798588, 779886826) index="0" unique_id=835977597]
 position = Vector2(-12.999806, -83.00003)
@@ -1325,7 +1325,7 @@ rotation = 0.013124478
 [node name="Leg back Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="1" unique_id=1479726037]
 position = Vector2(133.00078, 73.99941)
 rotation = 0.04282163
-scale = Vector2(0.99999005, 0.99999005)
+scale = Vector2(0.99998987, 0.99998987)
 
 [node name="Leg back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body/Leg back Base" index="0" unique_id=1734751861]
 position = Vector2(117.999825, -172.00046)
@@ -1348,13 +1348,13 @@ scale = Vector2(1.0000002, 1.0000002)
 
 [node name="Leg front Base3" parent="Enemy Bones/Bones/Skeleton2D/Body/Leg front Base/Leg front Base2" index="0" unique_id=1723557777]
 position = Vector2(-40.000122, 226.00037)
-rotation = -0.18459083
+rotation = -0.18459086
 scale = Vector2(1.0000005, 1.0000005)
 
 [node name="Leg front Rear  Base" parent="Enemy Bones/Bones/Skeleton2D/Body" index="3" unique_id=764289327]
 position = Vector2(-202.00024, 31.99996)
-rotation = -0.4230045
-scale = Vector2(0.9999955, 0.9999955)
+rotation = -0.42300442
+scale = Vector2(0.99999547, 0.99999547)
 
 [node name="Leg front Rear  Base2" parent="Enemy Bones/Bones/Skeleton2D/Body/Leg front Rear  Base" index="0" unique_id=174370549]
 position = Vector2(-64.999985, -216.00024)
@@ -1363,12 +1363,11 @@ scale = Vector2(1.0000008, 1.0000008)
 
 [node name="Leg front Rear  Base3" parent="Enemy Bones/Bones/Skeleton2D/Body/Leg front Rear  Base/Leg front Rear  Base2" index="0" unique_id=1036203189]
 position = Vector2(-52.00009, 235.00034)
-rotation = -0.26764908
+rotation = -0.26764905
 
 [node name="LegRead  back Base2" parent="Enemy Bones/Bones/Skeleton2D/Body" index="4" unique_id=1176429833]
 position = Vector2(33.000076, 38.999874)
 rotation = 0.15778819
-scale = Vector2(0.99999774, 0.99999774)
 
 [node name="LegRead  back Base3" parent="Enemy Bones/Bones/Skeleton2D/Body/LegRead  back Base2" index="0" unique_id=920859145]
 position = Vector2(59.000492, -184.00021)
