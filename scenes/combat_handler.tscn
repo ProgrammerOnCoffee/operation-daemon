@@ -374,10 +374,15 @@ visible = false
 copy_mode = 2
 
 [node name="TutorialButton" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel", "close_button") instance=ExtResource("21_dtxwj")]
-offset_left = 1095.0
-offset_top = 586.0
-offset_right = 1135.0
-offset_bottom = 631.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 info_panel = NodePath("../CombatTut")
 close_button = NodePath("../CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
 
