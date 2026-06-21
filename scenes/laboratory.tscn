@@ -298,7 +298,6 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-scroll_horizontal = 100
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -364,7 +363,7 @@ layout_mode = 2
 
 [node name="ItemList" type="ItemList" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer" unique_id=1887338086]
 use_parent_material = true
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/guide_color = Color(0.039215688, 0.043137256, 0.050980393, 1)
@@ -401,6 +400,7 @@ theme_override_constants/separation = 15
 [node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1406311835 instance=ExtResource("1_fknr6")]
 use_parent_material = true
 layout_mode = 2
+content_font_size = null
 
 [node name="Button" type="CheckBox" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Injector/VBoxContainer/MarginContainer2/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=2104998475]
 use_parent_material = true
@@ -487,6 +487,7 @@ layout_mode = 2
 [node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=515104316 instance=ExtResource("1_fknr6")]
 layout_mode = 2
 show_title = false
+content_font_size = 15
 
 [node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972068855]
 custom_minimum_size = Vector2(16, 190)
@@ -511,6 +512,7 @@ layout_mode = 2
 [node name="DaemonOverview" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1615809252 instance=ExtResource("1_fknr6")]
 layout_mode = 2
 show_title = false
+content_font_size = 15
 
 [node name="Button" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/Recombiner/VBoxContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=189923064]
 layout_mode = 2
@@ -615,6 +617,7 @@ theme_override_font_sizes/font_size = 17
 text = "Back To Main Menu"
 
 [node name="ExpeditionTut" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1065745643]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20

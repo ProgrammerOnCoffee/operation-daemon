@@ -18,6 +18,7 @@ class_name DaemonOverview extends VBoxContainer
 			title.add_theme_font_size_override("font_size", title_font_size)
 		else:
 			title.remove_theme_font_size_override("font_size")
+@export var content_font_size := -1
 
 var daemon :Daemon = null: set = _set_daemon
 
@@ -53,4 +54,6 @@ func _set_daemon(to:Daemon):
 		for child in vbox.get_children(): child.queue_free()
 
 func push_text(modifier:Modifier) -> Label:
-	return ModifierLabel.new(modifier, vbox)
+	var new := ModifierLabel.new(modifier, vbox)
+	if content_font_size != -1: new.add_theme_font_size_override("font_size", content_font_size)
+	return new
