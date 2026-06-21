@@ -5,6 +5,13 @@ extends Entity
 ##
 ## An enemy entity in a fight stage.
 
+## How frequently the boss will spawn more tentacles (every nth turn).
+static var boss_spawn_tentacles_frequency := 3
+
+## The number of turns until this [Enemy] will take their next turn.
+var turns_until_next_turn: int
+
+
 ## All the Node2Ds that can get modulated by Effect colors.
 @onready var colorables:Array[Node2D] = (func() -> Array[Node2D]:
 	
@@ -43,11 +50,34 @@ func _ready() -> void:
 
 func _take_turn() -> void:
 	var player := combat_handler.player
-	health_bar.z_index += 1
-	entity_3d.move_to_entity(player.entity_3d)
-	await get_tree().create_timer(animation_durations.dash - 0.2).timeout
-	anim_player.play(animation_names.idle, 0.2)
-	await get_tree().create_timer(0.4).timeout
+	if animation_names.dash:
+		health_bar.z_index += 1
+		entity_3d.move_to_entity(player.entity_3d)
+		await get_tree().create_timer(animation_durations.dash - 0.2).timeout
+		anim_player.play(animation_names.idle, 0.2)
+		await get_tree().create_timer(0.4).timeout
+	elif sound_banks.dash:
+		entity_3d.play_sound(sound_banks.dash)
+	
+	if name == &"Boss":
+		turns_until_next_turn -= 1
+		if turns_until_next_turn > 0:
+			return
+		turns_until_next_turn = boss_spawn_tentacles_frequency
+		
+		if entity_3d.get_parent().get_tentacles_n() <= 0:
+			turns_until_next_turn += 1
+			return
+		
+		turns_until_next_turn = 3
+		entity_3d.play_sound(sound_banks.attack)
+		anim_player.play(animation_names.attack, 0.2)
+		await get_tree().create_timer(animation_durations.attack).timeout
+		anim_player.play(animation_names.idle, 1.0)
+		entity_3d.get_parent().spawn_tentacles()
+		await get_tree().create_timer(0.7).timeout
+		turn_ended.emit()
+		return
 	
 	## The target time that the player should respond to the QTE after.
 	const PERFECT_QTE_TIME := 0.6 * 3 / 4
@@ -59,7 +89,24 @@ func _take_turn() -> void:
 			await get_tree().create_timer(0.1).timeout
 			qte = combat_handler.create_qte()
 			qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
-			await get_tree().create_timer(qte_preload_time).timeout
+			if qte_preload_time > 0:
+				await get_tree().create_timer(qte_preload_time).timeout
+			else:
+				qte.hide()
+				anim_player.play(animation_names.attack, 0.2)
+				if name == &"Tentacle":
+					var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
+					var dist_to_player := entity_3d.initial_transform.origin.distance_to(combat_handler.player.entity_3d.initial_transform.origin)
+					var scale_tween := create_tween()
+					scale_tween.tween_interval(0.5)
+					scale_tween.tween_property(child, ^":scale", Vector2.ONE * (2.0 if entity_3d.initial_transform.origin.z < combat_handler.player.entity_3d.initial_transform.origin.z else 1.5), 1.7)
+					scale_tween.parallel().tween_method(func(p: float) -> void:
+						child.position.x = (child.position.x - 38.0) * p + 38.0, 1.0, dist_to_player / 3.2, 1.7)
+					scale_tween.tween_property(child, ^":scale", Vector2.ONE * 1.0, 0.7)
+					scale_tween.parallel().tween_method(func(p: float) -> void:
+						child.position.x = (child.position.x - 38.0) * p + 38.0, dist_to_player / 3.2, 1.0, 0.7)
+				await get_tree().create_timer(-qte_preload_time).timeout
+				qte.show()
 		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
 		else:
@@ -149,6 +196,11 @@ func _take_turn() -> void:
 			await get_tree().create_timer(attack_end_time).timeout
 	
 	await get_tree().create_timer(0.7).timeout
-	await entity_3d.return_to_initial_transform()
-	health_bar.z_index -= 1
+	if animation_names.b_dash:
+		await entity_3d.return_to_initial_transform()
+		health_bar.z_index -= 1
+	else:
+		if sound_banks.b_dash:
+			entity_3d.play_sound(sound_banks.b_dash)
+		anim_player.play(animation_names.idle, 0.4)
 	turn_ended.emit()

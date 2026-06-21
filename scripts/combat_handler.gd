@@ -44,20 +44,9 @@ func _ready() -> void:
 	step_finished.connect(get_node(^"PlayerStatus/VBoxContainer/Health/Bar").fade_damaged_p.unbind(1))
 	update_player_health_bar()
 	$CommandWheel.player_3d = player.entity_3d
-	# Add a health bar above every enemy
-	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
 	for enemy in enemies:
-		
-		enemy.combat_handler = self
-		var bar := HEALTH_BAR.instantiate() as Control
-		step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
-		bar.entity_3d = enemy.entity_3d
-		bar.entity_3d.entity.health_bar = bar
-		add_child(bar, false, INTERNAL_MODE_FRONT)
-	
-	_sorted_enemies = enemies.duplicate()
-	_sorted_enemies.sort_custom(func(a: Enemy, b: Enemy) -> bool:
-			return cam.to_local(a.entity_3d.global_position).z <= cam.to_local(b.entity_3d.global_position).z)
+		setup_enemy(enemy)
+	sort_enemies()
 	turn()
 	
 	$EndScreen/MarginContainer/VBoxContainer/Continue.pressed.connect(func():requested_end.emit(player.health))
@@ -87,6 +76,23 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed(&"select_cancel"):
 			entity_selected.emit(null)
 			TransitionManager.transition(control_prompts, null)
+
+
+func setup_enemy(enemy: Enemy) -> void:
+	# Add a health bar above every enemy
+	const HEALTH_BAR := preload("res://scenes/entity_health_bar.tscn")
+	enemy.combat_handler = self
+	var bar := HEALTH_BAR.instantiate() as Control
+	step_finished.connect(bar.get_node(^"Bar").fade_damaged_p.unbind(1))
+	bar.entity_3d = enemy.entity_3d
+	bar.entity_3d.entity.health_bar = bar
+	add_child(bar, false, INTERNAL_MODE_FRONT)
+
+
+func sort_enemies() -> void:
+	_sorted_enemies = enemies.duplicate()
+	_sorted_enemies.sort_custom(func(a: Enemy, b: Enemy) -> bool:
+			return cam.to_local(a.entity_3d.global_position).z <= cam.to_local(b.entity_3d.global_position).z)
 
 
 ## Sequentially prompts all entities to take a turn.
