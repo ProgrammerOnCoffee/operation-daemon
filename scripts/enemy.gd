@@ -55,17 +55,19 @@ func _take_turn() -> void:
 	var qte_preload_time := PERFECT_QTE_TIME - attack_point
 	var qte: Control
 	for i in Global.float_as_chance_int(Global.ENEMY_ATTACK_COUNTS[Global.act] * attack_count):
-		if i == 0:
-			await get_tree().create_timer(0.1).timeout
-			qte = combat_handler.create_qte()
-			qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
-			await get_tree().create_timer(qte_preload_time).timeout
+		#if i == 0:
+		await get_tree().create_timer(0.1).timeout
+		qte = combat_handler.create_qte()
+		qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
+		await get_tree().create_timer(qte_preload_time).timeout
+		
 		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
 		else:
 			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
-		if anim_player.current_animation != animation_names.attack:
-			anim_player.play(animation_names.attack, 0.2)
+		#if anim_player.current_animation != animation_names.attack:
+		anim_player.stop()
+		anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
 		var value: float = (0.0 if qte.has_ended else await qte.pressed) if qte else 0.0
@@ -133,12 +135,12 @@ func _take_turn() -> void:
 		var attack_end_time := animation_durations.attack - (Time.get_ticks_msec() - start_t) * 0.001
 		if i == attack_count - 1:
 			await get_tree().create_timer(attack_end_time - 0.2).timeout
-		else:
-			# Load the next QTE before the next attack
-			qte = combat_handler.create_qte()
-			qte.hide()
-			get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
-			await get_tree().create_timer(attack_end_time).timeout
+		#else:
+			## Load the next QTE before the next attack
+			#qte = combat_handler.create_qte()
+			#qte.hide()
+			#get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
+			#await get_tree().create_timer(attack_end_time).timeout
 	
 	await get_tree().create_timer(0.7).timeout
 	await entity_3d.return_to_initial_transform()
