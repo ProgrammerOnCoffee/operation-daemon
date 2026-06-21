@@ -74,7 +74,7 @@ func _init() -> void:
 ## to transition between multiple transparent screens, such as in the main menu.
 ## [br][br]
 ## Returns the transition's [signal Tween.finished] signal.
-func transition(from: CanvasItem, to: CanvasItem) -> Signal:
+func transition(from: CanvasItem, to: CanvasItem, process_always := false) -> Signal:
 	var mat := _create_material()
 	var to_mat := (mat.duplicate() as ShaderMaterial) if from else mat
 	
@@ -89,6 +89,8 @@ func transition(from: CanvasItem, to: CanvasItem) -> Signal:
 			to_mat.set_shader_parameter(&"cutoffs", cutoffs)
 	
 	var tween := create_tween().set_ease(tween_ease).set_trans(tween_trans).set_parallel()
+	
+	if process_always: tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	
 	if from:
 		from.material = mat

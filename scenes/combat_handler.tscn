@@ -114,6 +114,11 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(1, 1, 1, 0.8039216)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi8kl"]
+bg_color = Color(0, 0, 0, 0.3372549)
+corner_radius_top_right = 40
+corner_detail = 1
+
 [node name="CombatHandler" type="Node" unique_id=583709940]
 script = ExtResource("1_2p8v4")
 metadata/_custom_type_script = "uid://rnsxwyparcb0"
@@ -375,6 +380,7 @@ info_panel = NodePath("../CombatTut")
 close_button = NodePath("../CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
 
 [node name="ControlPrompts" type="MarginContainer" parent="." unique_id=965756407]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -698,3 +704,18 @@ bus = &"SFX"
 [node name="ZoomOutPlayer" type="AudioStreamPlayer" parent="." unique_id=1631642410]
 stream = ExtResource("23_gb8rm")
 bus = &"SFX"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1359232852]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 141.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vi8kl")
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1091476050]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Press P to Pause     "
+horizontal_alignment = 1

@@ -866,5 +866,20 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Label" type="Label" parent="." unique_id=116501638]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -47.0
+offset_right = 126.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+theme_override_font_sizes/font_size = 12
+text = "Press P to Pause"
+vertical_alignment = 2
+
 [connection signal="event_selected" from="." to="TutorialButton" method="set_pressed" binds= [false]]
 [connection signal="event_selected" from="." to="TutorialButton2" method="trigger" binds= [&"MapInv", NodePath(".")]]

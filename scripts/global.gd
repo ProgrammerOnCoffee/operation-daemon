@@ -6,6 +6,8 @@ extends Node
 signal request_track_transition(to:String)
 @warning_ignore("unused_signal")
 signal push_toast(text:String) # Ask the toast manager to make some toast.
+@warning_ignore("unused_signal")
+signal setting_changed(setting_name:String, new_value:Variant)
 
 ## -- CONFIGURATION -- ##
 

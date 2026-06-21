@@ -7,6 +7,7 @@ signal back_to_main_menu
 static var input_sound_debounce: bool = true
 
 @export var map:Control
+@export var pause_screen:PauseScreen
 
 @onready var tab_bar          := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar
 @onready var scroll_container := $HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/ScrollContainer
@@ -70,7 +71,8 @@ func _start_pressed() -> void:
 	
 	Global.request_track_transition.emit("Map")
 	
-	TransitionManager.transition_screen(self, map)
+	await TransitionManager.transition_screen(self, map)
+	pause_screen.can_pause = true
 
 func _unlock_log() -> void:
 	logs_unlocked += 1

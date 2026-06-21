@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 [ext_resource type="Script" uid="uid://dh3s8gvxiywif" path="res://scripts/menu_bar.gd" id="12_gqmmt"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="12_yc10j"]
+[ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="17_jscy8"]
+[ext_resource type="Script" uid="uid://ctaosreojk0gy" path="res://scripts/pause_screen.gd" id="17_pm3ni"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_muem4"]
 
@@ -126,11 +128,19 @@ script/source = "extends Button
 
 func _ready() -> void:
 	button_pressed = DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_ENABLED
+	
+	Global.setting_changed.connect(_setting_changed)
+
+func _setting_changed(n:String,t:Variant): if n == \"VSync\":
+	set_pressed_no_signal(t)
+	text = \"Enabled\" if t else \"Disabled\"
 
 func _toggled(toggled_on: bool) -> void:
 	text = \"Enabled\" if toggled_on else \"Disabled\"
 	
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED)
+	
+	Global.setting_changed.emit(\"VSync\", toggled_on)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
@@ -168,10 +178,17 @@ func _ready() -> void:
 	
 	# Connect selecting an item to updating the mode.
 	item_selected.connect(_selected)
+	
+	Global.setting_changed.connect(_setting_changed)
+
+func _setting_changed(n:String,t:Variant): if n == \"WindowMode\":
+	select(t)
 
 func _selected(new:int): 
 	# Find the item in the dictionary, set the mode to its mode.
 	DisplayServer.window_set_mode(OPTIONS[get_item_text(new)])
+	
+	Global.setting_changed.emit(\"WindowMode\", new)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
@@ -280,6 +297,8 @@ HSeparator/styles/separator = SubResource("StyleBoxLine_sugp2")
 Button/font_sizes/font_size = 18
 Button/fonts/font = ExtResource("12_yc10j")
 Label/colors/font_color = Color(0.13333334, 0.10980392, 0.047058824, 1)
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("12_yc10j")
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 resource_name = "Licenses<>Credits"
@@ -360,6 +379,33 @@ corner_radius_top_left = 20
 corner_radius_bottom_right = 20
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
+bg_color = Color(0.21568628, 0.43137255, 0.43137255, 0.827451)
+skew = Vector2(0.01, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_pm3ni"]
+Label/fonts/font = ExtResource("12_yc10j")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_y6deb"]
+color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+thickness = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6deb"]
+bg_color = Color(0.21568628, 0.43137255, 0.43137255, 0.827451)
+skew = Vector2(0.01, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
+
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_tipki"]
 
 [node name="Main" type="Node" unique_id=2097801009]
@@ -376,10 +422,11 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0wfyh")
 
-[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 node_paths=PackedStringArray("map") instance=ExtResource("5_tefeu")]
+[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 node_paths=PackedStringArray("map", "pause_screen") instance=ExtResource("5_tefeu")]
 visible = false
 layout_mode = 1
 map = NodePath("../WorldMap")
+pause_screen = NodePath("../MarginContainer")
 
 [node name="MainMenu" type="Control" parent="UILayer/UI" unique_id=755086545]
 layout_mode = 1
@@ -686,6 +733,8 @@ size_flags_vertical = 4
 max_value = 1.7
 step = 0.01
 value = 1.0
+script = ExtResource("3_sugp2")
+bus_name = &"Music"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1510335834]
 layout_mode = 2
@@ -705,6 +754,8 @@ size_flags_vertical = 4
 max_value = 1.7
 step = 0.01
 value = 1.0
+script = ExtResource("3_sugp2")
+bus_name = &"SFX"
 
 [node name="Control" type="HSeparator" parent="UILayer/UI/MainMenu/Settings/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1942979544]
 custom_minimum_size = Vector2(300, 20)
@@ -1091,6 +1142,260 @@ texture = ExtResource("12_0ld40")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI" unique_id=1590569798 node_paths=PackedStringArray("lab")]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_pm3ni")
+lab = NodePath("../Laboratory")
+
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/MarginContainer" unique_id=1384663009]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pm3ni")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MarginContainer/PanelContainer" unique_id=479786693]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer" unique_id=1818498486]
+layout_mode = 2
+theme = SubResource("Theme_pm3ni")
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=683818407]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=72191283]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1425023676]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "PRESS P TO UNPAUSE"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=882335282]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2018810434]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=96390430]
+layout_mode = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=401842953]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=269928557]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1323829320]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+script = ExtResource("3_sugp2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1506476914]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1822355195]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1125941319]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+script = ExtResource("3_sugp2")
+bus_name = &"Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1892789339]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1997291366]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1089468601]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.7
+step = 0.01
+value = 1.0
+script = ExtResource("3_sugp2")
+bus_name = &"SFX"
+
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=193708490]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
+
+[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=207424107]
+layout_mode = 2
+text = "Video"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=775163883]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1559714168]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VSync"
+
+[node name="Button" type="Button" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=803935235]
+custom_minimum_size = Vector2(175, 35)
+layout_mode = 2
+theme = ExtResource("17_jscy8")
+theme_override_colors/font_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_disabled_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 17
+toggle_mode = true
+text = "Enabled"
+script = SubResource("GDScript_tbgi4")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1151917163]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=184146956]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Window Mode"
+
+[node name="Button" type="OptionButton" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1357014082]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+theme = ExtResource("17_jscy8")
+theme_override_colors/font_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_focus_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_colors/font_disabled_color = Color(0.9098039, 0.8745098, 0.8745098, 1)
+theme_override_font_sizes/font_size = 17
+alignment = 1
+script = SubResource("GDScript_sugp2")
+
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1358848823]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
+
+[node name="Button" type="Button" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1750881986]
+custom_minimum_size = Vector2(300, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("17_jscy8")
+text = "End Run"
+
+[node name="GuessWhosFinallyGettingHisPowers" type="PanelContainer" parent="UILayer/UI/MarginContainer" unique_id=720442583]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6deb")
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers" unique_id=896439766]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer" unique_id=2100870484]
+layout_mode = 2
+theme = SubResource("Theme_pm3ni")
+theme_override_constants/separation = 14
+
+[node name="AreYouSure?" type="Label" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1467682645]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Are You Sure?"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1778312799]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
+
+[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1645658118]
+layout_mode = 2
+text = "Ending this run will make you lose all your research and map progress for the run. You will keep any daemons discovered within the run."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1290028980]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1277156215]
+layout_mode = 2
+
+[node name="PrettySure,ThrewATrashBagIntoSpaceAtWork" type="Button" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1786385634]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("17_jscy8")
+text = "Yes"
+
+[node name="No" type="Button" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2123745140]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("17_jscy8")
+text = "No"
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
@@ -1112,6 +1417,9 @@ initial_track = "MainMenu"
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/Licenses")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/MainMenu")]]
 [connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Licenses"), NodePath("MainMenu/Credits")]]
+[connection signal="pressed" from="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="UILayer/UI/MarginContainer" method="_on_end_run_pressed"]
+[connection signal="pressed" from="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/PrettySure,ThrewATrashBagIntoSpaceAtWork" to="UILayer/UI/MarginContainer" method="_on_confirmation_pressed"]
+[connection signal="pressed" from="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/No" to="UILayer/UI/MarginContainer" method="_on_no_pressed"]
 
 [editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
 [editable path="UILayer/UI/WorldMap"]
