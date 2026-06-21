@@ -1290,10 +1290,10 @@ tracks/24/path = NodePath("PlayerBonesetup/Images/MotionPunch:visible")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [false, false]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
@@ -1302,10 +1302,10 @@ tracks/25/path = NodePath("PlayerBonesetup/Images/StaticPunch:visible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [false, false]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
@@ -1314,10 +1314,10 @@ tracks/26/path = NodePath("PlayerBonesetup/Images/R_armBot:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, true]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
@@ -1525,6 +1525,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(18.892157, 18.892157, 18.892157, 1), Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("PlayerBonesetup/Images/MotionPunch:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.03333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_6r27q"]
@@ -2704,22 +2716,26 @@ visible = false
 
 [node name="Belly" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="0" unique_id=654590038]
 position = Vector2(217, 40)
-rotation = -0.020113764
-scale = Vector2(0.99986464, 0.99986464)
+rotation = -0.4193516
+scale = Vector2(0.9998579, 0.9998579)
 
 [node name="Upper Tors" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly" index="0" unique_id=1547548077]
 position = Vector2(3.9998553, -69.00225)
 rotation = 0.018526005
-scale = Vector2(0.99993366, 0.99993366)
+scale = Vector2(0.99983895, 0.99983895)
 
 [node name="Neck" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors" index="0" unique_id=2131347548]
 position = Vector2(3.9996598, -64.00181)
 rotation = 0.06693289
+scale = Vector2(0.999782, 0.999782)
+
+[node name="Face" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Neck/Head" parent_id_path=PackedInt32Array(1331271054, 1733505491) index="0" unique_id=1196459148]
+scale = Vector2(0.999857, 0.999857)
 
 [node name="Left ARm" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left" parent_id_path=PackedInt32Array(1331271054, 1413055582) index="0" unique_id=408215454]
 position = Vector2(19.191107, -1.6761872)
 rotation = -0.03444093
-scale = Vector2(0.9999357, 0.9999357)
+scale = Vector2(0.9999259, 0.9999259)
 
 [node name="Left ARm2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Left/Left ARm" index="0" unique_id=325912670]
 position = Vector2(82.16497, 0.07887006)
@@ -2729,12 +2745,12 @@ scale = Vector2(0.99998283, 0.99998283)
 [node name="Right arm" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right" parent_id_path=PackedInt32Array(1331271054, 55123572) index="0" unique_id=328132070]
 position = Vector2(-0.9996267, -3.3796638e-05)
 rotation = 0.27009103
-scale = Vector2(0.99995637, 0.99995637)
+scale = Vector2(0.99991435, 0.99991435)
 
 [node name="Right arm2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/Upper Tors/Right/Right arm" index="0" unique_id=652996422]
 position = Vector2(-45.905685, 45.11942)
 rotation = 0.04590322
-scale = Vector2(0.9999972, 0.9999972)
+scale = Vector2(0.99999714, 0.99999714)
 
 [node name="Back LEg" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg" parent_id_path=PackedInt32Array(1331271054, 511964988) index="0" unique_id=879307515]
 position = Vector2(-13.000448, -3.9998498)
@@ -2744,6 +2760,9 @@ rotation = 0.96280104
 position = Vector2(41.76603, 88.6662)
 scale = Vector2(0.99999535, 0.99999535)
 
+[node name="Bacl Leg Lowe2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/R_Leg/Back LEg/Bacl Leg Lowe" index="0" unique_id=1718926545]
+scale = Vector2(0.9999483, 0.9999483)
+
 [node name="Front Leg" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg" parent_id_path=PackedInt32Array(1331271054, 1141531121) index="0" unique_id=1426848200]
 position = Vector2(29.003164, 1.9993778)
 rotation = 3.089519
@@ -2751,6 +2770,9 @@ rotation = 3.089519
 [node name="Front Leg Lower" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg" index="0" unique_id=525732602]
 position = Vector2(31.086025, -90.640816)
 rotation = -1.1476842
+
+[node name="Front Leg Lower2" parent="PlayerBonesetup/Bones/Player_Skeleton/Belly/L_Leg/Front Leg/Front Leg Lower" index="0" unique_id=1092532283]
+scale = Vector2(0.99989665, 0.99989665)
 
 [node name="Front Arm IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="1" unique_id=1935075252]
 position = Vector2(451.00003, -89.00001)
@@ -2765,13 +2787,14 @@ position = Vector2(503, -97)
 [node name="Back Arm IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="4" unique_id=2077262562]
 position = Vector2(-9.000004, -99)
 rotation = -2.1193254
-scale = Vector2(0.9860057, 0.5515942)
+scale = Vector2(0.9860057, 0.55159414)
 
 [node name="Back Foot IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="5" unique_id=962082352]
 position = Vector2(0, 284)
 
 [node name="Front Foot IK" parent="PlayerBonesetup/Bones/Player_Skeleton" parent_id_path=PackedInt32Array(1331271054, 272863499) index="6" unique_id=665679059]
 position = Vector2(135, 207)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="RemoteTransform2D" parent="PlayerBonesetup/IK/Body" parent_id_path=PackedInt32Array(1331271054, 1973461017) index="0" unique_id=1786427244]
 position = Vector2(7, -13)

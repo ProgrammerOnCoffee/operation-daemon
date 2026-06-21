@@ -32,6 +32,7 @@ joint_data/3/bone2d_node = NodePath("CHild/Bone2D2/Bone2D3/Bone2D4/Bone2D5")
 joint_data/3/override_defaults = false
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_hwxdu"]
+resource_local_to_scene = true
 target_nodepath = NodePath("Head")
 jiggle_data_chain_length = 8
 stiffness = 1.0
@@ -162,7 +163,7 @@ position = Vector2(-1, -33)
 rest = Transform2D(1, 0, 0, 1, -1, -33)
 auto_calculate_length_and_angle = false
 length = 40.012497
-bone_angle = -91.43209
+bone_angle = -91.43208
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -171,7 +172,7 @@ position = Vector2(-1, -40)
 rest = Transform2D(1, 0, 0, 1, -1, -40)
 auto_calculate_length_and_angle = false
 length = 42.0119
-bone_angle = -88.63607
+bone_angle = -88.63606
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -180,7 +181,7 @@ position = Vector2(1, -42)
 rest = Transform2D(1, 0, 0, 1, 1, -42)
 auto_calculate_length_and_angle = false
 length = 45.01111
-bone_angle = -88.72697
+bone_angle = -88.72696
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -189,7 +190,7 @@ position = Vector2(1, -45)
 rest = Transform2D(1, 0, 0, 1, 1, -45)
 auto_calculate_length_and_angle = false
 length = 39.051247
-bone_angle = -92.93567
+bone_angle = -92.93566
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -198,7 +199,7 @@ position = Vector2(-2, -39)
 rest = Transform2D(1, 0, 0, 1, -2, -39)
 auto_calculate_length_and_angle = false
 length = 32.01562
-bone_angle = -91.7899
+bone_angle = -91.789894
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
@@ -212,9 +213,9 @@ editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Base Tent9" type="Bone2D" parent="Bones/Skeleton2D/Base Tent/Base Tent2/Base Tent3/Base Tent4/Base Tent5/Base Tent6/Base Tent7/Base Tent8" unique_id=581114960]
-position = Vector2(-14.19696, -67.0462)
-rotation = -0.14041267
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(0.43896484, -68.159836)
+rotation = 0.069712155
+scale = Vector2(1.0001006, 1.0001006)
 rest = Transform2D(1, 0, 0, 1, 2, -35)
 auto_calculate_length_and_angle = false
 length = 31.06445
@@ -240,7 +241,7 @@ position = Vector2(-24, 6)
 rest = Transform2D(1, 0, 0, 1, -24, 6)
 auto_calculate_length_and_angle = false
 length = 51.627
-bone_angle = 111.04498
+bone_angle = 111.044975
 editor_settings/show_bone_gizmo = false
 
 [node name="Bone2D2" type="Bone2D" parent="Bones/Skeleton2D/Head" unique_id=1666134962]
@@ -256,7 +257,7 @@ position = Vector2(31, 11)
 rest = Transform2D(1, 0, 0, 1, 31, 11)
 auto_calculate_length_and_angle = false
 length = 82.165
-bone_angle = 146.86597
+bone_angle = 146.86595
 editor_settings/show_bone_gizmo = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bones/Skeleton2D/Head" unique_id=202926608]
@@ -291,7 +292,7 @@ position = Vector2(0, 16)
 rest = Transform2D(1, 0, 0, 1, 0, 16)
 auto_calculate_length_and_angle = false
 length = 21.09
-bone_angle = 85.969986
+bone_angle = 85.96998
 editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
