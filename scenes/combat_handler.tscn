@@ -21,12 +21,16 @@
 [ext_resource type="Texture2D" uid="uid://xe5nvjxucmlj" path="res://assets/Player/Player_Part images/Torso.png" id="18_x5fwe"]
 [ext_resource type="Script" uid="uid://dmdytesnc0x4m" path="res://scripts/misc_lines.gd" id="21_2sghh"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="21_dtxwj"]
-[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
-[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
-[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
+[ext_resource type="Texture2D" uid="uid://dqe0stlt6b6qc" path="res://assets/UI Elements/Ring Back.png" id="22_4dvid"]
+[ext_resource type="AudioStream" uid="uid://d3w72urh6oo5" path="res://assets/Audio/SFX/Misc/zoom_in_faded.wav" id="22_8utki"]
+[ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="22_vi8kl"]
+[ext_resource type="AudioStream" uid="uid://bxfw5cryxcngu" path="res://assets/Audio/SFX/Misc/zoom_out_faded.wav" id="23_gb8rm"]
 [ext_resource type="Texture2D" uid="uid://dvb3tw72bagmj" path="res://assets/UI Elements/Success.png" id="24_vi8kl"]
-[ext_resource type="AudioStream" uid="uid://bwex074o1snb4" path="res://assets/audio/SFX/Misc/Fight Complete.wav" id="26_4dvid"]
-[ext_resource type="AudioStream" uid="uid://b1384asnwk30q" path="res://assets/audio/SFX/Game Over/Robot Game Over-003.wav" id="27_8ymss"]
+[ext_resource type="AudioStream" uid="uid://bwex074o1snb4" path="res://assets/Audio/SFX/Misc/Fight Complete.wav" id="26_4dvid"]
+[ext_resource type="AudioStream" uid="uid://b1384asnwk30q" path="res://assets/Audio/SFX/Game Over/Robot Game Over-003.wav" id="27_8ymss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hjfq"]
+skew = Vector2(0.35, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtxwj"]
 bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
@@ -56,6 +60,10 @@ thickness = 4
 HSeparator/styles/separator = SubResource("StyleBoxLine_dtxwj")
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("22_vi8kl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ymss"]
+atlas = ExtResource("22_4dvid")
+region = Rect2(164.185, 73.905, 440, 440)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5jin"]
 bg_color = Color(0.5294118, 1, 1, 0.6901961)
@@ -240,7 +248,7 @@ anchor_left = 0.35
 anchor_right = 3.4
 anchor_bottom = 1.0
 offset_left = 3.0517578e-05
-offset_right = 3.0517578e-05
+offset_right = 33.27997
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_orqql")
@@ -301,17 +309,14 @@ text = "100%"
 instance_shader_parameters/cells = 10
 layout_mode = 2
 
-[node name="Effects" type="Control" parent="PlayerStatus/VBoxContainer" unique_id=1738924861]
+[node name="Effects" type="PanelContainer" parent="PlayerStatus/VBoxContainer" unique_id=758084981]
+clip_children = 1
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7hjfq")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PlayerStatus/VBoxContainer/Effects" unique_id=17400417]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -452,6 +457,7 @@ text = "Next. Enemy
 horizontal_alignment = 1
 
 [node name="CombatTut" type="HBoxContainer" parent="." unique_id=1222562908]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -569,13 +575,13 @@ layout_mode = 2
 [node name="Label4" type="Label" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2034337057]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "During your/enemy attacks, you have to click when the ticker enters the green zone of the ring to do/negate the most damage. "
+text = "During your/enemy attacks, click within the success window to do/negate the most damage. "
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CombatTut/Panel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=842150366]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("5_61ait")
+texture = SubResource("AtlasTexture_8ymss")
 expand_mode = 1
 stretch_mode = 5
 

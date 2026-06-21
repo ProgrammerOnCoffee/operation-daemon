@@ -85,34 +85,36 @@ func _take_turn() -> void:
 	var qte_preload_time := PERFECT_QTE_TIME - attack_point
 	var qte: Control
 	for i in Global.float_as_chance_int(Global.ENEMY_ATTACK_COUNTS[Global.act] * attack_count):
-		if i == 0:
-			await get_tree().create_timer(0.1).timeout
-			qte = combat_handler.create_qte()
-			qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
-			if qte_preload_time > 0:
-				await get_tree().create_timer(qte_preload_time).timeout
-			else:
-				qte.hide()
-				anim_player.play(animation_names.attack, 0.2)
-				if name == &"Tentacle":
-					var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
-					var dist_to_player := entity_3d.initial_transform.origin.distance_to(combat_handler.player.entity_3d.initial_transform.origin)
-					var scale_tween := create_tween()
-					scale_tween.tween_interval(0.5)
-					scale_tween.tween_property(child, ^":scale", Vector2.ONE * (2.0 if entity_3d.initial_transform.origin.z < combat_handler.player.entity_3d.initial_transform.origin.z else 1.5), 1.7)
-					scale_tween.parallel().tween_method(func(p: float) -> void:
-						child.position.x = (child.position.x - 38.0) * p + 38.0, 1.0, dist_to_player / 3.2, 1.7)
-					scale_tween.tween_property(child, ^":scale", Vector2.ONE * 1.0, 0.7)
-					scale_tween.parallel().tween_method(func(p: float) -> void:
-						child.position.x = (child.position.x - 38.0) * p + 38.0, dist_to_player / 3.2, 1.0, 0.7)
-				await get_tree().create_timer(-qte_preload_time).timeout
-				qte.show()
+	
+		await get_tree().create_timer(0.1).timeout
+		qte = combat_handler.create_qte()
+		qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
+		if qte_preload_time > 0:
+			await get_tree().create_timer(qte_preload_time).timeout
+		else:
+			qte.hide()
+			anim_player.play(animation_names.attack, 0.2)
+			if name == &"Tentacle":
+				var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
+				var dist_to_player := entity_3d.initial_transform.origin.distance_to(combat_handler.player.entity_3d.initial_transform.origin)
+				var scale_tween := create_tween()
+				scale_tween.tween_interval(0.5)
+				scale_tween.tween_property(child, ^":scale", Vector2.ONE * (2.0 if entity_3d.initial_transform.origin.z < combat_handler.player.entity_3d.initial_transform.origin.z else 1.5), 1.7)
+				scale_tween.parallel().tween_method(func(p: float) -> void:
+					child.position.x = (child.position.x - 38.0) * p + 38.0, 1.0, dist_to_player / 3.2, 1.7)
+				scale_tween.tween_property(child, ^":scale", Vector2.ONE * 1.0, 0.7)
+				scale_tween.parallel().tween_method(func(p: float) -> void:
+					child.position.x = (child.position.x - 38.0) * p + 38.0, dist_to_player / 3.2, 1.0, 0.7)
+			await get_tree().create_timer(-qte_preload_time).timeout
+			qte.show()
+		
 		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
 		else:
 			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
-		if anim_player.current_animation != animation_names.attack:
-			anim_player.play(animation_names.attack, 0.2)
+		#if anim_player.current_animation != animation_names.attack:
+		anim_player.stop()
+		anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
 		var value: float = 0.0 if (not is_instance_valid(qte)) or qte.has_ended else await qte.pressed
@@ -188,12 +190,12 @@ func _take_turn() -> void:
 		var attack_end_time := animation_durations.attack - (Time.get_ticks_msec() - start_t) * 0.001
 		if i == attack_count - 1:
 			await get_tree().create_timer(attack_end_time - 0.2).timeout
-		else:
-			# Load the next QTE before the next attack
-			qte = combat_handler.create_qte()
-			qte.hide()
-			get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
-			await get_tree().create_timer(attack_end_time).timeout
+		#else:
+			## Load the next QTE before the next attack
+			#qte = combat_handler.create_qte()
+			#qte.hide()
+			#get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
+			#await get_tree().create_timer(attack_end_time).timeout
 	
 	await get_tree().create_timer(0.7).timeout
 	if animation_names.b_dash:
