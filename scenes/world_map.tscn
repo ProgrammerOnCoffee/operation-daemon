@@ -605,7 +605,7 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 0.0
 grow_horizontal = 0
-info_panel = NodePath("")
+info_panel = NodePath("../InventoryTut")
 close_button = NodePath("../InventoryTut/Panel/PanelContainer/MarginContainer/VBoxContainer/Button")
 
 [node name="MapTutorial" type="Control" parent="." unique_id=1897085214]
