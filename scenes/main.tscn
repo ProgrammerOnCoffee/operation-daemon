@@ -14,15 +14,15 @@
 [ext_resource type="Script" uid="uid://c0woahrtaegb8" path="res://scripts/toast_display.gd" id="7_choun"]
 [ext_resource type="Script" uid="uid://bnn5d7lm0ru40" path="res://scripts/music_driver.gd" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dqvwltowy5k7v" path="res://assets/UI Elements/Bars.png" id="8_dp3eg"]
-[ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Music/lab_79bpm.ogg" id="9_ya4ey"]
-[ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Music/map_79bpm.ogg" id="10_eb6dy"]
-[ext_resource type="AudioStream" uid="uid://vg4e1772pa46" path="res://assets/Music/combat1_79bpm.ogg" id="11_trceg"]
+[ext_resource type="AudioStream" uid="uid://dll5ytf8jao4a" path="res://assets/Audio/music/lab_79bpm.ogg" id="9_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://wu017172cy21" path="res://assets/Audio/music/map_79bpm.ogg" id="10_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://clqhle5y4evac" path="res://assets/images/splash.png" id="12_0ld40"]
-[ext_resource type="AudioStream" uid="uid://bnk1iyrwqcchy" path="res://assets/Music/menu_theme_loop_120bpm.ogg" id="12_eb6dy"]
 [ext_resource type="Script" uid="uid://dh3s8gvxiywif" path="res://scripts/menu_bar.gd" id="12_gqmmt"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="12_yc10j"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="17_jscy8"]
 [ext_resource type="Script" uid="uid://ctaosreojk0gy" path="res://scripts/pause_screen.gd" id="17_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://qlkw6aafj7l0" path="res://assets/Audio/music/combat2.ogg" id="20_pm3ni"]
+[ext_resource type="AudioStream" uid="uid://7g2khmwf4icp" path="res://assets/Audio/music/menutheme.ogg" id="22_y6deb"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_muem4"]
 
@@ -422,11 +422,12 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0wfyh")
 
-[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 node_paths=PackedStringArray("map", "pause_screen") instance=ExtResource("5_tefeu")]
+[node name="Laboratory" parent="UILayer/UI" unique_id=18152502 node_paths=PackedStringArray("main_menu", "map", "pause_screen") instance=ExtResource("5_tefeu")]
 visible = false
 layout_mode = 1
+main_menu = NodePath("../MainMenu")
 map = NodePath("../WorldMap")
-pause_screen = NodePath("../MarginContainer")
+pause_screen = NodePath("../PauseScreen")
 
 [node name="MainMenu" type="Control" parent="UILayer/UI" unique_id=755086545]
 layout_mode = 1
@@ -1142,7 +1143,7 @@ texture = ExtResource("12_0ld40")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI" unique_id=1590569798 node_paths=PackedStringArray("lab")]
+[node name="PauseScreen" type="MarginContainer" parent="UILayer/UI" unique_id=1590569798 node_paths=PackedStringArray("lab", "map")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -1154,48 +1155,49 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("17_pm3ni")
 lab = NodePath("../Laboratory")
+map = NodePath("../WorldMap")
 
-[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/MarginContainer" unique_id=1384663009]
+[node name="PanelContainer" type="PanelContainer" parent="UILayer/UI/PauseScreen" unique_id=1384663009]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_pm3ni")
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MarginContainer/PanelContainer" unique_id=479786693]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/PauseScreen/PanelContainer" unique_id=479786693]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer" unique_id=1818498486]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer" unique_id=1818498486]
 layout_mode = 2
 theme = SubResource("Theme_pm3ni")
 theme_override_constants/separation = 16
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=683818407]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=683818407]
 layout_mode = 2
 theme_override_constants/separation = -4
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=72191283]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=72191283]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "PAUSED"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1425023676]
+[node name="Label2" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1425023676]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "PRESS P TO UNPAUSE"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=882335282]
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=882335282]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2018810434]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=2018810434]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -1203,22 +1205,22 @@ size_flags_vertical = 3
 theme_override_constants/separation = 13
 alignment = 1
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=96390430]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=96390430]
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=401842953]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=401842953]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=269928557]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=269928557]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Master"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1323829320]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1323829320]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1227,17 +1229,17 @@ step = 0.01
 value = 1.0
 script = ExtResource("3_sugp2")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1506476914]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1506476914]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1822355195]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1822355195]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1125941319]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1125941319]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1247,17 +1249,17 @@ value = 1.0
 script = ExtResource("3_sugp2")
 bus_name = &"Music"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1892789339]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1892789339]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1997291366]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1997291366]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1089468601]
+[node name="HSlider" type="HSlider" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1089468601]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1267,26 +1269,26 @@ value = 1.0
 script = ExtResource("3_sugp2")
 bus_name = &"SFX"
 
-[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=193708490]
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=193708490]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
 
-[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=207424107]
+[node name="Label2" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=207424107]
 layout_mode = 2
 text = "Video"
 horizontal_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=775163883]
+[node name="HBoxContainer4" type="HBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=775163883]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1559714168]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1559714168]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "VSync"
 
-[node name="Button" type="Button" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=803935235]
+[node name="Button" type="Button" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=803935235]
 custom_minimum_size = Vector2(175, 35)
 layout_mode = 2
 theme = ExtResource("17_jscy8")
@@ -1301,15 +1303,15 @@ toggle_mode = true
 text = "Enabled"
 script = SubResource("GDScript_tbgi4")
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1151917163]
+[node name="HBoxContainer5" type="HBoxContainer" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1151917163]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=184146956]
+[node name="Label" type="Label" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=184146956]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Window Mode"
 
-[node name="Button" type="OptionButton" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1357014082]
+[node name="Button" type="OptionButton" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1357014082]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 theme = ExtResource("17_jscy8")
@@ -1323,73 +1325,73 @@ theme_override_font_sizes/font_size = 17
 alignment = 1
 script = SubResource("GDScript_sugp2")
 
-[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1358848823]
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1358848823]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
 
-[node name="Button" type="Button" parent="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1750881986]
+[node name="Button" type="Button" parent="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer" unique_id=1750881986]
 custom_minimum_size = Vector2(300, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("17_jscy8")
 text = "End Run"
 
-[node name="GuessWhosFinallyGettingHisPowers" type="PanelContainer" parent="UILayer/UI/MarginContainer" unique_id=720442583]
+[node name="GuessWhosFinallyGettingHisPowers" type="PanelContainer" parent="UILayer/UI/PauseScreen" unique_id=720442583]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_y6deb")
 
-[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers" unique_id=896439766]
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers" unique_id=896439766]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer" unique_id=2100870484]
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer" unique_id=2100870484]
 layout_mode = 2
 theme = SubResource("Theme_pm3ni")
 theme_override_constants/separation = 14
 
-[node name="AreYouSure?" type="Label" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1467682645]
+[node name="AreYouSure?" type="Label" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1467682645]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Are You Sure?"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1778312799]
+[node name="HSeparator" type="HSeparator" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1778312799]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
 
-[node name="Label2" type="Label" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1645658118]
+[node name="Label2" type="Label" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1645658118]
 layout_mode = 2
 text = "Ending this run will make you lose all your research and map progress for the run. You will keep any daemons discovered within the run."
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1290028980]
+[node name="HSeparator2" type="HSeparator" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1290028980]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/separator = SubResource("StyleBoxLine_y6deb")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1277156215]
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer" unique_id=1277156215]
 layout_mode = 2
 
-[node name="PrettySure,ThrewATrashBagIntoSpaceAtWork" type="Button" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1786385634]
+[node name="PrettySure,ThrewATrashBagIntoSpaceAtWork" type="Button" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1786385634]
 custom_minimum_size = Vector2(250, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("17_jscy8")
 text = "Yes"
 
-[node name="No" type="Button" parent="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2123745140]
+[node name="No" type="Button" parent="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2123745140]
 custom_minimum_size = Vector2(250, 45)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1397,18 +1399,22 @@ theme = ExtResource("17_jscy8")
 text = "No"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=792015812]
+process_mode = 3
 stream = SubResource("AudioStreamSynchronized_tipki")
 autoplay = true
 script = ExtResource("7_o6xl0")
 tracks = Dictionary[String, AudioStreamOggVorbis]({
-"Combat": ExtResource("11_trceg"),
+"Combat": ExtResource("20_pm3ni"),
 "Laboratory": ExtResource("9_ya4ey"),
-"MainMenu": ExtResource("12_eb6dy"),
+"MainMenu": ExtResource("22_y6deb"),
 "Map": ExtResource("10_eb6dy")
+})
+track_volume_offsets = Dictionary[String, float]({
+"Combat": 3.3,
+"MainMenu": 3.3
 })
 initial_track = "MainMenu"
 
-[connection signal="back_to_main_menu" from="UILayer/UI/Laboratory" to="UILayer/UI" method="transition" binds= [NodePath("Laboratory"), NodePath("MainMenu")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Start" to="UILayer/UI" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Settings" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Settings")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/MainMenu/VBoxContainer/VBoxContainer/Credits" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/MainMenu"), NodePath("MainMenu/Credits")]]
@@ -1417,9 +1423,9 @@ initial_track = "MainMenu"
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Licenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/Licenses")]]
 [connection signal="pressed" from="UILayer/UI/MainMenu/Credits/MarginContainer/VBox/Back" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Credits"), NodePath("MainMenu/MainMenu")]]
 [connection signal="close_requested" from="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses" to="UILayer/UI" method="transition" binds= [NodePath("MainMenu/Licenses"), NodePath("MainMenu/Credits")]]
-[connection signal="pressed" from="UILayer/UI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="UILayer/UI/MarginContainer" method="_on_end_run_pressed"]
-[connection signal="pressed" from="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/PrettySure,ThrewATrashBagIntoSpaceAtWork" to="UILayer/UI/MarginContainer" method="_on_confirmation_pressed"]
-[connection signal="pressed" from="UILayer/UI/MarginContainer/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/No" to="UILayer/UI/MarginContainer" method="_on_no_pressed"]
+[connection signal="pressed" from="UILayer/UI/PauseScreen/PanelContainer/MarginContainer/VBoxContainer/Button" to="UILayer/UI/PauseScreen" method="_on_end_run_pressed"]
+[connection signal="pressed" from="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/PrettySure,ThrewATrashBagIntoSpaceAtWork" to="UILayer/UI/PauseScreen" method="_on_confirmation_pressed"]
+[connection signal="pressed" from="UILayer/UI/PauseScreen/GuessWhosFinallyGettingHisPowers/MarginContainer/VBoxContainer/HBoxContainer/No" to="UILayer/UI/PauseScreen" method="_on_no_pressed"]
 
 [editable path="UILayer/UI/MainMenu/Licenses/MarginContainer/QuickLicenses"]
 [editable path="UILayer/UI/WorldMap"]

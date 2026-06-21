@@ -6,6 +6,8 @@ signal back_to_main_menu
 ## [method _on_input_down], or [method _on_input_pressed].
 static var input_sound_debounce: bool = true
 
+@export var main_menu:Control
+
 @export var map:Control
 @export var pause_screen:PauseScreen
 
@@ -46,7 +48,7 @@ func _ready() -> void:
 	
 	$HBoxContainer/PanelContainer/MarginContainer/Button.pressed.connect(func():
 		back_to_main_menu.emit()
-		Global.request_track_transition.emit("MainMenu", true))
+		TransitionManager.transition_screen(self, main_menu))
 	
 	logbook_tabs.clear_tabs()
 	# Make a tab for each log.

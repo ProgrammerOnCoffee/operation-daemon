@@ -179,6 +179,14 @@ func recurs_find_event_scene(from:Node) -> EventScene:
 	
 	return null
 
+func _force_finish() -> void: # Force the event to finish.
+	# Free the event.
+	if current_event_scene:
+		current_event_scene.queue_free()
+		current_event_scene = null
+	current_event = null
+
+
 func _finish_event(additional_data:bool) -> void: 
 	
 	# Transition back the music if needed
