@@ -63,6 +63,7 @@ func _on_quit_pressed() -> void:
 	tween.tween_method(func(v: float) -> void:
 			AudioServer.set_bus_volume_linear(0, v), AudioServer.get_bus_volume_linear(0), 0.0, 3.0)
 	tween.parallel().tween_property($Splash, ^":modulate:v", 0.0, 1.5).set_delay(1.0)
+	$Splash.move_to_front()
 	TransitionManager.fade($Splash, true)
 	await tween.finished
 	get_tree().quit()
