@@ -1470,7 +1470,6 @@ _data = {
 metadata/_edit_horizontal_guides_ = [336.0]
 
 [node name="Dino Bones" parent="." unique_id=312544773 instance=ExtResource("1_jhvda")]
-modulate = Color(18.892157, 0, 0, 1)
 
 [node name="Skeleton2D" parent="Dino Bones/Bones" parent_id_path=PackedInt32Array(312544773, 749107458) index="0" unique_id=2040274698]
 modification_stack = SubResource("SkeletonModificationStack2D_bauh2")
