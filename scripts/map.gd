@@ -11,9 +11,8 @@ var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 var occupied_markers: Array[Marker3D]
 ## If [code]true[/code], tentacles have been spawned before.
 var has_spawned_tentacles: bool
-
 ## If [code]true[/code], this is a boss fight.
-@onready var is_boss_fight: bool = false and get_parent() == get_tree().root
+var is_boss_fight: bool = false
 
 
 func _ready() -> void:
