@@ -33,8 +33,8 @@ var permanent_daemons:Array[Daemon]:
 			Global.research(daemon, 0)
 		
 		daemons_changed.emit()
-
-# The player's currently applied temporary daemons.
+#
+## The player's currently applied temporary daemons.
 var daemons:Array[Daemon]:
 	set(to): # NOTE: To trigger this use daemons += [items] instead of .append()
 		daemons = to

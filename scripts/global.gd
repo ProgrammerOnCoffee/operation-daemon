@@ -30,16 +30,17 @@ var module_count:int = 0
 
 func _ready() -> void: 
 	
-	for i in 30:
-		daemons_discovered += [get_random_daemon(randi_range(1,4))]
+	## Debug daemons & modules.
+	#for i in 30:
+		#daemons_discovered += [get_random_daemon(randi_range(1,4))]
 	
-	for i in 20:
-		
-		var e:Array[Effect]
-		for j in randi_range(1,3):
-			e += [Effect.all_effects.values().pick_random().new()]
-		
-		PlayerData.modules += [Module.new(e)]
+	#for i in 20:
+		#
+		#var e:Array[Effect]
+		#for j in randi_range(1,3):
+			#e += [Effect.all_effects.values().pick_random().new()]
+		#
+		#PlayerData.modules += [Module.new(e)]
 	
 	
 	act_changed.connect(generate_enemy_pool)

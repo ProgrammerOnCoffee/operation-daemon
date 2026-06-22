@@ -42,12 +42,15 @@ var logs_unlocked := 0
 
 func _ready() -> void:
 	
-	tab_bar.tab_selected.connect(func(index:int): goal_scroll_position = index * 496)
+	tab_bar.tab_selected.connect(func(index:int): 
+		_update_discovered_list()
+		goal_scroll_position = index * 496)
 	
 	_update_discovered_list()
 	
 	$HBoxContainer/PanelContainer/MarginContainer/Button.pressed.connect(func():
 		back_to_main_menu.emit()
+		Global.request_track_transition.emit("MainMenu")
 		TransitionManager.transition_screen(self, main_menu))
 	
 	logbook_tabs.clear_tabs()
@@ -66,7 +69,11 @@ func _process(delta: float) -> void:
 func _start_pressed() -> void: 
 	# Reset the current act.
 	Global.act = 0
+	
+	# Clear player daemons and modules
 	Global.daemon_research.clear()
+	PlayerData.modules.clear()
+	PlayerData.modules_changed.emit()
 	
 	# Reset the player's health.
 	PlayerData.health = PlayerData.max_health
