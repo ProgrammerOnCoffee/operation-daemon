@@ -19,7 +19,7 @@ func _ready() -> void:
 	if OS.has_feature("editor") and get_parent() == get_tree().root:
 		# Editor debugging
 		var asp := AudioStreamPlayer.new()
-		asp.stream = load("res://assets/Music/combat1_79bpm.ogg")
+		asp.stream = load("uid://vg4e1772pa46")
 		asp.autoplay = true
 		asp.bus = &"Music"
 		add_child(asp)
