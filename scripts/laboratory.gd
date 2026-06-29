@@ -105,6 +105,8 @@ func _update_discovered_list(..._args:Array) -> void:
 	recomb_reroll_options.clear()
 	recomb_using_options.clear()
 	
+	$HBoxContainer/PanelContainer/ExpeditionTut.visible = Global.daemons_discovered.is_empty()
+	
 	var i = 0
 	for daemon in Global.daemons_discovered:
 		var id := "D%s" % Global.lead(daemon.id, 4)

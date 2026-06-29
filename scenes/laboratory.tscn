@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://bftuh6gjcpnnv" path="res://resources/scroll_lines.gdshader" id="3_0qmye"]
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="4_fie5y"]
-[ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="5_0qmye"]
 [ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="5_crtsx"]
 [ext_resource type="PackedScene" uid="uid://yyutrblraiid" path="res://assets/Dr Anglea Turtle/dr_angela_turtle.tscn" id="6_7eomm"]
 
@@ -601,7 +600,7 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1090214760]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 8
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
@@ -615,14 +614,14 @@ theme_override_font_sizes/font_size = 17
 text = "Back To Main Menu"
 
 [node name="ExpeditionTut" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=1065745643]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme = ExtResource("5_crtsx")
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 40
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut" unique_id=1993631467]
 layout_mode = 2
@@ -666,7 +665,7 @@ theme_override_font_sizes/font_size = 24
 text = "You don't currently have any samples, so the Laboratory is useless. Come back after completing an expedition and discovering some Daemons.
 
 
-Press the 'Begin Expedition' Button in the bottom right to begin an expedition."
+Press the BEGIN EXPEDITION button to embark on your journey."
 autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1602085932]
@@ -721,15 +720,6 @@ size_flags_horizontal = 4
 theme = ExtResource("3_6mkvh")
 theme_override_font_sizes/font_size = 29
 text = "BEGIN EXPEDITION"
-
-[node name="TutorialButton" parent="." unique_id=1662630263 node_paths=PackedStringArray("info_panel", "close_button") instance=ExtResource("5_0qmye")]
-layout_mode = 0
-offset_left = -85.0
-offset_top = 385.0
-offset_right = -45.0
-offset_bottom = 430.0
-info_panel = NodePath("../HBoxContainer/PanelContainer/ExpeditionTut")
-close_button = NodePath("../HBoxContainer/MarginContainer/VBoxContainer/Button")
 
 [connection signal="tab_clicked" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_pressed"]
 [connection signal="tab_hovered" from="HBoxContainer/PanelContainer/MarginContainer2/VBoxContainer/PanelContainer/TabBar" to="." method="_on_input_hover"]
