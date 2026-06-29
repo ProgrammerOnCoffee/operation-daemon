@@ -91,8 +91,11 @@ func _take_turn() -> void:
 		qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
 		if qte_preload_time > 0:
 			await get_tree().create_timer(qte_preload_time).timeout
+			anim_player.stop()
+			anim_player.play(animation_names.attack, 0.2)
 		else:
 			qte.hide()
+			anim_player.stop()
 			anim_player.play(animation_names.attack, 0.2)
 			if name == &"Tentacle":
 				var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
@@ -112,9 +115,6 @@ func _take_turn() -> void:
 			entity_3d.play_sound(sound_banks.attack)
 		else:
 			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
-		#if anim_player.current_animation != animation_names.attack:
-		anim_player.stop()
-		anim_player.play(animation_names.attack, 0.2)
 		
 		var start_t := Time.get_ticks_msec()
 		var value: float = 0.0 if (not is_instance_valid(qte)) or qte.has_ended else await qte.pressed
