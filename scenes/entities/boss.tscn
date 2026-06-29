@@ -9,9 +9,9 @@ rect_attack_inset = 8
 max_health = 200
 sound_banks = Dictionary[StringName, String]({
 &"attack": "attack_boss",
-&"b_dash": "dash_robot",
+&"b_dash": "",
 &"counter": "counter",
-&"dash": "dash_robot",
+&"dash": "",
 &"death": "death_robot",
 &"hit": "hit_boss",
 &"parry": "parry"
