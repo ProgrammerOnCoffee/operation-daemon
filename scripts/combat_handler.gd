@@ -13,6 +13,9 @@ signal step_finished(entity: Entity)
 ## Emitted when every [Entity] has taken their turn and a new turn begins.
 signal turn_finished()
 
+## Whether or not the combat tutorial has been shown to the player before.
+static var has_shown_tutorial: bool
+
 ## This fight's [Player].
 @export var player: Player
 ## The [Array] of this fight's enemies.
@@ -49,6 +52,9 @@ func _ready() -> void:
 	sort_enemies()
 	turn()
 	
+	if not has_shown_tutorial:
+		has_shown_tutorial = true
+		$TutorialButton.button_pressed = true
 	$EndScreen/MarginContainer/VBoxContainer/Continue.pressed.connect(func():requested_end.emit(player.health))
 
 
