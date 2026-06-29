@@ -5,11 +5,8 @@
 [ext_resource type="Script" uid="uid://b0afr6lawd4cx" path="res://scripts/command_wheel.gd" id="3_tb0t7"]
 [ext_resource type="Script" uid="uid://cr0wckmf4e5m8" path="res://scripts/floaty_label.gd" id="4_fnwho"]
 [ext_resource type="Texture2D" uid="uid://ula2soydh481" path="res://assets/UI Elements/Attack.png" id="4_tb0t7"]
-[ext_resource type="Texture2D" uid="uid://cun2fk1qycq6l" path="res://assets/images/svg/qte_ring.svg" id="5_61ait"]
 [ext_resource type="BitMap" uid="uid://bpq7q1y58ck7u" path="res://assets/UI Elements/Attack_Bitmap.png" id="5_fnwho"]
 [ext_resource type="Texture2D" uid="uid://jhrf03t3rqsh" path="res://assets/UI Elements/Special.png" id="6_3uv2x"]
-[ext_resource type="Script" uid="uid://dei4c46847yat" path="res://scripts/qte.gd" id="6_lstl7"]
-[ext_resource type="Texture2D" uid="uid://bk7f75pvaysbn" path="res://assets/images/svg/qte_tick.svg" id="7_3uv2x"]
 [ext_resource type="BitMap" uid="uid://dpgjvnnixeibq" path="res://assets/UI Elements/Special_Bitmap.png" id="7_oebxs"]
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
 [ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
@@ -168,29 +165,6 @@ theme = ExtResource("2_a8me0")
 theme_type_variation = &"DamageLabel"
 text = "0"
 script = ExtResource("4_fnwho")
-
-[node name="QTERing" type="TextureRect" parent="." unique_id=194090811]
-visible = false
-offset_right = 96.0
-offset_bottom = 96.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("5_61ait")
-expand_mode = 1
-stretch_mode = 5
-script = ExtResource("6_lstl7")
-
-[node name="Tick" type="TextureRect" parent="QTERing" unique_id=236025105]
-self_modulate = Color(0.17999998, 0.46799988, 0.9, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("7_3uv2x")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="QTECircle" parent="." unique_id=1303849341 instance=ExtResource("14_sxk2p")]
 visible = false
