@@ -204,12 +204,9 @@ func _take_turn() -> void:
 		var attack_end_time := animation_durations.attack - (Time.get_ticks_msec() - start_t) * 0.001
 		if i == attack_count - 1:
 			await get_tree().create_timer(attack_end_time - 0.2).timeout
-		#else:
-			## Load the next QTE before the next attack
-			#qte = combat_handler.create_qte()
-			#qte.hide()
-			#get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
-			#await get_tree().create_timer(attack_end_time).timeout
+		else:
+			# Wait before attacking again
+			await get_tree().create_timer(0.5).timeout
 	
 	await get_tree().create_timer(0.7).timeout
 	if animation_names.b_dash:
