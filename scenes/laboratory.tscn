@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://ci4b0pn5vgtj3" path="res://resources/alt_theme.tres" id="3_6mkvh"]
 [ext_resource type="FontFile" uid="uid://d2cruml7w4o5s" path="res://assets/Audio/ScienceGothic-VariableFont_CTRS,slnt,wdth,wght.ttf" id="4_fie5y"]
 [ext_resource type="PackedScene" uid="uid://dpl7kq7v86xct" path="res://scenes/tutorial_button.tscn" id="5_0qmye"]
+[ext_resource type="Theme" uid="uid://bftgnmhry3n7y" path="res://resources/game_theme.tres" id="5_crtsx"]
 [ext_resource type="PackedScene" uid="uid://yyutrblraiid" path="res://assets/Dr Anglea Turtle/dr_angela_turtle.tscn" id="6_7eomm"]
 
 [sub_resource type="Shader" id="Shader_ehj20"]
@@ -190,16 +191,6 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cixbc"]
-bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
-skew = Vector2(0.01, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
-border_blend = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_7eomm"]
 color = Color(0.38431373, 0.76862746, 0.76862746, 1)
@@ -627,6 +618,7 @@ text = "Back To Main Menu"
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("5_crtsx")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -634,7 +626,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut" unique_id=1993631467]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cixbc")
+theme_type_variation = &"HintPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/ExpeditionTut/PanelContainer" unique_id=1861207466]
 layout_mode = 2

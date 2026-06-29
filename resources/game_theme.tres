@@ -1,5 +1,19 @@
 [gd_resource type="Theme" format=3 uid="uid://bftgnmhry3n7y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1nym"]
+bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 4
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 4
+corner_detail = 16
+
 [resource]
 default_font_size = 24
 DamageLabel/base_type = &"Label"
@@ -9,3 +23,5 @@ HealthLabel/base_type = &"Label"
 HealthLabel/colors/font_outline_color = Color(0.26666668, 0.26666668, 0.34117648, 1)
 HealthLabel/constants/outline_size = 8
 HealthLabel/font_sizes/font_size = 24
+HintPanelContainer/base_type = &"PanelContainer"
+HintPanelContainer/styles/panel = SubResource("StyleBoxFlat_l1nym")

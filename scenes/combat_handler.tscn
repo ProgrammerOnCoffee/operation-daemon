@@ -33,26 +33,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hjfq"]
 skew = Vector2(0.35, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtxwj"]
-bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
-skew = Vector2(0.01, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvid"]
-bg_color = Color(0.16470589, 0.32941177, 0.32941177, 0.827451)
-skew = Vector2(0.01, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.38431373, 0.76862746, 0.76862746, 1)
-border_blend = true
-
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_dtxwj"]
 color = Color(0.38431373, 0.76862746, 0.76862746, 1)
 thickness = 4
@@ -400,6 +380,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_a8me0")
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 15
@@ -409,7 +390,7 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dtxwj")
+theme_type_variation = &"HintPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="ControlPrompts/PanelContainer" unique_id=602618648]
 layout_mode = 2
@@ -464,6 +445,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_a8me0")
 
 [node name="Control" type="Control" parent="CombatTut" unique_id=1872238222]
 layout_mode = 2
@@ -479,7 +461,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="CombatTut/Panel" unique_id=1592288400]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4dvid")
+theme_type_variation = &"HintPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="CombatTut/Panel/PanelContainer" unique_id=977121106]
 layout_mode = 2
