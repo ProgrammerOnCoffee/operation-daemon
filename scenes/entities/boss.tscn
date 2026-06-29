@@ -6,7 +6,7 @@
 [node name="Boss" unique_id=1022515043 instance=ExtResource("1_53opr")]
 rect = Rect2i(-128, -288, 256, 312)
 rect_attack_inset = 8
-max_health = 200
+max_health = 120
 sound_banks = Dictionary[StringName, String]({
 &"attack": "attack_boss",
 &"b_dash": "",
