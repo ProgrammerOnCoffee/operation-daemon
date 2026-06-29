@@ -92,14 +92,22 @@ func _take_turn() -> void:
 		await get_tree().create_timer(0.1).timeout
 		qte = combat_handler.create_qte()
 		qte.type = qte.Type.COUNTER if player.is_defending else qte.Type.PARRY
+		## The time that the attack animation was begun, as returned by [method Time.get_ticks_msec].
+		var start_t: int
 		if qte_preload_time > 0:
+			if anim_player.current_animation != animation_names.idle:
+				await get_tree().create_timer(anim_player.current_animation_length - anim_player.current_animation_position).timeout
+			qte.fade_in()
 			await get_tree().create_timer(qte_preload_time).timeout
 			anim_player.stop()
 			anim_player.play(animation_names.attack, 0.2)
+			start_t = Time.get_ticks_msec()
 		else:
-			qte.hide()
+			if anim_player.current_animation != animation_names.idle:
+				await get_tree().create_timer(anim_player.current_animation_length - anim_player.current_animation_position).timeout
 			anim_player.stop()
 			anim_player.play(animation_names.attack, 0.2)
+			start_t = Time.get_ticks_msec()
 			if name == &"Tentacle":
 				var child := get_node(^"Boss_Tent_Ent/Boss Tent_Bones/Bones/Skeleton2D/CHild") as Bone2D
 				var dist_to_player := entity_3d.initial_transform.origin.distance_to(combat_handler.player.entity_3d.initial_transform.origin)
@@ -112,14 +120,13 @@ func _take_turn() -> void:
 				scale_tween.parallel().tween_method(func(p: float) -> void:
 					child.position.x = (child.position.x - 38.0) * p + 38.0, dist_to_player / 3.2, 1.0, 0.7)
 			await get_tree().create_timer(-qte_preload_time).timeout
-			qte.show()
+			qte.fade_in()
 		
 		if sound_banks.attack == "attack_slime_jump":
 			entity_3d.play_sound(sound_banks.attack)
 		else:
-			get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
+			get_tree().create_timer(attack_point + minf(qte_preload_time, 0.0)).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
 		
-		var start_t := Time.get_ticks_msec()
 		var value: float = 0.0 if (not is_instance_valid(qte)) or qte.has_ended else await qte.pressed
 		if player.is_defending and value > 0.9:
 			player.entity_3d.play_sound(sound_banks.counter)

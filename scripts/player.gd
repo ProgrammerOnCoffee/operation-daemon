@@ -51,6 +51,7 @@ func attack() -> bool:
 		if i == 0:
 			await get_tree().create_timer(0.1).timeout
 			qte = combat_handler.create_qte()
+			qte.fade_in()
 			await get_tree().create_timer(qte_preload_time).timeout
 		get_tree().create_timer(attack_point).timeout.connect(entity_3d.play_sound.bind(sound_banks.attack))
 		if anim_player.current_animation != animation_names.attack:
@@ -79,7 +80,6 @@ func attack() -> bool:
 		else:
 			# Load the next QTE before the next attack
 			qte = combat_handler.create_qte()
-			qte.hide()
 			get_tree().create_timer(attack_end_time - qte_preload_time).timeout.connect(qte.fade_in)
 			await get_tree().create_timer(attack_end_time).timeout
 	
