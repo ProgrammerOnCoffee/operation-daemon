@@ -44,10 +44,8 @@ func attack() -> bool:
 	anim_player.play(animation_names.idle, 0.4)
 	await get_tree().create_timer(0.4).timeout
 	
-	## The target time that the player should respond to the QTE after.
-	const PERFECT_QTE_TIME := QTECircle.ATTACK_PERFECT_DURATION
 	## How long before beginning the attack animation the QTE will be loaded.
-	var qte_preload_time := PERFECT_QTE_TIME - attack_point
+	var qte_preload_time := QTE.ATTACK_PERFECT_DURATION - attack_point
 	var qte: Control
 	for i in attack_count:
 		if i == 0:

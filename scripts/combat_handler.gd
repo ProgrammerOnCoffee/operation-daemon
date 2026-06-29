@@ -144,7 +144,7 @@ func turn() -> void:
 
 ## Creates a new quick time event prompt.
 func create_qte() -> Control:
-	var qte := $QTECircle.duplicate() as Control
+	var qte := $QTE.duplicate() as Control
 	qte.anchor_left = randf_range(0.4, 0.6)
 	qte.anchor_top = randf_range(0.2, 0.7)
 	qte.position -= qte.size / 2

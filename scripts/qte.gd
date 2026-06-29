@@ -1,4 +1,4 @@
-class_name QTECircle
+class_name QTE
 extends Control
 
 ## Emitted when the QTE has been pressed or missed.
@@ -15,23 +15,41 @@ enum Type {
 	COUNTER,
 }
 
-const ATTACK_SPEED = 1.4
+## The speed at which attack QTEs will shrink, in scale per second.
+const ATTACK_SPEED = 1.5
+## The speed at which parry QTEs will shrink, in scale per second.
 const PARRY_SPEED = 1.6
+## The speed at which counter QTEs will shrink, in scale per second.
+const COUNTER_SPEED = 1.7
 
-const TARGET_SCALE: float = 0.815
-const MAX_SCALE: float = TARGET_SCALE + 0.7
-const MIN_SCALE: float = TARGET_SCALE - 0.2
-const LENGTH_SCALE = MAX_SCALE - MIN_SCALE
-const PERFECT_MARGIN: float = 0.07
-const OK_MARGIN: float = 0.14
+## The maximum marker scale at which a QTE response will be considered perfect.
+const PERFECT_MAX: float = 0.89
+## The minimum marker scale at which a QTE response will be considered perfect.
+const PERFECT_MIN: float = 0.73
+## The maximum marker scale at which a QTE response will be considered OK.
+const OK_MAX: float = 1.05
+## The minimum marker scale at which a QTE response will be considered OK.
+const OK_MIN: float = 0.62
+
+## The exact center of the perfect range, used to time exactly when an attack should occur.
+const TARGET_SCALE: float = (PERFECT_MAX + PERFECT_MIN) / 2
+## The maximum QTE marker scale (i.e., the initial scale of the marker when the QTE spawns).
+const MAX_SCALE: float = OK_MAX + (OK_MAX - PERFECT_MAX) * 4
+## The minimum QTE marker scale (i.e., the marker scale at which the QTE will despawn).
+const MIN_SCALE: float = OK_MIN #- (PERFECT_MIN - OK_MIN)
+
+## The length of time that a perfect attack QTE will take.
 const ATTACK_PERFECT_DURATION = (MAX_SCALE - TARGET_SCALE) / ATTACK_SPEED
+## The length of time that a perfect parry QTE will take.
 const PARRY_PERFECT_DURATION = (MAX_SCALE - TARGET_SCALE) / PARRY_SPEED
+## The length of time that a perfect counter QTE will take.
+const COUNTER_PERFECT_DURATION = (MAX_SCALE - TARGET_SCALE) / COUNTER_SPEED
 
 ## If [code]true[/code], this QTE is currently running and waiting for player input.
 var is_running := false
 ## If [code]true[/code], this QTE has expired or has been responded to by the player.
 var has_ended: bool
-## The type of QTE.
+## The [enum Type] of QTE.
 var type: Type
 
 ## The [Tween] currently fading in/out the QTE.
@@ -42,8 +60,11 @@ var _tween: Tween
 
 func _process(delta: float) -> void:
 	if visible and is_running:
-		#$Tick.rotation += TAU * delta / (0.8 if type == Type.ATTACK else 0.6)
-		marker.scale -= Vector2.ONE * delta * (ATTACK_SPEED if type == Type.ATTACK else PARRY_SPEED)
+		marker.scale -= Vector2.ONE * delta * (
+				ATTACK_SPEED if type == Type.ATTACK
+				else PARRY_SPEED if type == Type.PARRY
+				else COUNTER_SPEED
+		)
 		if marker.scale.x <= MIN_SCALE:
 			pressed.emit(0.0)
 			fade_out()
@@ -60,8 +81,8 @@ func _input(event: InputEvent) -> void:
 func get_value() -> float:
 	var s := marker.scale.x as float
 	return (
-			1.0 if s <= TARGET_SCALE + PERFECT_MARGIN and s >= TARGET_SCALE - PERFECT_MARGIN
-			else 0.6 if s <= TARGET_SCALE + OK_MARGIN and s >= TARGET_SCALE - OK_MARGIN
+			1.0 if s <= PERFECT_MAX and s >= PERFECT_MIN
+			else 0.6 if s <= OK_MAX and s >= OK_MIN
 			else 0.0
 	)
 

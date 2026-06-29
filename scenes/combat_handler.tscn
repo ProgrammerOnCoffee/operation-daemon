@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bs4m2ms4awmj4" path="res://assets/UI Elements/Defend.png" id="8_gq7i8"]
 [ext_resource type="Shader" uid="uid://juyl0gwble8l" path="res://resources/blur.gdshader" id="8_oebxs"]
 [ext_resource type="BitMap" uid="uid://ccunaudm0isso" path="res://assets/UI Elements/Defend_Bitmap.png" id="9_orqql"]
-[ext_resource type="PackedScene" uid="uid://ciylc51iyvld7" path="res://assets/UI Elements/QTE_Ring.tscn" id="14_sxk2p"]
+[ext_resource type="PackedScene" uid="uid://ciylc51iyvld7" path="res://scenes/qte.tscn" id="14_sxk2p"]
 [ext_resource type="Texture2D" uid="uid://p10h0jm4xtyn" path="res://assets/UI Elements/Ui_Overlay.png" id="15_oebxs"]
 [ext_resource type="Texture2D" uid="uid://247xtn3osolm" path="res://assets/UI Elements/Potrait BB.png" id="16_orqql"]
 [ext_resource type="Texture2D" uid="uid://c7m0brajvfisq" path="res://assets/Player/Player_Part images/Head.png" id="17_x5fwe"]
@@ -166,7 +166,7 @@ theme_type_variation = &"DamageLabel"
 text = "0"
 script = ExtResource("4_fnwho")
 
-[node name="QTECircle" parent="." unique_id=1303849341 instance=ExtResource("14_sxk2p")]
+[node name="QTE" parent="." unique_id=1303849341 instance=ExtResource("14_sxk2p")]
 visible = false
 
 [node name="Overlay" type="TextureRect" parent="." unique_id=1721509592]

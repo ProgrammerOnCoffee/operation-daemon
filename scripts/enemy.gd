@@ -83,9 +83,9 @@ func _take_turn() -> void:
 		return
 	
 	## The target time that the player should respond to the QTE after.
-	const PERFECT_QTE_TIME := QTECircle.PARRY_PERFECT_DURATION
+	var perfect_qte_time := QTE.COUNTER_PERFECT_DURATION if player.is_defending else QTE.PARRY_PERFECT_DURATION
 	## How long before beginning the attack animation the QTE will be loaded.
-	var qte_preload_time := PERFECT_QTE_TIME - attack_point
+	var qte_preload_time := perfect_qte_time - attack_point
 	var qte: Control
 	for i in Global.float_as_chance_int(Global.ENEMY_ATTACK_COUNTS[Global.act] * attack_count):
 	
