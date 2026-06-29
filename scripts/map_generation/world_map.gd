@@ -211,11 +211,15 @@ func _finish_event(additional_data:bool) -> void:
 		transition_to = laboratory
 		
 		# Some game-resetting code? Eh. Most of it's in the Lab code.
-	elif current_event.type == Event.TYPE.BOSS:
-		# Just beat a boss. Progress the act.
-		Global.act += 1
-		Global.act_completed.emit()
-		Global.daemon_research.clear() # Reset all ongoing research.
+	else:
+		# Hide map tutorial panel
+		$MapTutorial.hide()
+		
+		if current_event.type == Event.TYPE.BOSS:
+			# Just beat a boss. Progress the act.
+			Global.act += 1
+			Global.act_completed.emit()
+			Global.daemon_research.clear() # Reset all ongoing research.
 	
 	# Revert window aspect scale mode once the transition screen is fully opaque
 	get_tree().create_timer(TransitionManager.duration + TransitionManager.spread).timeout.connect(get_window().set.bind(&"content_scale_aspect", Window.CONTENT_SCALE_ASPECT_EXPAND))

@@ -78,6 +78,9 @@ func _start_pressed() -> void:
 	# Reset the player's health.
 	PlayerData.health = PlayerData.max_health
 	
+	# Show map tutorial panel
+	map.get_node(^"MapTutorial").show()
+	
 	Global.request_track_transition.emit("Map")
 	
 	await TransitionManager.transition_screen(self, map)
