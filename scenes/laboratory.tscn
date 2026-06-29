@@ -699,8 +699,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mhqq6")
 
-[node name="Dr Angela Turtle" parent="HBoxContainer/MarginContainer/VBoxContainer/Panel" unique_id=1222050955 instance=ExtResource("6_7eomm")]
-position = Vector2(75, 312)
+[node name="Control" type="Control" parent="HBoxContainer/MarginContainer/VBoxContainer/Panel" unique_id=1773666151]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Dr Angela Turtle" parent="HBoxContainer/MarginContainer/VBoxContainer/Panel/Control" unique_id=1222050955 instance=ExtResource("6_7eomm")]
+position = Vector2(-128, -144)
 scale = Vector2(0.4, 0.4)
 
 [node name="Button" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1089969643]
