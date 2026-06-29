@@ -183,6 +183,10 @@ func _take_turn() -> void:
 			# Apply post-attack effects.
 			apply_self_effects(Effect.ApplyType.AFTER_ATTACK)
 		
+		if not player.health:
+			await get_tree().create_timer(0.7).timeout
+			turn_ended.emit()
+		
 		if not health:
 			await get_tree().create_timer(0.7).timeout
 			clear()
