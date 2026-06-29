@@ -5,9 +5,6 @@ extends Entity
 ##
 ## An enemy entity in a fight stage.
 
-## How frequently the boss will spawn more tentacles (every nth turn).
-static var boss_spawn_tentacles_frequency := 3
-
 ## The number of turns until this [Enemy] will take their next turn.
 var turns_until_next_turn: int
 
@@ -49,6 +46,12 @@ func _ready() -> void:
 		node.modulate = effects[id].effect_color
 
 func _take_turn() -> void:
+	# Check if turn should be skipped
+	if turns_until_next_turn:
+		turns_until_next_turn -= 1
+		if turns_until_next_turn > 0:
+			return
+	
 	var player := combat_handler.player
 	if animation_names.dash:
 		health_bar.z_index += 1
@@ -60,21 +63,21 @@ func _take_turn() -> void:
 		entity_3d.play_sound(sound_banks.dash)
 	
 	if name == &"Boss":
-		turns_until_next_turn -= 1
-		if turns_until_next_turn > 0:
-			return
-		turns_until_next_turn = boss_spawn_tentacles_frequency
-		
-		if entity_3d.get_parent().get_tentacles_n() <= 0:
+		# Check if any tentacles can be spawned
+		var n: int = entity_3d.get_parent().get_tentacles_n()
+		if n <= 0:
+			# Delay spawn until next turn
 			turns_until_next_turn += 1
 			return
 		
-		turns_until_next_turn = 3
+		# Set turns until next wave of tentacles is spawned
+		turns_until_next_turn = [3, 4, 4, 5].pick_random()
+		# Spawn tentacles
 		entity_3d.play_sound(sound_banks.attack)
 		anim_player.play(animation_names.attack, 0.2)
 		await get_tree().create_timer(animation_durations.attack).timeout
 		anim_player.play(animation_names.idle, 1.0)
-		entity_3d.get_parent().spawn_tentacles()
+		entity_3d.get_parent().spawn_tentacles(n)
 		await get_tree().create_timer(0.7).timeout
 		turn_ended.emit()
 		return

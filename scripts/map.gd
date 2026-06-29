@@ -9,8 +9,6 @@ static var combat_handler_scene := preload("res://scenes/combat_handler.tscn")
 var combat_handler := combat_handler_scene.instantiate() as CombatHandler
 ## The list of markers that are currently occupied by an entity.
 var occupied_markers: Array[Marker3D]
-## If [code]true[/code], tentacles have been spawned before.
-var has_spawned_tentacles: bool
 ## If [code]true[/code], this is a boss fight.
 var is_boss_fight: bool = false
 
@@ -77,8 +75,9 @@ func load_entity(file_name: String) -> Entity:
 	
 	## The [Marker3D] this entity will be placed at.
 	var marker := ($TentacleMarkers if entity_3d.entity.name == &"Tentacle" else $Markers).get_node(NodePath(marker_name)) as Marker3D
-	add_child(entity_3d)
 	_add_to_occupied_markers(marker)
+	entity.died.connect(_remove_from_occupied_markers.bind(marker), CONNECT_ONE_SHOT)
+	add_child(entity_3d)
 	entity_3d.global_position = marker.global_position - entity_3d.project_point(-entity.rect.position)
 	entity_3d.initial_transform = entity_3d.global_transform
 	if combat_handler.is_node_ready():
@@ -104,18 +103,21 @@ func load_enemy() -> void:
 	## The [Marker3D] this entity will be placed at.
 	var marker := ($TentacleMarkers if enemy_3d.entity.name == &"Tentacle" else $Markers).get_node(NodePath(marker_name)) as Marker3D
 	_add_to_occupied_markers(marker)
+	enemy_3d.entity.died.connect(_remove_from_occupied_markers.bind(marker), CONNECT_ONE_SHOT)
 	add_child(enemy_3d)
 	enemy_3d.global_position = marker.global_position - enemy_3d.project_point(-enemy_3d.entity.rect.position)
 	enemy_3d.initial_transform = enemy_3d.global_transform
 
 
-func spawn_tentacles() -> void:
-	for i in get_tentacles_n():
+## Spawns [param n] tentacle enemies.
+func spawn_tentacles(n: int) -> void:
+	for i in n:
 		var entity := load_entity("tentacle.tscn")
+		# Skip the turn when the tentacle was spawned
+		entity.turns_until_next_turn = 2
 		entity.health_bar.modulate.a = 0.0
 		Entity.entity_transition_manager.fade(entity, true).connect(func() -> void:
 				entity.create_tween().tween_property(entity.health_bar, ^":modulate:a", 1.0, 1.0))
-	has_spawned_tentacles = true
 	combat_handler.sort_enemies()
 
 
@@ -125,7 +127,12 @@ func get_tentacles_n() -> int:
 	for marker in $TentacleMarkers.get_children():
 		if marker not in occupied_markers:
 			unoccupied_n += 1
-	return mini(unoccupied_n, randi_range(3, 4) - combat_handler.enemies.size() if has_spawned_tentacles else 3)
+	
+	var alive_enemy_n: int
+	for enemy in combat_handler.enemies:
+		if enemy.health:
+			alive_enemy_n += 1
+	return mini(unoccupied_n, [3, 3, 4].pick_random() - alive_enemy_n)
 
 
 func _add_to_occupied_markers(marker: Marker3D) -> void:
